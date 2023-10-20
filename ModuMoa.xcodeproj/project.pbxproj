@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		317002BA2AD58B6100D8991A /* CGFloat+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317002B92AD58B6100D8991A /* CGFloat+.swift */; };
 		31A78CA82AD42EE400BE629A /* ModuMoaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A78CA72AD42EE400BE629A /* ModuMoaApp.swift */; };
 		31A78CAA2AD42EE400BE629A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A78CA92AD42EE400BE629A /* ContentView.swift */; };
 		31A78CAC2AD42EE600BE629A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31A78CAB2AD42EE600BE629A /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		317002B92AD58B6100D8991A /* CGFloat+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+.swift"; sourceTree = "<group>"; };
 		31A78CA42AD42EE400BE629A /* ModuMoa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ModuMoa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31A78CA72AD42EE400BE629A /* ModuMoaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuMoaApp.swift; sourceTree = "<group>"; };
 		31A78CA92AD42EE400BE629A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -38,6 +40,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		317002B82AD58B5800D8991A /* SharedUtils */ = {
+			isa = PBXGroup;
+			children = (
+				317002B92AD58B6100D8991A /* CGFloat+.swift */,
+			);
+			path = SharedUtils;
+			sourceTree = "<group>";
+		};
 		31A78C9B2AD42EE400BE629A = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				A0F324CD2ADA7E7800D64198 /* Models */,
+				317002B82AD58B5800D8991A /* SharedUtils */,
 				31A78CA72AD42EE400BE629A /* ModuMoaApp.swift */,
 				31A78CA92AD42EE400BE629A /* ContentView.swift */,
 				31A78CAB2AD42EE600BE629A /* Assets.xcassets */,
@@ -157,6 +168,7 @@
 				31A78CAA2AD42EE400BE629A /* ContentView.swift in Sources */,
 				A0F324D32ADA891700D64198 /* FamilyTree.swift in Sources */,
 				A0F324CF2ADA7EB500D64198 /* Member.swift in Sources */,
+				317002BA2AD58B6100D8991A /* CGFloat+.swift in Sources */,
 				31A78CA82AD42EE400BE629A /* ModuMoaApp.swift in Sources */,
 				A0F324D12ADA826200D64198 /* Node.swift in Sources */,
 			);
