@@ -9,33 +9,40 @@ import SwiftUI
 
 struct HierarchyCardView: View {
     
-    @State var parents:[String] = ["", ""]
-    @State var childrens:[String] = ["", ""]
+    @State var me: String
+    @State var partner: String?
+    @State var childrens:[String] = []
+    @State var index:Int = 0
     
     var body: some View {
         VStack(spacing: 80) {
             HStack {
-                ForEach(parents, id: \.self) { _ in
-                    cardViewWithButton()
+                cardViewWithButton(me)
+                    .frame(width: 250)
+                
+                if let partner {
+                    cardViewWithButton(partner)
                         .frame(width: 250)
                 }
             }
             
-            HStack {
-                ForEach(childrens, id: \.self) { _ in
-                    cardViewWithButton()
-                        .frame(width: 250)
+            HStack(alignment: .top) {
+                ForEach(childrens, id: \.self) { children in
+                    HierarchyCardView(me: children)
                 }
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .frame(alignment: .top)
     }
     
     @ViewBuilder
-    private func cardViewWithButton() -> some View {
+    private func cardViewWithButton(_ name: String) -> some View {
         VStack {
-            CardView()
+            CardView(name: name)
             Button(action: {
-                childrens.append("")
+                childrens.append("Children\(index)")
+                index += 1
             }, label: {
                 Image(systemName: "plus")
                     .foregroundStyle(.white)
@@ -49,5 +56,5 @@ struct HierarchyCardView: View {
     }
 }
 #Preview {
-    HierarchyCardView()
+    HierarchyCardView(me: "Kim", partner: "Partner")
 }
