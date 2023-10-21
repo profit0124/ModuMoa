@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var draggedOffset = CGSize.zero
-      @State private var accumulatedOffset = CGSize.zero
+    @State private var accumulatedOffset = CGSize.zero
     
     var body: some View {
         HierarchyCardView(me: Member(name: "Me", bloodType: .init(abo: .A, rh: .negative), sex: .female, birthday: Date()))
@@ -28,12 +28,6 @@ struct ContentView: View {
             accumulatedOffset = accumulatedOffset + gesture.translation
           }
       }
-}
-
-extension CGSize {
-  static func + (lhs: Self, rhs: Self) -> Self {
-    CGSize(width: lhs.width + rhs.width, height: lhs.height + rhs.height)
-  }
 }
 
 #Preview {
