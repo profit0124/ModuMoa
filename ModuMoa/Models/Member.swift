@@ -28,11 +28,11 @@ enum Sex {
 
 struct BloodType {
     
-    enum AboType {
-        case A
-        case B
-        case O
-        case AB
+    enum AboType: String {
+        case A = "A형"
+        case B = "B형"
+        case O = "O형"
+        case AB = "AB형"
     }
     
     enum RhType: String {
