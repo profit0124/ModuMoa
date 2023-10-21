@@ -16,29 +16,30 @@ struct ContentView: View {
 
     
     var body: some View {
-        HierarchyCardView(me: Member(name: "Me", bloodType: .init(abo: .A, rh: .negative), sex: .female, birthday: Date()))
-            .scaleEffect(currentZoom + totalZoom)
-            .gesture(
-                MagnifyGesture()
-                    .onChanged { value in
-                        currentZoom = value.magnification - 1
+        ZStack {
+            HierarchyCardView(me: Member(name: "Me", bloodType: .init(abo: .A, rh: .negative), sex: .female, birthday: Date()), partner: Member(name: "Partner", bloodType: .init(abo: .A, rh: .negative), sex: .female, birthday: Date()))
+                .scaleEffect(currentZoom + totalZoom)
+                .offset(draggedOffset)
+                .gesture(drag)
+                .gesture(
+                    MagnifyGesture()
+                        .onChanged { value in
+                            currentZoom = value.magnification - 1
+                        }
+                        .onEnded { value in
+                            totalZoom += currentZoom
+                            currentZoom = 0
+                        }
+                    
+                )
+                .accessibilityZoomAction { action in
+                    if action.direction == .zoomIn {
+                        totalZoom += 1
+                    } else {
+                        totalZoom -= 1
                     }
-                    .onEnded { value in
-                        totalZoom += currentZoom
-                        currentZoom = 0
-                    }
-            )
-            .accessibilityZoomAction { action in
-                if action.direction == .zoomIn {
-                    totalZoom += 1
-                } else {
-                    totalZoom -= 1
                 }
-            }
-            .offset(draggedOffset)
-            .gesture(drag)
-            
-        
+        }
     }
     
     var drag: some Gesture {
