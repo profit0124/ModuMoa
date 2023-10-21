@@ -53,7 +53,7 @@ struct HierarchyCardView: View {
     @ViewBuilder
     private func cardViewWithButton(_ member: Member) -> some View {
         VStack {
-            CardView(name: member.name)
+            CardView(member: member)
             Button(action: {
                 let member = Member(name: "Children\(index)", bloodType: .init(abo: .A, rh: .negative), sex: .female, birthday: Date())
                 childrens.append(member)

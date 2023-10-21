@@ -9,19 +9,17 @@ import SwiftUI
 
 struct CardView: View {
     
-    @State var name: String = "이미옥"
+    @State var member: Member
     @State var title: String = "어머니"
     @State var birthDay: String = "1964.05.27"
     @State var koreanAge: Int = 58
     @State var internationalAge: Int = 57
-    @State var rhType: BloodType.RhType  = .positive
-    @State var aboType: BloodType.AboType = .O
     
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack {
-                Text(name)
+                Text(member.name)
                     .font(.system(size: 16, weight: .semibold))
                 Spacer()
                 Text(title)
@@ -41,7 +39,7 @@ struct CardView: View {
                     .font(.footnote)
             }
             
-            Text("\(rhType.rawValue) \(aboType.rawValue)")
+            Text("\(member.bloodType.rh.rawValue) \(member.bloodType.abo.rawValue)")
                 .font(.footnote)
         }
         .padding(.betweenElements)
@@ -58,5 +56,5 @@ struct CardView: View {
 }
 
 #Preview {
-    CardView()
+    CardView(member: Member(name: "Kim", bloodType: .init(abo: .A, rh: .negative), sex: .female, birthday: Date()))
 }
