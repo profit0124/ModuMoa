@@ -8,12 +8,32 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var draggedOffset = CGSize.zero
+      @State private var accumulatedOffset = CGSize.zero
+    
     var body: some View {
-        VStack {
-            Text("ModuMoa")
-        }
-        .padding()
+        HierarchyCardView(me: Member(name: "Me", bloodType: .init(abo: .A, rh: .negative), sex: .female, birthday: Date()))
+            .offset(draggedOffset)
+            .gesture(drag)
+        
     }
+    
+    var drag: some Gesture {
+        DragGesture()
+          .onChanged { gesture in
+            draggedOffset = accumulatedOffset + gesture.translation
+          }
+          .onEnded { gesture in
+            accumulatedOffset = accumulatedOffset + gesture.translation
+          }
+      }
+}
+
+extension CGSize {
+  static func + (lhs: Self, rhs: Self) -> Self {
+    CGSize(width: lhs.width + rhs.width, height: lhs.height + rhs.height)
+  }
 }
 
 #Preview {
