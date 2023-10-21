@@ -28,16 +28,16 @@ struct HierarchyCardView: View {
                 }
             }
             .anchorPreference(key: Key.self, value: .center, transform: { anchor in
-                [self.me.id:anchor]
+                print(anchor, "\(self.me.name)")
+                return [self.me.id:anchor]
             })
             
-            HStack(alignment: .top) {
+            HStack(alignment: .top, spacing: 80) {
                 ForEach(childrens, id: \.id) { children in
                     HierarchyCardView(me: children)
                 }
             }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .frame(alignment: .top)
         .backgroundPreferenceValue(Key.self) { value in
             GeometryReader { proxy in
@@ -87,7 +87,7 @@ struct Line: Shape {
         Path { p in
             p.move(to: self.startPoint)
             if startPoint.y != endPoint.y, startPoint.x != endPoint.x {
-                let middleOfY = (endPoint.y - startPoint.y) / 2
+                let middleOfY = (endPoint.y - startPoint.y) / 1.3
                 let firstCornerPoint = CGPoint(x: startPoint.x, y: middleOfY)
                 let secondCornerPoint = CGPoint(x: endPoint.x, y: middleOfY)
                 p.addLine(to: firstCornerPoint)

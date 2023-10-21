@@ -46,9 +46,13 @@ struct CardView: View {
         }
         .padding(.betweenElements)
         .background {
-            RoundedRectangle(cornerRadius: 16)
-                .stroke(lineWidth: 4)
-                .foregroundStyle(.moduBlack)
+            ZStack {
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(.white)
+                RoundedRectangle(cornerRadius: 16)
+                    .stroke(lineWidth: 4)
+                    .foregroundStyle(.moduBlack)
+            }
         }
     }
 }
