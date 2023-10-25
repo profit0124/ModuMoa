@@ -21,21 +21,21 @@ struct Member: Identifiable {
     }
 }
 
-enum Sex {
-    case male
-    case female
+enum Sex: String, CaseIterable {
+    case male = "남성"
+    case female = "여성"
 }
 
 struct BloodType {
     
-    enum AboType: String {
+    enum AboType: String, CaseIterable {
         case A = "A형"
         case B = "B형"
         case O = "O형"
         case AB = "AB형"
     }
     
-    enum RhType: String {
+    enum RhType: String, CaseIterable {
         case positive = "+"
         case negative = "-"
     }

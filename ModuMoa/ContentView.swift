@@ -40,6 +40,13 @@ struct ContentView: View {
                     }
                 }
         }
+        .onAppear{
+            print("here")
+            for family in UIFont.familyNames {
+                let name = UIFont.fontNames(forFamilyName: family)
+                print(name)
+            }
+        }
     }
     
     var drag: some Gesture {

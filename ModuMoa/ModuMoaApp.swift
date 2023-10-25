@@ -11,7 +11,9 @@ import SwiftUI
 struct ModuMoaApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ContentView()
+            AddMyInformationContainerView(sex: .female)
+//            IntroView()
         }
     }
 }
