@@ -36,8 +36,8 @@ struct BloodType {
     }
     
     enum RhType: String, CaseIterable {
-        case positive = "+"
-        case negative = "-"
+        case positive = "Rh+"
+        case negative = "Rh-"
     }
     
     var abo: AboType

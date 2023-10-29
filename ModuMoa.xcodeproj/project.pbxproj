@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		311A3EF62AED21F70082D247 /* SelectGenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311A3EF52AED21F70082D247 /* SelectGenderView.swift */; };
+		311A3EF82AED2AEF0082D247 /* InputBirthdayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311A3EF72AED2AEF0082D247 /* InputBirthdayView.swift */; };
+		311A3EFA2AED2EE60082D247 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311A3EF92AED2EE60082D247 /* Date+.swift */; };
+		311A3EFC2AEE44800082D247 /* SelectBloodTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311A3EFB2AEE44800082D247 /* SelectBloodTypeView.swift */; };
 		314FD6A42AE9542A0052251C /* RoundedRectangleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314FD6A32AE9542A0052251C /* RoundedRectangleButtonView.swift */; };
 		314FD6A62AE955CA0052251C /* InputNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314FD6A52AE955CA0052251C /* InputNameView.swift */; };
 		317002BA2AD58B6100D8991A /* CGFloat+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317002B92AD58B6100D8991A /* CGFloat+.swift */; };
@@ -30,6 +34,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		311A3EF52AED21F70082D247 /* SelectGenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGenderView.swift; sourceTree = "<group>"; };
+		311A3EF72AED2AEF0082D247 /* InputBirthdayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputBirthdayView.swift; sourceTree = "<group>"; };
+		311A3EF92AED2EE60082D247 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
+		311A3EFB2AEE44800082D247 /* SelectBloodTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBloodTypeView.swift; sourceTree = "<group>"; };
 		314FD6A32AE9542A0052251C /* RoundedRectangleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleButtonView.swift; sourceTree = "<group>"; };
 		314FD6A52AE955CA0052251C /* InputNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputNameView.swift; sourceTree = "<group>"; };
 		317002B92AD58B6100D8991A /* CGFloat+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+.swift"; sourceTree = "<group>"; };
@@ -71,6 +79,7 @@
 				317002B92AD58B6100D8991A /* CGFloat+.swift */,
 				31B388EE2AE3D3EB00DFE875 /* CGSize+.swift */,
 				318457372AE94315007C2045 /* Font+.swift */,
+				311A3EF92AED2EE60082D247 /* Date+.swift */,
 			);
 			path = SharedUtils;
 			sourceTree = "<group>";
@@ -90,6 +99,9 @@
 				318457352AE941B3007C2045 /* IntroView.swift */,
 				314FD6A32AE9542A0052251C /* RoundedRectangleButtonView.swift */,
 				314FD6A52AE955CA0052251C /* InputNameView.swift */,
+				311A3EF52AED21F70082D247 /* SelectGenderView.swift */,
+				311A3EF72AED2AEF0082D247 /* InputBirthdayView.swift */,
+				311A3EFB2AEE44800082D247 /* SelectBloodTypeView.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -243,12 +255,16 @@
 				314FD6A42AE9542A0052251C /* RoundedRectangleButtonView.swift in Sources */,
 				31B388EF2AE3D3EB00DFE875 /* CGSize+.swift in Sources */,
 				31CD06902AE55883009D5383 /* AddMyInformationContainerView.swift in Sources */,
+				311A3EF82AED2AEF0082D247 /* InputBirthdayView.swift in Sources */,
 				31B388EB2AE38E5000DFE875 /* CardView.swift in Sources */,
 				31A78CAA2AD42EE400BE629A /* ContentView.swift in Sources */,
+				311A3EFC2AEE44800082D247 /* SelectBloodTypeView.swift in Sources */,
 				A0F324D32ADA891700D64198 /* FamilyTree.swift in Sources */,
 				A0F324CF2ADA7EB500D64198 /* Member.swift in Sources */,
+				311A3EF62AED21F70082D247 /* SelectGenderView.swift in Sources */,
 				317002BA2AD58B6100D8991A /* CGFloat+.swift in Sources */,
 				31A78CA82AD42EE400BE629A /* ModuMoaApp.swift in Sources */,
+				311A3EFA2AED2EE60082D247 /* Date+.swift in Sources */,
 				314FD6A62AE955CA0052251C /* InputNameView.swift in Sources */,
 				31B388ED2AE3944D00DFE875 /* HierarchyCardView.swift in Sources */,
 				318457362AE941B3007C2045 /* IntroView.swift in Sources */,
@@ -394,7 +410,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -424,7 +441,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

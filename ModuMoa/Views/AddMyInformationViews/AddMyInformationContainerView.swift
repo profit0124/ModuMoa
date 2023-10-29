@@ -9,11 +9,13 @@ import SwiftUI
 
 struct AddMyInformationContainerView: View {
     
+    @Binding var rootNode: Node?
+    
     @State var index: Int = 0
     
     @State var name:String = ""
     @State var sex: Sex?
-    @State var birthday: Date?
+    @State var birthday: Date = Date()
     @State var bloodType: BloodType?
     
     
@@ -24,18 +26,36 @@ struct AddMyInformationContainerView: View {
             case 0:
                 IntroView(index: $index)
                     .transition(AnyTransition.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
-//                    .animation(.easeInOut, value: 1)
                 
             case 1:
                 InputNameView(index: $index, bindingName: $name)
                     .transition(AnyTransition.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
-//                    .animation(.easeInOut, value: 1)
+                
+            case 2:
+                SelectGenderView(sex: $sex, name: $name, index: $index)
+                
+            case 3:
+                InputBirthdayView(index: $index, birthday: $birthday, sex: $sex, name: $name)
+                
+            case 4:
+                SelectBloodTypeView(name: $name,
+                                    sex: $sex,
+                                    birthDay: $birthday,
+                                    bloodType: $bloodType, index: $index)
+                
+            case 5:
+                Color.black
+                    .onAppear {
+                        self.rootNode = Node(member: Member(name: name, bloodType: bloodType!, sex: sex!, birthday: birthday))
+                    }
                 
             default:
                 Color.black
                     .transition(AnyTransition.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
-//                    .animation(.easeInOut, value: 1)
             }
+        }
+        .onAppear{
+            print(sex)
         }
         
     }
@@ -56,7 +76,7 @@ struct AddMyInformationContainerView: View {
 }
 
 #Preview {
-    AddMyInformationContainerView(name: "", sex: .female, birthday: Date())
+    AddMyInformationContainerView(rootNode: .constant(nil), name: "", sex: .female, birthday: Date())
 }
 
 
