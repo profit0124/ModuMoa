@@ -20,28 +20,33 @@ class FamilyTree {
     }
     
     func addPartner(with member: Member) {
-        let newNode = Node(member: member)
-        selectedNode?.add(partner: newNode)
+        guard let node = selectedNode else { return }
+        let newNode = Node(member: member, level: node.partnerLevel(), distance: node.partnerDistance())
+        node.add(partner: newNode)
     }
     
     func addParent(with member: Member) {
-        let newNode = Node(member: member)
-        selectedNode?.add(parent: newNode)
+        guard let node = selectedNode else { return }
+        let newNode = Node(member: member, level: node.parentLevel(), distance: node.parentDistance())
+        node.add(parent: newNode)
     }
     
     func addChild(with member: Member) {
-        let newNode = Node(member: member)
-        selectedNode?.add(child: newNode)
+        guard let node = selectedNode else { return }
+        let newNode = Node(member: member, level: node.childLevel(), distance: node.childDistance())
+        node.add(child: newNode)
     }
     
-    func addBrotherOrSister(with member: Member) {
-        if selectedNode?.leftParent == nil,
-           selectedNode?.rightParent == nil {
+    func addSibling(with member: Member) {
+        guard let node = selectedNode else { return }
+        if node.leftParent == nil,
+           node.rightParent == nil {
             self.addParent(with: createEmptyMember())
         }
         
-        if let parent = selectedNode?.leftParent ?? selectedNode?.rightParent {
-            parent.add(child: Node(member: member))
+        if let parent = node.leftParent ?? node.rightParent {
+            let newNode = Node(member: member, level: parent.childLevel(), distance: parent.childDistance())
+            parent.add(child: newNode)
         }
     }
     
