@@ -56,7 +56,7 @@ extension String {
     func toDate() -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMMdd"
-        dateFormatter.timeZone = TimeZone(identifier: "UTC")
+        dateFormatter.timeZone = TimeZone(identifier: "Asia/Seoul")
         
         guard let date = dateFormatter.date(from: self) else { return nil }
         
