@@ -34,6 +34,24 @@ class FamilyTree {
         selectedNode?.add(child: newNode)
     }
     
+    func addBrotherOrSister(with member: Member) {
+        if selectedNode?.leftParent == nil,
+           selectedNode?.rightParent == nil {
+            self.addParent(with: createEmptyMember())
+        }
+        
+        if let parent = selectedNode?.leftParent ?? selectedNode?.rightParent {
+            parent.add(child: Node(member: member))
+        }
+    }
+    
+    private func createEmptyMember() -> Member {
+        return Member(name: "empty",
+                      bloodType: BloodType(abo: .none, rh: .none),
+                      sex: .male,
+                      birthday: Date())
+    }
+    
     func find(with member: Member) -> Node? {
         let startNode = baseNode
         var visited: [UUID:Node] = [:]
