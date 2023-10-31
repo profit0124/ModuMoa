@@ -8,6 +8,9 @@
 import Foundation
 
 class Node {
+    
+    private let level: Int
+    private let distance: Int
     var leftParent: Node?
     var rightParent: Node?
     var partner: Node?
@@ -17,11 +20,13 @@ class Node {
         return [leftParent, rightParent, partner] + children
     }
     
-    init(leftParent: Node? = nil, rightParent: Node? = nil, children: [Node] = [], member: Member) {
+    init(leftParent: Node? = nil, rightParent: Node? = nil, children: [Node] = [], member: Member, level: Int = 0, distance: Int = 0) {
         self.leftParent = leftParent
         self.rightParent = rightParent
         self.children = children
         self.member = member
+        self.level = level
+        self.distance = distance
     }
     
     func add(child: Node) {
@@ -45,5 +50,35 @@ class Node {
         parent.children.append(self)
     }
     
+    func partnerLevel() -> Int {
+        return level
+    }
     
+    func siblingLevel() -> Int {
+        return level
+    }
+    
+    func parentLevel() -> Int {
+        return level + 1
+    }
+    
+    func childLevel() -> Int {
+        return level - 1
+    }
+    
+    func partnerDistance() -> Int {
+        return distance
+    }
+    
+    func siblingDistance() -> Int {
+        return distance + 2
+    }
+    
+    func parentDistance() -> Int {
+        return distance + 1
+    }
+    
+    func childDistance() -> Int {
+        return distance + 1
+    }
 }
