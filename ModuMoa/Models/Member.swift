@@ -39,11 +39,13 @@ struct BloodType {
         case B = "B형"
         case O = "O형"
         case AB = "AB형"
+        case none = "none"
     }
     
     enum RhType: String {
         case positive = "Rh+"
         case negative = "Rh-"
+        case none = " "
     }
     
     var abo: AboType
