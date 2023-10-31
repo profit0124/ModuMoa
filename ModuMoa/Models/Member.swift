@@ -19,6 +19,12 @@ struct Member: Identifiable {
     func isMale() -> Bool {
         return sex == .male
     }
+    
+    func age() -> String {
+        let ageComponent = Calendar.current.dateComponents([.year], from: birthday, to: Date())
+        let age = ageComponent.year ?? 0
+        return "만 \(age)세"
+    }
 }
 
 enum Sex {
@@ -47,7 +53,7 @@ struct BloodType {
 
 extension String {
     
-    func toDate() -> Date? { //"yyyyMMdd"
+    func toDate() -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMMdd"
         dateFormatter.timeZone = TimeZone(identifier: "UTC")
