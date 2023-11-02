@@ -20,6 +20,13 @@
 		3184573D2AE946D1007C2045 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3184573C2AE946D1007C2045 /* SF-Pro-Text-Regular.otf */; };
 		3184573F2AE946DE007C2045 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3184573E2AE946DE007C2045 /* SF-Pro-Text-Semibold.otf */; };
 		318457412AE946ED007C2045 /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 318457402AE946ED007C2045 /* SF-Pro-Text-Medium.otf */; };
+		3185210E2AEE76D7000579CE /* TextSectionSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185210D2AEE76D7000579CE /* TextSectionSubView.swift */; };
+		318521112AEEA30B000579CE /* MemberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318521102AEEA30B000579CE /* MemberView.swift */; };
+		318521142AEFD911000579CE /* MemberNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318521132AEFD911000579CE /* MemberNameView.swift */; };
+		318521162AEFD91F000579CE /* MemberSexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318521152AEFD91F000579CE /* MemberSexView.swift */; };
+		318521182AEFD92C000579CE /* MemberBirthdayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318521172AEFD92C000579CE /* MemberBirthdayView.swift */; };
+		3185211A2AEFD93B000579CE /* MemberRhTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318521192AEFD93B000579CE /* MemberRhTypeView.swift */; };
+		3185211C2AEFEFF3000579CE /* MemberAboTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185211B2AEFEFF3000579CE /* MemberAboTypeView.swift */; };
 		31A78CA82AD42EE400BE629A /* ModuMoaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A78CA72AD42EE400BE629A /* ModuMoaApp.swift */; };
 		31A78CAA2AD42EE400BE629A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A78CA92AD42EE400BE629A /* ContentView.swift */; };
 		31A78CAC2AD42EE600BE629A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31A78CAB2AD42EE600BE629A /* Assets.xcassets */; };
@@ -48,6 +55,13 @@
 		3184573E2AE946DE007C2045 /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
 		318457402AE946ED007C2045 /* SF-Pro-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Medium.otf"; sourceTree = "<group>"; };
 		318457422AE94726007C2045 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		3185210D2AEE76D7000579CE /* TextSectionSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextSectionSubView.swift; sourceTree = "<group>"; };
+		318521102AEEA30B000579CE /* MemberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberView.swift; sourceTree = "<group>"; };
+		318521132AEFD911000579CE /* MemberNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberNameView.swift; sourceTree = "<group>"; };
+		318521152AEFD91F000579CE /* MemberSexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberSexView.swift; sourceTree = "<group>"; };
+		318521172AEFD92C000579CE /* MemberBirthdayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberBirthdayView.swift; sourceTree = "<group>"; };
+		318521192AEFD93B000579CE /* MemberRhTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberRhTypeView.swift; sourceTree = "<group>"; };
+		3185211B2AEFEFF3000579CE /* MemberAboTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAboTypeView.swift; sourceTree = "<group>"; };
 		31A78CA42AD42EE400BE629A /* ModuMoa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ModuMoa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31A78CA72AD42EE400BE629A /* ModuMoaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuMoaApp.swift; sourceTree = "<group>"; };
 		31A78CA92AD42EE400BE629A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -97,7 +111,6 @@
 			isa = PBXGroup;
 			children = (
 				318457352AE941B3007C2045 /* IntroView.swift */,
-				314FD6A32AE9542A0052251C /* RoundedRectangleButtonView.swift */,
 				314FD6A52AE955CA0052251C /* InputNameView.swift */,
 				311A3EF52AED21F70082D247 /* SelectGenderView.swift */,
 				311A3EF72AED2AEF0082D247 /* InputBirthdayView.swift */,
@@ -115,6 +128,36 @@
 				318457402AE946ED007C2045 /* SF-Pro-Text-Medium.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		3185210A2AEE75E1000579CE /* ViewComponents */ = {
+			isa = PBXGroup;
+			children = (
+				314FD6A32AE9542A0052251C /* RoundedRectangleButtonView.swift */,
+			);
+			path = ViewComponents;
+			sourceTree = "<group>";
+		};
+		3185210F2AEEA300000579CE /* MemberViews */ = {
+			isa = PBXGroup;
+			children = (
+				318521122AEFD8F3000579CE /* Subs */,
+				318521102AEEA30B000579CE /* MemberView.swift */,
+			);
+			path = MemberViews;
+			sourceTree = "<group>";
+		};
+		318521122AEFD8F3000579CE /* Subs */ = {
+			isa = PBXGroup;
+			children = (
+				318521132AEFD911000579CE /* MemberNameView.swift */,
+				318521152AEFD91F000579CE /* MemberSexView.swift */,
+				318521172AEFD92C000579CE /* MemberBirthdayView.swift */,
+				318521192AEFD93B000579CE /* MemberRhTypeView.swift */,
+				3185211B2AEFEFF3000579CE /* MemberAboTypeView.swift */,
+				3185210D2AEE76D7000579CE /* TextSectionSubView.swift */,
+			);
+			path = Subs;
 			sourceTree = "<group>";
 		};
 		31A78C9B2AD42EE400BE629A = {
@@ -160,6 +203,8 @@
 		31B388E92AE38E4200DFE875 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3185210F2AEEA300000579CE /* MemberViews */,
+				3185210A2AEE75E1000579CE /* ViewComponents */,
 				318457332AE94183007C2045 /* AddMyInformationViews */,
 				31B388EA2AE38E5000DFE875 /* CardView.swift */,
 				31B388EC2AE3944D00DFE875 /* HierarchyCardView.swift */,
@@ -253,14 +298,19 @@
 			files = (
 				318457382AE94315007C2045 /* Font+.swift in Sources */,
 				314FD6A42AE9542A0052251C /* RoundedRectangleButtonView.swift in Sources */,
+				318521162AEFD91F000579CE /* MemberSexView.swift in Sources */,
 				31B388EF2AE3D3EB00DFE875 /* CGSize+.swift in Sources */,
 				31CD06902AE55883009D5383 /* AddMyInformationContainerView.swift in Sources */,
 				311A3EF82AED2AEF0082D247 /* InputBirthdayView.swift in Sources */,
+				3185211C2AEFEFF3000579CE /* MemberAboTypeView.swift in Sources */,
 				31B388EB2AE38E5000DFE875 /* CardView.swift in Sources */,
 				31A78CAA2AD42EE400BE629A /* ContentView.swift in Sources */,
 				311A3EFC2AEE44800082D247 /* SelectBloodTypeView.swift in Sources */,
+				318521112AEEA30B000579CE /* MemberView.swift in Sources */,
+				3185211A2AEFD93B000579CE /* MemberRhTypeView.swift in Sources */,
 				A0F324D32ADA891700D64198 /* FamilyTree.swift in Sources */,
 				A0F324CF2ADA7EB500D64198 /* Member.swift in Sources */,
+				318521182AEFD92C000579CE /* MemberBirthdayView.swift in Sources */,
 				311A3EF62AED21F70082D247 /* SelectGenderView.swift in Sources */,
 				317002BA2AD58B6100D8991A /* CGFloat+.swift in Sources */,
 				31A78CA82AD42EE400BE629A /* ModuMoaApp.swift in Sources */,
@@ -268,6 +318,8 @@
 				314FD6A62AE955CA0052251C /* InputNameView.swift in Sources */,
 				31B388ED2AE3944D00DFE875 /* HierarchyCardView.swift in Sources */,
 				318457362AE941B3007C2045 /* IntroView.swift in Sources */,
+				318521142AEFD911000579CE /* MemberNameView.swift in Sources */,
+				3185210E2AEE76D7000579CE /* TextSectionSubView.swift in Sources */,
 				A0F324D12ADA826200D64198 /* Node.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
