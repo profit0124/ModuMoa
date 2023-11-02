@@ -7,7 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		311A3EF62AED21F70082D247 /* SelectGenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311A3EF52AED21F70082D247 /* SelectGenderView.swift */; };
+		311A3EF82AED2AEF0082D247 /* InputBirthdayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311A3EF72AED2AEF0082D247 /* InputBirthdayView.swift */; };
+		311A3EFA2AED2EE60082D247 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311A3EF92AED2EE60082D247 /* Date+.swift */; };
+		311A3EFC2AEE44800082D247 /* SelectBloodTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311A3EFB2AEE44800082D247 /* SelectBloodTypeView.swift */; };
+		314FD6A42AE9542A0052251C /* RoundedRectangleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314FD6A32AE9542A0052251C /* RoundedRectangleButtonView.swift */; };
+		314FD6A62AE955CA0052251C /* InputNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314FD6A52AE955CA0052251C /* InputNameView.swift */; };
 		317002BA2AD58B6100D8991A /* CGFloat+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317002B92AD58B6100D8991A /* CGFloat+.swift */; };
+		318457362AE941B3007C2045 /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318457352AE941B3007C2045 /* IntroView.swift */; };
+		318457382AE94315007C2045 /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318457372AE94315007C2045 /* Font+.swift */; };
+		3184573B2AE946AD007C2045 /* SF-Pro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3184573A2AE946AD007C2045 /* SF-Pro.ttf */; };
+		3184573D2AE946D1007C2045 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3184573C2AE946D1007C2045 /* SF-Pro-Text-Regular.otf */; };
+		3184573F2AE946DE007C2045 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3184573E2AE946DE007C2045 /* SF-Pro-Text-Semibold.otf */; };
+		318457412AE946ED007C2045 /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 318457402AE946ED007C2045 /* SF-Pro-Text-Medium.otf */; };
 		31A78CA82AD42EE400BE629A /* ModuMoaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A78CA72AD42EE400BE629A /* ModuMoaApp.swift */; };
 		31A78CAA2AD42EE400BE629A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A78CA92AD42EE400BE629A /* ContentView.swift */; };
 		31A78CAC2AD42EE600BE629A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31A78CAB2AD42EE600BE629A /* Assets.xcassets */; };
@@ -15,13 +27,27 @@
 		31B388EB2AE38E5000DFE875 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B388EA2AE38E5000DFE875 /* CardView.swift */; };
 		31B388ED2AE3944D00DFE875 /* HierarchyCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B388EC2AE3944D00DFE875 /* HierarchyCardView.swift */; };
 		31B388EF2AE3D3EB00DFE875 /* CGSize+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B388EE2AE3D3EB00DFE875 /* CGSize+.swift */; };
+		31CD06902AE55883009D5383 /* AddMyInformationContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CD068F2AE55883009D5383 /* AddMyInformationContainerView.swift */; };
 		A0F324CF2ADA7EB500D64198 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F324CE2ADA7EB500D64198 /* Member.swift */; };
 		A0F324D12ADA826200D64198 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F324D02ADA826200D64198 /* Node.swift */; };
 		A0F324D32ADA891700D64198 /* FamilyTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F324D22ADA891700D64198 /* FamilyTree.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		311A3EF52AED21F70082D247 /* SelectGenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGenderView.swift; sourceTree = "<group>"; };
+		311A3EF72AED2AEF0082D247 /* InputBirthdayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputBirthdayView.swift; sourceTree = "<group>"; };
+		311A3EF92AED2EE60082D247 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
+		311A3EFB2AEE44800082D247 /* SelectBloodTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBloodTypeView.swift; sourceTree = "<group>"; };
+		314FD6A32AE9542A0052251C /* RoundedRectangleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleButtonView.swift; sourceTree = "<group>"; };
+		314FD6A52AE955CA0052251C /* InputNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputNameView.swift; sourceTree = "<group>"; };
 		317002B92AD58B6100D8991A /* CGFloat+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+.swift"; sourceTree = "<group>"; };
+		318457352AE941B3007C2045 /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
+		318457372AE94315007C2045 /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
+		3184573A2AE946AD007C2045 /* SF-Pro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro.ttf"; sourceTree = "<group>"; };
+		3184573C2AE946D1007C2045 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
+		3184573E2AE946DE007C2045 /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
+		318457402AE946ED007C2045 /* SF-Pro-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Medium.otf"; sourceTree = "<group>"; };
+		318457422AE94726007C2045 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		31A78CA42AD42EE400BE629A /* ModuMoa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ModuMoa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31A78CA72AD42EE400BE629A /* ModuMoaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuMoaApp.swift; sourceTree = "<group>"; };
 		31A78CA92AD42EE400BE629A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -30,6 +56,7 @@
 		31B388EA2AE38E5000DFE875 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		31B388EC2AE3944D00DFE875 /* HierarchyCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyCardView.swift; sourceTree = "<group>"; };
 		31B388EE2AE3D3EB00DFE875 /* CGSize+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+.swift"; sourceTree = "<group>"; };
+		31CD068F2AE55883009D5383 /* AddMyInformationContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMyInformationContainerView.swift; sourceTree = "<group>"; };
 		A0F324CE2ADA7EB500D64198 /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 		A0F324D02ADA826200D64198 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		A0F324D22ADA891700D64198 /* FamilyTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTree.swift; sourceTree = "<group>"; };
@@ -51,8 +78,43 @@
 			children = (
 				317002B92AD58B6100D8991A /* CGFloat+.swift */,
 				31B388EE2AE3D3EB00DFE875 /* CGSize+.swift */,
+				318457372AE94315007C2045 /* Font+.swift */,
+				311A3EF92AED2EE60082D247 /* Date+.swift */,
 			);
 			path = SharedUtils;
+			sourceTree = "<group>";
+		};
+		318457332AE94183007C2045 /* AddMyInformationViews */ = {
+			isa = PBXGroup;
+			children = (
+				318457342AE941A0007C2045 /* SubViews */,
+				31CD068F2AE55883009D5383 /* AddMyInformationContainerView.swift */,
+			);
+			path = AddMyInformationViews;
+			sourceTree = "<group>";
+		};
+		318457342AE941A0007C2045 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				318457352AE941B3007C2045 /* IntroView.swift */,
+				314FD6A32AE9542A0052251C /* RoundedRectangleButtonView.swift */,
+				314FD6A52AE955CA0052251C /* InputNameView.swift */,
+				311A3EF52AED21F70082D247 /* SelectGenderView.swift */,
+				311A3EF72AED2AEF0082D247 /* InputBirthdayView.swift */,
+				311A3EFB2AEE44800082D247 /* SelectBloodTypeView.swift */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
+		318457392AE94698007C2045 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				3184573A2AE946AD007C2045 /* SF-Pro.ttf */,
+				3184573C2AE946D1007C2045 /* SF-Pro-Text-Regular.otf */,
+				3184573E2AE946DE007C2045 /* SF-Pro-Text-Semibold.otf */,
+				318457402AE946ED007C2045 /* SF-Pro-Text-Medium.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		31A78C9B2AD42EE400BE629A = {
@@ -74,6 +136,8 @@
 		31A78CA62AD42EE400BE629A /* ModuMoa */ = {
 			isa = PBXGroup;
 			children = (
+				318457422AE94726007C2045 /* Info.plist */,
+				318457392AE94698007C2045 /* Fonts */,
 				31B388E92AE38E4200DFE875 /* Views */,
 				A0F324CD2ADA7E7800D64198 /* Models */,
 				317002B82AD58B5800D8991A /* SharedUtils */,
@@ -96,6 +160,7 @@
 		31B388E92AE38E4200DFE875 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				318457332AE94183007C2045 /* AddMyInformationViews */,
 				31B388EA2AE38E5000DFE875 /* CardView.swift */,
 				31B388EC2AE3944D00DFE875 /* HierarchyCardView.swift */,
 			);
@@ -171,6 +236,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				31A78CAF2AD42EE600BE629A /* Preview Assets.xcassets in Resources */,
+				3184573B2AE946AD007C2045 /* SF-Pro.ttf in Resources */,
+				318457412AE946ED007C2045 /* SF-Pro-Text-Medium.otf in Resources */,
+				3184573F2AE946DE007C2045 /* SF-Pro-Text-Semibold.otf in Resources */,
+				3184573D2AE946D1007C2045 /* SF-Pro-Text-Regular.otf in Resources */,
 				31A78CAC2AD42EE600BE629A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -182,14 +251,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				318457382AE94315007C2045 /* Font+.swift in Sources */,
+				314FD6A42AE9542A0052251C /* RoundedRectangleButtonView.swift in Sources */,
 				31B388EF2AE3D3EB00DFE875 /* CGSize+.swift in Sources */,
+				31CD06902AE55883009D5383 /* AddMyInformationContainerView.swift in Sources */,
+				311A3EF82AED2AEF0082D247 /* InputBirthdayView.swift in Sources */,
 				31B388EB2AE38E5000DFE875 /* CardView.swift in Sources */,
 				31A78CAA2AD42EE400BE629A /* ContentView.swift in Sources */,
+				311A3EFC2AEE44800082D247 /* SelectBloodTypeView.swift in Sources */,
 				A0F324D32ADA891700D64198 /* FamilyTree.swift in Sources */,
 				A0F324CF2ADA7EB500D64198 /* Member.swift in Sources */,
+				311A3EF62AED21F70082D247 /* SelectGenderView.swift in Sources */,
 				317002BA2AD58B6100D8991A /* CGFloat+.swift in Sources */,
 				31A78CA82AD42EE400BE629A /* ModuMoaApp.swift in Sources */,
+				311A3EFA2AED2EE60082D247 /* Date+.swift in Sources */,
+				314FD6A62AE955CA0052251C /* InputNameView.swift in Sources */,
 				31B388ED2AE3944D00DFE875 /* HierarchyCardView.swift in Sources */,
+				318457362AE941B3007C2045 /* IntroView.swift in Sources */,
 				A0F324D12ADA826200D64198 /* Node.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -327,11 +405,13 @@
 				DEVELOPMENT_TEAM = A44U4A2F2G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ModuMoa/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -356,11 +436,13 @@
 				DEVELOPMENT_TEAM = A44U4A2F2G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ModuMoa/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
