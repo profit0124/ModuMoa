@@ -14,13 +14,14 @@ struct Member: Identifiable {
     var name: String
     var bloodType: BloodType
     var sex: Sex
-    var birthday: Date
+    var birthday: Date?
     
     func isMale() -> Bool {
         return sex == .male
     }
     
     func age() -> String {
+        guard let birthday = birthday else { return "만 ??세" }
         let ageComponent = Calendar.current.dateComponents([.year], from: birthday, to: Date())
         let age = ageComponent.year ?? 0
         return "만 \(age)세"
@@ -30,6 +31,7 @@ struct Member: Identifiable {
 enum Sex {
     case male
     case female
+    case none
 }
 
 struct BloodType {
@@ -39,13 +41,13 @@ struct BloodType {
         case B = "B형"
         case O = "O형"
         case AB = "AB형"
-        case none = "none"
+        case none = "모름"
     }
     
     enum RhType: String {
         case positive = "Rh+"
         case negative = "Rh-"
-        case none = " "
+        case none = "모름"
     }
     
     var abo: AboType
