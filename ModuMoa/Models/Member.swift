@@ -14,30 +14,40 @@ struct Member: Identifiable {
     var name: String
     var bloodType: BloodType
     var sex: Sex
-    var birthday: Date
+    var birthday: Date?
     
     func isMale() -> Bool {
         return sex == .male
     }
+    
+    func age() -> String {
+        guard let birthday = birthday else { return "만 ??세" }
+        let ageComponent = Calendar.current.dateComponents([.year], from: birthday, to: Date())
+        let age = ageComponent.year ?? 0
+        return "만 \(age)세"
+    }
 }
 
-enum Sex: String, CaseIterable {
-    case male = "남성"
-    case female = "여성"
+enum Sex {
+    case male
+    case female
+    case none
 }
 
 struct BloodType {
     
-    enum AboType: String, CaseIterable {
+    enum AboType: String {
         case A = "A형"
         case B = "B형"
         case O = "O형"
         case AB = "AB형"
+        case none = "모름"
     }
     
-    enum RhType: String, CaseIterable {
+    enum RhType: String {
         case positive = "Rh+"
         case negative = "Rh-"
+        case none = "모름"
     }
     
     var abo: AboType
@@ -47,10 +57,10 @@ struct BloodType {
 
 extension String {
     
-    func toDate() -> Date? { //"yyyyMMdd"
+    func toDate() -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMMdd"
-        dateFormatter.timeZone = TimeZone(identifier: "UTC")
+        dateFormatter.timeZone = TimeZone(identifier: "Asia/Seoul")
         
         guard let date = dateFormatter.date(from: self) else { return nil }
         
