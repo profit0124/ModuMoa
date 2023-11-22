@@ -6,59 +6,64 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct InputBirthdayView: View {
     
-    @Binding var index: Int
-    @Binding var birthday: Date
+//    @Binding var index: Int
+//    @Binding var birthday: Date
+//    
+//    @Binding var sex: Sex?
+//    @Binding var name: String
     
-    @Binding var sex: Sex?
-    @Binding var name: String
+    let store: StoreOf<InputBirthDay>
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            
-            Image(systemName: "chevron.left")
-                .resizable()
-                .font(.customFont(.headline))
-            
-                .frame(width: 10, height: 20)
-                .onTapGesture {
-                    index -= 1
-                }
-                .padding(.leading, 8)
+        WithViewStore(self.store, observe: { $0 }) { viewStore in
             VStack(alignment: .leading, spacing: 0) {
-                Text("생일을 선택해주세요")
-                    .font(.customFont(.largeTitle).bold())
-                    .padding(.top, .betweenElements)
-                    .padding(.bottom, .betweenTitleAndContent)
+                Image(systemName: "chevron.left")
+                    .resizable()
+                    .font(.customFont(.headline))
                 
-                DatePicker("", selection: $birthday, displayedComponents: .date)
-                    .datePickerStyle(.wheel)
-                    .labelsHidden()
-                    .environment(\.locale, Locale.init(identifier: "ko-kr"))
-                    .frame(maxWidth: .infinity)
-                    .padding(.bottom, .betweenElements)
-                
-                Text(birthday.toString())
-                    .font(.customFont(.callOut))
-                    .foregroundStyle(.disableText)
-                    .padding(.bottom, .betweenSelectPoint)
-                
-                makeSection("성별", sex?.rawValue ?? "")
-                    .padding(.bottom, .betweenElements)
-                
-                makeSection("이름", name)
-                
-                Spacer()
-            
-                RoundedRectangleButtonView(title: "다음")
+                    .frame(width: 10, height: 20)
                     .onTapGesture {
-                        index += 1
+                        viewStore.send(.previousIndex)
                     }
+                    .padding(.leading, 8)
+                VStack(alignment: .leading, spacing: 0) {
+                    Text("생일을 선택해주세요")
+                        .font(.customFont(.largeTitle).bold())
+                        .padding(.top, .betweenElements)
+                        .padding(.bottom, .betweenTitleAndContent)
+                    
+                    DatePicker("", selection: viewStore.$date, displayedComponents: .date)
+                        .datePickerStyle(.wheel)
+                        .labelsHidden()
+                        .environment(\.locale, Locale.init(identifier: "ko-kr"))
+                        .frame(maxWidth: .infinity)
+                        .padding(.bottom, .betweenElements)
+                    
+                    Text(viewStore.date.toString())
+                        .font(.customFont(.callOut))
+                        .foregroundStyle(.disableText)
+                        .padding(.bottom, .betweenSelectPoint)
+                    
+                    makeSection("성별", viewStore.sex.rawValue)
+                        .padding(.bottom, .betweenElements)
+                    
+                    makeSection("이름", viewStore.name)
+                    
+                    Spacer()
+                
+                    RoundedRectangleButtonView(title: "다음")
+                        .onTapGesture {
+                            viewStore.send(.nextIndex)
+                        }
+                }
+                .padding(.horizontal, 20)
             }
-            .padding(.horizontal, 20)
         }
+        
     }
     
     @ViewBuilder

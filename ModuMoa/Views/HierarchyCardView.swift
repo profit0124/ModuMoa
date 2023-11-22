@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct HierarchyCardView: View {
     
@@ -18,22 +19,22 @@ struct HierarchyCardView: View {
 
     var body: some View {
         VStack(spacing: 80) {
-            HStack(spacing: 20) {
-                cardViewWithButton(me)
-                    .frame(width: 250)
-                    .anchorPreference(key: Key.self, value: .center, transform: { anchor in
-                        return [self.me.id:anchor]
-                    })
-                
-                if let partner {
-                    cardViewWithButton(partner)
-                        .frame(width: 250)
-                        .anchorPreference(key: Key.self, value: .center, transform: { anchor in
-                            return [partner.id:anchor]
-                        })
-                    
-                }
-            }
+//            HStack(spacing: 20) {
+//                cardViewWithButton(me)
+//                    .frame(width: 250)
+//                    .anchorPreference(key: Key.self, value: .center, transform: { anchor in
+//                        return [self.me.id:anchor]
+//                    })
+//                
+//                if let partner {
+//                    cardViewWithButton(partner)
+//                        .frame(width: 250)
+//                        .anchorPreference(key: Key.self, value: .center, transform: { anchor in
+//                            return [partner.id:anchor]
+//                        })
+//                    
+//                }
+//            }
             
             HStack(alignment: .top, spacing: 80) {
                 ForEach(childrens, id: \.id) { children in
@@ -69,7 +70,7 @@ struct HierarchyCardView: View {
     @ViewBuilder
     private func cardViewWithButton(_ member: Member) -> some View {
         VStack {
-            CardView(member: member)
+            CardView(member: member, store: StoreOf<Card>(initialState: Card.State(member: member)) { Card() })
             Button(action: {
                 let member = Member(name: "Children\(index)", bloodType: .init(abo: .A, rh: .negative), sex: .female, birthday: Date())
                 childrens.append(member)

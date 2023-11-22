@@ -176,8 +176,8 @@ struct MemberView: View {
                 name = member.name
                 sex = member.sex
                 sexString = member.sex.rawValue
-                birthDay = member.birthday
-                birthDayString = member.birthday.toString()
+                birthDay = member.birthday ?? Date()
+                birthDayString = member.birthday?.toString() ?? Date().toString()
                 rhType = member.bloodType.rh
                 bloodTypeToString = member.bloodType.rh.rawValue
                 aboType = member.bloodType.abo

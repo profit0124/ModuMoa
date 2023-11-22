@@ -6,57 +6,57 @@
 //
 
 import SwiftUI
+import Combine
+import ComposableArchitecture
 
 struct AddMyInformationContainerView: View {
     
-    @Binding var rootNode: Node?
+//    @Binding var rootNode: Node?
     
-    @State var index: Int = 0
+//    @State var index: Int = 0
     
-    @State var name:String = ""
-    @State var sex: Sex?
-    @State var birthday: Date = Date()
-    @State var bloodType: BloodType?
+//    @State var name:String = ""
+//    @State var sex: Sex?
+//    @State var birthday: Date = Date()
+//    @State var bloodType: BloodType?
     
+    let store: StoreOf<AddMyInformation> = StoreOf<AddMyInformation>(initialState: AddMyInformation.State()) { AddMyInformation() }
     
     
     var body: some View {
-        Group {
-            switch index {
-            case 0:
-                IntroView(index: $index)
-                    .transition(AnyTransition.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
-                
-            case 1:
-                InputNameView(index: $index, bindingName: $name)
-                    .transition(AnyTransition.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
-                
-            case 2:
-                SelectGenderView(sex: $sex, name: $name, index: $index)
-                
-            case 3:
-                InputBirthdayView(index: $index, birthday: $birthday, sex: $sex, name: $name)
-                
-            case 4:
-                SelectBloodTypeView(name: $name,
-                                    sex: $sex,
-                                    birthDay: $birthday,
-                                    bloodType: $bloodType, index: $index)
-                
-            case 5:
-                Color.black
-                    .onAppear {
-                        self.rootNode = Node(member: Member(name: name, bloodType: bloodType!, sex: sex!, birthday: birthday))
-                    }
-                
-            default:
-                Color.black
-                    .transition(AnyTransition.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
+        WithViewStore(self.store, observe: { $0 }) { viewStore in
+            Group {
+                switch viewStore.index {
+                case 0:
+                    IntroView(store: self.store.scope(state: \.intro, action: AddMyInformation.Action.intro))
+                    
+                case 1:
+                    InputNameView(store: self.store.scope(state: \.inputName, action: AddMyInformation.Action.inputName))
+                    
+                case 2:
+                    IfLetStore(self.store.scope(state: \.selectGender, action: AddMyInformation.Action.selectGender), then: {
+                        SelectGenderView(store: $0)
+                    })
+
+                case 3:
+                    IfLetStore(self.store.scope(state: \.inputBirthDay, action: AddMyInformation.Action.inputBirthDay), then: {
+                        InputBirthdayView(store: $0)
+                    })
+                    
+                case 4:
+                    IfLetStore(self.store.scope(state: \.selectBloodType, action: AddMyInformation.Action.selectBloodType), then: {
+                        SelectBloodTypeView(store: $0)
+                    })
+                    
+                default:
+                    Color.black
+                        .transition(AnyTransition.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
+                }
+            }
+            .onAppear{
             }
         }
-        .onAppear{
-            print(sex)
-        }
+        
         
     }
     
@@ -75,8 +75,5 @@ struct AddMyInformationContainerView: View {
     }
 }
 
-#Preview {
-    AddMyInformationContainerView(rootNode: .constant(nil), name: "", sex: .female, birthday: Date())
-}
 
 

@@ -61,7 +61,7 @@ struct ContentView: View {
             }
             
         } else {
-            AddMyInformationContainerView(rootNode: $rootNode)
+            AddMyInformationContainerView()
         }
     }
     

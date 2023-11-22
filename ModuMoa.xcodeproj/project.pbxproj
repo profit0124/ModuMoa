@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3109AB6F2B0E303000540CAB /* SelectGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109AB6E2B0E303000540CAB /* SelectGender.swift */; };
+		3109AB712B0E355A00540CAB /* InputBirthDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109AB702B0E355A00540CAB /* InputBirthDay.swift */; };
+		3109AB742B0E380600540CAB /* SelectBloodType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109AB732B0E380600540CAB /* SelectBloodType.swift */; };
 		311A3EF62AED21F70082D247 /* SelectGenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311A3EF52AED21F70082D247 /* SelectGenderView.swift */; };
 		311A3EF82AED2AEF0082D247 /* InputBirthdayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311A3EF72AED2AEF0082D247 /* InputBirthdayView.swift */; };
 		311A3EFA2AED2EE60082D247 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311A3EF92AED2EE60082D247 /* Date+.swift */; };
@@ -34,13 +37,21 @@
 		31B388EB2AE38E5000DFE875 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B388EA2AE38E5000DFE875 /* CardView.swift */; };
 		31B388ED2AE3944D00DFE875 /* HierarchyCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B388EC2AE3944D00DFE875 /* HierarchyCardView.swift */; };
 		31B388EF2AE3D3EB00DFE875 /* CGSize+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B388EE2AE3D3EB00DFE875 /* CGSize+.swift */; };
+		31C020C92B0107560031A312 /* AddMyInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C020C82B0107560031A312 /* AddMyInformation.swift */; };
+		31C020CB2B0503A90031A312 /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C020CA2B0503A90031A312 /* Intro.swift */; };
+		31C020CD2B050A9D0031A312 /* InputName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C020CC2B050A9D0031A312 /* InputName.swift */; };
 		31CD06902AE55883009D5383 /* AddMyInformationContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CD068F2AE55883009D5383 /* AddMyInformationContainerView.swift */; };
+		31E1A3A12AFF51500065D499 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 31E1A3A02AFF51500065D499 /* ComposableArchitecture */; };
+		31E1A3A42AFF51780065D499 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E1A3A32AFF51780065D499 /* Card.swift */; };
 		A0F324CF2ADA7EB500D64198 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F324CE2ADA7EB500D64198 /* Member.swift */; };
 		A0F324D12ADA826200D64198 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F324D02ADA826200D64198 /* Node.swift */; };
 		A0F324D32ADA891700D64198 /* FamilyTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F324D22ADA891700D64198 /* FamilyTree.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3109AB6E2B0E303000540CAB /* SelectGender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGender.swift; sourceTree = "<group>"; };
+		3109AB702B0E355A00540CAB /* InputBirthDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputBirthDay.swift; sourceTree = "<group>"; };
+		3109AB732B0E380600540CAB /* SelectBloodType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBloodType.swift; sourceTree = "<group>"; };
 		311A3EF52AED21F70082D247 /* SelectGenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGenderView.swift; sourceTree = "<group>"; };
 		311A3EF72AED2AEF0082D247 /* InputBirthdayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputBirthdayView.swift; sourceTree = "<group>"; };
 		311A3EF92AED2EE60082D247 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
@@ -70,7 +81,11 @@
 		31B388EA2AE38E5000DFE875 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		31B388EC2AE3944D00DFE875 /* HierarchyCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyCardView.swift; sourceTree = "<group>"; };
 		31B388EE2AE3D3EB00DFE875 /* CGSize+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+.swift"; sourceTree = "<group>"; };
+		31C020C82B0107560031A312 /* AddMyInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMyInformation.swift; sourceTree = "<group>"; };
+		31C020CA2B0503A90031A312 /* Intro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
+		31C020CC2B050A9D0031A312 /* InputName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputName.swift; sourceTree = "<group>"; };
 		31CD068F2AE55883009D5383 /* AddMyInformationContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMyInformationContainerView.swift; sourceTree = "<group>"; };
+		31E1A3A32AFF51780065D499 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		A0F324CE2ADA7EB500D64198 /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 		A0F324D02ADA826200D64198 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		A0F324D22ADA891700D64198 /* FamilyTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTree.swift; sourceTree = "<group>"; };
@@ -81,12 +96,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31E1A3A12AFF51500065D499 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3109AB722B0E37EB00540CAB /* AddMyInformation */ = {
+			isa = PBXGroup;
+			children = (
+				31C020C82B0107560031A312 /* AddMyInformation.swift */,
+				31C020CA2B0503A90031A312 /* Intro.swift */,
+				31C020CC2B050A9D0031A312 /* InputName.swift */,
+				3109AB6E2B0E303000540CAB /* SelectGender.swift */,
+				3109AB702B0E355A00540CAB /* InputBirthDay.swift */,
+				3109AB732B0E380600540CAB /* SelectBloodType.swift */,
+			);
+			path = AddMyInformation;
+			sourceTree = "<group>";
+		};
 		317002B82AD58B5800D8991A /* SharedUtils */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,6 +210,7 @@
 			children = (
 				318457422AE94726007C2045 /* Info.plist */,
 				318457392AE94698007C2045 /* Fonts */,
+				31E1A3A22AFF51620065D499 /* ViewModels */,
 				31B388E92AE38E4200DFE875 /* Views */,
 				A0F324CD2ADA7E7800D64198 /* Models */,
 				317002B82AD58B5800D8991A /* SharedUtils */,
@@ -212,6 +242,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		31E1A3A22AFF51620065D499 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				3109AB722B0E37EB00540CAB /* AddMyInformation */,
+				31E1A3A32AFF51780065D499 /* Card.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		A0F324CD2ADA7E7800D64198 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -238,6 +277,9 @@
 			dependencies = (
 			);
 			name = ModuMoa;
+			packageProductDependencies = (
+				31E1A3A02AFF51500065D499 /* ComposableArchitecture */,
+			);
 			productName = ModuMoa;
 			productReference = 31A78CA42AD42EE400BE629A /* ModuMoa.app */;
 			productType = "com.apple.product-type.application";
@@ -266,6 +308,9 @@
 				Base,
 			);
 			mainGroup = 31A78C9B2AD42EE400BE629A;
+			packageReferences = (
+				31E1A39F2AFF51500065D499 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+			);
 			productRefGroup = 31A78CA52AD42EE400BE629A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -298,6 +343,8 @@
 			files = (
 				318457382AE94315007C2045 /* Font+.swift in Sources */,
 				314FD6A42AE9542A0052251C /* RoundedRectangleButtonView.swift in Sources */,
+				3109AB742B0E380600540CAB /* SelectBloodType.swift in Sources */,
+				31C020CD2B050A9D0031A312 /* InputName.swift in Sources */,
 				318521162AEFD91F000579CE /* MemberSexView.swift in Sources */,
 				31B388EF2AE3D3EB00DFE875 /* CGSize+.swift in Sources */,
 				31CD06902AE55883009D5383 /* AddMyInformationContainerView.swift in Sources */,
@@ -310,9 +357,14 @@
 				3185211A2AEFD93B000579CE /* MemberRhTypeView.swift in Sources */,
 				A0F324D32ADA891700D64198 /* FamilyTree.swift in Sources */,
 				A0F324CF2ADA7EB500D64198 /* Member.swift in Sources */,
+				3109AB712B0E355A00540CAB /* InputBirthDay.swift in Sources */,
 				318521182AEFD92C000579CE /* MemberBirthdayView.swift in Sources */,
+				3109AB6F2B0E303000540CAB /* SelectGender.swift in Sources */,
 				311A3EF62AED21F70082D247 /* SelectGenderView.swift in Sources */,
+				31C020C92B0107560031A312 /* AddMyInformation.swift in Sources */,
 				317002BA2AD58B6100D8991A /* CGFloat+.swift in Sources */,
+				31C020CB2B0503A90031A312 /* Intro.swift in Sources */,
+				31E1A3A42AFF51780065D499 /* Card.swift in Sources */,
 				31A78CA82AD42EE400BE629A /* ModuMoaApp.swift in Sources */,
 				311A3EFA2AED2EE60082D247 /* Date+.swift in Sources */,
 				314FD6A62AE955CA0052251C /* InputNameView.swift in Sources */,
@@ -530,6 +582,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		31E1A39F2AFF51500065D499 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		31E1A3A02AFF51500065D499 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 31E1A39F2AFF51500065D499 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 31A78C9C2AD42EE400BE629A /* Project object */;
 }

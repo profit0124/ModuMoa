@@ -34,6 +34,8 @@ class Node {
         switch member.sex {
         case .male: child.leftParent = self
         case .female: child.rightParent = self
+        default:
+            break
         }
     }
     
@@ -46,6 +48,8 @@ class Node {
         switch parent.member.sex {
         case .male: self.leftParent = parent
         case .female: self.rightParent = parent
+        default:
+            break
         }
         parent.children.append(self)
     }
