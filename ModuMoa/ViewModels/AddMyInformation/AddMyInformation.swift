@@ -21,7 +21,6 @@ struct AddMyInformation: Reducer {
     }
     
     enum Action: Equatable {
-        case test
         case intro(Intro.Action)
         case inputName(InputName.Action)
         case selectGender(SelectGender.Action)

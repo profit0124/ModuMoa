@@ -10,10 +10,12 @@
 		3109AB6F2B0E303000540CAB /* SelectGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109AB6E2B0E303000540CAB /* SelectGender.swift */; };
 		3109AB712B0E355A00540CAB /* InputBirthDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109AB702B0E355A00540CAB /* InputBirthDay.swift */; };
 		3109AB742B0E380600540CAB /* SelectBloodType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109AB732B0E380600540CAB /* SelectBloodType.swift */; };
+		311521BB2B0F8FE600B683B7 /* Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311521BA2B0F8FE600B683B7 /* Root.swift */; };
 		311A3EF62AED21F70082D247 /* SelectGenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311A3EF52AED21F70082D247 /* SelectGenderView.swift */; };
 		311A3EF82AED2AEF0082D247 /* InputBirthdayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311A3EF72AED2AEF0082D247 /* InputBirthdayView.swift */; };
 		311A3EFA2AED2EE60082D247 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311A3EF92AED2EE60082D247 /* Date+.swift */; };
 		311A3EFC2AEE44800082D247 /* SelectBloodTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311A3EFB2AEE44800082D247 /* SelectBloodTypeView.swift */; };
+		314626672B1DF320007AFD0D /* MemberReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314626662B1DF31F007AFD0D /* MemberReducer.swift */; };
 		314FD6A42AE9542A0052251C /* RoundedRectangleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314FD6A32AE9542A0052251C /* RoundedRectangleButtonView.swift */; };
 		314FD6A62AE955CA0052251C /* InputNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314FD6A52AE955CA0052251C /* InputNameView.swift */; };
 		317002BA2AD58B6100D8991A /* CGFloat+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317002B92AD58B6100D8991A /* CGFloat+.swift */; };
@@ -52,10 +54,12 @@
 		3109AB6E2B0E303000540CAB /* SelectGender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGender.swift; sourceTree = "<group>"; };
 		3109AB702B0E355A00540CAB /* InputBirthDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputBirthDay.swift; sourceTree = "<group>"; };
 		3109AB732B0E380600540CAB /* SelectBloodType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBloodType.swift; sourceTree = "<group>"; };
+		311521BA2B0F8FE600B683B7 /* Root.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Root.swift; sourceTree = "<group>"; };
 		311A3EF52AED21F70082D247 /* SelectGenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGenderView.swift; sourceTree = "<group>"; };
 		311A3EF72AED2AEF0082D247 /* InputBirthdayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputBirthdayView.swift; sourceTree = "<group>"; };
 		311A3EF92AED2EE60082D247 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		311A3EFB2AEE44800082D247 /* SelectBloodTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBloodTypeView.swift; sourceTree = "<group>"; };
+		314626662B1DF31F007AFD0D /* MemberReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberReducer.swift; sourceTree = "<group>"; };
 		314FD6A32AE9542A0052251C /* RoundedRectangleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleButtonView.swift; sourceTree = "<group>"; };
 		314FD6A52AE955CA0052251C /* InputNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputNameView.swift; sourceTree = "<group>"; };
 		317002B92AD58B6100D8991A /* CGFloat+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+.swift"; sourceTree = "<group>"; };
@@ -247,6 +251,8 @@
 			children = (
 				3109AB722B0E37EB00540CAB /* AddMyInformation */,
 				31E1A3A32AFF51780065D499 /* Card.swift */,
+				311521BA2B0F8FE600B683B7 /* Root.swift */,
+				314626662B1DF31F007AFD0D /* MemberReducer.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -348,6 +354,7 @@
 				318521162AEFD91F000579CE /* MemberSexView.swift in Sources */,
 				31B388EF2AE3D3EB00DFE875 /* CGSize+.swift in Sources */,
 				31CD06902AE55883009D5383 /* AddMyInformationContainerView.swift in Sources */,
+				314626672B1DF320007AFD0D /* MemberReducer.swift in Sources */,
 				311A3EF82AED2AEF0082D247 /* InputBirthdayView.swift in Sources */,
 				3185211C2AEFEFF3000579CE /* MemberAboTypeView.swift in Sources */,
 				31B388EB2AE38E5000DFE875 /* CardView.swift in Sources */,
@@ -358,6 +365,7 @@
 				A0F324D32ADA891700D64198 /* FamilyTree.swift in Sources */,
 				A0F324CF2ADA7EB500D64198 /* Member.swift in Sources */,
 				3109AB712B0E355A00540CAB /* InputBirthDay.swift in Sources */,
+				311521BB2B0F8FE600B683B7 /* Root.swift in Sources */,
 				318521182AEFD92C000579CE /* MemberBirthdayView.swift in Sources */,
 				3109AB6F2B0E303000540CAB /* SelectGender.swift in Sources */,
 				311A3EF62AED21F70082D247 /* SelectGenderView.swift in Sources */,

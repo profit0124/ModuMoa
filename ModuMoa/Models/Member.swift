@@ -8,9 +8,9 @@
 import Foundation
 
 struct Member: Identifiable, Equatable {
-    static func == (lhs: Member, rhs: Member) -> Bool {
-        return lhs.id == rhs.id
-    }
+//    static func == (lhs: Member, rhs: Member) -> Bool {
+//        return lhs.id == rhs.id
+//    }
 
     let id: UUID = UUID()
     var name: String

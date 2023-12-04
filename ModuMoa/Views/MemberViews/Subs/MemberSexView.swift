@@ -36,7 +36,7 @@ struct MemberSexView: View {
                         sex = value
                     }
                     .padding(.bottom, .betweenTextAndLine)
-                    if value == .male {
+                    if value != .none {
                         Rectangle()
                             .frame(height: 2)
                             .padding(.bottom, .betweenTextAndLine)

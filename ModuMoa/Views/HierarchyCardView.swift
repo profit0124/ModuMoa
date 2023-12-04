@@ -19,22 +19,22 @@ struct HierarchyCardView: View {
 
     var body: some View {
         VStack(spacing: 80) {
-//            HStack(spacing: 20) {
-//                cardViewWithButton(me)
-//                    .frame(width: 250)
-//                    .anchorPreference(key: Key.self, value: .center, transform: { anchor in
-//                        return [self.me.id:anchor]
-//                    })
-//                
-//                if let partner {
-//                    cardViewWithButton(partner)
-//                        .frame(width: 250)
-//                        .anchorPreference(key: Key.self, value: .center, transform: { anchor in
-//                            return [partner.id:anchor]
-//                        })
-//                    
-//                }
-//            }
+            HStack(spacing: 20) {
+                cardViewWithButton(me)
+                    .frame(width: 250)
+                    .anchorPreference(key: Key.self, value: .center, transform: { anchor in
+                        return [self.me.id:anchor]
+                    })
+                
+                if let partner {
+                    cardViewWithButton(partner)
+                        .frame(width: 250)
+                        .anchorPreference(key: Key.self, value: .center, transform: { anchor in
+                            return [partner.id:anchor]
+                        })
+                    
+                }
+            }
             
             HStack(alignment: .top, spacing: 80) {
                 ForEach(childrens, id: \.id) { children in

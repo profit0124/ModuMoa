@@ -20,8 +20,7 @@ struct AddMyInformationContainerView: View {
 //    @State var birthday: Date = Date()
 //    @State var bloodType: BloodType?
     
-    let store: StoreOf<AddMyInformation> = StoreOf<AddMyInformation>(initialState: AddMyInformation.State()) { AddMyInformation() }
-    
+    let store: StoreOf<AddMyInformation>
     
     var body: some View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in

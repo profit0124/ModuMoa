@@ -37,7 +37,7 @@ struct MemberAboTypeView: View {
                         aboType = value
                     }
                     .padding(.bottom, .betweenTextAndLine)
-                    if value != .AB {
+                    if value != .none {
                         Rectangle()
                             .frame(height: 2)
                             .padding(.bottom, .betweenTextAndLine)
