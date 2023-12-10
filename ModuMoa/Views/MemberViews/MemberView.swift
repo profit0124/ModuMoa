@@ -181,6 +181,7 @@ struct MemberView: View {
                         RoundedRectangleButtonView(title: "저장하기", isEnabled: true)
                             .onTapGesture {
                                 let newMember = Member(name: viewStore.name, bloodType: BloodType(abo: aboType, rh: rhType), sex: sex, birthday: viewStore.birthDay)
+                                viewStore.send(.addMember(newMember))
                             }
                     } else {
                         RoundedRectangleButtonView(title: "저장하기", isEnabled: false)

@@ -53,19 +53,19 @@ struct ContentView: View {
                                 }
                         })
 //                        HierarchyCardView(me: viewStore.baseNode?.member ?? Member(name: "", bloodType: .init(abo: .A, rh: .negative), sex: .female), partner: Member(name: "Partner", bloodType: .init(abo: .A, rh: .negative), sex: .female, birthday: Date()))
-                            
-                        VStack {
-                            Text("Click")
-                                .foregroundStyle(.moduYellow)
-                                .background {
-                                    Color.moduBlack
-                                }
-                                .onTapGesture {
-                                    viewStore.send(.setMainViewCase(.detail))
-                                    viewStore.send(.setSelectedMember(viewStore.baseNode!.member))
-                                }
-                            Spacer()
-                        }
+//                            
+//                        VStack {
+//                            Text("Click")
+//                                .foregroundStyle(.moduYellow)
+//                                .background {
+//                                    Color.moduBlack
+//                                }
+//                                .onTapGesture {
+//                                    viewStore.send(.setMainViewCase(.detail))
+//                                    viewStore.send(.setSelectedMember(viewStore.baseNode!.member))
+//                                }
+//                            Spacer()
+//                        }
                     }
                 case .detail:
                     IfLetStore(self.store.scope(state: \.memberReducer, action: Root.Action.memberReducer), then: {

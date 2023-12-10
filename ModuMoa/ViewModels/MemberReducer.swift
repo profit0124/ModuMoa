@@ -39,6 +39,7 @@ struct MemberReducer: Reducer {
         case setMemberViewType(MemberViewType)
         case tapGesture(_ type: SectionType, _ bloodType: SectionType.MemberBloodType? = nil)
         case setMember
+        case addMember(Member)
         case dismissAction
     }
     
@@ -93,6 +94,10 @@ struct MemberReducer: Reducer {
                 
             case .binding:
                 state.isUpdated = checkUpdate(into: &state)
+                return .none
+                
+            case .addMember(let member):
+                state.member = member
                 return .none
                 
             default:
