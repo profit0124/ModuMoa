@@ -22,6 +22,7 @@ struct Root: Reducer {
         var addMyInformation: AddMyInformation.State?
         var mainViewCase: MainViewCase = .addMyInformation
         var memberReducer: MemberReducer.State?
+        var hierarchyCard: HierarchyCard.State?
     }
     
     enum Action: Equatable {
@@ -30,6 +31,7 @@ struct Root: Reducer {
         case setSelectedMember(Member?)
         case updateMember
         case memberReducer(MemberReducer.Action)
+        case hierarchyCard(HierarchyCard.Action)
     }
     
     var body: some ReducerOf<Self> {
@@ -42,6 +44,7 @@ struct Root: Reducer {
             case .addMyInformation(.complete):
                 guard let member = state.addMyInformation?.me else { return .none }
                 state.baseNode = Node(member: member)
+                state.hierarchyCard = HierarchyCard.State(id: member.id.uuidString, me: member)
                 state.mainViewCase = .main
 //                state.addMyInformation = nil
                 
@@ -80,6 +83,9 @@ struct Root: Reducer {
         }
         .ifLet(\.memberReducer, action: /Action.memberReducer) {
             MemberReducer()
+        }
+        .ifLet(\.hierarchyCard, action: /Action.hierarchyCard) {
+            HierarchyCard()
         }
     }
 }

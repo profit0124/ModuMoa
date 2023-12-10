@@ -28,28 +28,32 @@ struct ContentView: View {
                 switch viewStore.mainViewCase {
                 case .main:
                     ZStack {
-                        HierarchyCardView(me: viewStore.baseNode?.member ?? Member(name: "", bloodType: .init(abo: .A, rh: .negative), sex: .female), partner: Member(name: "Partner", bloodType: .init(abo: .A, rh: .negative), sex: .female, birthday: Date()))
-                            .scaleEffect(currentZoom + totalZoom)
-                            .offset(draggedOffset)
-                            .gesture(drag)
-                            .gesture(
-                                MagnifyGesture()
-                                    .onChanged { value in
-                                        currentZoom = value.magnification - 1
+                        IfLetStore(self.store.scope(state: \.hierarchyCard, action: Root.Action.hierarchyCard), then: {
+                            HierarchyCardView(store: $0)
+                                .scaleEffect(currentZoom + totalZoom)
+                                .offset(draggedOffset)
+                                .gesture(drag)
+                                .gesture(
+                                    MagnifyGesture()
+                                        .onChanged { value in
+                                            currentZoom = value.magnification - 1
+                                        }
+                                        .onEnded { value in
+                                            totalZoom += currentZoom
+                                            currentZoom = 0
+                                        }
+                                    
+                                )
+                                .accessibilityZoomAction { action in
+                                    if action.direction == .zoomIn {
+                                        totalZoom += 1
+                                    } else {
+                                        totalZoom -= 1
                                     }
-                                    .onEnded { value in
-                                        totalZoom += currentZoom
-                                        currentZoom = 0
-                                    }
-                                
-                            )
-                            .accessibilityZoomAction { action in
-                                if action.direction == .zoomIn {
-                                    totalZoom += 1
-                                } else {
-                                    totalZoom -= 1
                                 }
-                            }
+                        })
+//                        HierarchyCardView(me: viewStore.baseNode?.member ?? Member(name: "", bloodType: .init(abo: .A, rh: .negative), sex: .female), partner: Member(name: "Partner", bloodType: .init(abo: .A, rh: .negative), sex: .female, birthday: Date()))
+                            
                         VStack {
                             Text("Click")
                                 .foregroundStyle(.moduYellow)
