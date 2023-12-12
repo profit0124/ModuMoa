@@ -40,7 +40,7 @@ struct HierarchyCardView: View {
                     
                     if let partner = viewStore.partner {
                         cardViewWithButton(partner, viewStore: viewStore) { _ in
-                            
+                            viewStore.send(.setAddMode(.children))
                         }
                             .frame(width: 250)
                             .anchorPreference(key: Key.self, value: .center, transform: { anchor in
