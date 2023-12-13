@@ -52,20 +52,6 @@ struct ContentView: View {
                                     }
                                 }
                         })
-//                        HierarchyCardView(me: viewStore.baseNode?.member ?? Member(name: "", bloodType: .init(abo: .A, rh: .negative), sex: .female), partner: Member(name: "Partner", bloodType: .init(abo: .A, rh: .negative), sex: .female, birthday: Date()))
-//                            
-//                        VStack {
-//                            Text("Click")
-//                                .foregroundStyle(.moduYellow)
-//                                .background {
-//                                    Color.moduBlack
-//                                }
-//                                .onTapGesture {
-//                                    viewStore.send(.setMainViewCase(.detail))
-//                                    viewStore.send(.setSelectedMember(viewStore.baseNode!.member))
-//                                }
-//                            Spacer()
-//                        }
                     }
                 case .detail:
                     IfLetStore(self.store.scope(state: \.memberReducer, action: Root.Action.memberReducer), then: {
@@ -77,62 +63,6 @@ struct ContentView: View {
                         AddMyInformationContainerView(store: $0)
                     })
                 }
-                //                if viewStore.mainViewCase == .main {
-                //                    if isMainViewOpen {
-                //                        ZStack {
-                //                            HierarchyCardView(me: viewStore.baseNode?.member ?? Member(name: "", bloodType: .init(abo: .A, rh: .negative), sex: .female), partner: Member(name: "Partner", bloodType: .init(abo: .A, rh: .negative), sex: .female, birthday: Date()))
-                //                                .scaleEffect(currentZoom + totalZoom)
-                //                                .offset(draggedOffset)
-                //                                .gesture(drag)
-                //                                .gesture(
-                //                                    MagnifyGesture()
-                //                                        .onChanged { value in
-                //                                            currentZoom = value.magnification - 1
-                //                                        }
-                //                                        .onEnded { value in
-                //                                            totalZoom += currentZoom
-                //                                            currentZoom = 0
-                //                                        }
-                //                                    
-                //                                )
-                //                                .accessibilityZoomAction { action in
-                //                                    if action.direction == .zoomIn {
-                //                                        totalZoom += 1
-                //                                    } else {
-                //                                        totalZoom -= 1
-                //                                    }
-                //                                }
-                //                            VStack {
-                //                                Text("Click")
-                //                                    .foregroundStyle(.moduYellow)
-                //                                    .background {
-                //                                        Color.moduBlack
-                //                                    }
-                //                                    .onTapGesture {
-                //                                        isMainViewOpen = false
-                //                                    }
-                //                                Spacer()
-                //                            }
-                //                        }
-                //                    } else {
-                ////                        MemberView(memberViewType: .detail, member: .constant(viewStore.baseNode?.member), isMainViewOpen: $isMainViewOpen)
-                ////                        
-                //                        IfLetStore(self.store.scope(state: \.memberReducer, action: Root.Action.memberReducer), then: {
-                //                            MemberView(store: $0)
-                //                        })
-                //                    }
-                //                    
-                //                } else {
-                //                    IfLetStore(self.store.scope(state: \.addMyInformation, action: Root.Action.addMyInformation), then: {
-                //                        AddMyInformationContainerView(store: $0)
-                //                    })
-                //                    
-                //                }
-                //            }
-                //            .onChange(of: viewStore.mainViewCase) { newValue, oldValue in
-                //                print(newValue)
-                //            }
-                
             }
         }
         

@@ -39,6 +39,7 @@ struct MemberAboTypeView: View {
                     .padding(.bottom, .betweenTextAndLine)
                     if value != .none {
                         Rectangle()
+                            .fill(.disableLine)
                             .frame(height: 2)
                             .padding(.bottom, .betweenTextAndLine)
                     }

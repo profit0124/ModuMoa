@@ -41,11 +41,7 @@ struct SelectBloodTypeView: View {
                                 } else {
                                     Text("Rh식")
                                         .font(.customFont(.body))
-                                }
-//                                Text(viewStore.rhType == nil ? "Rh식" :
-//                                        viewStore.rhType == .none ? "Rh식 모름" :
-//                                        viewStore.rhType!.rawValue)
-                                    
+                                }   
                                 Image(systemName: "chevron.right")
                             }
                             .foregroundStyle(viewStore.rhType == nil ? .disableText : .moduBlack)

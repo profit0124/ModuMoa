@@ -40,9 +40,13 @@ enum SectionType: String, CaseIterable {
     }
 }
 
+
+
+
 struct MemberView: View {
     
     let store: StoreOf<MemberReducer>
+    @FocusState var focusState: Bool
     
 //    @State var memberViewType: MemberViewType
 //    @State private var isPresented: Bool = false
@@ -88,9 +92,7 @@ struct MemberView: View {
                                 .onTapGesture {
                                     //TODO: viewStore member save
                                     viewStore.send(.setMember)
-//                                    viewStore.member = setMember()
                                     viewStore.send(.setMemberViewType(.detail))
-//                                    viewStore.memberViewType = .detail
                                 }
                         }
                     } else {
@@ -116,6 +118,7 @@ struct MemberView: View {
                             .foregroundStyle(.moduBlack)
                     } else {
                         TextField("이름", text: viewStore.$name)
+                            .focused($focusState)
                             .font(.customFont(.title1) .bold())
                             .foregroundStyle(.moduBlack)
                     }
@@ -132,9 +135,6 @@ struct MemberView: View {
                 .padding(.bottom, .betweenTitleAndContent)
                 
                 ForEach(SectionType.allCases, id: \.self) { type in
-//                    switch type {
-//                    case .name
-//                    }
                     Group {
                         if type == .bloodType {
                             HStack(spacing: 8) {
@@ -142,37 +142,26 @@ struct MemberView: View {
                                     TextSectionSubView(needSpacing: false, value: getValue(viewStore: viewStore, type, blood), sectionType: type, bloodType: blood, selectedSection: viewStore.$selectedSectionType, selectedBloodType: viewStore.$selectedBloodType, memberViewType: viewStore.$memberViewType)
                                         .onTapGesture {
                                             viewStore.send(.tapGesture(type, blood))
+                                            if focusState {
+                                                focusState = false
+                                            }
                                         }
                                 }
                                 
                                 Spacer()
                             }
-                            //                        textSectionView(viewStore: viewStore, type)
-                            //                            .padding(.bottom, .betweenContents)
                         } else if type != .name {
                             TextSectionSubView(needSpacing: true, value: getValue(viewStore: viewStore, type), sectionType: type, bloodType: nil, selectedSection: viewStore.$selectedSectionType, selectedBloodType: viewStore.$selectedBloodType, memberViewType: viewStore.$memberViewType)
                                 .onTapGesture {
-                                    //                        tapGesture(type)
                                     viewStore.send(.tapGesture(type))
+                                    if focusState {
+                                        focusState = false
+                                    }
                                 }
                         }
                         
                     }
                     .padding(.bottom, .betweenContents)
-//                    if type == .bloodType {
-//                        
-//                        textSectionView(viewStore: viewStore, type)
-//                    }
-//                    switch type {
-//                    case .name:
-//                        break
-//                        
-//                    case .bloodType:
-//                        Text("sex")
-//                        
-//                    default:
-//                        Text("default")
-//                    }
                 }
                 Spacer()
                 
@@ -221,42 +210,7 @@ struct MemberView: View {
             })
             .onAppear {
                 viewStore.send(.onAppear)
-//                if viewStore.memberViewType == .detail, let member = viewStore.member {
-//                    viewStore.name = member.name
-//                    viewStore.sex = member.sex
-//                    viewStore.sexString = member.sex.rawValue
-//                    viewStore.birthDay = member.birthday ?? Date()
-//                    viewStore.birthDayString = member.birthday?.toString() ?? Date().toString()
-//                    viewStore.rhType = member.bloodType.rh
-//                    viewStore.bloodTypeToString = member.bloodType.rh.rawValue
-//                    viewStore.aboType = member.bloodType.abo
-//                    viewStore.aboTypeToString = member.bloodType.abo.rawValue
-//                }
             }
-//            .onChange(of: viewStore.isPresented, {(_, _) in
-//                if !viewStore.isPresented {
-//                    viewStore.selectedBloodType = nil
-//                    viewStore.selectedSectionType = nil
-//                    viewStore.sexString = viewStore.sex?.rawValue ?? ""
-//                    viewStore.bloodTypeToString = viewStore.rhType?.rawValue ?? ""
-//                    viewStore.aboTypeToString = viewStore.aboType?.rawValue ?? ""
-//                    if viewStore.memberViewType == .update {
-//                        viewStore.isUpdated = checkUpdate()
-//                    }
-//                }
-//            })
-//            .onChange(of: viewStore.birthDay, {(_, _) in
-//                viewStore.birthDayString = viewStore.birthDay.toString()
-//                if viewStore.memberViewType == .update {
-//                    viewStore.isUpdated = checkUpdate()
-//                }
-//            })
-//            .onChange(of: viewStore.name, {(_, _) in
-//                if viewStore.memberViewType == .update {
-//                    viewStore.isUpdated = checkUpdate()
-//                }
-//            })
-            
         }
         
     }
@@ -280,60 +234,4 @@ struct MemberView: View {
             }
         }
     }
-    
-//    private func tapGesture(_ type: SectionType, _ bloodType: SectionType.MemberBloodType? = nil) {
-//        if viewStore.memberViewType != .detail {
-//            viewStore.selectedSectionType = type
-//            viewStore.selectedBloodType = bloodType
-//            isPresented = true
-//        }
-//    }
-    
-//    @ViewBuilder
-//    private func textSectionView(viewStore: ViewStoreOf<MemberReducer>,_ type: SectionType) async -> some View {
-//        VStack(alignment: .leading, spacing: .betweenHeadlineAndTitle2 ){
-//            Text(type.getTitle())
-//                .font(.customFont(.headline))
-//            switch type {
-//            case .bloodType:
-//                HStack(spacing: 8) {
-//                    ForEach(SectionType.MemberBloodType.allCases, id: \.self) { blood in
-//                        TextSectionSubView(needSpacing: false, value: getValue(viewStore: viewStore, type, blood), sectionType: type, bloodType: blood, selectedSection: viewStore.$selectedSectionType, selectedBloodType: viewStore.$selectedBloodType, memberViewType: viewStore.$memberViewType)
-//                            .onTapGesture {
-//                                viewStore.send(.tapGesture(type, blood))
-//                            }
-//                    }
-//                    
-//                    Spacer()
-//                }
-//                
-//            default:
-//                TextSectionSubView(needSpacing: true, value: getValue(viewStore: viewStore, type), sectionType: type, bloodType: nil, selectedSection: viewStore.$selectedSectionType, selectedBloodType: viewStore.$selectedBloodType, memberViewType: viewStore.$memberViewType)
-//                    .onTapGesture {
-////                        tapGesture(type)
-//                        viewStore.send(.tapGesture(type))
-//                    }
-//            }
-//        }
-//    }
-    
-//    private func checkUpdate(_ viewStore: ViewStoreOf<MemberReducer>) -> Bool {
-//        if viewStore.member?.name == viewStore.name,
-//           viewStore.member?.sex == viewStore.sex,
-//           viewStore.member?.birthday == viewStore.birthDay,
-//           viewStore.member?.bloodType.rh == viewStore.rhType,
-//           viewStore.member?.bloodType.abo == viewStore.aboType {
-//            return false
-//        } else {
-//            return true
-//        }
-//    }
-    
-//    private func setMember() -> Member {
-//        return Member(name: name, bloodType: BloodType(abo: aboType!, rh: rhType!), sex: sex!, birthday: birthDay)
-//    }
 }
-//
-//#Preview {
-//    MemberView(memberViewType: .detail, member: .constant(nil), isMainViewOpen: .constant(false))
-//}

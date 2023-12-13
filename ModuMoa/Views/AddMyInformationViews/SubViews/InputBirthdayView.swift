@@ -9,13 +9,6 @@ import SwiftUI
 import ComposableArchitecture
 
 struct InputBirthdayView: View {
-    
-//    @Binding var index: Int
-//    @Binding var birthday: Date
-//    
-//    @Binding var sex: Sex?
-//    @Binding var name: String
-    
     let store: StoreOf<InputBirthDay>
     
     var body: some View {
@@ -81,7 +74,3 @@ struct InputBirthdayView: View {
     }
 }
 
-//#Preview {
-//    InputBirthdayView(index: .constant(2), birthday: .constant(Date()))
-//        
-//}
