@@ -9,8 +9,8 @@ import Foundation
 
 class Node {
     
-    private let level: Int
-    private let distance: Int
+    let level: Int
+    let distance: Int
     var leftParent: Node?
     var rightParent: Node?
     var partner: Node?
@@ -34,6 +34,7 @@ class Node {
         switch member.sex {
         case .male: child.leftParent = self
         case .female: child.rightParent = self
+        case .none: print("none")
         }
     }
     
@@ -46,6 +47,7 @@ class Node {
         switch parent.member.sex {
         case .male: self.leftParent = parent
         case .female: self.rightParent = parent
+        case .none: print("none")
         }
         parent.children.append(self)
     }
