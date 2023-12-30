@@ -13,8 +13,8 @@ class Node: Equatable {
     }
     
     let id: UUID = UUID()
-    private let level: Int
-    private let distance: Int
+    let level: Int
+    let distance: Int
     var leftParent: Node?
     var rightParent: Node?
     var partner: Node?
@@ -38,8 +38,7 @@ class Node: Equatable {
         switch member.sex {
         case .male: child.leftParent = self
         case .female: child.rightParent = self
-        default:
-            break
+        case .none: print("none")
         }
     }
     
@@ -52,8 +51,7 @@ class Node: Equatable {
         switch parent.member.sex {
         case .male: self.leftParent = parent
         case .female: self.rightParent = parent
-        default:
-            break
+        case .none: print("none")
         }
         parent.children.append(self)
     }

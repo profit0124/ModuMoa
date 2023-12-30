@@ -46,6 +46,7 @@
 		31CD06902AE55883009D5383 /* AddMyInformationContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CD068F2AE55883009D5383 /* AddMyInformationContainerView.swift */; };
 		31E1A3A12AFF51500065D499 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 31E1A3A02AFF51500065D499 /* ComposableArchitecture */; };
 		31E1A3A42AFF51780065D499 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E1A3A32AFF51780065D499 /* Card.swift */; };
+		A06C1ABF2AF4BF9A001C8B4D /* RelationshipInfoType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06C1ABE2AF4BF9A001C8B4D /* RelationshipInfoType.swift */; };
 		A0F324CF2ADA7EB500D64198 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F324CE2ADA7EB500D64198 /* Member.swift */; };
 		A0F324D12ADA826200D64198 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F324D02ADA826200D64198 /* Node.swift */; };
 		A0F324D32ADA891700D64198 /* FamilyTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F324D22ADA891700D64198 /* FamilyTree.swift */; };
@@ -92,6 +93,7 @@
 		31C020CC2B050A9D0031A312 /* InputName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputName.swift; sourceTree = "<group>"; };
 		31CD068F2AE55883009D5383 /* AddMyInformationContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMyInformationContainerView.swift; sourceTree = "<group>"; };
 		31E1A3A32AFF51780065D499 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		A06C1ABE2AF4BF9A001C8B4D /* RelationshipInfoType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipInfoType.swift; sourceTree = "<group>"; };
 		A0F324CE2ADA7EB500D64198 /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 		A0F324D02ADA826200D64198 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		A0F324D22ADA891700D64198 /* FamilyTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTree.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 				A0F324CE2ADA7EB500D64198 /* Member.swift */,
 				A0F324D02ADA826200D64198 /* Node.swift */,
 				A0F324D22ADA891700D64198 /* FamilyTree.swift */,
+				A06C1ABE2AF4BF9A001C8B4D /* RelationshipInfoType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 				314FD6A62AE955CA0052251C /* InputNameView.swift in Sources */,
 				31B388ED2AE3944D00DFE875 /* HierarchyCardView.swift in Sources */,
 				318457362AE941B3007C2045 /* IntroView.swift in Sources */,
+				A06C1ABF2AF4BF9A001C8B4D /* RelationshipInfoType.swift in Sources */,
 				318521142AEFD911000579CE /* MemberNameView.swift in Sources */,
 				3185210E2AEE76D7000579CE /* TextSectionSubView.swift in Sources */,
 				A0F324D12ADA826200D64198 /* Node.swift in Sources */,
