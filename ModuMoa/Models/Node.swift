@@ -7,8 +7,12 @@
 
 import Foundation
 
-class Node {
+class Node: Equatable {
+    static func == (lhs: Node, rhs: Node) -> Bool {
+        lhs.id == rhs.id
+    }
     
+    let id: UUID = UUID()
     let level: Int
     let distance: Int
     var leftParent: Node?

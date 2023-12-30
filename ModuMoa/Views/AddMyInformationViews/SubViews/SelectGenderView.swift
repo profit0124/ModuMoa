@@ -6,78 +6,81 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct SelectGenderView: View {
     
-    @Binding var sex: Sex?
-    @Binding var name: String
-    @Binding var index: Int
-    
+    let store: StoreOf<SelectGender>
     
     var body: some View {
-        GeometryReader { reader in
-            let width = reader.size.width
-            VStack(alignment: .leading, spacing: 0) {
-                Image(systemName: "chevron.left")
-                    .resizable()
-                    .font(.customFont(.headline))
-                    
-                    .frame(width: 10, height: 20)
-                    .onTapGesture {
-                        index -= 1
-                    }
-                    .padding(.leading, 8)
-                    
-                VStack(alignment: .leading) {
-                    HStack {
-                        Text("성별을 선택해주세요")
-                            .font(.customFont(.largeTitle).bold())
-                            .padding(.top, .betweenElements)
-                            .padding(.bottom, .betweenTitleAndContent)
+        WithViewStore(self.store, observe: { $0 }) { viewStore in
+            GeometryReader { reader in
+                let width = reader.size.width
+                VStack(alignment: .leading, spacing: 0) {
+                    Image(systemName: "chevron.left")
+                        .resizable()
+                        .font(.customFont(.headline))
+                        
+                        .frame(width: 10, height: 20)
+                        .onTapGesture {
+                            viewStore.send(.previousIndex)
+                        }
+                        .padding(.leading, 8)
+                        
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Text("성별을 선택해주세요")
+                                .font(.customFont(.largeTitle).bold())
+                                .padding(.top, .betweenElements)
+                                .padding(.bottom, .betweenTitleAndContent)
+                            Spacer()
+                        }
+                        HStack(spacing: 8) {
+                            ForEach(Sex.allCases, id: \.self) { value in
+                                if value != .none {
+                                    selectedCapule(value, width: width, viewStore: viewStore)
+                                }
+                            }
+                        }
+                        .padding(.bottom, .betweenSelectPoint)
+                        
+                        makeSection("이름", viewStore.name)
+                        
                         Spacer()
-                    }
-                    HStack(spacing: 8) {
-                        ForEach(Sex.allCases, id: \.self) { value in
-                            selectedCapule(value, width: width)
+                        
+                        if viewStore.sex != .none {
+                            RoundedRectangleButtonView(title: "다음", isEnabled: true)
+                                .onTapGesture {
+                                    viewStore.send(.nextIndex)
+                                }
+                        } else {
+                            RoundedRectangleButtonView(title: "다음", isEnabled: false)
                         }
                     }
-                    .padding(.bottom, .betweenSelectPoint)
-                    
-                    makeSection("이름", name)
-                    
-                    Spacer()
-                    
-                    if sex != nil {
-                        RoundedRectangleButtonView(title: "다음", isEnabled: true)
-                            .onTapGesture {
-                                index += 1
-                            }
-                    } else {
-                        RoundedRectangleButtonView(title: "다음", isEnabled: false)
-                    }
+                    .padding(.horizontal, 20)
                 }
-                .padding(.horizontal, 20)
             }
+            .frame(maxWidth: .infinity)
         }
-        .frame(maxWidth: .infinity)
+        
         
         
     }
     
     @ViewBuilder
-    private func selectedCapule(_ value: Sex, width: CGFloat) -> some View {
+    private func selectedCapule(_ value: Sex, width: CGFloat, viewStore: ViewStore<SelectGender.State, SelectGender.Action>) -> some View {
         let width = (width - 44) / 4
         Text(value.rawValue)
             .font(.customFont(.callOut))
-            .foregroundStyle(sex == value ? .moduYellow : .disableText)
+            .foregroundStyle(viewStore.sex == value ? .moduYellow : .disableText)
             .padding(.vertical, 8)
             .frame(width: width)
             .background {
                 Capsule()
-                    .fill(sex == value ? .moduBlack : .disableCapture)
+                    .fill(viewStore.sex == value ? .moduBlack : .disableCapture)
             }
             .onTapGesture {
-                sex = value
+                viewStore.send(.setSex(value))
             }
     }
     
@@ -94,8 +97,4 @@ struct SelectGenderView: View {
         }
         .padding(.bottom, .betweenContents)
     }
-}
-
-#Preview {
-    SelectGenderView(sex: .constant(nil), name: .constant("adsf"), index: .constant(2))
 }

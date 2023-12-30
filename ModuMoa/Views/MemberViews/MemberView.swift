@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 enum MemberViewType {
     case add
@@ -39,249 +40,198 @@ enum SectionType: String, CaseIterable {
     }
 }
 
+
+
+
 struct MemberView: View {
     
-    @State var memberViewType: MemberViewType
-    @State private var isPresented: Bool = false
-    @State private var selectedSectionType: SectionType?
-//    @State private var bloodType: SectionType.MemberBloodType?
+    let store: StoreOf<MemberReducer>
+    @FocusState var focusState: Bool
     
-    @State private var selectedBloodType: SectionType.MemberBloodType?
-    
-    @State private var name: String = ""
-    @State private var birthDayString: String = ""
-    @State private var sexString: String = ""
-    @State private var bloodTypeToString: String = ""
-    @State private var aboTypeToString: String = ""
-    
-    @State private var birthDay: Date = Date()
-    @State private var sex: Sex?
-    @State private var aboType: BloodType.AboType?
-    @State private var rhType: BloodType.RhType?
-    @State private var bloodType: BloodType?
-    
-    @Binding var member: Member?
-    @State private var isUpdated: Bool = false
-    
-    @Binding var isMainViewOpen: Bool
+//    @State var memberViewType: MemberViewType
+//    @State private var isPresented: Bool = false
+//    @State private var selectedSectionType: SectionType?
+////    @State private var bloodType: SectionType.MemberBloodType?
+//    
+//    @State private var selectedBloodType: SectionType.MemberBloodType?
+//    
+//    @State private var name: String = ""
+//    @State private var birthDayString: String = ""
+//    @State private var sexString: String = ""
+//    @State private var bloodTypeToString: String = ""
+//    @State private var aboTypeToString: String = ""
+//    
+//    @State private var birthDay: Date = Date()
+//    @State private var sex: Sex?
+//    @State private var aboType: BloodType.AboType?
+//    @State private var rhType: BloodType.RhType?
+//    @State private var bloodType: BloodType?
+//    
+//    @Binding var member: Member?
+//    @State private var isUpdated: Bool = false
+//    
+//    @Binding var isMainViewOpen: Bool
     
     var body: some View {
-        VStack(spacing: 0) {
-            HStack {
-                if memberViewType == .update {
-                    Group {
-                        Text("닫기")
-                            .font(.customFont(.callOut))
-                            .onTapGesture {
-                                if isUpdated {
-                                    
+        WithViewStore(self.store, observe: { $0 }) { viewStore in
+            VStack(spacing: 0) {
+                HStack {
+                    if viewStore.memberViewType == .update {
+                        Group {
+                            Text("닫기")
+                                .font(.customFont(.callOut))
+                                .onTapGesture {
+                                    if viewStore.isUpdated {
+                                        
+                                    }
+                                    viewStore.send(.setMemberViewType(.detail))
                                 }
-                                memberViewType = .detail
-                            }
+                            Spacer()
+                            Text("저장")
+                                .font(.customFont(.callOut))
+                                .onTapGesture {
+                                    //TODO: viewStore member save
+                                    viewStore.send(.setMember)
+                                    viewStore.send(.setMemberViewType(.detail))
+                                }
+                        }
+                    } else {
+                        Group {
+                            Image(systemName: "chevron.left")
+                                .font(.customFont(.callOut))
+                            Text("뒤로가기")
+                        }
+                        .onTapGesture {
+                            //TODO: DismissAction
+//                            viewStore.isMainViewOpen = true
+                            viewStore.send(.dismissAction)
+                        }
                         Spacer()
-                        Text("저장")
-                            .font(.customFont(.callOut))
-                            .onTapGesture {
-                                member = setMember()
-                                memberViewType = .detail
-                            }
                     }
-                } else {
-                    Group {
-                        Image(systemName: "chevron.left")
-                            .font(.customFont(.callOut))
-                        Text("뒤로가기")
-                    }
-                    .onTapGesture {
-                        isMainViewOpen = true
+                }
+                .padding(.bottom, .betweenTextAndLine)
+                
+                HStack {
+                    if viewStore.memberViewType == .detail {
+                        Text(viewStore.name)
+                            .font(.customFont(.title1) .bold())
+                            .foregroundStyle(.moduBlack)
+                    } else {
+                        TextField("이름", text: viewStore.$name)
+                            .focused($focusState)
+                            .font(.customFont(.title1) .bold())
+                            .foregroundStyle(.moduBlack)
                     }
                     Spacer()
+                    
+                    Text("어머니")
+                        .foregroundStyle(.moduYellow)
+                        .padding(8)
+                        .background {
+                            Capsule()
+                                .fill(.moduBlack)
+                        }
                 }
-            }
-            .padding(.bottom, .betweenTextAndLine)
-            
-            HStack {
-                if memberViewType == .detail {
-                    Text(name)
-                        .font(.customFont(.title1) .bold())
-                        .foregroundStyle(.moduBlack)
-                } else {
-                    TextField("이름", text: $name)
-                        .font(.customFont(.title1) .bold())
-                        .foregroundStyle(.moduBlack)
+                .padding(.bottom, .betweenTitleAndContent)
+                
+                ForEach(SectionType.allCases, id: \.self) { type in
+                    Group {
+                        if type == .bloodType {
+                            HStack(spacing: 8) {
+                                ForEach(SectionType.MemberBloodType.allCases, id: \.self) { blood in
+                                    TextSectionSubView(needSpacing: false, value: getValue(viewStore: viewStore, type, blood), sectionType: type, bloodType: blood, selectedSection: viewStore.$selectedSectionType, selectedBloodType: viewStore.$selectedBloodType, memberViewType: viewStore.$memberViewType)
+                                        .onTapGesture {
+                                            viewStore.send(.tapGesture(type, blood))
+                                            if focusState {
+                                                focusState = false
+                                            }
+                                        }
+                                }
+                                
+                                Spacer()
+                            }
+                        } else if type != .name {
+                            TextSectionSubView(needSpacing: true, value: getValue(viewStore: viewStore, type), sectionType: type, bloodType: nil, selectedSection: viewStore.$selectedSectionType, selectedBloodType: viewStore.$selectedBloodType, memberViewType: viewStore.$memberViewType)
+                                .onTapGesture {
+                                    viewStore.send(.tapGesture(type))
+                                    if focusState {
+                                        focusState = false
+                                    }
+                                }
+                        }
+                        
+                    }
+                    .padding(.bottom, .betweenContents)
                 }
                 Spacer()
                 
-                Text("어머니")
-                    .foregroundStyle(.moduYellow)
-                    .padding(8)
-                    .background {
-                        Capsule()
-                            .fill(.moduBlack)
+                if viewStore.memberViewType == .add {
+                    if !viewStore.name.isEmpty, let sex = viewStore.sex, !viewStore.birthDayString.isEmpty, let rhType = viewStore.rhType, let aboType = viewStore.aboType {
+                        RoundedRectangleButtonView(title: "저장하기", isEnabled: true)
+                            .onTapGesture {
+                                let newMember = Member(name: viewStore.name, bloodType: BloodType(abo: aboType, rh: rhType), sex: sex, birthday: viewStore.birthDay)
+                                viewStore.send(.addMember(newMember))
+                            }
+                    } else {
+                        RoundedRectangleButtonView(title: "저장하기", isEnabled: false)
                     }
-            }
-            .padding(.bottom, .betweenTitleAndContent)
-            
-            ForEach(SectionType.allCases, id: \.self) { type in
-                if type != .name {
-                    textSectionView(type)
-                        .padding(.bottom, .betweenContents)
-                }
-            }
-            Spacer()
-            
-            if memberViewType == .add {
-                if !name.isEmpty, let sex, !birthDayString.isEmpty, let rhType, let aboType {
-                    RoundedRectangleButtonView(title: "저장하기", isEnabled: true)
-                        .onTapGesture {
-                            let newMember = Member(name: name, bloodType: BloodType(abo: aboType, rh: rhType), sex: sex, birthday: birthDay)
-                        }
-                } else {
-                    RoundedRectangleButtonView(title: "저장하기", isEnabled: false)
+                    
+                } else if viewStore.memberViewType == .detail {
+                    HStack {
+                        Spacer()
+                        Image(systemName: "pencil")
+                            .font(.customFont(.body))
+                            .onTapGesture {
+                                // TODO: Change Action
+                                viewStore.send(.setMemberViewType(.update))
+                            }
+                    }
                 }
                 
-            } else if memberViewType == .detail {
-                HStack {
-                    Spacer()
-                    Image(systemName: "pencil")
-                        .font(.customFont(.body))
-                        .onTapGesture {
-                            memberViewType = .update
-                        }
-                }
             }
-            
-        }
-        .padding(.horizontal, 20)
-        .sheet(isPresented: $isPresented, content: {
-            Group {
-                if selectedSectionType == .sex {
-                    MemberSexView(title: selectedSectionType?.rawValue ?? "", sex: $sex, isPresented: $isPresented)
-                } else if selectedSectionType == .birthDay {
-                    MemberBirthdayView(birthday: $birthDay, isPresented: $isPresented)
-                } else if selectedSectionType == .bloodType {
-                    if selectedBloodType == .rhType {
-                        MemberRhTypeView(rhType: $rhType, isPresented: $isPresented)
-                    } else {
-                        MemberAboTypeView(aboType: $aboType, isPresented: $isPresented)
+            .padding(.horizontal, 20)
+            .sheet(isPresented: viewStore.$isPresented, content: {
+                Group {
+                    if viewStore.selectedSectionType == .sex {
+                        MemberSexView(title: viewStore.selectedSectionType?.rawValue ?? "", sex: viewStore.$sex, isPresented: viewStore.$isPresented)
+                    } else if viewStore.selectedSectionType == .birthDay {
+                        MemberBirthdayView(birthday: viewStore.$birthDay, isPresented: viewStore.$isPresented)
+                    } else if viewStore.selectedSectionType == .bloodType {
+                        if viewStore.selectedBloodType == .rhType {
+                            MemberRhTypeView(rhType: viewStore.$rhType, isPresented: viewStore.$isPresented)
+                        } else {
+                            MemberAboTypeView(aboType: viewStore.$aboType, isPresented: viewStore.$isPresented)
+                        }
                     }
                 }
-            }
-            .padding(.top, .betweenContents)
-            .padding(.horizontal, 20)
-            .presentationDetents([.medium])
-        })
-        .onAppear {
-            if memberViewType == .detail, let member {
-                name = member.name
-                sex = member.sex
-                sexString = member.sex.rawValue
-                birthDay = member.birthday
-                birthDayString = member.birthday.toString()
-                rhType = member.bloodType.rh
-                bloodTypeToString = member.bloodType.rh.rawValue
-                aboType = member.bloodType.abo
-                aboTypeToString = member.bloodType.abo.rawValue
+                .padding(.top, .betweenContents)
+                .padding(.horizontal, 20)
+                .presentationDetents([.medium])
+            })
+            .onAppear {
+                viewStore.send(.onAppear)
             }
         }
-        .onChange(of: isPresented, {(_, _) in
-            if !isPresented {
-                selectedBloodType = nil
-                selectedSectionType = nil
-                sexString = sex?.rawValue ?? ""
-                bloodTypeToString = rhType?.rawValue ?? ""
-                aboTypeToString = aboType?.rawValue ?? ""
-                if memberViewType == .update {
-                    isUpdated = checkUpdate()
-                }
-            }
-        })
-        .onChange(of: birthDay, {(_, _) in
-            birthDayString = birthDay.toString()
-            if memberViewType == .update {
-                isUpdated = checkUpdate()
-            }
-        })
-        .onChange(of: name, {(_, _) in
-            if memberViewType == .update {
-                isUpdated = checkUpdate()
-            }
-        })
+        
     }
     
-    private func getValue(_ type: SectionType, _ bloodType: SectionType.MemberBloodType? = nil) -> Binding<String> {
+    @MainActor private func getValue(viewStore: ViewStoreOf<MemberReducer>,_ type: SectionType, _ bloodType: SectionType.MemberBloodType? = nil) -> Binding<String> {
         switch type {
         case .name:
-            $name
+            viewStore.$name
         case .sex:
-            $sexString
+            viewStore.$sexString
         case .birthDay:
-            $birthDayString
+            viewStore.$birthDayString
         case .bloodType:
             switch bloodType {
             case .aboType:
-                $aboTypeToString
+                viewStore.$aboTypeToString
             case .rhType:
-                $bloodTypeToString
+                viewStore.$bloodTypeToString
             default:
-                $bloodTypeToString
-            }
-            
-        }
-    }
-    
-    private func tapGesture(_ type: SectionType, _ bloodType: SectionType.MemberBloodType? = nil) {
-        if memberViewType != .detail {
-            selectedSectionType = type
-            selectedBloodType = bloodType
-            isPresented = true
-        }
-    }
-    
-    @ViewBuilder
-    private func textSectionView(_ type: SectionType) -> some View {
-        VStack(alignment: .leading, spacing: .betweenHeadlineAndTitle2 ){
-            Text(type.getTitle())
-                .font(.customFont(.headline))
-            switch type {
-            case .bloodType:
-                HStack(spacing: 8) {
-                    ForEach(SectionType.MemberBloodType.allCases, id: \.self) { blood in
-                        TextSectionSubView(needSpacing: false, value: getValue(type, blood), sectionType: type, bloodType: blood, selectedSection: $selectedSectionType, selectedBloodType: $selectedBloodType, memberViewType: $memberViewType)
-                            .onTapGesture {
-                                tapGesture(type, blood)
-                            }
-                    }
-                    
-                    Spacer()
-                }
-                
-            default:
-                TextSectionSubView(needSpacing: true, value: getValue(type), sectionType: type, bloodType: nil, selectedSection: $selectedSectionType, selectedBloodType: $selectedBloodType, memberViewType: $memberViewType)
-                    .onTapGesture {
-                        tapGesture(type)
-                    }
+                viewStore.$bloodTypeToString
             }
         }
     }
-    
-    private func checkUpdate() -> Bool {
-        if member?.name == name,
-            member?.sex == sex,
-            member?.birthday == birthDay,
-            member?.bloodType.rh == rhType,
-            member?.bloodType.abo == aboType {
-            return false
-        } else {
-            return true
-        }
-    }
-    
-    private func setMember() -> Member {
-        return Member(name: name, bloodType: BloodType(abo: aboType!, rh: rhType!), sex: sex!, birthday: birthDay)
-    }
-}
-
-#Preview {
-    MemberView(memberViewType: .detail, member: .constant(nil), isMainViewOpen: .constant(false))
 }

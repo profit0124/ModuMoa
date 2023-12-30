@@ -6,57 +6,96 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct HierarchyCardView: View {
     
-    @State var me: Member
-    @State var partner: Member?
-    @State var childrens:[Member] = []
-    @State var index:Int = 0
+    let store: StoreOf<HierarchyCard>
+    @State var me: Member.ID?
+    @State var partner: Member.ID?
+    @State var childrens: [Member.ID]?
     
     typealias Key = PreferKey<Member.ID, Anchor<CGPoint>>
 
     var body: some View {
-        VStack(spacing: 80) {
-            HStack(spacing: 20) {
-                cardViewWithButton(me)
-                    .frame(width: 250)
-                    .anchorPreference(key: Key.self, value: .center, transform: { anchor in
-                        return [self.me.id:anchor]
-                    })
-                
-                if let partner {
-                    cardViewWithButton(partner)
+        WithViewStore(self.store, observe: { $0 }) { viewStore in
+            VStack(spacing: 80) {
+                HStack(spacing: 20) {
+                    cardViewWithButton(viewStore.me, viewStore: viewStore) { member in
+//                        if viewStore.partner == nil {
+//                            viewStore.send(.addPartner(member))
+//                        } else {
+//                            viewStore.send(.addChildren(member))
+//                        }
+                        if viewStore.partner == nil {
+                            viewStore.send(.setAddMode(.partner))
+                        } else {
+                            viewStore.send(.setAddMode(.children))
+                        }
+                    }
                         .frame(width: 250)
                         .anchorPreference(key: Key.self, value: .center, transform: { anchor in
-                            return [partner.id:anchor]
+                            return [viewStore.me.id:anchor]
                         })
                     
+                    if let partner = viewStore.partner {
+                        cardViewWithButton(partner, viewStore: viewStore) { _ in
+                            viewStore.send(.setAddMode(.children))
+                        }
+                            .frame(width: 250)
+                            .anchorPreference(key: Key.self, value: .center, transform: { anchor in
+                                return [partner.id:anchor]
+                            })
+                        
+                    }
+                }
+                
+                HStack(alignment: .top, spacing: 80) {
+                    ForEachStore(self.store.scope(state: \.children, action: HierarchyCard.Action.children(id: action:)), content: {
+                        HierarchyCardView(store: $0)
+                    })
+//                    ForEach(childrens, id: \.id) { children in
+//                        HierarchyCardView(me: children)
+//                    }
                 }
             }
-            
-            HStack(alignment: .top, spacing: 80) {
-                ForEach(childrens, id: \.id) { children in
-                    HierarchyCardView(me: children)
+            .onAppear {
+                self.me = viewStore.me.id
+                viewStore.send(.viewOnAppear)
+            }
+            .onChange(of: viewStore.partner, {
+                self.partner = viewStore.partner?.id
+            })
+            .onChange(of: viewStore.children, {
+                self.childrens = viewStore.children.map { $0.me.id }
+            })
+            .frame(alignment: .top)
+            .backgroundPreferenceValue(Key.self) { value in
+                GeometryReader { proxy in
+                    if let me, let myValue = value[me] {
+                        if let myPoint: CGPoint = proxy[myValue] as? CGPoint {
+                            if let partner = partner, let partnerValue = value[partner], let endPoint: CGPoint =  proxy[partnerValue] as? CGPoint {
+                                Line(startPoint: myPoint, endPoint: endPoint)
+                                    .stroke(lineWidth: 2)
+                                    .fill(.moduBlack)
+                            }
+                            let middleOfParents = partner == nil ? myPoint : self.middleOfPoints(myPoint, proxy[value[partner!] ?? myValue])
+                            if let childrens {
+                                ForEach(childrens, id: \.self) { children in
+                                    Line(startPoint: middleOfParents, endPoint: proxy[value[children]!])
+                                        .stroke(lineWidth: 2)
+                                        .fill(.moduBlack)
+                                }
+                            }
+                        }
+                    }
                 }
             }
-        }
-        .frame(alignment: .top)
-        .backgroundPreferenceValue(Key.self) { value in
-            GeometryReader { proxy in
-                let myPoint: CGPoint = proxy[value[self.me.id]!]
-                if let partner = self.partner {
-                    Line(startPoint: myPoint, endPoint: proxy[value[partner.id]!])
-                        .stroke(lineWidth: 2)
-                        .fill(.moduBlack)
-                }
-                let middleOfParents = self.partner == nil ? myPoint : self.middleOfPoints(myPoint, proxy[value[self.partner!.id]!])
-                ForEach(childrens, id: \.id) { children in
-                    Line(startPoint: middleOfParents, endPoint: proxy[value[children.id]!])
-                        .stroke(lineWidth: 2)
-                        .fill(.moduBlack)
-                }
-            }
+            .fullScreenCover(isPresented: viewStore.$isPresented, content: {
+                IfLetStore(self.store.scope(state: \.memberReducer, action: HierarchyCard.Action.memberReducer), then: {
+                    MemberView(store: $0)
+                })
+            })
         }
     }
     
@@ -67,13 +106,18 @@ struct HierarchyCardView: View {
     }
     
     @ViewBuilder
-    private func cardViewWithButton(_ member: Member) -> some View {
+    private func cardViewWithButton(_ member: Member, viewStore: ViewStoreOf<HierarchyCard>, completion: @escaping (Member) -> Void) -> some View {
         VStack {
-            CardView(member: member)
+            CardView(member: member, store: StoreOf<Card>(initialState: Card.State(member: member)) { Card() })
+                .onTapGesture {
+                    viewStore.send(.selectedMember(member))
+                }
             Button(action: {
-                let member = Member(name: "Children\(index)", bloodType: .init(abo: .A, rh: .negative), sex: .female, birthday: Date())
-                childrens.append(member)
-                index += 1
+                let member = Member(name: "Children", bloodType: .init(abo: .A, rh: .negative), sex: .female, birthday: Date())
+//                viewStore.send(.addChildren(member))
+                completion(member)
+//                childrens.append(member)
+//                index += 1
             }, label: {
                 Image(systemName: "plus")
                     .foregroundStyle(.white)
@@ -86,9 +130,9 @@ struct HierarchyCardView: View {
         }
     }
 }
-#Preview {
-    HierarchyCardView(me: Member(name: "Kim", bloodType: .init(abo: .A, rh: .positive), sex: .male, birthday: Date()), partner: Member(name: "Partner", bloodType: .init(abo: .A, rh: .negative), sex: .female, birthday: Date()))
-}
+//#Preview {
+//    HierarchyCardView(me: Member(name: "Kim", bloodType: .init(abo: .A, rh: .positive), sex: .male, birthday: Date()), partner: Member(name: "Partner", bloodType: .init(abo: .A, rh: .negative), sex: .female, birthday: Date()))
+//}
 
 
 struct Line: Shape {

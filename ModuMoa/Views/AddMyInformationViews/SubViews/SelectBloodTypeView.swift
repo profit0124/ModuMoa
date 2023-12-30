@@ -6,137 +6,127 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct SelectBloodTypeView: View {
     
-    @Binding var name: String
-    @Binding var sex: Sex?
-    @Binding var birthDay: Date
-    @Binding var bloodType: BloodType?
-    @Binding var index: Int
-    
-    @State private var aboType: BloodType.AboType?
-    @State private var rhType: BloodType.RhType?
-    
-    @State private var isPresented: Bool = true
+    let store: StoreOf<SelectBloodType>
     
     var body: some View {
-        GeometryReader { reader in
-            let width = reader.size.width
-            VStack(alignment: .leading, spacing: 0) {
-                
-                Image(systemName: "chevron.left")
-                    .resizable()
-                    .font(.customFont(.headline))
-                
-                    .frame(width: 10, height: 20)
-                    .onTapGesture {
-                        index -= 1
-                    }
-                    .padding(.leading, 8)
+        WithViewStore(self.store, observe: { $0 }) { viewStore in
+            GeometryReader { reader in
+                let width = reader.size.width
                 VStack(alignment: .leading, spacing: 0) {
-                    Text("혈액형을 입력해주세요")
-                        .font(.customFont(.largeTitle).bold())
-                        .padding(.top, .betweenElements)
-                        .padding(.bottom, .betweenTitleAndContent)
                     
-                    HStack {
-                        Group {
-                            Text(rhType?.rawValue ?? "Rh식")
-                                .font(.customFont(.body))
-                            Image(systemName: "chevron.right")
-                        }
-                        .foregroundStyle(rhType == nil ? .disableText : .moduBlack)
+                    Image(systemName: "chevron.left")
+                        .resizable()
+                        .font(.customFont(.headline))
+                    
+                        .frame(width: 10, height: 20)
                         .onTapGesture {
-                            if !isPresented {
-                                isPresented = true
+                            viewStore.send(.previousIndex)
+                        }
+                        .padding(.leading, 8)
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text("혈액형을 입력해주세요")
+                            .font(.customFont(.largeTitle).bold())
+                            .padding(.top, .betweenElements)
+                            .padding(.bottom, .betweenTitleAndContent)
+                        
+                        HStack {
+                            Group {
+                                if let rhType = viewStore.rhType {
+                                    Text(rhType == .none ? "Rh식 모름" : rhType.rawValue)
+                                        .font(.customFont(.body))
+                                } else {
+                                    Text("Rh식")
+                                        .font(.customFont(.body))
+                                }   
+                                Image(systemName: "chevron.right")
                             }
-                        }
-                        Spacer()
-                    }
-                    .padding(.bottom, .betweenElements)
-                    
-                    HStack(spacing: 8) {
-                        ForEach(BloodType.AboType.allCases, id: \.self) { type in
-                            selectedCapusle(type, width: width)
-                        }
-                    }
-                    .padding(.bottom, .betweenSelectPoint)
-                    
-                    makeSection("생일", birthDay.toString())
-                        .padding(.bottom, .betweenElements)
-                    
-                    
-                    makeSection("성별", sex?.rawValue ?? "")
-                        .padding(.bottom, .betweenElements)
-                    
-                    makeSection("이름", name)
-                    
-                    Spacer()
-                
-                    
-                    if aboType != nil, rhType != nil {
-                        RoundedRectangleButtonView(title: "완료", isEnabled: true)
+                            .foregroundStyle(viewStore.rhType == nil ? .disableText : .moduBlack)
                             .onTapGesture {
-                                if let aboType, let rhType {
-                                    self.bloodType = BloodType(abo: aboType, rh: rhType)
-                                    index += 1
+                                if !viewStore.isPresented {
+                                    viewStore.send(.setIsPresented(true))
                                 }
                             }
-                    } else {
-                        RoundedRectangleButtonView(title: "완료", isEnabled: false)
-                    }
-                    
-                    
-                }
-                .padding(.horizontal, 20)
-            }
-        }
-        .sheet(isPresented: $isPresented) {
-            VStack(alignment: .leading, spacing: 0) {
-                HStack {
-                    Text("Rh 식 혈액형을 입력하세요")
-                        .font(.customFont(.title2))
-                        .padding(.top, .betweenContents)
-                        .padding(.bottom, .betweenTitleAndContent)
-                    Spacer()
-                }
-                
-                
-                ForEach(BloodType.RhType.allCases, id: \.self) { type in
-                    Group {
-                        HStack {
-                            Text(type.rawValue)
-                                .font(.customFont(.callOut))
-                                .padding(.bottom, .betweenTextAndLine)
                             Spacer()
                         }
-                        .background {
-                            Color.white
+                        .padding(.bottom, .betweenElements)
+                        
+                        HStack(spacing: 8) {
+                            ForEach(BloodType.AboType.allCases, id: \.self) { type in
+                                if type != .none {
+                                    selectedCapusle(type, width: width, viewStore: viewStore)
+                                }
+                            }
                         }
-                        Divider()
-                            .padding(.bottom, .betweenTextAndLine)
-                    }
-                    .onTapGesture {
-                        self.rhType = type
-                        isPresented = false
-                    }
+                        .padding(.bottom, .betweenSelectPoint)
+                        
+                        makeSection("생일", viewStore.birthDay.toString())
+                            .padding(.bottom, .betweenElements)
+                        
+                        
+                        makeSection("성별", viewStore.sex.rawValue)
+                            .padding(.bottom, .betweenElements)
+                        
+                        makeSection("이름", viewStore.name)
+                        
+                        Spacer()
                     
-
+                        
+                        if viewStore.aboType != .none, viewStore.rhType != nil {
+                            RoundedRectangleButtonView(title: "완료", isEnabled: true)
+                                .onTapGesture {
+                                    viewStore.send(.nextIndex)
+                                    
+                                }
+                        } else {
+                            RoundedRectangleButtonView(title: "완료", isEnabled: false)
+                        }
+                        
+                        
+                    }
+                    .padding(.horizontal, 20)
                 }
-                
-                Text("모름")
-                    .font(.customFont(.callOut))
-                    .onTapGesture {
-                        self.rhType = .positive
-                        isPresented = false
+            }
+            .sheet(isPresented: viewStore.$isPresented) {
+                VStack(alignment: .leading, spacing: 0) {
+                    HStack {
+                        Text("Rh 식 혈액형을 입력하세요")
+                            .font(.customFont(.title2))
+                            .padding(.top, .betweenContents)
+                            .padding(.bottom, .betweenTitleAndContent)
+                        Spacer()
                     }
                     
-                Spacer()
+                    
+                    ForEach(BloodType.RhType.allCases, id: \.self) { type in
+                        Group {
+                            HStack {
+                                Text(type.rawValue)
+                                    .font(.customFont(.callOut))
+                                    .padding(.bottom, .betweenTextAndLine)
+                                Spacer()
+                            }
+                            .background {
+                                Color.white
+                            }
+                            Divider()
+                                .padding(.bottom, .betweenTextAndLine)
+                        }
+                        .onTapGesture {
+                                viewStore.send(.setRhType(type))
+                                viewStore.send(.setIsPresented(false))
+                        }
+                    }
+                    Spacer()
+                }
+                .padding(.horizontal, 16)
+                .presentationDetents([.medium])
             }
-            .padding(.horizontal, 16)
-            .presentationDetents([.medium])
         }
+        
     }
     
     
@@ -156,23 +146,19 @@ struct SelectBloodTypeView: View {
     }
     
     @ViewBuilder
-    private func selectedCapusle(_ value: BloodType.AboType, width: CGFloat) -> some View {
+    private func selectedCapusle(_ value: BloodType.AboType, width: CGFloat, viewStore: ViewStore<SelectBloodType.State, SelectBloodType.Action>) -> some View {
         let width = (width - 64) / 4
         Text(value.rawValue)
             .font(.customFont(.callOut))
-            .foregroundStyle(aboType == value ? .moduYellow : .disableText)
+            .foregroundStyle(viewStore.aboType == value ? .moduYellow : .disableText)
             .padding(.vertical, 8)
             .frame(width: width)
             .background {
                 Capsule()
-                    .fill(aboType == value ? .moduBlack : .disableCapture)
+                    .fill(viewStore.aboType == value ? .moduBlack : .disableCapture)
             }
             .onTapGesture {
-                aboType = value
+                viewStore.send(.setAboType(value))
             }
     }
-}
-
-#Preview {
-    SelectBloodTypeView(name: .constant("d"), sex: .constant(.female), birthDay: .constant(Date()), bloodType: .constant(nil), index: .constant(4))
 }

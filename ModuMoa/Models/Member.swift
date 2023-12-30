@@ -7,9 +7,11 @@
 
 import Foundation
 
-struct Member: Identifiable {
-    
-    
+struct Member: Identifiable, Equatable {
+//    static func == (lhs: Member, rhs: Member) -> Bool {
+//        return lhs.id == rhs.id
+//    }
+
     let id: UUID = UUID()
     var name: String
     var bloodType: BloodType
@@ -28,15 +30,15 @@ struct Member: Identifiable {
     }
 }
 
-enum Sex {
-    case male
-    case female
-    case none
+enum Sex: String, CaseIterable, Equatable {
+    case male = "남성"
+    case female = "여성"
+    case none = "모름"
 }
 
-struct BloodType {
+struct BloodType: Equatable {
     
-    enum AboType: String {
+    enum AboType: String, CaseIterable, Equatable {
         case A = "A형"
         case B = "B형"
         case O = "O형"
@@ -44,7 +46,7 @@ struct BloodType {
         case none = "모름"
     }
     
-    enum RhType: String {
+    enum RhType: String, CaseIterable, Equatable {
         case positive = "Rh+"
         case negative = "Rh-"
         case none = "모름"
