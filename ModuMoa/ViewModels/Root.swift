@@ -23,6 +23,7 @@ struct Root: Reducer {
         var mainViewCase: MainViewCase = .addMyInformation
         var memberReducer: MemberReducer.State?
         var hierarchyCard: HierarchyCard.State?
+        var memberDetail: MemberDetail.State?
     }
     
     enum Action: Equatable {
@@ -32,6 +33,7 @@ struct Root: Reducer {
         case updateMember
         case memberReducer(MemberReducer.Action)
         case hierarchyCard(HierarchyCard.Action)
+        case memberDetail(MemberDetail.Action)
     }
     
     var body: some ReducerOf<Self> {
@@ -86,6 +88,9 @@ struct Root: Reducer {
         }
         .ifLet(\.hierarchyCard, action: /Action.hierarchyCard) {
             HierarchyCard()
+        }
+        .ifLet(\.memberDetail, action: /Action.memberDetail) {
+            MemberDetail()
         }
     }
 }
