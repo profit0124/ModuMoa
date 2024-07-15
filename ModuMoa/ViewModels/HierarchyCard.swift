@@ -21,24 +21,25 @@ enum AddMode {
 struct HierarchyCard: Reducer {
     struct State: Identifiable, Equatable {
         let id: String
-//        var node: TestNode
-        var me: Member
-        var partner: Member?
-        var detailMode: DetailMode?
-        var addMode: AddMode?
-        var memberReducer: MemberReducer.State?
+        var node: Node
         @BindingState var isPresented: Bool = false
         var children: IdentifiedArrayOf<State> = []
+        
+        init(id: String, node: Node, isPresented: Bool) {
+            self.id = id
+            self.node = node
+            self.isPresented = isPresented
+            self.children = []
+            for child in node.children {
+                self.children.append(.init(id: child.member.id.uuidString, node: child, isPresented: false))
+            }
+        }
     }
     
     enum Action: Equatable, BindableAction {
         case viewOnAppear
-        case selectedMember(Member)
-        case setAddMode(AddMode)
-        case addPartner(Member)
-        case addChildren(Member)
-        case memberReducer(MemberReducer.Action)
         case binding(BindingAction<State>)
+        case selectNode(Node)
         indirect case children(id: State.ID, action: Action)
     }
     
@@ -51,69 +52,21 @@ struct HierarchyCard: Reducer {
                 print("load partner,chidren data from local data")
                 return .none
                 
-            case .setAddMode(let mode):
-                state.addMode = mode
-                state.memberReducer = MemberReducer.State(id: UUID().uuidString, memberViewType: .add)
-                state.isPresented = true
-                return .none
-                
-            case .addPartner(let member):
-                state.partner = member
-                state.isPresented = false
-                return .none
-                
-            case .addChildren(let member):
-                state.children.append(State(id: member.id.uuidString, me: member))
-                state.isPresented = false
-                return .none
-                
-            case .selectedMember(let member):
-                if member == state.me {
-                    state.detailMode = .me
-                } else {
-                    state.detailMode = .partner
+            case .children(id: _, action: let action):
+                switch action {
+                case .selectNode(let node):
+                    return .send(.selectNode(node))
+                    
+                default:
+                    return .none
                 }
-                state.memberReducer = MemberReducer.State(id: member.id.uuidString, memberViewType: .detail, member: member)
-                state.isPresented = true
-                return .none
-                
-            case .memberReducer(.setMember):
-                if let memberReducer = state.memberReducer, let member = memberReducer.member {
-                    if state.detailMode == .me {
-                        state.me = member
-                    } else {
-                        state.partner = member
-                    }
-                }
-                return .none
-                
-            case .memberReducer(.dismissAction):
-                state.isPresented = false
-                return .none
-                
-            case .binding(.set(\.$isPresented, false)):
-                if !state.isPresented{
-                    state.memberReducer = nil
-                }
-                return .send(.viewOnAppear)
-                
-            case .memberReducer(.addMember(let member)):
-                if state.addMode == .partner {
-                    return .send(.addPartner(member))
-                } else {
-                    return .send(.addChildren(member))
-                }
-                
                 
             default:
                 return .none
             }
         }
-        .ifLet(\.memberReducer, action: /Action.memberReducer) {
-            MemberReducer()
-        }
-        .forEach(\.children, action: /Action.children(id:action:)) {
-            Self()
+        .forEach(\.children, action: /Action.children(id:action:)){
+            HierarchyCard()
         }
     }
 }

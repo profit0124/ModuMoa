@@ -93,6 +93,7 @@ struct MemberDetailView: View {
                 })
             }
         }
+        .navigationBarBackButtonHidden()
         
     }
     

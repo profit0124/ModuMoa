@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Node: Equatable {
+class Node: Equatable, Identifiable {
     static func == (lhs: Node, rhs: Node) -> Bool {
         lhs.id == rhs.id
     }
@@ -86,5 +86,13 @@ class Node: Equatable {
     
     func childDistance() -> Int {
         return distance + 1
+    }
+}
+
+
+extension Node: Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+        hasher.combine(member)
     }
 }

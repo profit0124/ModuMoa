@@ -24,9 +24,11 @@ struct Root: Reducer {
         var memberReducer: MemberReducer.State?
         var hierarchyCard: HierarchyCard.State?
         var memberDetail: MemberDetail.State?
+        var selectedNode: Node?
+        @BindingState var isPresented: Bool = false
     }
     
-    enum Action: Equatable {
+    enum Action: Equatable, BindableAction {
         case setMainViewCase(MainViewCase)
         case addMyInformation(AddMyInformation.Action)
         case setSelectedMember(Member?)
@@ -34,9 +36,11 @@ struct Root: Reducer {
         case memberReducer(MemberReducer.Action)
         case hierarchyCard(HierarchyCard.Action)
         case memberDetail(MemberDetail.Action)
+        case binding(BindingAction<State>)
     }
     
     var body: some ReducerOf<Self> {
+        BindingReducer()
         Reduce { state, action in
             switch action {
             case .setMainViewCase(let value):
@@ -45,8 +49,9 @@ struct Root: Reducer {
                 
             case .addMyInformation(.complete):
                 guard let member = state.addMyInformation?.me else { return .none }
+                let node = Node(member: member)
                 state.baseNode = Node(member: member)
-                state.hierarchyCard = HierarchyCard.State(id: member.id.uuidString, me: member)
+                state.hierarchyCard = HierarchyCard.State(id: node.id.uuidString, node: node, isPresented: false)
                 state.mainViewCase = .main
 //                state.addMyInformation = nil
                 
@@ -73,6 +78,17 @@ struct Root: Reducer {
                 state.selectedMember = state.memberReducer?.member
                 state.baseNode?.member = state.selectedMember!
                 state.memberReducer = nil
+                return .none
+                
+            case .hierarchyCard(.selectNode(let node)):
+                print("true")
+                state.memberDetail = .init(node: node)
+                state.isPresented = true
+                return .none
+                
+            case .memberDetail(.backbuttonTapped):
+                state.isPresented = false
+                state.memberDetail = nil
                 return .none
                 
             default:
