@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Member: Identifiable, Equatable {
+struct Member: Identifiable, Equatable, Hashable {
 //    static func == (lhs: Member, rhs: Member) -> Bool {
 //        return lhs.id == rhs.id
 //    }
@@ -30,15 +30,15 @@ struct Member: Identifiable, Equatable {
     }
 }
 
-enum Sex: String, CaseIterable, Equatable {
+enum Sex: String, CaseIterable, Equatable, Hashable {
     case male = "남성"
     case female = "여성"
     case none = "모름"
 }
 
-struct BloodType: Equatable {
+struct BloodType: Equatable, Hashable {
     
-    enum AboType: String, CaseIterable, Equatable {
+    enum AboType: String, CaseIterable, Equatable, Hashable {
         case A = "A형"
         case B = "B형"
         case O = "O형"
@@ -46,7 +46,7 @@ struct BloodType: Equatable {
         case none = "모름"
     }
     
-    enum RhType: String, CaseIterable, Equatable {
+    enum RhType: String, CaseIterable, Equatable, Hashable {
         case positive = "Rh+"
         case negative = "Rh-"
         case none = "모름"
