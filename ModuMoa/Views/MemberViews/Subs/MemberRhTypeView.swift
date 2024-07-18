@@ -12,13 +12,14 @@ struct MemberRhTypeView: View {
     var title: String = "Rh식 혈액형을 선택해주세요"
     @Binding var rhType: BloodType.RhType?
     @Binding var isPresented: Bool
+    let completion: () -> Void
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             Text(title)
                 .font(.customFont(.title1).bold())
                 .padding(.bottom, .betweenContents)
-//            
+            
             ForEach(BloodType.RhType.allCases, id: \.self) { value in
                 VStack(spacing: 0) {
                     HStack {
@@ -43,7 +44,6 @@ struct MemberRhTypeView: View {
                             .frame(height: 2)
                             .padding(.bottom, .betweenTextAndLine)
                     }
-
                 }
             }
             Spacer()
@@ -53,6 +53,7 @@ struct MemberRhTypeView: View {
                 RoundedRectangleButtonView(title: "완료", isEnabled: true)
                     .onTapGesture {
                         isPresented = false
+                        completion()
                     }
             }
         }
@@ -61,5 +62,7 @@ struct MemberRhTypeView: View {
 
 
 #Preview {
-    MemberRhTypeView(rhType: .constant(.positive), isPresented: .constant(true))
+    MemberRhTypeView(rhType: .constant(.positive), isPresented: .constant(true)) {
+        
+    }
 }

@@ -9,9 +9,11 @@ import SwiftUI
 
 struct MemberBirthdayView: View {
     
-    var title: String = ""
-    @Binding var birthday: Date
+    var title: String = "생일을 설정해주세요"
+    @State private var tempBirthDay: Date = Date()
+    @Binding var birthday: Date?
     @Binding var isPresented: Bool
+    let completion: () -> Void
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -21,7 +23,7 @@ struct MemberBirthdayView: View {
             
             HStack {
                 Spacer()
-                DatePicker(selection: $birthday, displayedComponents: .date, label: {
+                DatePicker(selection: $tempBirthDay, displayedComponents: .date, label: {
                     
                 })
                 .datePickerStyle(.wheel)
@@ -29,47 +31,20 @@ struct MemberBirthdayView: View {
                 Spacer()
             }
             
-            
-//            ForEach(Sex.allCases, id: \.self) { value in
-//                VStack(spacing: 0) {
-//                    HStack {
-//                        Text(value.rawValue)
-//                            .font(.customFont(.body))
-//                        Spacer()
-//                        if value == sex {
-//                            Image(systemName: "checkmark")
-//                                .font(.customFont(.body))
-//                        }
-//                    }
-//                    .background {
-//                        Color.white
-//                    }
-//                    .onTapGesture {
-//                        sex = value
-//                    }
-//                    .padding(.bottom, .betweenTextAndLine)
-//                    if value == .male {
-//                        Rectangle()
-//                            .frame(height: 2)
-//                            .padding(.bottom, .betweenTextAndLine)
-//                        
-//                    }
-//                }
-//                
-//            }
-            
             Spacer()
 
             RoundedRectangleButtonView(title: "완료", isEnabled: true)
                 .onTapGesture {
+                    birthday = tempBirthDay
                     isPresented = false
+                    completion()
                 }
-            
-            
         }
     }
 }
 
 #Preview {
-    MemberBirthdayView(title: "생일을 설정해주세요", birthday: .constant(Date()), isPresented: .constant(true))
+    MemberBirthdayView(title: "생일을 설정해주세요", birthday: .constant(Date()), isPresented: .constant(true)) {
+        
+    }
 }
