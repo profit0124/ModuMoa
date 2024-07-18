@@ -14,7 +14,6 @@ struct CustomHalfSheet<T: View>: ViewModifier {
     @ViewBuilder let sheetContent: T
     
     init(isPresented: Binding<Bool>, @ViewBuilder sheetContent: @escaping () -> T) {
-        print("customHalfSheet is Open")
         self._isPresented = isPresented
         self.sheetContent = sheetContent()
     }
@@ -30,6 +29,9 @@ struct CustomHalfSheet<T: View>: ViewModifier {
                                 .ignoresSafeArea()
                                 .transaction { transaction in
                                     transaction.disablesAnimations = true
+                                }
+                                .onTapGesture {
+                                    isPresented = false
                                 }
                         }
                             
@@ -72,9 +74,4 @@ struct CustomHalfSheet<T: View>: ViewModifier {
             }
         
     }
-}
-
-
-#Preview {
-    MemberFormView()
 }

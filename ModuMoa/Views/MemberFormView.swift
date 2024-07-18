@@ -10,15 +10,13 @@ import SwiftUI
 
 struct MemberFormView: View {
     
-    let member: Member
-
-    @State private var name: String = ""
-    @State private var sex: Sex?
-    @State private var birthDayToString: String?
-    @State private var birthDay: Date?
-    @State private var bloodType: BloodType
-    @State private var rh: BloodType.RhType?
-    @State private var abo: BloodType.AboType?
+    @Binding var name: String
+    @Binding var sex: Sex?
+    @State var birthDayToString: String?
+    @Binding var birthDay: Date?
+    @Binding var bloodType: BloodType
+    @Binding var rh: BloodType.RhType?
+    @Binding var abo: BloodType.AboType?
     
     @FocusState var isFocused: Bool
     @State private var focusState: MemberFormSection? {
@@ -33,21 +31,13 @@ struct MemberFormView: View {
     
     @State private var isPresented: Bool = false
     
-    init() {
-        self.member = .init(name: "", bloodType: .init(abo: .none, rh: .none), sex: .none, birthday: Date())
-        self.name = ""
-        self.sex = nil
-        self.birthDayToString = nil
-        self.birthDay = nil
-        self.bloodType = .init(abo: .none, rh: .none)
-    }
-    
-    init(_ member: Member) {
-        self.member = member
-        self.name = member.name
-        self.sex = member.sex
-        self.birthDay = member.birthday ?? Date()
-        self.bloodType = member.bloodType
+    init(name: Binding<String>, sex: Binding<Sex?>, birthDay: Binding<Date?>, bloodType: Binding<BloodType>, rh: Binding<BloodType.RhType?>, abo: Binding<BloodType.AboType?>) {
+        self._name = name
+        self._sex = sex
+        self._birthDay = birthDay
+        self._bloodType = bloodType
+        self._rh = rh
+        self._abo = abo
     }
     
     var body: some View {
@@ -71,7 +61,7 @@ struct MemberFormView: View {
             
             VStack(alignment: .leading, spacing: 32) {
                 VStack(alignment: .leading ,spacing: 10) {
-                    Text("성별\(MemberFormSection.sex.rawValue)")
+                    Text(MemberFormSection.sex.rawValue)
                         .font(.customFont(.callOut))
                         .foregroundStyle(.grayscale1)
                     ZStack(alignment: .bottomLeading) {
@@ -92,6 +82,9 @@ struct MemberFormView: View {
                         Rectangle()
                             .fill(focusState == .sex ? .moduBlack : .disableLine)
                             .frame(height: 2)
+                    }
+                    .background {
+                        Color.clear
                     }
                     .onTapGesture {
                         if isFocused {
@@ -193,6 +186,11 @@ struct MemberFormView: View {
                 }
             }
         }
+        .onAppear {
+            if let birthDay {
+                birthDayToString = birthDay.toString()
+            }
+        }
         .onTapGesture {
             if isFocused {
                 isFocused = false
@@ -231,12 +229,18 @@ struct MemberFormView: View {
                 self.bloodType.abo = newVal
             }
         }
+        .onChange(of: isPresented) { _, newValue in
+            if !newValue {
+                focusState = nil
+            }
+            
+        }
     }
 }
 
-#Preview {
-    MemberFormView()
-}
+//#Preview {
+//    MemberFormView()
+//}
 
 
 struct ClearBackgroundView: UIViewRepresentable {

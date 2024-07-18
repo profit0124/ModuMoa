@@ -24,6 +24,7 @@
 		314C447C2C4793050020FAA9 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314C447B2C4793050020FAA9 /* RoundedCorner.swift */; };
 		314C447E2C4793800020FAA9 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314C447D2C4793800020FAA9 /* View+.swift */; };
 		314C44802C49235A0020FAA9 /* MemberFormSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314C447F2C49235A0020FAA9 /* MemberFormSection.swift */; };
+		314C44822C494A980020FAA9 /* MemberUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314C44812C494A980020FAA9 /* MemberUpdateView.swift */; };
 		314FD6A42AE9542A0052251C /* RoundedRectangleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314FD6A32AE9542A0052251C /* RoundedRectangleButtonView.swift */; };
 		314FD6A62AE955CA0052251C /* InputNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314FD6A52AE955CA0052251C /* InputNameView.swift */; };
 		317002BA2AD58B6100D8991A /* CGFloat+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317002B92AD58B6100D8991A /* CGFloat+.swift */; };
@@ -77,6 +78,7 @@
 		314C447B2C4793050020FAA9 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		314C447D2C4793800020FAA9 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
 		314C447F2C49235A0020FAA9 /* MemberFormSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberFormSection.swift; sourceTree = "<group>"; };
+		314C44812C494A980020FAA9 /* MemberUpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberUpdateView.swift; sourceTree = "<group>"; };
 		314FD6A32AE9542A0052251C /* RoundedRectangleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleButtonView.swift; sourceTree = "<group>"; };
 		314FD6A52AE955CA0052251C /* InputNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputNameView.swift; sourceTree = "<group>"; };
 		317002B92AD58B6100D8991A /* CGFloat+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+.swift"; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 				31B388EC2AE3944D00DFE875 /* HierarchyCardView.swift */,
 				314C44702C44F3270020FAA9 /* MemberDetailView.swift */,
 				314C44762C47653F0020FAA9 /* MemberFormView.swift */,
+				314C44812C494A980020FAA9 /* MemberUpdateView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 				318521112AEEA30B000579CE /* MemberView.swift in Sources */,
 				3185211A2AEFD93B000579CE /* MemberRhTypeView.swift in Sources */,
 				A0F324D32ADA891700D64198 /* FamilyTree.swift in Sources */,
+				314C44822C494A980020FAA9 /* MemberUpdateView.swift in Sources */,
 				A0F324CF2ADA7EB500D64198 /* Member.swift in Sources */,
 				314C447C2C4793050020FAA9 /* RoundedCorner.swift in Sources */,
 				3109AB712B0E355A00540CAB /* InputBirthDay.swift in Sources */,
