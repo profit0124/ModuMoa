@@ -193,14 +193,15 @@ struct MemberView: View {
             .sheet(isPresented: viewStore.$isPresented, content: {
                 Group {
                     if viewStore.selectedSectionType == .sex {
-                        MemberSexView(title: viewStore.selectedSectionType?.rawValue ?? "", sex: viewStore.$sex, isPresented: viewStore.$isPresented)
+                        MemberSexView(title: viewStore.selectedSectionType?.rawValue ?? "", sex: viewStore.$sex, isPresented: viewStore.$isPresented) {}
                     } else if viewStore.selectedSectionType == .birthDay {
-                        MemberBirthdayView(birthday: viewStore.$birthDay, isPresented: viewStore.$isPresented)
+                        EmptyView()
+//                        MemberBirthdayView(birthday: viewStore.$birthDay, isPresented: viewStore.$isPresented)
                     } else if viewStore.selectedSectionType == .bloodType {
                         if viewStore.selectedBloodType == .rhType {
-                            MemberRhTypeView(rhType: viewStore.$rhType, isPresented: viewStore.$isPresented)
+                            MemberRhTypeView(rhType: viewStore.$rhType, isPresented: viewStore.$isPresented) {}
                         } else {
-                            MemberAboTypeView(aboType: viewStore.$aboType, isPresented: viewStore.$isPresented)
+                            MemberAboTypeView(aboType: viewStore.$aboType, isPresented: viewStore.$isPresented) {}
                         }
                     }
                 }

@@ -11,6 +11,7 @@ struct MemberSexView: View {
     var title: String = "성별을 선택해주세요"
     @Binding var sex: Sex?
     @Binding var isPresented: Bool
+    let completion: () -> Void
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -41,10 +42,8 @@ struct MemberSexView: View {
                             .fill(.disableLine)
                             .frame(height: 2)
                             .padding(.bottom, .betweenTextAndLine)
-                        
                     }
                 }
-                
             }
             
             Spacer()
@@ -56,16 +55,15 @@ struct MemberSexView: View {
                     .onTapGesture {
                         if sex != nil {
                             isPresented = false
+                            completion()
                         }
                     }
-            }
-            
-        }
-        
-        
+            }        }
     }
 }
 
 #Preview {
-    MemberSexView(sex: .constant(.male), isPresented: .constant(true))
+    MemberSexView(sex: .constant(.male), isPresented: .constant(true)) {
+        
+    }
 }

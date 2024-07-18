@@ -12,6 +12,7 @@ struct MemberAboTypeView: View {
     var title: String = "혈액형을 선택해주세요"
     @Binding var aboType: BloodType.AboType?
     @Binding var isPresented: Bool
+    let completion: () -> Void
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -53,11 +54,14 @@ struct MemberAboTypeView: View {
                 RoundedRectangleButtonView(title: "완료", isEnabled: true)
                     .onTapGesture {
                         isPresented = false
+                        completion()
                     }
             }
         }
     }
 }
 #Preview {
-    MemberAboTypeView(aboType: .constant(BloodType.AboType.AB), isPresented: .constant(false))
+    MemberAboTypeView(aboType: .constant(BloodType.AboType.AB), isPresented: .constant(false)) {
+        
+    }
 }
