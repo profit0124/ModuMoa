@@ -10,10 +10,17 @@ import SwiftUI
 struct MemberBirthdayView: View {
     
     var title: String = "생일을 설정해주세요"
-    @State private var tempBirthDay: Date = Date()
+    @State private var tempBirthDay: Date
     @Binding var birthday: Date?
     @Binding var isPresented: Bool
     let completion: () -> Void
+    
+    init(birthday: Binding<Date?>, isPresented: Binding<Bool>, completion: @escaping () -> Void) {
+        self.tempBirthDay = birthday.wrappedValue ?? Date()
+        self._birthday = birthday
+        self._isPresented = isPresented
+        self.completion = completion
+    }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -40,11 +47,5 @@ struct MemberBirthdayView: View {
                     completion()
                 }
         }
-    }
-}
-
-#Preview {
-    MemberBirthdayView(title: "생일을 설정해주세요", birthday: .constant(Date()), isPresented: .constant(true)) {
-        
     }
 }

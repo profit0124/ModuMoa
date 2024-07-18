@@ -76,9 +76,17 @@ struct MemberDetailView: View {
                     }
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal, 22)
+                .padding(.horizontal, 16)
                 
                 Spacer()
+            }
+            .fullScreenCover(isPresented: viewStore.$isPresented, content: {
+                IfLetStore(self.store.scope(state: \.memberUpdate, action: MemberDetail.Action.memberUpdate), then: {
+                    MemberUpdateView(member, with: $0)
+                })
+            })
+            .transaction { transaction in
+                transaction.disablesAnimations = true
             }
             .toolbar {
                 ToolbarItem(placement: .bottomBar, content: {

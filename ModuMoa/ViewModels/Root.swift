@@ -91,6 +91,10 @@ struct Root: Reducer {
                 state.memberDetail = nil
                 return .none
                 
+            case .memberDetail(.memberUpdate(.saveButtonTapped(let member))):
+                state.baseNode?.member = member
+                return .none
+                
             default:
                 return .none
                 
