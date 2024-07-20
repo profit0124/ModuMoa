@@ -12,7 +12,8 @@ import ComposableArchitecture
 struct ModuMoaApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MemberAddView(from: .init(member: .init(name: "adsf", bloodType: .init(abo: .A, rh: .negative), sex: .female)), addCase: .leftParent)
+//            ContentView()
         }
     }
 }
