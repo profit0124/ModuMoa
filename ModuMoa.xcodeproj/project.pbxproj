@@ -26,6 +26,7 @@
 		314C44802C49235A0020FAA9 /* MemberFormSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314C447F2C49235A0020FAA9 /* MemberFormSection.swift */; };
 		314C44822C494A980020FAA9 /* MemberUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314C44812C494A980020FAA9 /* MemberUpdateView.swift */; };
 		314C44842C4953CE0020FAA9 /* MemberUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314C44832C4953CE0020FAA9 /* MemberUpdate.swift */; };
+		314C44862C4BBF8D0020FAA9 /* KindOfAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314C44852C4BBF8D0020FAA9 /* KindOfAdd.swift */; };
 		314FD6A42AE9542A0052251C /* RoundedRectangleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314FD6A32AE9542A0052251C /* RoundedRectangleButtonView.swift */; };
 		314FD6A62AE955CA0052251C /* InputNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314FD6A52AE955CA0052251C /* InputNameView.swift */; };
 		317002BA2AD58B6100D8991A /* CGFloat+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317002B92AD58B6100D8991A /* CGFloat+.swift */; };
@@ -81,6 +82,7 @@
 		314C447F2C49235A0020FAA9 /* MemberFormSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberFormSection.swift; sourceTree = "<group>"; };
 		314C44812C494A980020FAA9 /* MemberUpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberUpdateView.swift; sourceTree = "<group>"; };
 		314C44832C4953CE0020FAA9 /* MemberUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberUpdate.swift; sourceTree = "<group>"; };
+		314C44852C4BBF8D0020FAA9 /* KindOfAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KindOfAdd.swift; sourceTree = "<group>"; };
 		314FD6A32AE9542A0052251C /* RoundedRectangleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleButtonView.swift; sourceTree = "<group>"; };
 		314FD6A52AE955CA0052251C /* InputNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputNameView.swift; sourceTree = "<group>"; };
 		317002B92AD58B6100D8991A /* CGFloat+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+.swift"; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 				A0F324D22ADA891700D64198 /* FamilyTree.swift */,
 				A06C1ABE2AF4BF9A001C8B4D /* RelationshipInfoType.swift */,
 				314C447F2C49235A0020FAA9 /* MemberFormSection.swift */,
+				314C44852C4BBF8D0020FAA9 /* KindOfAdd.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				3109AB742B0E380600540CAB /* SelectBloodType.swift in Sources */,
 				31C020CD2B050A9D0031A312 /* InputName.swift in Sources */,
 				314C447E2C4793800020FAA9 /* View+.swift in Sources */,
+				314C44862C4BBF8D0020FAA9 /* KindOfAdd.swift in Sources */,
 				318521162AEFD91F000579CE /* MemberSexView.swift in Sources */,
 				314C44802C49235A0020FAA9 /* MemberFormSection.swift in Sources */,
 				31B388EF2AE3D3EB00DFE875 /* CGSize+.swift in Sources */,
