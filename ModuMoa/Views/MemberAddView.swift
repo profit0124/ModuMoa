@@ -6,12 +6,11 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct MemberAddView: View {
-    
-//    let from: Node
-    let from: Node
-    let addCase: KindOfAdd
+
+    let store: StoreOf<MemberAdd>
     
     @State private var name: String = .init()
     @State private var sex: Sex?
@@ -21,38 +20,44 @@ struct MemberAddView: View {
     @State private var abo: BloodType.AboType?
     
     var body: some View {
-        VStack(spacing: .betweenElements) {
-            HStack {
-                Button(action: {}) {
-                    HStack {
-                        Image(systemName: "chevron.left")
-                        Text("뒤로가기")
+        WithViewStore(self.store, observe: { $0 }) { viewStore in
+            VStack(spacing: .betweenElements) {
+                HStack {
+                    Button(action: {
+                        viewStore.send(.backbuttonTapped)
+                    }) {
+                        HStack {
+                            Image(systemName: "chevron.left")
+                            Text("뒤로가기")
+                        }
+                        .font(.customFont(.callOut))
+                        .foregroundStyle(.moduBlack)
                     }
-                    .font(.customFont(.callOut))
-                    .foregroundStyle(.moduBlack)
+                    Spacer()
                 }
+                
+                MemberFormView(name: $name, sex: $sex, birthDay: $birthDay, bloodType: $bloodType, rh: $rh, abo: $abo)
+                
                 Spacer()
-            }
-            
-            MemberFormView(name: $name, sex: $sex, birthDay: $birthDay, bloodType: $bloodType, rh: $rh, abo: $abo)
-                .overlay(alignment: .bottom) {
-                    
+                
+                Button(action:{
+                    if let sex {
+                        let node = Node(member: .init(name: name, bloodType: bloodType, sex: sex, birthday: birthDay))
+                        viewStore.send(.savebuttonTapped(node))
+                    }
+                }) {
+                    RoundedRectangleButtonView(title: "완료")
                 }
-            
-            Spacer()
-            
-            Button(action:{}) {
-                RoundedRectangleButtonView(title: "완료")
+                .disabled(name.isEmpty || sex == nil)
+                
             }
-            .disabled(name.isEmpty || sex == nil)
-            
+            .padding(.horizontal, .betweenTextAndLine)
+            .ignoresSafeArea(.keyboard)
         }
-        .padding(.horizontal, .betweenTextAndLine)
-        .ignoresSafeArea(.keyboard)
         
     }
 }
 
 #Preview {
-    MemberAddView(from: .init(member: .init(name: "adsf", bloodType: .init(abo: .A, rh: .negative), sex: .female)), addCase: .leftParent)
+    MemberAddView(store: .init(initialState: MemberAdd.State(), reducer: { MemberAdd() }))
 }
