@@ -23,7 +23,10 @@ struct HierarchyCard: Reducer {
         let id: String
         var node: Node
         @BindingState var isPresented: Bool = false
+        @BindingState var isPushed: Bool = false
         var children: IdentifiedArrayOf<State> = []
+        var addCase: KindOfAdd?
+        var memberAdd: MemberAdd.State?
         
         init(id: String, node: Node, isPresented: Bool) {
             self.id = id
@@ -40,6 +43,10 @@ struct HierarchyCard: Reducer {
         case viewOnAppear
         case binding(BindingAction<State>)
         case selectNode(Node)
+        case addButtonTapped
+        case addMember
+        case addCase(KindOfAdd?)
+        case memberAdd(MemberAdd.Action)
         indirect case children(id: State.ID, action: Action)
     }
     
@@ -61,12 +68,55 @@ struct HierarchyCard: Reducer {
                     return .none
                 }
                 
+            case .addButtonTapped:
+                state.isPresented = true
+                return .none
+                
+            case .addMember:
+                if let addCase = state.addCase {
+                    state.isPresented = false
+                    state.memberAdd = .init(addCase: addCase)
+                    state.isPushed = true
+                }
+                return .none
+                
+            case .addCase(let addCase):
+                state.addCase = addCase
+                return .none
+                
+            case .memberAdd(let memberAddAction):
+                switch memberAddAction {
+                case .backbuttonTapped:
+                    state.isPushed = false
+                    state.memberAdd = nil
+                    return .none
+                    
+                case .savebuttonTapped(let node):
+                    switch state.addCase {
+                    case .leftParent:
+                        state.node.leftParent = node
+                        
+                    case .rightParent:
+                        state.node.rightParent = node
+                        
+                    default:
+                        state.node.children.append(node)
+                        state.children.append(State(id: node.id.uuidString, node: node, isPresented: false))
+                    }
+                    state.isPushed = false
+                    state.memberAdd = nil
+                    return .send(.addCase(nil))
+                }
+                
             default:
                 return .none
             }
         }
         .forEach(\.children, action: /Action.children(id:action:)){
             HierarchyCard()
+        }
+        .ifLet(\.memberAdd, action: /Action.memberAdd) {
+            MemberAdd()
         }
     }
 }

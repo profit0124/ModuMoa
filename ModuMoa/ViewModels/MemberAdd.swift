@@ -11,10 +11,10 @@ import ComposableArchitecture
 
 struct MemberAdd: Reducer {
     struct State: Equatable {
-        
+        let addCase: KindOfAdd
     }
     
-    enum Action {
+    enum Action: Equatable {
         case backbuttonTapped
         case savebuttonTapped(Node)
     }

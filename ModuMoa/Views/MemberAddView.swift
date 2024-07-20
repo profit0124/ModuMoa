@@ -53,11 +53,23 @@ struct MemberAddView: View {
             }
             .padding(.horizontal, .betweenTextAndLine)
             .ignoresSafeArea(.keyboard)
+            .onAppear {
+                switch viewStore.addCase {
+                case .son, .leftParent:
+                    self.sex = .male
+                    
+                case .daughter, .rightParent:
+                    self.sex = .female
+                }
+            }
         }
+        .navigationBarBackButtonHidden()
+        
+        
         
     }
 }
 
 #Preview {
-    MemberAddView(store: .init(initialState: MemberAdd.State(), reducer: { MemberAdd() }))
+    MemberAddView(store: .init(initialState: MemberAdd.State(addCase: .daughter), reducer: { MemberAdd() }))
 }
