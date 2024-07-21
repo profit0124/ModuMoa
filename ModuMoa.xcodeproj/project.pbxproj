@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3104A06B2C4D085300DD8020 /* PreferKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3104A06A2C4D085300DD8020 /* PreferKey.swift */; };
+		3104A06D2C4D086A00DD8020 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3104A06C2C4D086A00DD8020 /* Line.swift */; };
 		3109AB6F2B0E303000540CAB /* SelectGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109AB6E2B0E303000540CAB /* SelectGender.swift */; };
 		3109AB712B0E355A00540CAB /* InputBirthDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109AB702B0E355A00540CAB /* InputBirthDay.swift */; };
 		3109AB742B0E380600540CAB /* SelectBloodType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109AB732B0E380600540CAB /* SelectBloodType.swift */; };
@@ -65,6 +67,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3104A06A2C4D085300DD8020 /* PreferKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferKey.swift; sourceTree = "<group>"; };
+		3104A06C2C4D086A00DD8020 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		3109AB6E2B0E303000540CAB /* SelectGender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGender.swift; sourceTree = "<group>"; };
 		3109AB702B0E355A00540CAB /* InputBirthDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputBirthDay.swift; sourceTree = "<group>"; };
 		3109AB732B0E380600540CAB /* SelectBloodType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBloodType.swift; sourceTree = "<group>"; };
@@ -135,6 +139,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3104A0692C4D081800DD8020 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				314C447D2C4793800020FAA9 /* View+.swift */,
+				317002B92AD58B6100D8991A /* CGFloat+.swift */,
+				31B388EE2AE3D3EB00DFE875 /* CGSize+.swift */,
+				318457372AE94315007C2045 /* Font+.swift */,
+				311A3EF92AED2EE60082D247 /* Date+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		3109AB722B0E37EB00540CAB /* AddMyInformation */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,22 +167,13 @@
 		314C44782C47903D0020FAA9 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				3104A0692C4D081800DD8020 /* Extensions */,
 				314C44792C4790E40020FAA9 /* CustomHalfSheet.swift */,
 				314C447B2C4793050020FAA9 /* RoundedCorner.swift */,
-				314C447D2C4793800020FAA9 /* View+.swift */,
+				3104A06A2C4D085300DD8020 /* PreferKey.swift */,
+				3104A06C2C4D086A00DD8020 /* Line.swift */,
 			);
 			path = Helpers;
-			sourceTree = "<group>";
-		};
-		317002B82AD58B5800D8991A /* SharedUtils */ = {
-			isa = PBXGroup;
-			children = (
-				317002B92AD58B6100D8991A /* CGFloat+.swift */,
-				31B388EE2AE3D3EB00DFE875 /* CGSize+.swift */,
-				318457372AE94315007C2045 /* Font+.swift */,
-				311A3EF92AED2EE60082D247 /* Date+.swift */,
-			);
-			path = SharedUtils;
 			sourceTree = "<group>";
 		};
 		318457332AE94183007C2045 /* AddMyInformationViews */ = {
@@ -256,7 +263,6 @@
 				A0F324CD2ADA7E7800D64198 /* Models */,
 				31E1A3A22AFF51620065D499 /* ViewModels */,
 				31B388E92AE38E4200DFE875 /* Views */,
-				317002B82AD58B5800D8991A /* SharedUtils */,
 				31A78CA72AD42EE400BE629A /* ModuMoaApp.swift */,
 				31A78CA92AD42EE400BE629A /* ContentView.swift */,
 				31A78CAB2AD42EE600BE629A /* Assets.xcassets */,
@@ -426,6 +432,7 @@
 				311521BB2B0F8FE600B683B7 /* Root.swift in Sources */,
 				31A13AD72C4BC77600F08578 /* MemberAdd.swift in Sources */,
 				318521182AEFD92C000579CE /* MemberBirthdayView.swift in Sources */,
+				3104A06D2C4D086A00DD8020 /* Line.swift in Sources */,
 				314C44772C47653F0020FAA9 /* MemberFormView.swift in Sources */,
 				314C44732C450B5F0020FAA9 /* MemberDetail.swift in Sources */,
 				3109AB6F2B0E303000540CAB /* SelectGender.swift in Sources */,
@@ -443,6 +450,7 @@
 				318457362AE941B3007C2045 /* IntroView.swift in Sources */,
 				A06C1ABF2AF4BF9A001C8B4D /* RelationshipInfoType.swift in Sources */,
 				318521142AEFD911000579CE /* MemberNameView.swift in Sources */,
+				3104A06B2C4D085300DD8020 /* PreferKey.swift in Sources */,
 				3185210E2AEE76D7000579CE /* TextSectionSubView.swift in Sources */,
 				A0F324D12ADA826200D64198 /* Node.swift in Sources */,
 			);
