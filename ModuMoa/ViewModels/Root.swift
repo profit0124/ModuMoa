@@ -19,22 +19,14 @@ struct Root: Reducer {
         var baseNode: Node?
         var addMyInformation: AddMyInformation.State?
         var mainViewCase: MainViewCase = .addMyInformation
-        var memberDetail: MemberDetail.State?
-        var selectedNode: Node?
-        @BindingState var isPresented: Bool = false
     }
     
-    enum Action: Equatable, BindableAction {
+    enum Action: Equatable {
         case setMainViewCase(MainViewCase)
         case addMyInformation(AddMyInformation.Action)
-        case updateMember
-        case setSelectedNode(Node)
-        case memberDetail(MemberDetail.Action)
-        case binding(BindingAction<State>)
     }
     
     var body: some ReducerOf<Self> {
-        BindingReducer()
         Reduce { state, action in
             switch action {
             case .setMainViewCase(let value):
@@ -48,21 +40,6 @@ struct Root: Reducer {
                 state.mainViewCase = .main
                 return .none
                 
-            case .setSelectedNode(let node):
-                state.selectedNode = node
-                state.memberDetail = .init(node: node)
-                state.isPresented = true
-                return .none
-                
-            case .memberDetail(.backbuttonTapped):
-                state.isPresented = false
-                state.memberDetail = nil
-                return .none
-                
-            case .memberDetail(.memberUpdate(.saveButtonTapped(let member))):
-                
-                return .none
-                
             default:
                 return .none
                 
@@ -70,9 +47,6 @@ struct Root: Reducer {
         }
         .ifLet(\.addMyInformation, action: /Action.addMyInformation) {
             AddMyInformation()
-        }
-        .ifLet(\.memberDetail, action: /Action.memberDetail) {
-            MemberDetail()
         }
     }
     

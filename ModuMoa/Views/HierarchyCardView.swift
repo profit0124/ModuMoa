@@ -19,7 +19,6 @@ struct HierarchyCardView: View {
     @State private var fromMe: Bool = true
     
     let afterAddAction: (Node) -> Void
-    let selectNode: (Node) -> Void
     
     typealias Key = PreferKey<Member.ID, Anchor<CGPoint>>
 
@@ -54,8 +53,6 @@ struct HierarchyCardView: View {
                         addNode.partner = node
                         addNode.children = node.children
                         node.partner = addNode
-                    } selectNode: { selectedNode in
-                        selectNode(selectedNode)
                     }
                 }
             }
@@ -134,6 +131,9 @@ struct HierarchyCardView: View {
                 self.addNode(addNode)
             }
         }
+        .navigationDestination(isPresented: $detailNodeViewisPushed, destination: {
+            MemberDetailView(isPushed: $detailNodeViewisPushed, node: $node, fromMe: $fromMe)
+        })
     }
     
     private func middleOfPoints(_ lhs: CGPoint, _ rhs: CGPoint) -> CGPoint {
@@ -147,7 +147,13 @@ struct HierarchyCardView: View {
         VStack {
             CardView(member: node.member, store: StoreOf<Card>(initialState: Card.State(member: node.member)) { Card() })
                 .onTapGesture {
-                    selectNode(node)
+                    if node == self.node {
+                        fromMe = true
+                        detailNodeViewisPushed = true
+                    } else {
+                        fromMe = false
+                        detailNodeViewisPushed = true
+                    }
                 }
             Button(action: {
                 completion()

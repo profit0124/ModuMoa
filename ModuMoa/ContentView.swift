@@ -35,31 +35,28 @@ struct ContentView: View {
                             if let baseNode {
                                 HierarchyCardView(node: .constant(baseNode)) {
                                     self.baseNode = $0
-                                } selectNode: { selectedNode in
-                                    print("select node")
-                                    viewStore.send(.setSelectedNode(selectedNode))
                                 }
-                                    .scaleEffect(currentZoom + totalZoom)
-                                    .offset(draggedOffset)
-                                    .gesture(drag)
-                                    .gesture(
-                                        MagnifyGesture()
-                                            .onChanged { value in
-                                                currentZoom = value.magnification - 1
-                                            }
-                                            .onEnded { value in
-                                                totalZoom += currentZoom
-                                                currentZoom = 0
-                                            }
-                                        
-                                    )
-                                    .accessibilityZoomAction { action in
-                                        if action.direction == .zoomIn {
-                                            totalZoom += 1
-                                        } else {
-                                            totalZoom -= 1
+                                .scaleEffect(currentZoom + totalZoom)
+                                .offset(draggedOffset)
+                                .gesture(drag)
+                                .gesture(
+                                    MagnifyGesture()
+                                        .onChanged { value in
+                                            currentZoom = value.magnification - 1
                                         }
+                                        .onEnded { value in
+                                            totalZoom += currentZoom
+                                            currentZoom = 0
+                                        }
+                                    
+                                )
+                                .accessibilityZoomAction { action in
+                                    if action.direction == .zoomIn {
+                                        totalZoom += 1
+                                    } else {
+                                        totalZoom -= 1
                                     }
+                                }
                             }
                         }
                         .onAppear {
@@ -72,11 +69,6 @@ struct ContentView: View {
                         })
                     }
                 }
-                .navigationDestination(isPresented: viewStore.$isPresented, destination: {
-                    IfLetStore(self.store.scope(state: \.memberDetail, action: Root.Action.memberDetail)) {
-                        MemberDetailView(store: $0)
-                    }
-                })
             }
         }
         
