@@ -25,7 +25,7 @@ struct HierarchyCard: Reducer {
         @BindingState var isPresented: Bool = false
         @BindingState var isPushed: Bool = false
         var children: IdentifiedArrayOf<State> = []
-        var addCase: KindOfAdd?
+        var addCase: CaseOfAdd?
         var memberAdd: MemberAdd.State?
         
         init(id: String, node: Node) {
@@ -45,7 +45,7 @@ struct HierarchyCard: Reducer {
         case selectNode(Node)
         case addButtonTapped
         case addMember
-        case addCase(KindOfAdd?)
+        case addCase(CaseOfAdd?)
         case changeBaseNode(Node)
         case addParentPartner(Node)
         case memberAdd(MemberAdd.Action)
@@ -124,6 +124,11 @@ struct HierarchyCard: Reducer {
                             state.node.rightParent = node
                             return .send(.changeBaseNode(node))
                         }
+                        
+                    case .partner:
+                        node.partner = state.node
+                        node.children = state.node.children
+                        state.node.partner = node
                         
                     default:
                         state.node.children.append(node)

@@ -80,34 +80,33 @@ struct HierarchyCardView: View {
                 }
             }
             .customHalfSheet(viewStore.$isPresented) {
-                VStack(alignment: .leading, spacing: 44) {
-                    Text("추가하고 싶은 관계를 선택하세요")
-                        .font(.customFont(.headline))
-                        .foregroundStyle(.moduBlack)
-                    
-                    VStack(spacing: 16) {
-                        ForEach(KindOfAdd.allCases, id: \.self) { addCase in
-                            Button(action: {
-                                viewStore.send(.addCase(addCase))
-                            }) {
-                                VStack(spacing: 16) {
-                                    HStack {
-                                        Text(addCase.rawValue)
-                                        Spacer()
-                                        if viewStore.addCase == addCase {
-                                            Image(systemName: "checkmark")
+                VStack(spacing: 0) {
+                    VStack(alignment: .leading, spacing: 44) {
+                        Text("추가하고 싶은 관계를 선택하세요")
+                            .font(.customFont(.headline))
+                            .foregroundStyle(.moduBlack)
+                        
+                        VStack(spacing: 16) {
+                            ForEach(CaseOfAdd.allCases, id: \.self) { addCase in
+                                Button(action: {
+                                    viewStore.send(.addCase(addCase))
+                                }) {
+                                    VStack(spacing: 16) {
+                                        HStack {
+                                            Text(addCase.rawValue)
+                                            Spacer()
+                                            if viewStore.addCase == addCase {
+                                                Image(systemName: "checkmark")
+                                            }
                                         }
+                                        .font(.customFont(.body))
+                                        .foregroundStyle(.moduBlack)
+                                        
+                                        Divider()
+                                            .foregroundStyle(.disableLine)
                                     }
-                                    .font(.customFont(.body))
-                                    .foregroundStyle(.moduBlack)
-                                    
-                                    Divider()
-                                        .foregroundStyle(.disableLine)
                                 }
-                                
-                                
                             }
-                            
                         }
                     }
                     
@@ -119,8 +118,8 @@ struct HierarchyCardView: View {
                         RoundedRectangleButtonView(title: "다음")
                     }
                     .disabled(viewStore.addCase == nil)
-                    
                 }
+                
             }
             .navigationDestination(isPresented: viewStore.$isPushed) {
                 IfLetStore(self.store.scope(state: \.memberAdd, action: HierarchyCard.Action.memberAdd)) {

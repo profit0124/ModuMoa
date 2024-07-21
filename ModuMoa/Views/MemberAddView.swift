@@ -60,6 +60,10 @@ struct MemberAddView: View {
                     
                 case .daughter, .rightParent:
                     self.sex = .female
+                    
+                case .partner:
+                    self.sex = nil
+                    
                 }
             }
         }

@@ -11,7 +11,7 @@ import ComposableArchitecture
 
 struct MemberAdd: Reducer {
     struct State: Equatable {
-        let addCase: KindOfAdd
+        let addCase: CaseOfAdd
     }
     
     enum Action: Equatable {
