@@ -21,8 +21,8 @@ struct HierarchyCardView: View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
             VStack(spacing: 80) {
                 HStack(spacing: 20) {
-                    cardViewWithButton(viewStore.node, viewStore: viewStore) { member in
-                        print("add my parents or children")
+                    cardViewWithButton(viewStore.node, viewStore: viewStore) {
+                        viewStore.send(.addButtonTapped)
                     }
                         .frame(width: 250)
                         .anchorPreference(key: Key.self, value: .center, transform: { anchor in
@@ -30,7 +30,7 @@ struct HierarchyCardView: View {
                         })
                     
                     if let partner = viewStore.node.partner {
-                        cardViewWithButton(partner, viewStore: viewStore) { _ in
+                        cardViewWithButton(partner, viewStore: viewStore) { 
                             print("add partner's parents or children")
                         }
                             .frame(width: 250)
@@ -79,6 +79,53 @@ struct HierarchyCardView: View {
                     }
                 }
             }
+            .customHalfSheet(viewStore.$isPresented) {
+                VStack(spacing: 0) {
+                    VStack(alignment: .leading, spacing: 44) {
+                        Text("추가하고 싶은 관계를 선택하세요")
+                            .font(.customFont(.headline))
+                            .foregroundStyle(.moduBlack)
+                        
+                        VStack(spacing: 16) {
+                            ForEach(CaseOfAdd.allCases, id: \.self) { addCase in
+                                Button(action: {
+                                    viewStore.send(.addCase(addCase))
+                                }) {
+                                    VStack(spacing: 16) {
+                                        HStack {
+                                            Text(addCase.rawValue)
+                                            Spacer()
+                                            if viewStore.addCase == addCase {
+                                                Image(systemName: "checkmark")
+                                            }
+                                        }
+                                        .font(.customFont(.body))
+                                        .foregroundStyle(.moduBlack)
+                                        
+                                        Divider()
+                                            .foregroundStyle(.disableLine)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        viewStore.send(.addMember)
+                    }) {
+                        RoundedRectangleButtonView(title: "다음")
+                    }
+                    .disabled(viewStore.addCase == nil)
+                }
+                
+            }
+            .navigationDestination(isPresented: viewStore.$isPushed) {
+                IfLetStore(self.store.scope(state: \.memberAdd, action: HierarchyCard.Action.memberAdd)) {
+                    MemberAddView(store: $0)
+                }
+            }
         }
     }
     
@@ -89,15 +136,15 @@ struct HierarchyCardView: View {
     }
     
     @ViewBuilder
-    private func cardViewWithButton(_ node: Node, viewStore: ViewStoreOf<HierarchyCard>, completion: @escaping (Member) -> Void) -> some View {
+    private func cardViewWithButton(_ node: Node, viewStore: ViewStoreOf<HierarchyCard>, completion: @escaping () -> Void) -> some View {
         VStack {
             CardView(member: node.member, store: StoreOf<Card>(initialState: Card.State(member: node.member)) { Card() })
                 .onTapGesture {
                     viewStore.send(.selectNode(node))
                 }
             Button(action: {
-                let member = Member(name: "Children", bloodType: .init(abo: .A, rh: .negative), sex: .female, birthday: Date())
-                completion(member)
+//                let member = Member(name: "Children", bloodType: .init(abo: .A, rh: .negative), sex: .female, birthday: Date())
+                completion()
             }, label: {
                 Image(systemName: "plus")
                     .foregroundStyle(.white)

@@ -51,10 +51,8 @@ struct Root: Reducer {
                 guard let member = state.addMyInformation?.me else { return .none }
                 let node = Node(member: member)
                 state.baseNode = Node(member: member)
-                state.hierarchyCard = HierarchyCard.State(id: node.id.uuidString, node: node, isPresented: false)
+                state.hierarchyCard = HierarchyCard.State(id: node.id.uuidString, node: node)
                 state.mainViewCase = .main
-//                state.addMyInformation = nil
-                
                 return .none
                 
             case .setSelectedMember(let member):
@@ -81,7 +79,6 @@ struct Root: Reducer {
                 return .none
                 
             case .hierarchyCard(.selectNode(let node)):
-                print("true")
                 state.memberDetail = .init(node: node)
                 state.isPresented = true
                 return .none
