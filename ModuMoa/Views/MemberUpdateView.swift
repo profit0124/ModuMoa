@@ -6,13 +6,13 @@
 //
 
 import SwiftUI
-import ComposableArchitecture
+//import ComposableArchitecture
 
 struct MemberUpdateView: View {
     
-    let store: StoreOf<MemberUpdate>
-    
-    @State private var member: Member
+    @Binding var node: Node
+    @Binding var fromMe: Bool
+    @Binding var isPresented: Bool
     
     @State private var name: String
     @State private var sex: Sex?
@@ -21,69 +21,94 @@ struct MemberUpdateView: View {
     @State private var rh: BloodType.RhType?
     @State private var abo: BloodType.AboType?
     
-    init(_ member: Member, with store: StoreOf<MemberUpdate>) {
-        self.member = member
-        self.name = member.name
-        self.sex = member.sex
-        self.birthDay = member.birthday
-        self.bloodType = member.bloodType
-        self.store = store
+    init(node: Binding<Node>, fromMe: Binding<Bool>, isPresented: Binding<Bool>) {
+        self._node = node
+        self._fromMe = fromMe
+        self._isPresented = isPresented
+        
+        self.name = fromMe.wrappedValue ? node.wrappedValue.member.name : node.wrappedValue.partner!.member.name
+        self.sex = fromMe.wrappedValue ? node.wrappedValue.member.sex : node.wrappedValue.partner!.member.sex
+        self.birthDay = fromMe.wrappedValue ? node.wrappedValue.member.birthday : node.wrappedValue.partner!.member.birthday
+        self.bloodType = fromMe.wrappedValue ? node.wrappedValue.member.bloodType : node.wrappedValue.partner!.member.bloodType
     }
     
     var body: some View {
-        WithViewStore(self.store, observe: { $0 }) { viewStore in
-            VStack(spacing: 22) {
-                // MARK: Navigation Bar
-                HStack {
-                    Button(action: {
-                        viewStore.send(.closeButtonTapped)
-                    }) {
-                        Text("닫기")
-                    }
-                    .font(.customFont(.callOut))
-                    .foregroundColor(.moduBlack)
-                    Spacer()
-                    
-                    Button(action: {
-                        member.name = name
-                        member.sex = sex ?? .none
-                        member.bloodType = bloodType
-                        member.birthday = birthDay
-                        viewStore.send(.saveButtonTapped(member))
-                    }) {
-                        Text("저장")
-                    }
-                    .font(.customFont(.callOut))
-                    .foregroundColor(isEnabled() ? .moduBlack : .disableText)
-                    .disabled(!isEnabled())
+        VStack(spacing: 22) {
+            // MARK: Navigation Bar
+            HStack {
+                Button(action: {
+                    isPresented = false
+                }) {
+                    Text("닫기")
                 }
+                .font(.customFont(.callOut))
+                .foregroundColor(.moduBlack)
+                Spacer()
                 
-                MemberFormView(name: $name, sex: $sex, birthDay: $birthDay, bloodType: $bloodType, rh: $rh, abo: $abo)
+                Button(action: {
+                    if fromMe {
+                        node.member.name = name
+                        if let sex {
+                            node.member.sex = sex
+                        }
+                        node.member.bloodType = bloodType
+                        node.member.birthday = birthDay
+                    } else {
+                        node.partner?.member.name = name
+                        if let sex {
+                            node.partner?.member.sex = sex
+                        }
+                        node.partner?.member.bloodType = bloodType
+                        node.partner?.member.birthday = birthDay
+                    }
+                    isPresented = false
+                }) {
+                    Text("저장")
+                }
+                .font(.customFont(.callOut))
+                .foregroundColor(isEnabled() ? .moduBlack : .disableText)
+                .disabled(!isEnabled())
             }
-            .padding(.horizontal, 16)
-            .onAppear {
-                self.rh = bloodType.rh
-                self.abo = bloodType.abo
-            }
+            
+            MemberFormView(name: $name, sex: $sex, birthDay: $birthDay, bloodType: $bloodType, rh: $rh, abo: $abo)
         }
-        
+        .padding(.horizontal, 16)
+        .onAppear {
+            self.rh = bloodType.rh
+            self.abo = bloodType.abo
+        }
     }
     
     private func isEnabled() -> Bool {
         if name.isEmpty || sex == nil || rh == nil || abo == nil {
             return false
         }
-        if member.name != name {
-            return true
-        }
-        if member.sex != sex {
-            return true
-        }
-        if member.birthday != birthDay {
-            return true
-        }
-        if member.bloodType != bloodType {
-            return true
+        if fromMe {
+            if node.member.name != name {
+                return true
+            }
+            if node.member.sex != sex {
+                return true
+            }
+            if node.member.birthday != birthDay {
+                return true
+            }
+            if node.member.bloodType != bloodType {
+                return true
+            }
+        } else {
+            if node.partner?.member.name != name {
+                return true
+            }
+            if node.partner?.member.sex != sex {
+                return true
+            }
+            if node.partner?.member.birthday != birthDay {
+                return true
+            }
+            if node.partner?.member.bloodType != bloodType {
+                return true
+            }
         }
         return false
     }
