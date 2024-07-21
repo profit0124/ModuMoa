@@ -9,18 +9,21 @@ import SwiftUI
 import ComposableArchitecture
 
 struct ContentView: View {
-    
-//    @State private var rootNode: Node?
+
     let store: StoreOf<Root> = .init(initialState: Root.State(addMyInformation: AddMyInformation.State()), reducer: {
         Root()
     })
-    
+    @State private var baseNode: Node?
     @State private var draggedOffset = CGSize.zero
     @State private var accumulatedOffset = CGSize.zero
     @State private var currentZoom = 0.0
     @State private var totalZoom = 1.0
 
     @State private var isMainViewOpen: Bool = true
+    
+    init(baseNode: Node? = nil) {
+        self.baseNode = baseNode
+    }
     
     var body: some View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
@@ -29,8 +32,13 @@ struct ContentView: View {
                     switch viewStore.mainViewCase {
                     case .main:
                         ZStack {
-                            IfLetStore(self.store.scope(state: \.hierarchyCard, action: Root.Action.hierarchyCard), then: {
-                                HierarchyCardView(store: $0)
+                            if let baseNode {
+                                HierarchyCardView(node: .constant(baseNode)) {
+                                    self.baseNode = $0
+                                } selectNode: { selectedNode in
+                                    print("select node")
+                                    viewStore.send(.setSelectedNode(selectedNode))
+                                }
                                     .scaleEffect(currentZoom + totalZoom)
                                     .offset(draggedOffset)
                                     .gesture(drag)
@@ -52,12 +60,11 @@ struct ContentView: View {
                                             totalZoom -= 1
                                         }
                                     }
-                            })
+                            }
                         }
-                    case .detail:
-                        IfLetStore(self.store.scope(state: \.memberReducer, action: Root.Action.memberReducer), then: {
-                            MemberView(store: $0)
-                        })
+                        .onAppear {
+                            self.baseNode = viewStore.baseNode
+                        }
                         
                     case .addMyInformation:
                         IfLetStore(self.store.scope(state: \.addMyInformation, action: Root.Action.addMyInformation), then: {

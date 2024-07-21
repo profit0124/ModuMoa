@@ -10,121 +10,128 @@ import ComposableArchitecture
 
 struct HierarchyCardView: View {
     
-    let store: StoreOf<HierarchyCard>
-    @State var me: Member.ID?
-    @State var partner: Member.ID?
-    @State var childrens: [Member.ID]?
+    @Binding var node: Node
+    @State private var isPresented: Bool = false
+    @State private var selectedAddCase: CaseOfAdd?
+    @State private var addNodeViewisPushed: Bool = false
+    @State private var detailNodeViewisPushed: Bool = false
+    // 추가 Sheet 가 내 카드에서 + 인지, 아님 파트너의 + 인지 구별하기 위함
+    @State private var fromMe: Bool = true
+    
+    let afterAddAction: (Node) -> Void
+    let selectNode: (Node) -> Void
     
     typealias Key = PreferKey<Member.ID, Anchor<CGPoint>>
 
     var body: some View {
-        WithViewStore(self.store, observe: { $0 }) { viewStore in
-            VStack(spacing: 80) {
-                HStack(spacing: 20) {
-                    cardViewWithButton(viewStore.node, viewStore: viewStore) {
-                        viewStore.send(.addButtonTapped)
-                    }
-                        .frame(width: 250)
-                        .anchorPreference(key: Key.self, value: .center, transform: { anchor in
-                            return [viewStore.node.member.id:anchor]
-                        })
-                    
-                    if let partner = viewStore.node.partner {
-                        cardViewWithButton(partner, viewStore: viewStore) { 
-                            print("add partner's parents or children")
-                        }
-                            .frame(width: 250)
-                            .anchorPreference(key: Key.self, value: .center, transform: { anchor in
-                                return [partner.id:anchor]
-                            })
-                        
-                    }
+        VStack(spacing: 80) {
+            HStack(spacing: 20) {
+                cardViewWithButton(node) {
+                    fromMe = true
+                    isPresented = true
                 }
+                .frame(width: 250)
+                .anchorPreference(key: Key.self, value: .center, transform: { anchor in
+                    return [node.id:anchor]
+                })
                 
-                HStack(alignment: .top, spacing: 80) {
-                    ForEachStore(self.store.scope(state: \.children, action: HierarchyCard.Action.children(id: action:)), content: {
-                        HierarchyCardView(store: $0)
+                if let partner = node.partner {
+                    cardViewWithButton(partner) {
+                        fromMe = false
+                        isPresented = true
+                    }
+                    .frame(width: 250)
+                    .anchorPreference(key: Key.self, value: .center, transform: { anchor in
+                        return [partner.id:anchor]
                     })
+                    
                 }
             }
-            .onAppear {
-                self.me = viewStore.node.member.id
-                viewStore.send(.viewOnAppear)
-            }
-            .onChange(of: viewStore.node.partner, {
-                self.partner = viewStore.node.partner?.id
-            })
-            .onChange(of: viewStore.children, {
-                self.childrens = viewStore.children.map { $0.node.member.id }
-            })
-            .frame(alignment: .top)
-            .backgroundPreferenceValue(Key.self) { value in
-                GeometryReader { proxy in
-                    if let me, let myValue = value[me] {
-                        if let myPoint: CGPoint = proxy[myValue] as? CGPoint {
-                            if let partner = partner, let partnerValue = value[partner], let endPoint: CGPoint =  proxy[partnerValue] as? CGPoint {
-                                Line(startPoint: myPoint, endPoint: endPoint)
-                                    .stroke(lineWidth: 2)
-                                    .fill(.moduBlack)
-                            }
-                            let middleOfParents = partner == nil ? myPoint : self.middleOfPoints(myPoint, proxy[value[partner!] ?? myValue])
-                            if let childrens {
-                                ForEach(childrens, id: \.self) { children in
-                                    Line(startPoint: middleOfParents, endPoint: proxy[value[children]!])
-                                        .stroke(lineWidth: 2)
-                                        .fill(.moduBlack)
-                                }
-                            }
-                        }
+            
+            HStack(alignment: .top, spacing: 80) {
+                ForEach($node.children, id: \.id) { $children in
+                    HierarchyCardView(node: $children) { addNode in
+                        addNode.partner = node
+                        addNode.children = node.children
+                        node.partner = addNode
+                    } selectNode: { selectedNode in
+                        selectNode(selectedNode)
                     }
                 }
             }
-            .customHalfSheet(viewStore.$isPresented) {
-                VStack(spacing: 0) {
-                    VStack(alignment: .leading, spacing: 44) {
-                        Text("추가하고 싶은 관계를 선택하세요")
-                            .font(.customFont(.headline))
-                            .foregroundStyle(.moduBlack)
+        }
+        .frame(alignment: .top)
+        .backgroundPreferenceValue(Key.self) { value in
+            GeometryReader { proxy in
+                if let myValue = value[self.node.id] {
+                    let myPoint: CGPoint = proxy[myValue]
+                    if let partner = self.node.partner, let partnerValue = value[partner.id] {
+                        let endPoint: CGPoint =  proxy[partnerValue]
+                        Line(startPoint: myPoint, endPoint: endPoint)
+                            .stroke(lineWidth: 2)
+                            .fill(.moduBlack)
+                    }
+                    let middleOfParents = node.partner == nil ? myPoint : self.middleOfPoints(myPoint, proxy[value[self.node.partner!.id] ?? myValue])
+                    ForEach(node.children, id: \.self) { children in
+                        let endPoint = value[children.id] == nil ? middleOfParents : proxy[value[children.id]!]
+                        Line(startPoint: middleOfParents, endPoint: endPoint)
+                            .stroke(lineWidth: 2)
+                            .fill(.moduBlack)
                         
-                        VStack(spacing: 16) {
-                            ForEach(CaseOfAdd.allCases, id: \.self) { addCase in
-                                Button(action: {
-                                    viewStore.send(.addCase(addCase))
-                                }) {
-                                    VStack(spacing: 16) {
-                                        HStack {
-                                            Text(addCase.rawValue)
-                                            Spacer()
-                                            if viewStore.addCase == addCase {
-                                                Image(systemName: "checkmark")
-                                            }
+                    }
+                }
+            }
+        }
+        .customHalfSheet($isPresented) {
+            VStack(spacing: 0) {
+                VStack(alignment: .leading, spacing: 44) {
+                    Text("추가하고 싶은 관계를 선택하세요")
+                        .font(.customFont(.headline))
+                        .foregroundStyle(.moduBlack)
+                    
+                    VStack(spacing: 16) {
+                        ForEach(CaseOfAdd.allCases, id: \.self) { addCase in
+                            let isEnabled = addCase.canAddMember(node)
+                            Button(action: {
+                                self.selectedAddCase = addCase
+                            }) {
+                                VStack(spacing: 16) {
+                                    HStack {
+                                        Text(addCase.rawValue)
+                                        Spacer()
+                                        if selectedAddCase == addCase {
+                                            Image(systemName: "checkmark")
                                         }
-                                        .font(.customFont(.body))
-                                        .foregroundStyle(.moduBlack)
-                                        
-                                        Divider()
-                                            .foregroundStyle(.disableLine)
+                                        if !isEnabled {
+                                            Text("이미 추가 됨")
+                                        }
                                     }
+                                    .font(.customFont(.body))
+                                    .foregroundStyle(isEnabled ? .moduBlack : .disableText)
+                                    
+                                    Divider()
+                                        .foregroundStyle(.disableLine)
                                 }
                             }
+                            .disabled(!isEnabled)
                         }
                     }
-                    
-                    Spacer()
-                    
-                    Button(action: {
-                        viewStore.send(.addMember)
-                    }) {
-                        RoundedRectangleButtonView(title: "다음")
-                    }
-                    .disabled(viewStore.addCase == nil)
                 }
                 
-            }
-            .navigationDestination(isPresented: viewStore.$isPushed) {
-                IfLetStore(self.store.scope(state: \.memberAdd, action: HierarchyCard.Action.memberAdd)) {
-                    MemberAddView(store: $0)
+                Spacer()
+                
+                Button(action: {
+                    self.isPresented = false
+                    self.addNodeViewisPushed = true
+                }) {
+                    RoundedRectangleButtonView(title: "다음")
                 }
+            }
+            
+        }
+        .navigationDestination(isPresented: $addNodeViewisPushed) {
+            MemberAddView(isPushed: $addNodeViewisPushed) { addNode in
+                self.addNode(addNode)
             }
         }
     }
@@ -136,14 +143,13 @@ struct HierarchyCardView: View {
     }
     
     @ViewBuilder
-    private func cardViewWithButton(_ node: Node, viewStore: ViewStoreOf<HierarchyCard>, completion: @escaping () -> Void) -> some View {
+    private func cardViewWithButton(_ node: Node, completion: @escaping () -> Void) -> some View {
         VStack {
             CardView(member: node.member, store: StoreOf<Card>(initialState: Card.State(member: node.member)) { Card() })
                 .onTapGesture {
-                    viewStore.send(.selectNode(node))
+                    selectNode(node)
                 }
             Button(action: {
-//                let member = Member(name: "Children", bloodType: .init(abo: .A, rh: .negative), sex: .female, birthday: Date())
                 completion()
             }, label: {
                 Image(systemName: "plus")
@@ -155,6 +161,36 @@ struct HierarchyCardView: View {
                     }
             })
         }
+    }
+    
+    private func addNode(_ addNode: Node) {
+        switch selectedAddCase {
+        case .leftParent:
+            addNode.children.append(self.node)
+            node.leftParent = addNode
+            if fromMe {
+                afterAddAction(addNode)
+            }
+        case .rightParent:
+            addNode.children.append(self.node)
+            node.rightParent = addNode
+            if fromMe {
+                afterAddAction(addNode)
+            }
+        case .partner:
+            addNode.partner = node
+            addNode.children = node.children
+            node.partner = addNode
+        case .son:
+            addNode.leftParent = node
+            node.children.append(addNode)
+        case .daughter:
+            addNode.leftParent = node
+            node.children.append(addNode)
+        case nil:
+            break
+        }
+        selectedAddCase = nil
     }
 }
 
