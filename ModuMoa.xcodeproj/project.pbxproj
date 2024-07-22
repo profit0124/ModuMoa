@@ -49,7 +49,6 @@
 		31B388EF2AE3D3EB00DFE875 /* CGSize+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B388EE2AE3D3EB00DFE875 /* CGSize+.swift */; };
 		31CD06902AE55883009D5383 /* AddMyInformationContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CD068F2AE55883009D5383 /* AddMyInformationContainerView.swift */; };
 		31E1A3A12AFF51500065D499 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 31E1A3A02AFF51500065D499 /* ComposableArchitecture */; };
-		31E1A3A42AFF51780065D499 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E1A3A32AFF51780065D499 /* Card.swift */; };
 		A06C1ABF2AF4BF9A001C8B4D /* RelationshipInfoType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06C1ABE2AF4BF9A001C8B4D /* RelationshipInfoType.swift */; };
 		A0F324CF2ADA7EB500D64198 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F324CE2ADA7EB500D64198 /* Member.swift */; };
 		A0F324D12ADA826200D64198 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F324D02ADA826200D64198 /* Node.swift */; };
@@ -100,7 +99,6 @@
 		31B388EC2AE3944D00DFE875 /* HierarchyCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyCardView.swift; sourceTree = "<group>"; };
 		31B388EE2AE3D3EB00DFE875 /* CGSize+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+.swift"; sourceTree = "<group>"; };
 		31CD068F2AE55883009D5383 /* AddMyInformationContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMyInformationContainerView.swift; sourceTree = "<group>"; };
-		31E1A3A32AFF51780065D499 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		A06C1ABE2AF4BF9A001C8B4D /* RelationshipInfoType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipInfoType.swift; sourceTree = "<group>"; };
 		A0F324CE2ADA7EB500D64198 /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 		A0F324D02ADA826200D64198 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
@@ -263,7 +261,6 @@
 		31E1A3A22AFF51620065D499 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				31E1A3A32AFF51780065D499 /* Card.swift */,
 				310E889B2C4E78E800D5CB36 /* AddMyInformationViewModel.swift */,
 				310E88A02C4E83B500D5CB36 /* RootViewModel.swift */,
 			);
@@ -394,7 +391,6 @@
 				311A3EF62AED21F70082D247 /* SelectGenderView.swift in Sources */,
 				310E889F2C4E7B6600D5CB36 /* CaseOfAddMyInformationView.swift in Sources */,
 				317002BA2AD58B6100D8991A /* CGFloat+.swift in Sources */,
-				31E1A3A42AFF51780065D499 /* Card.swift in Sources */,
 				31A78CA82AD42EE400BE629A /* ModuMoaApp.swift in Sources */,
 				311A3EFA2AED2EE60082D247 /* Date+.swift in Sources */,
 				314FD6A62AE955CA0052251C /* InputNameView.swift in Sources */,

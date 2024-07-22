@@ -12,7 +12,7 @@ struct ContentView: View {
     @State private var draggedOffset = CGSize.zero
     @State private var accumulatedOffset = CGSize.zero
     @State private var currentZoom = 0.0
-    @State private var totalZoom = 1.0
+    @State private var totalZoom = 0.7
 
     @State private var viewModel = RootViewModel()
     

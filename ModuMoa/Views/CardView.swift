@@ -11,58 +11,49 @@ import ComposableArchitecture
 
 struct CardView: View {
     
-    @State var member: Member
-    @State var title: String = "어머니"
-    @State var birthDay: String = "1964.05.27"
-    @State var koreanAge: Int = 58
-    @State var internationalAge: Int = 57
-    
-    let store: StoreOf<Card>
-    
+    let member: Member
     
     var body: some View {
-        WithViewStore(self.store, observe: { $0 }) { viewStore in
-            VStack(alignment: .leading, spacing: 0) {
-                HStack {
-                    Text(viewStore.member.name)
-                        .font(.system(size: 16, weight: .semibold))
-                    Spacer()
-                    Text(viewStore.member.nickName)
-                        .foregroundStyle(.moduYellow)
-                        .padding(.betweenHeadlineAndTitle2)
-                        .background {
-                            Capsule()
-                                .fill(.moduBlack)
-                        }
-                }
-                .padding(.bottom, .betweenHeadlineAndTitle2)
-                
-                HStack {
-                    Text(viewStore.member.birthday?.toString() ?? Date().toString())
-                        .font(.footnote)
-                    Text("\(viewStore.member.age())")
-                        .font(.footnote)
-                }
-                
-                Text("\(viewStore.member.bloodType.rh.rawValue) \(viewStore.member.bloodType.abo.rawValue)")
+        VStack(alignment: .leading, spacing: 0) {
+            HStack {
+                Text(member.name)
+                    .font(.system(size: 16, weight: .semibold))
+                Spacer()
+                Text(member.nickName)
+                    .foregroundStyle(.moduYellow)
+                    .padding(.betweenHeadlineAndTitle2)
+                    .background {
+                        Capsule()
+                            .fill(.moduBlack)
+                    }
+            }
+            .padding(.bottom, .betweenHeadlineAndTitle2)
+            
+            HStack {
+                Text(member.birthday?.toString() ?? "모름")
+                    .font(.footnote)
+                Text("\(member.age())")
                     .font(.footnote)
             }
-            .padding(.betweenElements)
-            .background {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 16)
-                        .fill(.white)
-                    RoundedRectangle(cornerRadius: 16)
-                        .stroke(lineWidth: 4)
-                        .foregroundStyle(.moduBlack)
-                }
+            
+            Text("\(member.bloodType.rh.rawValue) \(member.bloodType.abo.rawValue)")
+                .font(.footnote)
+        }
+        .padding(.betweenElements)
+        .background {
+            ZStack {
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(.white)
+                RoundedRectangle(cornerRadius: 16)
+                    .stroke(lineWidth: 4)
+                    .foregroundStyle(.moduBlack)
             }
         }
+        
         
     }
 }
 
 #Preview {
-    CardView(member: Member(name: "Kim", bloodType: .init(abo: .A, rh: .negative), sex: .female, birthday: Date()),
-             store: StoreOf<Card>(initialState: Card.State(member: Member(name: "Kim", bloodType: .init(abo: .A, rh: .negative), sex: .female, birthday: Date()))) { Card() })
+    CardView(member: Member(name: "Kim", bloodType: .init(abo: .A, rh: .negative), sex: .female, birthday: Date()))
 }
