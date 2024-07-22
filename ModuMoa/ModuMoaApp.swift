@@ -26,5 +26,6 @@ struct ModuMoaApp: App {
             ContentView()
         }
         .modelContainer(sharedModelContainer)
+        
     }
 }

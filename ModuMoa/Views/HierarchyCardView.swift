@@ -25,24 +25,18 @@ struct HierarchyCardView: View {
     var body: some View {
         VStack(spacing: 80) {
             HStack(spacing: 20) {
-                cardViewWithButton(node) {
-                    fromMe = true
-                    isPresented = true
-                }
-                .frame(width: 250)
-                .anchorPreference(key: Key.self, value: .center, transform: { anchor in
-                    return [node.id:anchor]
-                })
-                
-                if let partner = node.partner {
-                    cardViewWithButton(partner) {
-                        fromMe = false
-                        isPresented = true
-                    }
+                cardViewWithButton(node)
                     .frame(width: 250)
                     .anchorPreference(key: Key.self, value: .center, transform: { anchor in
-                        return [partner.id:anchor]
+                        return [node.id:anchor]
                     })
+                
+                if let partner = node.partner {
+                    cardViewWithButton(partner)
+                        .frame(width: 250)
+                        .anchorPreference(key: Key.self, value: .center, transform: { anchor in
+                            return [partner.id:anchor]
+                        })
                     
                 }
             }
@@ -145,20 +139,16 @@ struct HierarchyCardView: View {
     }
     
     @ViewBuilder
-    private func cardViewWithButton(_ node: Node, completion: @escaping () -> Void) -> some View {
+    private func cardViewWithButton(_ node: Node) -> some View {
         VStack {
-            CardView(member: node.member, store: StoreOf<Card>(initialState: Card.State(member: node.member)) { Card() })
+            CardView(member: node.member)
                 .onTapGesture {
-                    if node == self.node {
-                        fromMe = true
-                        detailNodeViewisPushed = true
-                    } else {
-                        fromMe = false
-                        detailNodeViewisPushed = true
-                    }
+                    fromMe = node == self.node
+                    detailNodeViewisPushed = true
                 }
             Button(action: {
-                completion()
+                self.fromMe = self.node == node
+                isPresented = true
             }, label: {
                 Image(systemName: "plus")
                     .foregroundStyle(.white)

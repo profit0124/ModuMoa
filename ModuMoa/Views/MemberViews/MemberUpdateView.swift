@@ -25,11 +25,18 @@ struct MemberUpdateView: View {
         self._node = node
         self._fromMe = fromMe
         self._isPresented = isPresented
-        
-        self.name = fromMe.wrappedValue ? node.wrappedValue.member.name : node.wrappedValue.partner!.member.name
-        self.sex = fromMe.wrappedValue ? node.wrappedValue.member.sex : node.wrappedValue.partner!.member.sex
-        self.birthDay = fromMe.wrappedValue ? node.wrappedValue.member.birthday : node.wrappedValue.partner!.member.birthday
-        self.bloodType = fromMe.wrappedValue ? node.wrappedValue.member.bloodType : node.wrappedValue.partner!.member.bloodType
+        let wrappedValue = node.wrappedValue
+        if fromMe.wrappedValue {
+            self.name = wrappedValue.member.name
+            self.sex = wrappedValue.member.sex
+            self.birthDay = wrappedValue.member.birthday
+            self.bloodType = wrappedValue.member.bloodType
+        } else {
+            self.name = wrappedValue.partner!.member.name
+            self.sex = wrappedValue.partner!.member.sex
+            self.birthDay = wrappedValue.partner!.member.birthday
+            self.bloodType = wrappedValue.partner!.member.bloodType
+        }
     }
     
     var body: some View {

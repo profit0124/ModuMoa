@@ -6,57 +6,57 @@
 //
 
 import SwiftUI
-import ComposableArchitecture
 
 struct InputBirthdayView: View {
-    let store: StoreOf<InputBirthDay>
+    @Binding var viewModel: AddMyInformationViewModel
     
     var body: some View {
-        WithViewStore(self.store, observe: { $0 }) { viewStore in
-            VStack(alignment: .leading, spacing: 0) {
-                Image(systemName: "chevron.left")
-                    .resizable()
-                    .font(.customFont(.headline))
-                
-                    .frame(width: 10, height: 20)
-                    .onTapGesture {
-                        viewStore.send(.previousIndex)
+        VStack(alignment: .leading, spacing: 0) {
+            Image(systemName: "chevron.left")
+                .resizable()
+                .font(.customFont(.headline))
+            
+                .frame(width: 10, height: 20)
+                .onTapGesture {
+                    if viewModel.caseOfAddMyInfromationView == .birthday {
+                        viewModel.previousButtonTapped()
                     }
-                    .padding(.leading, 8)
-                VStack(alignment: .leading, spacing: 0) {
-                    Text("생일을 선택해주세요")
-                        .font(.customFont(.largeTitle).bold())
-                        .padding(.top, .betweenElements)
-                        .padding(.bottom, .betweenTitleAndContent)
-                    
-                    DatePicker("", selection: viewStore.$date, displayedComponents: .date)
-                        .datePickerStyle(.wheel)
-                        .labelsHidden()
-                        .environment(\.locale, Locale.init(identifier: "ko-kr"))
-                        .frame(maxWidth: .infinity)
-                        .padding(.bottom, .betweenElements)
-                    
-                    Text(viewStore.date.toString())
-                        .font(.customFont(.callOut))
-                        .foregroundStyle(.disableText)
-                        .padding(.bottom, .betweenSelectPoint)
-                    
-                    makeSection("성별", viewStore.sex.rawValue)
-                        .padding(.bottom, .betweenElements)
-                    
-                    makeSection("이름", viewStore.name)
-                    
-                    Spacer()
-                
-                    RoundedRectangleButtonView(title: "다음")
-                        .onTapGesture {
-                            viewStore.send(.nextIndex)
-                        }
                 }
-                .padding(.horizontal, 20)
+                .padding(.leading, 8)
+            VStack(alignment: .leading, spacing: 0) {
+                Text("생일을 선택해주세요")
+                    .font(.customFont(.largeTitle).bold())
+                    .padding(.top, .betweenElements)
+                    .padding(.bottom, .betweenTitleAndContent)
+                
+                DatePicker("", selection: $viewModel.birthDay, displayedComponents: .date)
+                    .datePickerStyle(.wheel)
+                    .labelsHidden()
+                    .environment(\.locale, Locale.init(identifier: "ko-kr"))
+                    .frame(maxWidth: .infinity)
+                    .padding(.bottom, .betweenElements)
+                
+                Text(viewModel.birthDay.toString())
+                    .font(.customFont(.callOut))
+                    .foregroundStyle(.disableText)
+                    .padding(.bottom, .betweenSelectPoint)
+                
+                makeSection("성별", viewModel.sex?.rawValue ?? "모름")
+                    .padding(.bottom, .betweenElements)
+                
+                makeSection("이름", viewModel.name)
+                
+                Spacer()
+            
+                RoundedRectangleButtonView(title: "다음")
+                    .onTapGesture {
+                        if viewModel.caseOfAddMyInfromationView == .birthday {
+                            viewModel.nextButtonTapped()
+                        }
+                    }
             }
+            .padding(.horizontal, 20)
         }
-        
     }
     
     @ViewBuilder

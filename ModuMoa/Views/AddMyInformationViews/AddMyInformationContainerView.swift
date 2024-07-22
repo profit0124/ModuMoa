@@ -7,7 +7,6 @@
 
 import SwiftUI
 import Combine
-import ComposableArchitecture
 
 struct AddMyInformationContainerView: View {
     
@@ -20,43 +19,24 @@ struct AddMyInformationContainerView: View {
 //    @State var birthday: Date = Date()
 //    @State var bloodType: BloodType?
     
-    let store: StoreOf<AddMyInformation>
+//    let store: StoreOf<AddMyInformation>
+    @State private var viewModel: AddMyInformationViewModel = AddMyInformationViewModel()
     
     var body: some View {
-        WithViewStore(self.store, observe: { $0 }) { viewStore in
-            Group {
-                switch viewStore.index {
-                case 0:
-                    IntroView(store: self.store.scope(state: \.intro, action: AddMyInformation.Action.intro))
-                    
-                case 1:
-                    InputNameView(store: self.store.scope(state: \.inputName, action: AddMyInformation.Action.inputName))
-                    
-                case 2:
-                    IfLetStore(self.store.scope(state: \.selectGender, action: AddMyInformation.Action.selectGender), then: {
-                        SelectGenderView(store: $0)
-                    })
-
-                case 3:
-                    IfLetStore(self.store.scope(state: \.inputBirthDay, action: AddMyInformation.Action.inputBirthDay), then: {
-                        InputBirthdayView(store: $0)
-                    })
-                    
-                case 4:
-                    IfLetStore(self.store.scope(state: \.selectBloodType, action: AddMyInformation.Action.selectBloodType), then: {
-                        SelectBloodTypeView(store: $0)
-                    })
-                    
-                default:
-                    Color.black
-                        .transition(AnyTransition.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
-                }
-            }
-            .onAppear{
+        Group {
+            switch viewModel.caseOfAddMyInfromationView {
+            case .intro:
+                IntroView(viewModel: $viewModel)
+            case .name:
+                InputNameView(viewModel: $viewModel)
+            case .sex:
+                SelectGenderView(viewModel: $viewModel)
+            case .birthday:
+                InputBirthdayView(viewModel: $viewModel)
+            case .bloodType:
+                SelectBloodTypeView(viewModel: $viewModel)
             }
         }
-        
-        
     }
     
     @ViewBuilder
