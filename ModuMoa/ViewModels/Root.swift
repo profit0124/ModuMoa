@@ -16,17 +16,20 @@ enum MainViewCase: Equatable {
 struct Root: Reducer {
     struct State: Equatable {
         var id: UUID = UUID()
-        var baseNode: Node?
+        @BindingState var baseNode: Node?
         var addMyInformation: AddMyInformation.State?
         var mainViewCase: MainViewCase = .addMyInformation
     }
     
-    enum Action: Equatable {
+    enum Action: Equatable, BindableAction {
         case setMainViewCase(MainViewCase)
         case addMyInformation(AddMyInformation.Action)
+        case setBaseNode(Node?)
+        case binding(BindingAction<State>)
     }
     
     var body: some ReducerOf<Self> {
+        BindingReducer()
         Reduce { state, action in
             switch action {
             case .setMainViewCase(let value):
@@ -36,8 +39,12 @@ struct Root: Reducer {
             case .addMyInformation(.complete):
                 guard let member = state.addMyInformation?.me else { return .none }
                 let node = Node(member: member)
-                state.baseNode = Node(member: member)
+                state.baseNode = node
                 state.mainViewCase = .main
+                return .none
+                
+            case .setBaseNode(let node):
+                state.baseNode = node
                 return .none
                 
             default:

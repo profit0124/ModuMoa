@@ -32,9 +32,11 @@ struct ContentView: View {
                     switch viewStore.mainViewCase {
                     case .main:
                         ZStack {
-                            if let baseNode {
-                                HierarchyCardView(node: .constant(baseNode)) {
-                                    self.baseNode = $0
+                            if let baseNode = Binding($baseNode) {
+                                HierarchyCardView(node: baseNode) {
+                                    viewStore.send(.setBaseNode($0))
+//                                    self.baseNode = $0
+                                    
                                 }
                                 .scaleEffect(currentZoom + totalZoom)
                                 .offset(draggedOffset)

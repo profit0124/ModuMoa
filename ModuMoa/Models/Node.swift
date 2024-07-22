@@ -13,8 +13,8 @@ class Node: Equatable, Identifiable {
     }
     
     let id: UUID = UUID()
-    let level: Int
-    let distance: Int
+    var level: Int
+    var distance: Int
     var leftParent: Node?
     var rightParent: Node?
     var partner: Node?

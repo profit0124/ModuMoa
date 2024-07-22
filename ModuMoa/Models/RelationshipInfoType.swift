@@ -16,7 +16,7 @@ enum RelationshipInfoType: RelationshipNickNameProvider {
     /// case naming -> level + distance + sex
     case twoFourMale, twoFourFemale, twoTwoMale, twoTwoFemale
     case oneFiveMale, oneFiveFemale, oneThreeMale, oneThreeFemale, oneOneMale, oneOneFemale
-    case zeroSixMale, zeroSixFemale, zeroFourMale, zeroFourFemale, zeroTwoMale, zeroTwoFemale
+    case zeroSixMale, zeroSixFemale, zeroFourMale, zeroFourFemale, zeroTwoMale, zeroTwoFemale, zeroZeroMale, zeroZeroFemale
     case mOneSevenMale, mOneSevenFemale, mOneFiveMale, mOneFiveFemale
     case mOneThreeMale, mOneThreeFemale, mOneOneMale, mOneOneFemale
     case mTwoEightMale, mTwoEightFemale, mTwoSixMale, mTwoSixFemale
@@ -51,43 +51,51 @@ enum RelationshipInfoType: RelationshipNickNameProvider {
         case (5, .male): return .oneFiveMale
         case (5, .female): return .oneFiveFemale
         case (3, .male): return .oneThreeMale
-        case (3, .female): return .oneThreeMale
+        case (3, .female): return .oneThreeFemale
         case (1, .male): return .oneOneMale
-        case (1, .female): return .oneOneMale
+        case (1, .female): return .oneOneFemale
         default: return .unknown
         }
     }
     
     static private func level0Branch(distance: Int, sex: Sex) -> RelationshipInfoType {
         switch (distance, sex) {
+        case (0, .male): return .zeroZeroMale
+        case (0, .female): return .zeroZeroFemale
+        case (2, .male): return .zeroTwoMale
+        case (2, .female): return .zeroTwoFemale
+        case (4, .male): return .zeroFourMale
+        case (4, .female): return .zeroFourFemale
+        case (6, .male): return .zeroSixMale
+        case (6, .female): return .zeroSixFemale
         default: return .unknown
         }
     }
     
     static private func levelM1Branch(distance: Int, sex: Sex) -> RelationshipInfoType {
         switch (distance, sex) {
-        case (7, .male): return .mTwoEightMale
-        case (7, .female): return .mTwoEightFemale
-        case (5, .male): return .mTwoSixMale
-        case (5, .female): return .mTwoSixFemale
-        case (3, .male): return .mTwoFourMale
-        case (3, .female): return .mTwoFourFemale
-        case (1, .male): return .mTwoTwoMale
-        case (1, .female): return .mTwoTwoFemale
+        case (7, .male): return .mOneSevenMale
+        case (7, .female): return .mOneSevenFemale
+        case (5, .male): return .mOneFiveMale
+        case (5, .female): return .mOneFiveFemale
+        case (3, .male): return .mOneThreeMale
+        case (3, .female): return .mOneThreeFemale
+        case (1, .male): return .mOneOneMale
+        case (1, .female): return .mOneOneFemale
         default: return .unknown
         }
     }
     
     static private func levelM2Branch(distance: Int, sex: Sex) -> RelationshipInfoType {
         switch (distance, sex) {
-        case (8, .male): return .mOneSevenMale
-        case (8, .female): return .mOneSevenFemale
-        case (6, .male): return .mOneFiveMale
-        case (6, .female): return .mOneFiveFemale
-        case (4, .male): return .mOneThreeMale
-        case (4, .female): return .mOneThreeMale
-        case (2, .male): return .mOneOneMale
-        case (2, .female): return .mOneOneMale
+        case (8, .male): return .mTwoEightMale
+        case (8, .female): return .mTwoEightFemale
+        case (6, .male): return .mTwoSixMale
+        case (6, .female): return .mTwoSixFemale
+        case (4, .male): return .mTwoFourMale
+        case (4, .female): return .mTwoFourFemale
+        case (2, .male): return .mTwoTwoMale
+        case (2, .female): return .mTwoTwoFemale
         default: return .unknown
         }
     }
@@ -110,6 +118,8 @@ enum RelationshipInfoType: RelationshipNickNameProvider {
         case .zeroFourFemale: return "사촌"
         case .zeroTwoMale: return "형제"
         case .zeroTwoFemale: return "자매"
+        case .zeroZeroMale: return "남편"
+        case .zeroZeroFemale: return "아내"
         case .mOneSevenMale: return "재종질"
         case .mOneSevenFemale: return "내재종질"
         case .mOneFiveMale: return "사촌조카"
