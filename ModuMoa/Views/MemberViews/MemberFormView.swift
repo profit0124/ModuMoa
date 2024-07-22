@@ -187,9 +187,7 @@ struct MemberFormView: View {
             }
         }
         .onAppear {
-            if let birthDay {
-                birthDayToString = birthDay.toString()
-            }
+            birthDayToString = birthDay?.toString()
         }
         .onTapGesture {
             if isFocused {

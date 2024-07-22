@@ -54,7 +54,7 @@ struct MemberDetailView: View {
                 VStack(alignment: .leading, spacing: 32) {
                     customLabel("성별", member.sex.rawValue)
                     
-                    customLabel("생일", member.birthday?.toString() ?? Date().toString())
+                    customLabel("생일", member.birthday?.toString() ?? "모름")
                     
                     VStack(alignment: .leading, spacing: 10) {
                         Text("혈액형")
@@ -101,7 +101,6 @@ struct MemberDetailView: View {
             })
         }
         .navigationBarBackButtonHidden()
-        
     }
     
     @ViewBuilder func customLabel(_ title: String, _ value: String) -> some View {

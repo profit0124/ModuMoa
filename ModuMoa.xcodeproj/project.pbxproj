@@ -9,25 +9,21 @@
 /* Begin PBXBuildFile section */
 		3104A06B2C4D085300DD8020 /* PreferKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3104A06A2C4D085300DD8020 /* PreferKey.swift */; };
 		3104A06D2C4D086A00DD8020 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3104A06C2C4D086A00DD8020 /* Line.swift */; };
-		3109AB6F2B0E303000540CAB /* SelectGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109AB6E2B0E303000540CAB /* SelectGender.swift */; };
-		3109AB712B0E355A00540CAB /* InputBirthDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109AB702B0E355A00540CAB /* InputBirthDay.swift */; };
-		3109AB742B0E380600540CAB /* SelectBloodType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109AB732B0E380600540CAB /* SelectBloodType.swift */; };
 		310E889A2C4E23CF00D5CB36 /* DatabaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310E88992C4E23CF00D5CB36 /* DatabaseModel.swift */; };
-		311521BB2B0F8FE600B683B7 /* Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311521BA2B0F8FE600B683B7 /* Root.swift */; };
+		310E889C2C4E78E800D5CB36 /* AddMyInformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310E889B2C4E78E800D5CB36 /* AddMyInformationViewModel.swift */; };
+		310E889F2C4E7B6600D5CB36 /* CaseOfAddMyInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310E889E2C4E7B6600D5CB36 /* CaseOfAddMyInformationView.swift */; };
+		310E88A12C4E83B500D5CB36 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310E88A02C4E83B500D5CB36 /* RootViewModel.swift */; };
 		311A3EF62AED21F70082D247 /* SelectGenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311A3EF52AED21F70082D247 /* SelectGenderView.swift */; };
 		311A3EF82AED2AEF0082D247 /* InputBirthdayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311A3EF72AED2AEF0082D247 /* InputBirthdayView.swift */; };
 		311A3EFA2AED2EE60082D247 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311A3EF92AED2EE60082D247 /* Date+.swift */; };
 		311A3EFC2AEE44800082D247 /* SelectBloodTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311A3EFB2AEE44800082D247 /* SelectBloodTypeView.swift */; };
-		314626672B1DF320007AFD0D /* MemberReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314626662B1DF31F007AFD0D /* MemberReducer.swift */; };
 		314C44712C44F3270020FAA9 /* MemberDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314C44702C44F3270020FAA9 /* MemberDetailView.swift */; };
-		314C44732C450B5F0020FAA9 /* MemberDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314C44722C450B5F0020FAA9 /* MemberDetail.swift */; };
 		314C44772C47653F0020FAA9 /* MemberFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314C44762C47653F0020FAA9 /* MemberFormView.swift */; };
 		314C447A2C4790E40020FAA9 /* CustomHalfSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314C44792C4790E40020FAA9 /* CustomHalfSheet.swift */; };
 		314C447C2C4793050020FAA9 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314C447B2C4793050020FAA9 /* RoundedCorner.swift */; };
 		314C447E2C4793800020FAA9 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314C447D2C4793800020FAA9 /* View+.swift */; };
 		314C44802C49235A0020FAA9 /* MemberFormSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314C447F2C49235A0020FAA9 /* MemberFormSection.swift */; };
 		314C44822C494A980020FAA9 /* MemberUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314C44812C494A980020FAA9 /* MemberUpdateView.swift */; };
-		314C44842C4953CE0020FAA9 /* MemberUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314C44832C4953CE0020FAA9 /* MemberUpdate.swift */; };
 		314C44862C4BBF8D0020FAA9 /* CaseOfAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314C44852C4BBF8D0020FAA9 /* CaseOfAdd.swift */; };
 		314C44882C4BC0B10020FAA9 /* MemberAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314C44872C4BC0B10020FAA9 /* MemberAddView.swift */; };
 		314FD6A42AE9542A0052251C /* RoundedRectangleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314FD6A32AE9542A0052251C /* RoundedRectangleButtonView.swift */; };
@@ -39,8 +35,6 @@
 		3184573D2AE946D1007C2045 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3184573C2AE946D1007C2045 /* SF-Pro-Text-Regular.otf */; };
 		3184573F2AE946DE007C2045 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3184573E2AE946DE007C2045 /* SF-Pro-Text-Semibold.otf */; };
 		318457412AE946ED007C2045 /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 318457402AE946ED007C2045 /* SF-Pro-Text-Medium.otf */; };
-		3185210E2AEE76D7000579CE /* TextSectionSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185210D2AEE76D7000579CE /* TextSectionSubView.swift */; };
-		318521112AEEA30B000579CE /* MemberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318521102AEEA30B000579CE /* MemberView.swift */; };
 		318521142AEFD911000579CE /* MemberNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318521132AEFD911000579CE /* MemberNameView.swift */; };
 		318521162AEFD91F000579CE /* MemberSexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318521152AEFD91F000579CE /* MemberSexView.swift */; };
 		318521182AEFD92C000579CE /* MemberBirthdayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318521172AEFD92C000579CE /* MemberBirthdayView.swift */; };
@@ -53,9 +47,6 @@
 		31B388EB2AE38E5000DFE875 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B388EA2AE38E5000DFE875 /* CardView.swift */; };
 		31B388ED2AE3944D00DFE875 /* HierarchyCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B388EC2AE3944D00DFE875 /* HierarchyCardView.swift */; };
 		31B388EF2AE3D3EB00DFE875 /* CGSize+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B388EE2AE3D3EB00DFE875 /* CGSize+.swift */; };
-		31C020C92B0107560031A312 /* AddMyInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C020C82B0107560031A312 /* AddMyInformation.swift */; };
-		31C020CB2B0503A90031A312 /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C020CA2B0503A90031A312 /* Intro.swift */; };
-		31C020CD2B050A9D0031A312 /* InputName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C020CC2B050A9D0031A312 /* InputName.swift */; };
 		31CD06902AE55883009D5383 /* AddMyInformationContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CD068F2AE55883009D5383 /* AddMyInformationContainerView.swift */; };
 		31E1A3A12AFF51500065D499 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 31E1A3A02AFF51500065D499 /* ComposableArchitecture */; };
 		31E1A3A42AFF51780065D499 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E1A3A32AFF51780065D499 /* Card.swift */; };
@@ -68,25 +59,21 @@
 /* Begin PBXFileReference section */
 		3104A06A2C4D085300DD8020 /* PreferKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferKey.swift; sourceTree = "<group>"; };
 		3104A06C2C4D086A00DD8020 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
-		3109AB6E2B0E303000540CAB /* SelectGender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGender.swift; sourceTree = "<group>"; };
-		3109AB702B0E355A00540CAB /* InputBirthDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputBirthDay.swift; sourceTree = "<group>"; };
-		3109AB732B0E380600540CAB /* SelectBloodType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBloodType.swift; sourceTree = "<group>"; };
 		310E88992C4E23CF00D5CB36 /* DatabaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseModel.swift; sourceTree = "<group>"; };
-		311521BA2B0F8FE600B683B7 /* Root.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Root.swift; sourceTree = "<group>"; };
+		310E889B2C4E78E800D5CB36 /* AddMyInformationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMyInformationViewModel.swift; sourceTree = "<group>"; };
+		310E889E2C4E7B6600D5CB36 /* CaseOfAddMyInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseOfAddMyInformationView.swift; sourceTree = "<group>"; };
+		310E88A02C4E83B500D5CB36 /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		311A3EF52AED21F70082D247 /* SelectGenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGenderView.swift; sourceTree = "<group>"; };
 		311A3EF72AED2AEF0082D247 /* InputBirthdayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputBirthdayView.swift; sourceTree = "<group>"; };
 		311A3EF92AED2EE60082D247 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		311A3EFB2AEE44800082D247 /* SelectBloodTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBloodTypeView.swift; sourceTree = "<group>"; };
-		314626662B1DF31F007AFD0D /* MemberReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberReducer.swift; sourceTree = "<group>"; };
 		314C44702C44F3270020FAA9 /* MemberDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberDetailView.swift; sourceTree = "<group>"; };
-		314C44722C450B5F0020FAA9 /* MemberDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberDetail.swift; sourceTree = "<group>"; };
 		314C44762C47653F0020FAA9 /* MemberFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberFormView.swift; sourceTree = "<group>"; };
 		314C44792C4790E40020FAA9 /* CustomHalfSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHalfSheet.swift; sourceTree = "<group>"; };
 		314C447B2C4793050020FAA9 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		314C447D2C4793800020FAA9 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
 		314C447F2C49235A0020FAA9 /* MemberFormSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberFormSection.swift; sourceTree = "<group>"; };
 		314C44812C494A980020FAA9 /* MemberUpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberUpdateView.swift; sourceTree = "<group>"; };
-		314C44832C4953CE0020FAA9 /* MemberUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberUpdate.swift; sourceTree = "<group>"; };
 		314C44852C4BBF8D0020FAA9 /* CaseOfAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseOfAdd.swift; sourceTree = "<group>"; };
 		314C44872C4BC0B10020FAA9 /* MemberAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAddView.swift; sourceTree = "<group>"; };
 		314FD6A32AE9542A0052251C /* RoundedRectangleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleButtonView.swift; sourceTree = "<group>"; };
@@ -99,8 +86,6 @@
 		3184573E2AE946DE007C2045 /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
 		318457402AE946ED007C2045 /* SF-Pro-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Medium.otf"; sourceTree = "<group>"; };
 		318457422AE94726007C2045 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		3185210D2AEE76D7000579CE /* TextSectionSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextSectionSubView.swift; sourceTree = "<group>"; };
-		318521102AEEA30B000579CE /* MemberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberView.swift; sourceTree = "<group>"; };
 		318521132AEFD911000579CE /* MemberNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberNameView.swift; sourceTree = "<group>"; };
 		318521152AEFD91F000579CE /* MemberSexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberSexView.swift; sourceTree = "<group>"; };
 		318521172AEFD92C000579CE /* MemberBirthdayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberBirthdayView.swift; sourceTree = "<group>"; };
@@ -114,9 +99,6 @@
 		31B388EA2AE38E5000DFE875 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		31B388EC2AE3944D00DFE875 /* HierarchyCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyCardView.swift; sourceTree = "<group>"; };
 		31B388EE2AE3D3EB00DFE875 /* CGSize+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+.swift"; sourceTree = "<group>"; };
-		31C020C82B0107560031A312 /* AddMyInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMyInformation.swift; sourceTree = "<group>"; };
-		31C020CA2B0503A90031A312 /* Intro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
-		31C020CC2B050A9D0031A312 /* InputName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputName.swift; sourceTree = "<group>"; };
 		31CD068F2AE55883009D5383 /* AddMyInformationContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMyInformationContainerView.swift; sourceTree = "<group>"; };
 		31E1A3A32AFF51780065D499 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		A06C1ABE2AF4BF9A001C8B4D /* RelationshipInfoType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipInfoType.swift; sourceTree = "<group>"; };
@@ -147,19 +129,6 @@
 				311A3EF92AED2EE60082D247 /* Date+.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		3109AB722B0E37EB00540CAB /* AddMyInformation */ = {
-			isa = PBXGroup;
-			children = (
-				31C020C82B0107560031A312 /* AddMyInformation.swift */,
-				31C020CA2B0503A90031A312 /* Intro.swift */,
-				31C020CC2B050A9D0031A312 /* InputName.swift */,
-				3109AB6E2B0E303000540CAB /* SelectGender.swift */,
-				3109AB702B0E355A00540CAB /* InputBirthDay.swift */,
-				3109AB732B0E380600540CAB /* SelectBloodType.swift */,
-			);
-			path = AddMyInformation;
 			sourceTree = "<group>";
 		};
 		314C44782C47903D0020FAA9 /* Helpers */ = {
@@ -217,13 +186,16 @@
 		3185210F2AEEA300000579CE /* MemberViews */ = {
 			isa = PBXGroup;
 			children = (
-				318521122AEFD8F3000579CE /* Subs */,
-				318521102AEEA30B000579CE /* MemberView.swift */,
+				318521122AEFD8F3000579CE /* SubViews */,
+				314C44872C4BC0B10020FAA9 /* MemberAddView.swift */,
+				314C44702C44F3270020FAA9 /* MemberDetailView.swift */,
+				314C44762C47653F0020FAA9 /* MemberFormView.swift */,
+				314C44812C494A980020FAA9 /* MemberUpdateView.swift */,
 			);
 			path = MemberViews;
 			sourceTree = "<group>";
 		};
-		318521122AEFD8F3000579CE /* Subs */ = {
+		318521122AEFD8F3000579CE /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
 				318521132AEFD911000579CE /* MemberNameView.swift */,
@@ -231,9 +203,8 @@
 				318521172AEFD92C000579CE /* MemberBirthdayView.swift */,
 				318521192AEFD93B000579CE /* MemberRhTypeView.swift */,
 				3185211B2AEFEFF3000579CE /* MemberAboTypeView.swift */,
-				3185210D2AEE76D7000579CE /* TextSectionSubView.swift */,
 			);
-			path = Subs;
+			path = SubViews;
 			sourceTree = "<group>";
 		};
 		31A78C9B2AD42EE400BE629A = {
@@ -285,10 +256,6 @@
 				318457332AE94183007C2045 /* AddMyInformationViews */,
 				31B388EA2AE38E5000DFE875 /* CardView.swift */,
 				31B388EC2AE3944D00DFE875 /* HierarchyCardView.swift */,
-				314C44702C44F3270020FAA9 /* MemberDetailView.swift */,
-				314C44762C47653F0020FAA9 /* MemberFormView.swift */,
-				314C44812C494A980020FAA9 /* MemberUpdateView.swift */,
-				314C44872C4BC0B10020FAA9 /* MemberAddView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -296,12 +263,9 @@
 		31E1A3A22AFF51620065D499 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				3109AB722B0E37EB00540CAB /* AddMyInformation */,
 				31E1A3A32AFF51780065D499 /* Card.swift */,
-				311521BA2B0F8FE600B683B7 /* Root.swift */,
-				314626662B1DF31F007AFD0D /* MemberReducer.swift */,
-				314C44722C450B5F0020FAA9 /* MemberDetail.swift */,
-				314C44832C4953CE0020FAA9 /* MemberUpdate.swift */,
+				310E889B2C4E78E800D5CB36 /* AddMyInformationViewModel.swift */,
+				310E88A02C4E83B500D5CB36 /* RootViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -316,6 +280,7 @@
 				314C447F2C49235A0020FAA9 /* MemberFormSection.swift */,
 				314C44852C4BBF8D0020FAA9 /* CaseOfAdd.swift */,
 				310E88992C4E23CF00D5CB36 /* DatabaseModel.swift */,
+				310E889E2C4E7B6600D5CB36 /* CaseOfAddMyInformationView.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -401,10 +366,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				318457382AE94315007C2045 /* Font+.swift in Sources */,
-				314C44842C4953CE0020FAA9 /* MemberUpdate.swift in Sources */,
+				310E88A12C4E83B500D5CB36 /* RootViewModel.swift in Sources */,
 				314FD6A42AE9542A0052251C /* RoundedRectangleButtonView.swift in Sources */,
-				3109AB742B0E380600540CAB /* SelectBloodType.swift in Sources */,
-				31C020CD2B050A9D0031A312 /* InputName.swift in Sources */,
 				310E889A2C4E23CF00D5CB36 /* DatabaseModel.swift in Sources */,
 				314C447E2C4793800020FAA9 /* View+.swift in Sources */,
 				314C44862C4BBF8D0020FAA9 /* CaseOfAdd.swift in Sources */,
@@ -413,41 +376,34 @@
 				31B388EF2AE3D3EB00DFE875 /* CGSize+.swift in Sources */,
 				31CD06902AE55883009D5383 /* AddMyInformationContainerView.swift in Sources */,
 				314C447A2C4790E40020FAA9 /* CustomHalfSheet.swift in Sources */,
-				314626672B1DF320007AFD0D /* MemberReducer.swift in Sources */,
 				311A3EF82AED2AEF0082D247 /* InputBirthdayView.swift in Sources */,
 				314C44882C4BC0B10020FAA9 /* MemberAddView.swift in Sources */,
 				3185211C2AEFEFF3000579CE /* MemberAboTypeView.swift in Sources */,
 				31B388EB2AE38E5000DFE875 /* CardView.swift in Sources */,
 				31A78CAA2AD42EE400BE629A /* ContentView.swift in Sources */,
 				311A3EFC2AEE44800082D247 /* SelectBloodTypeView.swift in Sources */,
-				318521112AEEA30B000579CE /* MemberView.swift in Sources */,
 				3185211A2AEFD93B000579CE /* MemberRhTypeView.swift in Sources */,
 				A0F324D32ADA891700D64198 /* FamilyTree.swift in Sources */,
 				314C44822C494A980020FAA9 /* MemberUpdateView.swift in Sources */,
 				A0F324CF2ADA7EB500D64198 /* Member.swift in Sources */,
 				314C447C2C4793050020FAA9 /* RoundedCorner.swift in Sources */,
-				3109AB712B0E355A00540CAB /* InputBirthDay.swift in Sources */,
-				311521BB2B0F8FE600B683B7 /* Root.swift in Sources */,
 				318521182AEFD92C000579CE /* MemberBirthdayView.swift in Sources */,
 				3104A06D2C4D086A00DD8020 /* Line.swift in Sources */,
 				314C44772C47653F0020FAA9 /* MemberFormView.swift in Sources */,
-				314C44732C450B5F0020FAA9 /* MemberDetail.swift in Sources */,
-				3109AB6F2B0E303000540CAB /* SelectGender.swift in Sources */,
 				314C44712C44F3270020FAA9 /* MemberDetailView.swift in Sources */,
 				311A3EF62AED21F70082D247 /* SelectGenderView.swift in Sources */,
-				31C020C92B0107560031A312 /* AddMyInformation.swift in Sources */,
+				310E889F2C4E7B6600D5CB36 /* CaseOfAddMyInformationView.swift in Sources */,
 				317002BA2AD58B6100D8991A /* CGFloat+.swift in Sources */,
-				31C020CB2B0503A90031A312 /* Intro.swift in Sources */,
 				31E1A3A42AFF51780065D499 /* Card.swift in Sources */,
 				31A78CA82AD42EE400BE629A /* ModuMoaApp.swift in Sources */,
 				311A3EFA2AED2EE60082D247 /* Date+.swift in Sources */,
 				314FD6A62AE955CA0052251C /* InputNameView.swift in Sources */,
 				31B388ED2AE3944D00DFE875 /* HierarchyCardView.swift in Sources */,
+				310E889C2C4E78E800D5CB36 /* AddMyInformationViewModel.swift in Sources */,
 				318457362AE941B3007C2045 /* IntroView.swift in Sources */,
 				A06C1ABF2AF4BF9A001C8B4D /* RelationshipInfoType.swift in Sources */,
 				318521142AEFD911000579CE /* MemberNameView.swift in Sources */,
 				3104A06B2C4D085300DD8020 /* PreferKey.swift in Sources */,
-				3185210E2AEE76D7000579CE /* TextSectionSubView.swift in Sources */,
 				A0F324D12ADA826200D64198 /* Node.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
