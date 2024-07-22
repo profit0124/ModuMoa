@@ -63,6 +63,12 @@ struct ContentView: View {
                         }
                         .onAppear {
                             self.baseNode = viewStore.baseNode
+                            print("on appear")
+                            let stringID = UserDefaults.standard.value(forKey: "baseNode") as! String
+                            let id = UUID(uuidString: stringID)!
+                            let node = try? DatabaseModel.shared.fetchNode(id)
+                            print(id)
+                            print(node?.member.name ?? "Nil")
                         }
                         
                     case .addMyInformation:

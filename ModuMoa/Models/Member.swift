@@ -12,7 +12,7 @@ struct Member: Identifiable, Equatable, Hashable {
 //        return lhs.id == rhs.id
 //    }
 
-    let id: UUID = UUID()
+    var id: UUID = UUID()
     var name: String
     var bloodType: BloodType
     var sex: Sex
@@ -31,15 +31,15 @@ struct Member: Identifiable, Equatable, Hashable {
     }
 }
 
-enum Sex: String, CaseIterable, Equatable, Hashable {
+enum Sex: String, CaseIterable, Equatable, Hashable, Codable {
     case male = "남성"
     case female = "여성"
     case none = "모름"
 }
 
-struct BloodType: Equatable, Hashable {
+struct BloodType: Equatable, Hashable, Codable {
     
-    enum AboType: String, CaseIterable, Equatable, Hashable {
+    enum AboType: String, CaseIterable, Equatable, Hashable, Codable {
         case A = "A형"
         case B = "B형"
         case O = "O형"
@@ -47,7 +47,7 @@ struct BloodType: Equatable, Hashable {
         case none = "모름"
     }
     
-    enum RhType: String, CaseIterable, Equatable, Hashable {
+    enum RhType: String, CaseIterable, Equatable, Hashable, Codable {
         case positive = "Rh+"
         case negative = "Rh-"
         case none = "모름"
@@ -69,4 +69,8 @@ extension String {
         
         return date
     }
+}
+
+extension Member: Codable {
+    
 }

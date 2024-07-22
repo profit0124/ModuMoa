@@ -6,12 +6,15 @@
 //
 
 import Foundation
+import SwiftData
 
-class Node: Equatable, Identifiable {
+@Model
+final class Node: Equatable, Identifiable {
     static func == (lhs: Node, rhs: Node) -> Bool {
         lhs.id == rhs.id
     }
     
+    @Attribute(.unique)
     let id: UUID = UUID()
     var level: Int
     var distance: Int
@@ -96,3 +99,4 @@ extension Node: Hashable {
         hasher.combine(member)
     }
 }
+
