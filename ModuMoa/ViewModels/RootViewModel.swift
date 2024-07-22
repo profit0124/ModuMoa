@@ -20,7 +20,9 @@ final class RootViewModel {
     var baseNode: Node?
     
     func onAppear() {
-        let stringID = UserDefaults.standard.value(forKey: "baseNode") as! String
+        guard let stringID = UserDefaults.standard.value(forKey: "baseNode") as? String else {
+            self.rootViewCase = .introView
+            return }
         let id = UUID(uuidString: stringID)!
         let node = DatabaseModel.shared.fetchNode(id)
         self.rootViewCase = node != nil ? .familyTreeView : .introView
@@ -32,7 +34,9 @@ final class RootViewModel {
     func setBaseNode(_ node: Node?) {
         if let node {
             UserDefaults.standard.setValue(node.id.uuidString, forKey: "baseNode")
-            rootViewCase = .familyTreeView
+            if rootViewCase == .introView {
+                rootViewCase = .familyTreeView
+            }
             self.baseNode = node
         }
     }

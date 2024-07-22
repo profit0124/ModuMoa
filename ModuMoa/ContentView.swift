@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-//import ComposableArchitecture
 
 struct ContentView: View {
     @State private var draggedOffset = CGSize.zero
@@ -25,6 +24,7 @@ struct ContentView: View {
                     ZStack {
                         if let baseNode = Binding<Node>($viewModel.baseNode) {
                             HierarchyCardView(node: baseNode) {
+                                $0.children = [baseNode.wrappedValue]
                                 viewModel.setBaseNode($0)
                             }
                             .scaleEffect(currentZoom + totalZoom)

@@ -6,15 +6,8 @@
 //
 
 import SwiftUI
-//import ComposableArchitecture
 
 struct SelectGenderView: View {
-    
-//    let store: StoreOf<SelectGender>
-//    @Binding var name: String
-//    @Binding var sex: Sex?
-//    let previouseButtonTapped: () -> Void
-//    let nextButtonTapped: () -> Void
     
     @Binding var viewModel: AddMyInformationViewModel
     

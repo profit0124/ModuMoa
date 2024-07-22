@@ -17,6 +17,7 @@ struct MemberFormView: View {
     @Binding var bloodType: BloodType
     @Binding var rh: BloodType.RhType?
     @Binding var abo: BloodType.AboType?
+    let nickName: String
     
     @FocusState var isFocused: Bool
     @State private var focusState: MemberFormSection? {
@@ -31,13 +32,14 @@ struct MemberFormView: View {
     
     @State private var isPresented: Bool = false
     
-    init(name: Binding<String>, sex: Binding<Sex?>, birthDay: Binding<Date?>, bloodType: Binding<BloodType>, rh: Binding<BloodType.RhType?>, abo: Binding<BloodType.AboType?>) {
+    init(name: Binding<String>, sex: Binding<Sex?>, birthDay: Binding<Date?>, bloodType: Binding<BloodType>, rh: Binding<BloodType.RhType?>, abo: Binding<BloodType.AboType?>, nickName: String) {
         self._name = name
         self._sex = sex
         self._birthDay = birthDay
         self._bloodType = bloodType
         self._rh = rh
         self._abo = abo
+        self.nickName = nickName
     }
     
     var body: some View {
@@ -51,7 +53,7 @@ struct MemberFormView: View {
                 
                 Spacer()
                 
-                Text("Capsule")
+                Text(nickName)
                     .font(.customFont(.subHeadline))
                     .foregroundStyle(.moduYellow)
                     .padding(.horizontal, 8)

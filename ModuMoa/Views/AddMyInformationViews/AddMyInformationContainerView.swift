@@ -6,20 +6,8 @@
 //
 
 import SwiftUI
-import Combine
 
 struct AddMyInformationContainerView: View {
-    
-//    @Binding var rootNode: Node?
-    
-//    @State var index: Int = 0
-    
-//    @State var name:String = ""
-//    @State var sex: Sex?
-//    @State var birthday: Date = Date()
-//    @State var bloodType: BloodType?
-    
-//    let store: StoreOf<AddMyInformation>
     @State private var viewModel: AddMyInformationViewModel = AddMyInformationViewModel()
     
     var body: some View {

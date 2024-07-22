@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import ComposableArchitecture
 
 struct HierarchyCardView: View {
     
@@ -43,12 +42,7 @@ struct HierarchyCardView: View {
             
             HStack(alignment: .top, spacing: 80) {
                 ForEach($node.children, id: \.id) { $children in
-                    HierarchyCardView(node: $children) { addNode in
-                        DispatchQueue.main.async {
-                            addNode.partner = node
-                            addNode.children = node.children
-                            node.partner = addNode
-                        }
+                    HierarchyCardView(node: $children) { addNode in       
                     }
                 }
             }
@@ -123,8 +117,10 @@ struct HierarchyCardView: View {
             
         }
         .navigationDestination(isPresented: $addNodeViewisPushed) {
-            MemberAddView(isPushed: $addNodeViewisPushed) { addNode in
-                self.addNode(addNode)
+            if let selectedAddCase {
+                MemberAddView(from: $node, with: selectedAddCase, isPushed: $addNodeViewisPushed) { addNode in
+                    self.afterAddAction(addNode)
+                }
             }
         }
         .navigationDestination(isPresented: $detailNodeViewisPushed, destination: {
@@ -159,49 +155,6 @@ struct HierarchyCardView: View {
                     }
             })
         }
-    }
-    
-    private func addNode(_ addNode: Node) {
-        switch selectedAddCase {
-        case .leftParent:
-            addNode.level = self.node.level + 1
-            addNode.distance = self.node.distance + 1
-            addNode.member.nickName = RelationshipInfoType(addNode)?.nickName() ?? "모름"
-            addNode.children.append(self.node)
-            node.leftParent = addNode
-            afterAddAction(addNode)
-            
-        case .rightParent:
-            addNode.level = self.node.level + 1
-            addNode.distance = self.node.distance + 1
-            addNode.member.nickName = RelationshipInfoType(addNode)?.nickName() ?? "모름"
-            addNode.children.append(self.node)
-            node.rightParent = addNode
-            afterAddAction(addNode)
-            
-        case .partner:
-            addNode.level = self.node.level
-            addNode.distance = self.node.distance
-            addNode.member.nickName = RelationshipInfoType(addNode)?.nickName() ?? "모름"
-            addNode.partner = node
-            addNode.children = node.children
-            node.partner = addNode
-        case .son:
-            addNode.level = self.node.level - 1
-            addNode.distance = self.node.distance + 1
-            addNode.member.nickName = RelationshipInfoType(addNode)?.nickName() ?? "모름"
-            addNode.leftParent = node
-            node.children.append(addNode)
-        case .daughter:
-            addNode.level = self.node.level - 1
-            addNode.distance = self.node.distance + 1
-            addNode.member.nickName = RelationshipInfoType(addNode)?.nickName() ?? "모름"
-            addNode.leftParent = node
-            node.children.append(addNode)
-        case nil:
-            break
-        }
-        selectedAddCase = nil
     }
 }
 
