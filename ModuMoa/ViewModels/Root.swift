@@ -19,6 +19,11 @@ struct Root: Reducer {
         @BindingState var baseNode: Node?
         var addMyInformation: AddMyInformation.State?
         var mainViewCase: MainViewCase = .addMyInformation
+        var database: DatabaseModel {
+            get {
+                DatabaseModel.shared
+            }
+        }
     }
     
     enum Action: Equatable, BindableAction {
@@ -41,6 +46,8 @@ struct Root: Reducer {
                 let node = Node(member: member)
                 state.baseNode = node
                 state.mainViewCase = .main
+                try? state.database.addNode(node)
+                UserDefaults.standard.setValue(node.id.uuidString, forKey: "baseNode")
                 return .none
                 
             case .setBaseNode(let node):

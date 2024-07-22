@@ -12,6 +12,7 @@
 		3109AB6F2B0E303000540CAB /* SelectGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109AB6E2B0E303000540CAB /* SelectGender.swift */; };
 		3109AB712B0E355A00540CAB /* InputBirthDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109AB702B0E355A00540CAB /* InputBirthDay.swift */; };
 		3109AB742B0E380600540CAB /* SelectBloodType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109AB732B0E380600540CAB /* SelectBloodType.swift */; };
+		310E889A2C4E23CF00D5CB36 /* DatabaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310E88992C4E23CF00D5CB36 /* DatabaseModel.swift */; };
 		311521BB2B0F8FE600B683B7 /* Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311521BA2B0F8FE600B683B7 /* Root.swift */; };
 		311A3EF62AED21F70082D247 /* SelectGenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311A3EF52AED21F70082D247 /* SelectGenderView.swift */; };
 		311A3EF82AED2AEF0082D247 /* InputBirthdayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311A3EF72AED2AEF0082D247 /* InputBirthdayView.swift */; };
@@ -70,6 +71,7 @@
 		3109AB6E2B0E303000540CAB /* SelectGender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGender.swift; sourceTree = "<group>"; };
 		3109AB702B0E355A00540CAB /* InputBirthDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputBirthDay.swift; sourceTree = "<group>"; };
 		3109AB732B0E380600540CAB /* SelectBloodType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBloodType.swift; sourceTree = "<group>"; };
+		310E88992C4E23CF00D5CB36 /* DatabaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseModel.swift; sourceTree = "<group>"; };
 		311521BA2B0F8FE600B683B7 /* Root.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Root.swift; sourceTree = "<group>"; };
 		311A3EF52AED21F70082D247 /* SelectGenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGenderView.swift; sourceTree = "<group>"; };
 		311A3EF72AED2AEF0082D247 /* InputBirthdayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputBirthdayView.swift; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 				A06C1ABE2AF4BF9A001C8B4D /* RelationshipInfoType.swift */,
 				314C447F2C49235A0020FAA9 /* MemberFormSection.swift */,
 				314C44852C4BBF8D0020FAA9 /* CaseOfAdd.swift */,
+				310E88992C4E23CF00D5CB36 /* DatabaseModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				314FD6A42AE9542A0052251C /* RoundedRectangleButtonView.swift in Sources */,
 				3109AB742B0E380600540CAB /* SelectBloodType.swift in Sources */,
 				31C020CD2B050A9D0031A312 /* InputName.swift in Sources */,
+				310E889A2C4E23CF00D5CB36 /* DatabaseModel.swift in Sources */,
 				314C447E2C4793800020FAA9 /* View+.swift in Sources */,
 				314C44862C4BBF8D0020FAA9 /* CaseOfAdd.swift in Sources */,
 				318521162AEFD91F000579CE /* MemberSexView.swift in Sources */,
