@@ -17,6 +17,7 @@ struct Member: Identifiable, Equatable, Hashable {
     var bloodType: BloodType
     var sex: Sex
     var birthday: Date?
+    var nickName: String = ""
     
     func isMale() -> Bool {
         return sex == .male

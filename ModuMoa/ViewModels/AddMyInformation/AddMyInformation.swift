@@ -12,7 +12,7 @@ struct AddMyInformation: Reducer {
     struct State: Equatable {
         var id: UUID = UUID()
         var index: Int = 0
-        var me: Member = Member(name: "", bloodType: .init(abo: .none, rh: .none), sex: .none)
+        var me: Member = Member(name: "", bloodType: .init(abo: .none, rh: .none), sex: .none, nickName: "나")
         var intro: Intro.State = Intro.State()
         var inputName: InputName.State = InputName.State()
         var selectGender: SelectGender.State?

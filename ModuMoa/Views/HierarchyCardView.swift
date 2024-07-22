@@ -50,9 +50,11 @@ struct HierarchyCardView: View {
             HStack(alignment: .top, spacing: 80) {
                 ForEach($node.children, id: \.id) { $children in
                     HierarchyCardView(node: $children) { addNode in
-                        addNode.partner = node
-                        addNode.children = node.children
-                        node.partner = addNode
+                        DispatchQueue.main.async {
+                            addNode.partner = node
+                            addNode.children = node.children
+                            node.partner = addNode
+                        }
                     }
                 }
             }
@@ -172,25 +174,38 @@ struct HierarchyCardView: View {
     private func addNode(_ addNode: Node) {
         switch selectedAddCase {
         case .leftParent:
+            addNode.level = self.node.level + 1
+            addNode.distance = self.node.distance + 1
+            addNode.member.nickName = RelationshipInfoType(addNode)?.nickName() ?? "모름"
             addNode.children.append(self.node)
             node.leftParent = addNode
-            if fromMe {
-                afterAddAction(addNode)
-            }
+            afterAddAction(addNode)
+            
         case .rightParent:
+            addNode.level = self.node.level + 1
+            addNode.distance = self.node.distance + 1
+            addNode.member.nickName = RelationshipInfoType(addNode)?.nickName() ?? "모름"
             addNode.children.append(self.node)
             node.rightParent = addNode
-            if fromMe {
-                afterAddAction(addNode)
-            }
+            afterAddAction(addNode)
+            
         case .partner:
+            addNode.level = self.node.level
+            addNode.distance = self.node.distance
+            addNode.member.nickName = RelationshipInfoType(addNode)?.nickName() ?? "모름"
             addNode.partner = node
             addNode.children = node.children
             node.partner = addNode
         case .son:
+            addNode.level = self.node.level - 1
+            addNode.distance = self.node.distance + 1
+            addNode.member.nickName = RelationshipInfoType(addNode)?.nickName() ?? "모름"
             addNode.leftParent = node
             node.children.append(addNode)
         case .daughter:
+            addNode.level = self.node.level - 1
+            addNode.distance = self.node.distance + 1
+            addNode.member.nickName = RelationshipInfoType(addNode)?.nickName() ?? "모름"
             addNode.leftParent = node
             node.children.append(addNode)
         case nil:
