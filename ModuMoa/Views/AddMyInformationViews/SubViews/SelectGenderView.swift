@@ -37,9 +37,7 @@ struct SelectGenderView: View {
                     }
                     HStack(spacing: 8) {
                         ForEach(Sex.allCases, id: \.self) { value in
-                            if value != .none {
-                                selectedCapule(value, width: width)
-                            }
+                            selectedCapule(value, width: width)
                         }
                     }
                     .padding(.bottom, .betweenSelectPoint)

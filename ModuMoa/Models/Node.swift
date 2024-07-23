@@ -41,7 +41,6 @@ final class Node: Equatable, Identifiable {
         switch member.sex {
         case .male: child.leftParent = self
         case .female: child.rightParent = self
-        case .none: print("none")
         }
     }
     
@@ -54,7 +53,6 @@ final class Node: Equatable, Identifiable {
         switch parent.member.sex {
         case .male: self.leftParent = parent
         case .female: self.rightParent = parent
-        case .none: print("none")
         }
         parent.children.append(self)
     }
