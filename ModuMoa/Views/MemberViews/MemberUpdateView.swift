@@ -40,7 +40,7 @@ struct MemberUpdateView: View {
     
     var body: some View {
         let member = fromMe ? node.member : node.partner!.member
-        VStack(spacing: 22) {
+        VStack(spacing: .betweenElements) {
             // MARK: Navigation Bar
             HStack {
                 Button(action: {

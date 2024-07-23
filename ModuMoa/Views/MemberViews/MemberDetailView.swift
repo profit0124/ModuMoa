@@ -16,7 +16,7 @@ struct MemberDetailView: View {
     
     var body: some View {
         let member = fromMe ? node.member : node.partner!.member
-        VStack(spacing: 22) {
+        VStack(spacing: .betweenElements) {
             // MARK: Navigation Bar
             HStack {
                 Button(action: {
@@ -33,7 +33,7 @@ struct MemberDetailView: View {
             }
             .padding(.horizontal, 8)
             
-            VStack(spacing: 44) {
+            VStack(spacing: .betweenTitleAndContent) {
                 HStack {
                     Text(member.name)
                         .font(.customFont(.largeTitle))
@@ -50,20 +50,20 @@ struct MemberDetailView: View {
                         .background( Capsule().fill(.moduBlack))
                 }
                 
-                VStack(alignment: .leading, spacing: 32) {
+                VStack(alignment: .leading, spacing: .betweenContents) {
                     
                     ModumoaMemberSectionView(title: "성별", value: member.sex.rawValue)
                     
                     ModumoaMemberSectionView(title: "생일", value: member.birthday?.toString() ?? "모름")
                     
-                    VStack(alignment: .leading, spacing: 10) {
+                    VStack(alignment: .leading, spacing: .betweenHeadlineAndTitle2) {
                         Text("혈액형")
                             .font(.customFont(.callOut))
                             .foregroundStyle(.grayscale1)
                         
                         GeometryReader {
                             let size = $0.size
-                            HStack(spacing: 22) {
+                            HStack(spacing: .betweenElements) {
                                 Text(member.bloodType.rh.rawValue)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                 Text(member.bloodType.abo.rawValue)

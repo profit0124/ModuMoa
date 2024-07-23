@@ -14,47 +14,40 @@ struct InputNameView: View {
     @Binding var viewModel: AddMyInformationViewModel
     
     var body: some View {
-        GeometryReader { reader in
-            let width = reader.size.width
-            VStack(alignment: .leading, spacing: 0) {
+        VStack(spacing: 0) {
+            VStack(alignment: .leading, spacing: .betweenTitleAndContent) {
                 Text("이름을 입력해주세요")
                     .font(.customFont(.largeTitle))
-                    .padding(.bottom, .betweenTitleAndContent)
-                    ZStack(alignment: .bottom) {
-                        TextField("이름", text: $viewModel.name)
-                            .focused($isFocused)
-                            .keyboardType(.default)
-                            .autocorrectionDisabled(true)
-                            .font(.customFont(.title1))
-                            .padding(2)
-                        Color.moduBlack
-                            .frame(height: 1)
-                }
-                Spacer()
                 
+                ZStack(alignment: .bottom) {
+                    TextField("이름", text: $viewModel.name)
+                        .focused($isFocused)
+                        .keyboardType(.default)
+                        .autocorrectionDisabled(true)
+                        .font(.customFont(.title1))
+                        .padding(2)
+                    Color.moduBlack
+                        .frame(height: 1)
+                }
             }
-            .padding(.top, .betweenSelectPoint)
             .padding(.horizontal, 16)
             
-            VStack {
-                Spacer()
-                if !viewModel.name.isEmpty {
-                    ModumoaRoundedRectangleButton("다음", cornerRadius: 0) {
-                        isFocused = false
-                        if viewModel.caseOfAddMyInfromationView == .name {
-                            viewModel.nextButtonTapped()
-                        }
+            Spacer()
+            
+            if !viewModel.name.isEmpty {
+                ModumoaRoundedRectangleButton("다음", cornerRadius: 0) {
+                    isFocused = false
+                    if viewModel.caseOfAddMyInfromationView == .name {
+                        viewModel.nextButtonTapped()
                     }
                 }
             }
-            
         }
+        .padding(.top, .betweenSelectPoint)
         .onAppear {
             isFocused = true
         }
     }
-        
-    
 }
 //
 //#Preview {
