@@ -10,7 +10,7 @@ import SwiftUI
 struct MemberAddView: View {
     
     @Binding var fromNode: Node
-    let selectedAddCase: CaseOfAdd
+    @Binding var selectedAddCase: CaseOfAdd?
     
     let nickName: String
     let level: Int
@@ -24,14 +24,14 @@ struct MemberAddView: View {
     @State private var abo: BloodType.AboType?
     @Binding var isPushed: Bool
     
-    init(from node: Binding<Node>, with selectedAddCase: CaseOfAdd, isPushed: Binding<Bool>) {
+    init(from node: Binding<Node>, with selectedAddCase: Binding<CaseOfAdd?>, isPushed: Binding<Bool>) {
         self._fromNode = node
-        self.selectedAddCase = selectedAddCase
+        self._selectedAddCase = selectedAddCase
         self._isPushed = isPushed
         var sex:Sex = .male
         var level = node.level.wrappedValue
         var distance = node.distance.wrappedValue
-        switch selectedAddCase {
+        switch selectedAddCase.wrappedValue {
         case .leftParent:
             sex = .male
             level += 1
@@ -54,6 +54,9 @@ struct MemberAddView: View {
             sex = .female
             level -= 1
             distance += 1
+            
+        default:
+            break
         }
         self.sex = sex
         self.nickName = RelationshipInfoType(level: level, distance: distance, sex: sex).nickName()
@@ -66,6 +69,7 @@ struct MemberAddView: View {
         VStack(spacing: .betweenElements) {
             HStack {
                 Button(action: {
+                    selectedAddCase = nil
                     isPushed = false
                 }) {
                     HStack {
@@ -133,9 +137,14 @@ struct MemberAddView: View {
                 if fromNode.partner != nil {
                     fromNode.partner?.children.append(node)
                 }
+                
+            default:
+                break
             }
             do {
                 try DatabaseModel.shared.addNode(node)
+                // 추가 후 해당 Hierarychy card 에서 진입 시 사용했던 selectedAddCase 를 다시 nil 로 변경
+                selectedAddCase = nil
                 isPushed = false
             } catch {
                 print("save error")

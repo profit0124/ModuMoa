@@ -117,7 +117,7 @@ struct HierarchyCardView: View {
         }
         .navigationDestination(isPresented: $addNodeViewisPushed) {
             if let selectedAddCase {
-                MemberAddView(from: $node, with: selectedAddCase, isPushed: $addNodeViewisPushed)
+                MemberAddView(from: $node, with: $selectedAddCase, isPushed: $addNodeViewisPushed)
             }
         }
         .navigationDestination(isPresented: $detailNodeViewisPushed, destination: {
