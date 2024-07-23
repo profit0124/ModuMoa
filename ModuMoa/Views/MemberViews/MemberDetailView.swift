@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import ComposableArchitecture
 
 struct MemberDetailView: View {
     
@@ -43,12 +42,12 @@ struct MemberDetailView: View {
 
                     Spacer()
                     
-                    Text("나")
+                    Text(member.nickName)
                         .font(.customFont(.subHeadline))
                         .foregroundStyle(.moduYellow)
                         .padding(.horizontal, 8)
                         .padding(.vertical, 6)
-                        .background( Circle().fill(.moduBlack))
+                        .background( Capsule().fill(.moduBlack))
                 }
                 
                 VStack(alignment: .leading, spacing: 32) {

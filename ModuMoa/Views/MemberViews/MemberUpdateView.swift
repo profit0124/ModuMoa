@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-//import ComposableArchitecture
 
 struct MemberUpdateView: View {
     
@@ -40,6 +39,7 @@ struct MemberUpdateView: View {
     }
     
     var body: some View {
+        let member = fromMe ? node.member : node.partner!.member
         VStack(spacing: 22) {
             // MARK: Navigation Bar
             HStack {
@@ -77,7 +77,7 @@ struct MemberUpdateView: View {
                 .disabled(!isEnabled())
             }
             
-            MemberFormView(name: $name, sex: $sex, birthDay: $birthDay, bloodType: $bloodType, rh: $rh, abo: $abo)
+            MemberFormView(name: $name, sex: $sex, birthDay: $birthDay, bloodType: $bloodType, rh: $rh, abo: $abo, nickName: member.nickName)
         }
         .padding(.horizontal, 16)
         .onAppear {

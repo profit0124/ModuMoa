@@ -6,11 +6,8 @@
 //
 
 import SwiftUI
-//import ComposableArchitecture
 
 struct SelectBloodTypeView: View {
-    
-//    let store: StoreOf<SelectBloodType>
     @Binding var viewModel: AddMyInformationViewModel
     @State private var isPresented: Bool = false
     @Environment(RootViewModel.self) var rootViewModel

@@ -36,6 +36,17 @@ enum RelationshipInfoType: RelationshipNickNameProvider {
         }
     }
     
+    init(level: Int, distance: Int, sex: Sex) {
+        switch level {
+        case 2: self = RelationshipInfoType.level2Branch(distance: distance, sex: sex)
+        case 1: self = RelationshipInfoType.level1Branch(distance: distance, sex: sex)
+        case 0: self = RelationshipInfoType.level0Branch(distance: distance, sex: sex)
+        case -1: self = RelationshipInfoType.levelM1Branch(distance: distance, sex: sex)
+        case -2: self = RelationshipInfoType.levelM2Branch(distance: distance, sex: sex)
+        default: self = .unknown
+        }
+    }
+    
     static private func level2Branch(distance: Int, sex: Sex) -> RelationshipInfoType {
         switch (distance, sex) {
         case (4, .male): return .twoFourMale

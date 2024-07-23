@@ -130,6 +130,7 @@
 		314C44782C47903D0020FAA9 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				318457392AE94698007C2045 /* Fonts */,
 				3104A0692C4D081800DD8020 /* Extensions */,
 				314C44792C4790E40020FAA9 /* CustomHalfSheet.swift */,
 				314C447B2C4793050020FAA9 /* RoundedCorner.swift */,
@@ -224,7 +225,6 @@
 			children = (
 				318457422AE94726007C2045 /* Info.plist */,
 				314C44782C47903D0020FAA9 /* Helpers */,
-				318457392AE94698007C2045 /* Fonts */,
 				A0F324CD2ADA7E7800D64198 /* Models */,
 				31E1A3A22AFF51620065D499 /* ViewModels */,
 				31B388E92AE38E4200DFE875 /* Views */,
