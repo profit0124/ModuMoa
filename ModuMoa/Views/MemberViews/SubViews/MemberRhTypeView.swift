@@ -47,15 +47,12 @@ struct MemberRhTypeView: View {
                 }
             }
             Spacer()
-            if rhType == nil {
-                RoundedRectangleButtonView(title: "완료", isEnabled: false)
-            } else {
-                RoundedRectangleButtonView(title: "완료", isEnabled: true)
-                    .onTapGesture {
-                        isPresented = false
-                        completion()
-                    }
+            
+            ModumoaRoundedRectangleButton("완료") {
+                isPresented = false
+                completion()
             }
+            .disabled(rhType == nil)
         }
     }
 }

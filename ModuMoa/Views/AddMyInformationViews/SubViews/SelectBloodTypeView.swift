@@ -15,127 +15,106 @@ struct SelectBloodTypeView: View {
     var body: some View {
         GeometryReader { reader in
             let width = reader.size.width
-            VStack(alignment: .leading, spacing: 0) {
-                
+            VStack(alignment: .leading, spacing: .betweenElements) {
+                // MARK: Navigation Backbutton
                 Image(systemName: "chevron.left")
                     .resizable()
                     .font(.customFont(.headline))
-                
                     .frame(width: 10, height: 20)
+                    .padding(.leading, 8)
                     .onTapGesture {
                         if viewModel.caseOfAddMyInfromationView == .bloodType {
                             viewModel.previousButtonTapped()
                         }
                     }
-                    .padding(.leading, 8)
-                VStack(alignment: .leading, spacing: 0) {
-                    Text("혈액형을 입력해주세요")
-                        .font(.customFont(.largeTitle).bold())
-                        .padding(.top, .betweenElements)
-                        .padding(.bottom, .betweenTitleAndContent)
-                    
-                    HStack {
-                        Group {
-                            if let rhType = viewModel.rhType {
-                                Text(rhType == .none ? "Rh식 모름" : rhType.rawValue)
-                                    .font(.customFont(.body))
-                            } else {
-                                Text("Rh식")
-                                    .font(.customFont(.body))
+                // MARK: Content
+                VStack(alignment: .leading, spacing: .betweenSelectPoint) {
+                    VStack(alignment: .leading, spacing: .betweenTitleAndContent) {
+                        Text("혈액형을 입력해주세요")
+                            .font(.customFont(.largeTitle).bold())
+                        
+                        VStack(alignment: .leading, spacing: .betweenElements) {
+                            HStack {
+                                HStack {
+                                    let text = viewModel.rhType == nil ? "Rh식" : (viewModel.rhType! == .none ? "Rh식 모름" : viewModel.rhType!.rawValue)
+                                    Text(text)
+                                    
+                                    Image(systemName: "chevron.right")
+                                }
+                                .font(.customFont(.body))
+                                .foregroundStyle(viewModel.rhType == nil ? .disableText : .moduBlack)
+                                .onTapGesture {
+                                    if !isPresented {
+                                        isPresented = true
+                                    }
+                                }
+                                Spacer()
                             }
-                            Image(systemName: "chevron.right")
-                        }
-                        .foregroundStyle(viewModel.rhType == nil ? .disableText : .moduBlack)
-                        .onTapGesture {
-                            if !isPresented {
-                                isPresented = true
-                            }
-                        }
-                        Spacer()
-                    }
-                    .padding(.bottom, .betweenElements)
-                    
-                    HStack(spacing: 8) {
-                        ForEach(BloodType.AboType.allCases, id: \.self) { type in
-                            if type != .none {
-                                selectedCapusle(type, width: width)
+                            
+                            HStack(spacing: 8) {
+                                ForEach(BloodType.AboType.allCases, id: \.self) { type in
+                                    if type != .none {
+                                        selectedCapusle(type, width: width)
+                                    }
+                                }
                             }
                         }
                     }
-                    .padding(.bottom, .betweenSelectPoint)
                     
-                    makeSection("생일", viewModel.birthDay.toString())
-                        .padding(.bottom, .betweenElements)
-                    
-                    
-                    makeSection("성별", viewModel.sex?.rawValue ?? "모름")
-                        .padding(.bottom, .betweenElements)
-                    
-                    makeSection("이름", viewModel.name)
+                    VStack(alignment: .leading, spacing: .betweenElements) {
+                        ModumoaMemberSectionView(title: "생일", value: viewModel.birthDay.toString())
+                        
+                        ModumoaMemberSectionView(title: "성별", value: viewModel.sex?.rawValue ?? "모름")
+                        
+                        ModumoaMemberSectionView(title: "이름", value: viewModel.name)
+                    }
                     
                     Spacer()
                 
                     if viewModel.aboType != nil, viewModel.rhType != nil {
-                        RoundedRectangleButtonView(title: "완료", isEnabled: true)
-                            .onTapGesture {
-                                if let node = viewModel.saveMyInformation() {
-                                    rootViewModel.setBaseNode(node)
-                                }
+                        ModumoaRoundedRectangleButton("완료") {
+                            if let node = viewModel.saveMyInformation() {
+                                rootViewModel.setBaseNode(node)
                             }
+                        }
                     }
                 }
                 .padding(.horizontal, 20)
             }
         }
         .sheet(isPresented: $isPresented) {
-            VStack(alignment: .leading, spacing: 0) {
+            VStack(alignment: .leading, spacing: .betweenTitleAndContent) {
                 HStack {
                     Text("Rh 식 혈액형을 입력하세요")
                         .font(.customFont(.title2))
-                        .padding(.top, .betweenContents)
-                        .padding(.bottom, .betweenTitleAndContent)
                     Spacer()
                 }
-                
-                
-                ForEach(BloodType.RhType.allCases, id: \.self) { type in
-                    Group {
-                        HStack {
-                            Text(type.rawValue)
-                                .font(.customFont(.callOut))
-                                .padding(.bottom, .betweenTextAndLine)
-                            Spacer()
+                VStack(alignment: .leading, spacing: .betweenTextAndLine) {
+                    ForEach(BloodType.RhType.allCases, id: \.self) { type in
+                        Group {
+                            HStack {
+                                Text(type.rawValue)
+                                    .font(.customFont(.callOut))
+                                    .padding(.bottom, .betweenTextAndLine)
+                                Spacer()
+                            }
+                            .background {
+                                Color.white
+                            }
+                            Divider()
                         }
-                        .background {
-                            Color.white
+                        .onTapGesture {
+                            viewModel.rhType = type
+                            isPresented = false
                         }
-                        Divider()
-                            .padding(.bottom, .betweenTextAndLine)
-                    }
-                    .onTapGesture {
-                        viewModel.rhType = type
-                        isPresented = false
                     }
                 }
                 Spacer()
             }
+            .padding(.top, .betweenContents)
             .padding(.horizontal, 16)
             .presentationDetents([.medium])
         }
-    }
-    
-    @ViewBuilder
-    private func makeSection(_ headline: String, _ value: String) -> some View {
-        VStack(alignment: .leading, spacing: .betweenHeadlineAndTitle2) {
-            Text(headline)
-                .foregroundStyle(.moduBlack)
-                .font(.customFont(.footnote))
-                
-            Text(value)
-                .foregroundStyle(.moduBlack)
-                .font(.customFont(.body))
-        }
-        .padding(.bottom, .betweenContents)
     }
     
     @ViewBuilder

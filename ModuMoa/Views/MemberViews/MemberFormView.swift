@@ -43,7 +43,7 @@ struct MemberFormView: View {
     }
     
     var body: some View {
-        VStack(spacing: 44) {
+        VStack(spacing: .betweenTitleAndContent) {
             HStack {
                 TextField("이름", text: $name)
                     .focused($isFocused)
@@ -61,8 +61,8 @@ struct MemberFormView: View {
                     .background( Capsule().fill(.moduBlack))
             }
             
-            VStack(alignment: .leading, spacing: 32) {
-                VStack(alignment: .leading ,spacing: 10) {
+            VStack(alignment: .leading, spacing: .betweenContents) {
+                VStack(alignment: .leading ,spacing: .betweenHeadlineAndTitle2) {
                     Text(MemberFormSection.sex.rawValue)
                         .font(.customFont(.callOut))
                         .foregroundStyle(.grayscale1)
@@ -96,7 +96,7 @@ struct MemberFormView: View {
                     }
                 }
                 
-                VStack(alignment: .leading ,spacing: 10) {
+                VStack(alignment: .leading ,spacing: .betweenHeadlineAndTitle2) {
                     Text(MemberFormSection.birthDay.rawValue)
                         .font(.customFont(.callOut))
                         .foregroundStyle(.grayscale1)
@@ -126,14 +126,14 @@ struct MemberFormView: View {
                     }
                 }
                 
-                VStack(alignment: .leading, spacing: 10) {
+                VStack(alignment: .leading, spacing: .betweenHeadlineAndTitle2) {
                     Text(MemberFormSection.abo.rawValue)
                         .font(.customFont(.callOut))
                         .foregroundStyle(.grayscale1)
 
                     GeometryReader {
                         let size = $0.size
-                        HStack(spacing: 22) {
+                        HStack(spacing: .betweenElements) {
                             ZStack(alignment: .bottomLeading) {
                                 HStack {
                                     Text(rh?.rawValue ?? MemberFormSection.rh.getSectionPlaceholder())

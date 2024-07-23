@@ -13,6 +13,8 @@
 		310E889C2C4E78E800D5CB36 /* AddMyInformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310E889B2C4E78E800D5CB36 /* AddMyInformationViewModel.swift */; };
 		310E889F2C4E7B6600D5CB36 /* CaseOfAddMyInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310E889E2C4E7B6600D5CB36 /* CaseOfAddMyInformationView.swift */; };
 		310E88A12C4E83B500D5CB36 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310E88A02C4E83B500D5CB36 /* RootViewModel.swift */; };
+		310E88A62C4F88E100D5CB36 /* ModumoaRoundedRectangleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310E88A52C4F88E100D5CB36 /* ModumoaRoundedRectangleButton.swift */; };
+		310E88A82C4F919D00D5CB36 /* ModumoaMemberSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310E88A72C4F919D00D5CB36 /* ModumoaMemberSectionView.swift */; };
 		311A3EF62AED21F70082D247 /* SelectGenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311A3EF52AED21F70082D247 /* SelectGenderView.swift */; };
 		311A3EF82AED2AEF0082D247 /* InputBirthdayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311A3EF72AED2AEF0082D247 /* InputBirthdayView.swift */; };
 		311A3EFA2AED2EE60082D247 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311A3EF92AED2EE60082D247 /* Date+.swift */; };
@@ -26,7 +28,6 @@
 		314C44822C494A980020FAA9 /* MemberUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314C44812C494A980020FAA9 /* MemberUpdateView.swift */; };
 		314C44862C4BBF8D0020FAA9 /* CaseOfAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314C44852C4BBF8D0020FAA9 /* CaseOfAdd.swift */; };
 		314C44882C4BC0B10020FAA9 /* MemberAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314C44872C4BC0B10020FAA9 /* MemberAddView.swift */; };
-		314FD6A42AE9542A0052251C /* RoundedRectangleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314FD6A32AE9542A0052251C /* RoundedRectangleButtonView.swift */; };
 		314FD6A62AE955CA0052251C /* InputNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314FD6A52AE955CA0052251C /* InputNameView.swift */; };
 		317002BA2AD58B6100D8991A /* CGFloat+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317002B92AD58B6100D8991A /* CGFloat+.swift */; };
 		318457362AE941B3007C2045 /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318457352AE941B3007C2045 /* IntroView.swift */; };
@@ -61,6 +62,8 @@
 		310E889B2C4E78E800D5CB36 /* AddMyInformationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMyInformationViewModel.swift; sourceTree = "<group>"; };
 		310E889E2C4E7B6600D5CB36 /* CaseOfAddMyInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseOfAddMyInformationView.swift; sourceTree = "<group>"; };
 		310E88A02C4E83B500D5CB36 /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
+		310E88A52C4F88E100D5CB36 /* ModumoaRoundedRectangleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModumoaRoundedRectangleButton.swift; sourceTree = "<group>"; };
+		310E88A72C4F919D00D5CB36 /* ModumoaMemberSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModumoaMemberSectionView.swift; sourceTree = "<group>"; };
 		311A3EF52AED21F70082D247 /* SelectGenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGenderView.swift; sourceTree = "<group>"; };
 		311A3EF72AED2AEF0082D247 /* InputBirthdayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputBirthdayView.swift; sourceTree = "<group>"; };
 		311A3EF92AED2EE60082D247 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
@@ -74,7 +77,6 @@
 		314C44812C494A980020FAA9 /* MemberUpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberUpdateView.swift; sourceTree = "<group>"; };
 		314C44852C4BBF8D0020FAA9 /* CaseOfAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseOfAdd.swift; sourceTree = "<group>"; };
 		314C44872C4BC0B10020FAA9 /* MemberAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAddView.swift; sourceTree = "<group>"; };
-		314FD6A32AE9542A0052251C /* RoundedRectangleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleButtonView.swift; sourceTree = "<group>"; };
 		314FD6A52AE955CA0052251C /* InputNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputNameView.swift; sourceTree = "<group>"; };
 		317002B92AD58B6100D8991A /* CGFloat+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+.swift"; sourceTree = "<group>"; };
 		318457352AE941B3007C2045 /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
@@ -127,6 +129,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		310E88A22C4F88A900D5CB36 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				310E88A52C4F88E100D5CB36 /* ModumoaRoundedRectangleButton.swift */,
+				310E88A72C4F919D00D5CB36 /* ModumoaMemberSectionView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		314C44782C47903D0020FAA9 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -170,14 +181,6 @@
 				318457402AE946ED007C2045 /* SF-Pro-Text-Medium.otf */,
 			);
 			path = Fonts;
-			sourceTree = "<group>";
-		};
-		3185210A2AEE75E1000579CE /* ViewComponents */ = {
-			isa = PBXGroup;
-			children = (
-				314FD6A32AE9542A0052251C /* RoundedRectangleButtonView.swift */,
-			);
-			path = ViewComponents;
 			sourceTree = "<group>";
 		};
 		3185210F2AEEA300000579CE /* MemberViews */ = {
@@ -247,8 +250,8 @@
 		31B388E92AE38E4200DFE875 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				310E88A22C4F88A900D5CB36 /* Components */,
 				3185210F2AEEA300000579CE /* MemberViews */,
-				3185210A2AEE75E1000579CE /* ViewComponents */,
 				318457332AE94183007C2045 /* AddMyInformationViews */,
 				31B388EA2AE38E5000DFE875 /* CardView.swift */,
 				31B388EC2AE3944D00DFE875 /* HierarchyCardView.swift */,
@@ -360,7 +363,6 @@
 			files = (
 				318457382AE94315007C2045 /* Font+.swift in Sources */,
 				310E88A12C4E83B500D5CB36 /* RootViewModel.swift in Sources */,
-				314FD6A42AE9542A0052251C /* RoundedRectangleButtonView.swift in Sources */,
 				310E889A2C4E23CF00D5CB36 /* DatabaseModel.swift in Sources */,
 				314C447E2C4793800020FAA9 /* View+.swift in Sources */,
 				314C44862C4BBF8D0020FAA9 /* CaseOfAdd.swift in Sources */,
@@ -392,8 +394,10 @@
 				314FD6A62AE955CA0052251C /* InputNameView.swift in Sources */,
 				31B388ED2AE3944D00DFE875 /* HierarchyCardView.swift in Sources */,
 				310E889C2C4E78E800D5CB36 /* AddMyInformationViewModel.swift in Sources */,
+				310E88A62C4F88E100D5CB36 /* ModumoaRoundedRectangleButton.swift in Sources */,
 				318457362AE941B3007C2045 /* IntroView.swift in Sources */,
 				A06C1ABF2AF4BF9A001C8B4D /* RelationshipInfoType.swift in Sources */,
+				310E88A82C4F919D00D5CB36 /* ModumoaMemberSectionView.swift in Sources */,
 				318521142AEFD911000579CE /* MemberNameView.swift in Sources */,
 				3104A06B2C4D085300DD8020 /* PreferKey.swift in Sources */,
 				A0F324D12ADA826200D64198 /* Node.swift in Sources */,

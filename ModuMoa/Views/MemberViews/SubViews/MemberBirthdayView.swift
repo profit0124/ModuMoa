@@ -39,13 +39,12 @@ struct MemberBirthdayView: View {
             }
             
             Spacer()
-
-            RoundedRectangleButtonView(title: "완료", isEnabled: true)
-                .onTapGesture {
-                    birthday = tempBirthDay
-                    isPresented = false
-                    completion()
-                }
+            
+            ModumoaRoundedRectangleButton("완료") {
+                birthday = tempBirthDay
+                isPresented = false
+                completion()
+            }
         }
     }
 }

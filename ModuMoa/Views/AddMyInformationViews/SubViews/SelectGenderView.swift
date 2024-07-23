@@ -14,11 +14,11 @@ struct SelectGenderView: View {
     var body: some View {
         GeometryReader { reader in
             let width = reader.size.width
-            VStack(alignment: .leading, spacing: 0) {
+            VStack(alignment: .leading, spacing: .betweenElements) {
+                // MARK: 네비게이션 BackButton
                 Image(systemName: "chevron.left")
                     .resizable()
                     .font(.customFont(.headline))
-                    
                     .frame(width: 10, height: 20)
                     .onTapGesture {
                         if viewModel.caseOfAddMyInfromationView == .sex {
@@ -26,36 +26,35 @@ struct SelectGenderView: View {
                         }
                     }
                     .padding(.leading, 8)
-                    
-                VStack(alignment: .leading) {
-                    HStack {
-                        Text("성별을 선택해주세요")
-                            .font(.customFont(.largeTitle).bold())
-                            .padding(.top, .betweenElements)
-                            .padding(.bottom, .betweenTitleAndContent)
-                        Spacer()
-                    }
-                    HStack(spacing: 8) {
-                        ForEach(Sex.allCases, id: \.self) { value in
-                            selectedCapule(value, width: width)
+                
+                // MARK: Contents
+                VStack(alignment: .leading, spacing: .betweenSelectPoint) {
+                    VStack(alignment: .leading, spacing: .betweenTitleAndContent) {
+                        HStack {
+                            Text("성별을 선택해주세요")
+                                .font(.customFont(.largeTitle).bold())
+                            Spacer()
+                        }
+                        HStack(spacing: 8) {
+                            ForEach(Sex.allCases, id: \.self) { value in
+                                selectedCapule(value, width: width)
+                            }
                         }
                     }
-                    .padding(.bottom, .betweenSelectPoint)
                     
-                    makeSection("이름", viewModel.name)
+                    ModumoaMemberSectionView(title: "이름", value: viewModel.name)
                     
                     Spacer()
                     
                     if viewModel.sex != nil {
-                        RoundedRectangleButtonView(title: "다음", isEnabled: true)
-                            .onTapGesture {
-                                if viewModel.caseOfAddMyInfromationView == .sex {
-                                    viewModel.nextButtonTapped()
-                                }
+                        ModumoaRoundedRectangleButton("다음") {
+                            if viewModel.caseOfAddMyInfromationView == .sex {
+                                viewModel.nextButtonTapped()
                             }
+                        }
                     }
                 }
-                .padding(.horizontal, 20)
+                .padding(.horizontal, 16)
             }
         }
         .frame(maxWidth: .infinity)
@@ -76,19 +75,5 @@ struct SelectGenderView: View {
             .onTapGesture {
                 viewModel.sex = value
             }
-    }
-    
-    @ViewBuilder
-    private func makeSection(_ headline: String, _ value: String) -> some View {
-        VStack(alignment: .leading, spacing: .betweenHeadlineAndTitle2) {
-            Text(headline)
-                .foregroundStyle(.moduBlack)
-                .font(.customFont(.footnote))
-                
-            Text(value)
-                .foregroundStyle(.moduBlack)
-                .font(.customFont(.body))
-        }
-        .padding(.bottom, .betweenContents)
     }
 }
