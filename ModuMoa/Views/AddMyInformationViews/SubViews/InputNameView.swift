@@ -23,7 +23,7 @@ struct InputNameView: View {
                     ZStack(alignment: .bottom) {
                         TextField("이름", text: $viewModel.name)
                             .focused($isFocused)
-                            .keyboardType(.alphabet)
+                            .keyboardType(.default)
                             .autocorrectionDisabled(true)
                             .font(.customFont(.title1))
                             .padding(2)

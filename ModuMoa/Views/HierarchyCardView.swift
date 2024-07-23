@@ -17,7 +17,7 @@ struct HierarchyCardView: View {
     // 추가 Sheet 가 내 카드에서 + 인지, 아님 파트너의 + 인지 구별하기 위함
     @State private var fromMe: Bool = true
     
-    let afterAddAction: (Node) -> Void
+//    let afterAddAction: (Node) -> Void
     
     typealias Key = PreferKey<Member.ID, Anchor<CGPoint>>
 
@@ -42,8 +42,7 @@ struct HierarchyCardView: View {
             
             HStack(alignment: .top, spacing: 80) {
                 ForEach($node.children, id: \.id) { $children in
-                    HierarchyCardView(node: $children) { addNode in       
-                    }
+                    HierarchyCardView(node: $children)
                 }
             }
         }
@@ -118,14 +117,23 @@ struct HierarchyCardView: View {
         }
         .navigationDestination(isPresented: $addNodeViewisPushed) {
             if let selectedAddCase {
-                MemberAddView(from: $node, with: selectedAddCase, isPushed: $addNodeViewisPushed) { addNode in
-                    self.afterAddAction(addNode)
-                }
+                MemberAddView(from: $node, with: selectedAddCase, isPushed: $addNodeViewisPushed)
             }
         }
         .navigationDestination(isPresented: $detailNodeViewisPushed, destination: {
             MemberDetailView(isPushed: $detailNodeViewisPushed, node: $node, fromMe: $fromMe)
         })
+        .onAppear {
+            /// 자식으로부터 나의 파트너를 추가할 경우, 나의 자식과 파트너의 자식을 같게해주게 되면 다음 Loading 에서 나의 자식이 없어지는 현상 발견
+            if let partner = node.partner, node.children != partner.children {
+                let children = node.children + partner.children
+                node.children = children
+                node.partner?.children = children
+            }
+//            if node.children.isEmpty, !(node.partner?.children.isEmpty ?? true) {
+//                node.children = node.partner?.children ?? []
+//            }
+        }
     }
     
     private func middleOfPoints(_ lhs: CGPoint, _ rhs: CGPoint) -> CGPoint {

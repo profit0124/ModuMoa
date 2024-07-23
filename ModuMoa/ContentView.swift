@@ -23,10 +23,7 @@ struct ContentView: View {
                 case .familyTreeView:
                     ZStack {
                         if let baseNode = Binding<Node>($viewModel.baseNode) {
-                            HierarchyCardView(node: baseNode) {
-                                $0.children = [baseNode.wrappedValue]
-                                viewModel.setBaseNode($0)
-                            }
+                            HierarchyCardView(node: baseNode)
                             .scaleEffect(currentZoom + totalZoom)
                             .offset(draggedOffset)
                             .gesture(drag)
@@ -61,6 +58,16 @@ struct ContentView: View {
             }
         }
         .environment(viewModel)
+        .onChange(of: viewModel.baseNode?.leftParent) { oldValue, newValue in
+            if viewModel.baseNode?.rightParent == nil, oldValue == nil, newValue != nil {
+                viewModel.setBaseNode(newValue)
+            }
+        }
+        .onChange(of: viewModel.baseNode?.rightParent) { oldValue, newValue in
+            if viewModel.baseNode?.leftParent == nil, oldValue == nil, newValue != nil {
+                viewModel.setBaseNode(newValue)
+            }
+        }
     }
     
     var drag: some Gesture {

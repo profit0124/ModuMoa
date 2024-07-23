@@ -24,9 +24,7 @@ struct MemberAddView: View {
     @State private var abo: BloodType.AboType?
     @Binding var isPushed: Bool
     
-    let addAction: (Node) -> Void
-    
-    init(from node: Binding<Node>, with selectedAddCase: CaseOfAdd, isPushed: Binding<Bool>, completion: @escaping (Node) -> Void) {
+    init(from node: Binding<Node>, with selectedAddCase: CaseOfAdd, isPushed: Binding<Bool>) {
         self._fromNode = node
         self.selectedAddCase = selectedAddCase
         self._isPushed = isPushed
@@ -61,8 +59,6 @@ struct MemberAddView: View {
         self.nickName = RelationshipInfoType(level: level, distance: distance, sex: sex).nickName()
         self.level = level
         self.distance = distance
-        
-        addAction = completion
     }
     
     var body: some View {
@@ -101,7 +97,7 @@ struct MemberAddView: View {
     
     func saveNode() {
         if let sex {
-            var node = Node(member: .init(name: name, bloodType: bloodType, sex: sex, birthday: birthDay, nickName: nickName), level: level, distance: distance)
+            let node = Node(member: .init(name: name, bloodType: bloodType, sex: sex, birthday: birthDay, nickName: nickName), level: level, distance: distance)
             switch selectedAddCase {
             case .leftParent:
                 if fromNode.rightParent != nil {
@@ -127,11 +123,11 @@ struct MemberAddView: View {
                 fromNode.partner = node
             case .son, .daughter:
                 if fromNode.member.sex == .male {
-                    node.rightParent = fromNode
-                    node.leftParent = fromNode.partner
-                } else {
                     node.leftParent = fromNode
                     node.rightParent = fromNode.partner
+                } else {
+                    node.rightParent = fromNode
+                    node.leftParent = fromNode.partner
                 }
                 fromNode.children.append(node)
                 if fromNode.partner != nil {
@@ -141,7 +137,6 @@ struct MemberAddView: View {
             do {
                 try DatabaseModel.shared.addNode(node)
                 isPushed = false
-                addAction(node)
             } catch {
                 print("save error")
             }
