@@ -18,6 +18,7 @@ enum RootViewCase {
 final class RootViewModel {
     var rootViewCase: RootViewCase = .loadingView
     var baseNode: Node?
+    var isPushed: Bool = false
     
     func onAppear() {
         guard let stringID = UserDefaults.standard.value(forKey: "baseNode") as? String else {
