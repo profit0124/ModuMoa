@@ -34,7 +34,6 @@ struct Member: Identifiable, Equatable, Hashable {
 enum Sex: String, CaseIterable, Equatable, Hashable, Codable {
     case male = "남성"
     case female = "여성"
-    case none = "모름"
 }
 
 struct BloodType: Equatable, Hashable, Codable {
