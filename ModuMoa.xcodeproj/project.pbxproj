@@ -14,6 +14,7 @@
 		310E889F2C4E7B6600D5CB36 /* CaseOfAddMyInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310E889E2C4E7B6600D5CB36 /* CaseOfAddMyInformationView.swift */; };
 		310E88A12C4E83B500D5CB36 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310E88A02C4E83B500D5CB36 /* RootViewModel.swift */; };
 		310E88A62C4F88E100D5CB36 /* ModumoaRoundedRectangleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310E88A52C4F88E100D5CB36 /* ModumoaRoundedRectangleButton.swift */; };
+		310E88A82C4F919D00D5CB36 /* ModumoaMemberSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310E88A72C4F919D00D5CB36 /* ModumoaMemberSectionView.swift */; };
 		311A3EF62AED21F70082D247 /* SelectGenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311A3EF52AED21F70082D247 /* SelectGenderView.swift */; };
 		311A3EF82AED2AEF0082D247 /* InputBirthdayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311A3EF72AED2AEF0082D247 /* InputBirthdayView.swift */; };
 		311A3EFA2AED2EE60082D247 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311A3EF92AED2EE60082D247 /* Date+.swift */; };
@@ -62,6 +63,7 @@
 		310E889E2C4E7B6600D5CB36 /* CaseOfAddMyInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseOfAddMyInformationView.swift; sourceTree = "<group>"; };
 		310E88A02C4E83B500D5CB36 /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		310E88A52C4F88E100D5CB36 /* ModumoaRoundedRectangleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModumoaRoundedRectangleButton.swift; sourceTree = "<group>"; };
+		310E88A72C4F919D00D5CB36 /* ModumoaMemberSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModumoaMemberSectionView.swift; sourceTree = "<group>"; };
 		311A3EF52AED21F70082D247 /* SelectGenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGenderView.swift; sourceTree = "<group>"; };
 		311A3EF72AED2AEF0082D247 /* InputBirthdayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputBirthdayView.swift; sourceTree = "<group>"; };
 		311A3EF92AED2EE60082D247 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				310E88A52C4F88E100D5CB36 /* ModumoaRoundedRectangleButton.swift */,
+				310E88A72C4F919D00D5CB36 /* ModumoaMemberSectionView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				310E88A62C4F88E100D5CB36 /* ModumoaRoundedRectangleButton.swift in Sources */,
 				318457362AE941B3007C2045 /* IntroView.swift in Sources */,
 				A06C1ABF2AF4BF9A001C8B4D /* RelationshipInfoType.swift in Sources */,
+				310E88A82C4F919D00D5CB36 /* ModumoaMemberSectionView.swift in Sources */,
 				318521142AEFD911000579CE /* MemberNameView.swift in Sources */,
 				3104A06B2C4D085300DD8020 /* PreferKey.swift in Sources */,
 				A0F324D12ADA826200D64198 /* Node.swift in Sources */,

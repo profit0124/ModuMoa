@@ -64,14 +64,13 @@ struct SelectBloodTypeView: View {
                     }
                     .padding(.bottom, .betweenSelectPoint)
                     
-                    makeSection("생일", viewModel.birthDay.toString())
+                    ModumoaMemberSectionView(title: "생일", value: viewModel.birthDay.toString())
                         .padding(.bottom, .betweenElements)
                     
-                    
-                    makeSection("성별", viewModel.sex?.rawValue ?? "모름")
+                    ModumoaMemberSectionView(title: "성별", value: viewModel.sex?.rawValue ?? "모름")
                         .padding(.bottom, .betweenElements)
                     
-                    makeSection("이름", viewModel.name)
+                    ModumoaMemberSectionView(title: "이름", value: viewModel.name)
                     
                     Spacer()
                 
@@ -121,20 +120,6 @@ struct SelectBloodTypeView: View {
             .padding(.horizontal, 16)
             .presentationDetents([.medium])
         }
-    }
-    
-    @ViewBuilder
-    private func makeSection(_ headline: String, _ value: String) -> some View {
-        VStack(alignment: .leading, spacing: .betweenHeadlineAndTitle2) {
-            Text(headline)
-                .foregroundStyle(.moduBlack)
-                .font(.customFont(.footnote))
-                
-            Text(value)
-                .foregroundStyle(.moduBlack)
-                .font(.customFont(.body))
-        }
-        .padding(.bottom, .betweenContents)
     }
     
     @ViewBuilder

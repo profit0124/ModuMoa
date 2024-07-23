@@ -41,10 +41,10 @@ struct InputBirthdayView: View {
                     .foregroundStyle(.disableText)
                     .padding(.bottom, .betweenSelectPoint)
                 
-                makeSection("성별", viewModel.sex?.rawValue ?? "모름")
+                ModumoaMemberSectionView(title: "성별", value: viewModel.sex?.rawValue ?? "모름")
                     .padding(.bottom, .betweenElements)
                 
-                makeSection("이름", viewModel.name)
+                ModumoaMemberSectionView(title: "이름", value: viewModel.name)
                 
                 Spacer()
                 
@@ -56,20 +56,6 @@ struct InputBirthdayView: View {
             }
             .padding(.horizontal, 20)
         }
-    }
-    
-    @ViewBuilder
-    private func makeSection(_ headline: String, _ value: String) -> some View {
-        VStack(alignment: .leading, spacing: .betweenHeadlineAndTitle2) {
-            Text(headline)
-                .foregroundStyle(.moduBlack)
-                .font(.customFont(.footnote))
-                
-            Text(value)
-                .foregroundStyle(.moduBlack)
-                .font(.customFont(.body))
-        }
-        .padding(.bottom, .betweenContents)
     }
 }
 

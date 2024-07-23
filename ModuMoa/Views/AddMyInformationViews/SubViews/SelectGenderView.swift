@@ -42,7 +42,7 @@ struct SelectGenderView: View {
                     }
                     .padding(.bottom, .betweenSelectPoint)
                     
-                    makeSection("이름", viewModel.name)
+                    ModumoaMemberSectionView(title: "이름", value: viewModel.name)
                     
                     Spacer()
                     
@@ -76,19 +76,5 @@ struct SelectGenderView: View {
             .onTapGesture {
                 viewModel.sex = value
             }
-    }
-    
-    @ViewBuilder
-    private func makeSection(_ headline: String, _ value: String) -> some View {
-        VStack(alignment: .leading, spacing: .betweenHeadlineAndTitle2) {
-            Text(headline)
-                .foregroundStyle(.moduBlack)
-                .font(.customFont(.footnote))
-                
-            Text(value)
-                .foregroundStyle(.moduBlack)
-                .font(.customFont(.body))
-        }
-        .padding(.bottom, .betweenContents)
     }
 }
