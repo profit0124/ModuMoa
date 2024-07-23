@@ -48,17 +48,12 @@ struct MemberSexView: View {
             
             Spacer()
             
-            if sex == nil {
-                RoundedRectangleButtonView(title: "완료", isEnabled: false)
-            } else {
-                RoundedRectangleButtonView(title: "완료", isEnabled: true)
-                    .onTapGesture {
-                        if sex != nil {
-                            isPresented = false
-                            completion()
-                        }
-                    }
-            }        }
+            ModumoaRoundedRectangleButton("완료") {
+                isPresented = false
+                completion()
+            }
+            .disabled(sex == nil)
+        }
     }
 }
 

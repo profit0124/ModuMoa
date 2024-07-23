@@ -25,13 +25,12 @@ struct IntroView: View {
             Text("내 가족의 모든 정보를 모아볼 수 있어요")
                 .font(.customFont(.headline))
                 .padding(.bottom, .largestPadding)
-            Button(action: {
+            
+            ModumoaRoundedRectangleButton("다음", cornerRadius: 12) {
                 if viewModel.caseOfAddMyInfromationView == .intro {
                     viewModel.nextButtonTapped()
                 }
-            }, label: {
-                RoundedRectangleButtonView(title: "확인", cornerRadius: 12)
-            })
+            }
         }
         .padding(.horizontal, 16)
     }

@@ -47,12 +47,12 @@ struct SelectGenderView: View {
                     Spacer()
                     
                     if viewModel.sex != nil {
-                        RoundedRectangleButtonView(title: "다음", isEnabled: true)
-                            .onTapGesture {
-                                if viewModel.caseOfAddMyInfromationView == .sex {
-                                    viewModel.nextButtonTapped()
-                                }
+                        
+                        ModumoaRoundedRectangleButton("다음") {
+                            if viewModel.caseOfAddMyInfromationView == .sex {
+                                viewModel.nextButtonTapped()
                             }
+                        }
                     }
                 }
                 .padding(.horizontal, 20)

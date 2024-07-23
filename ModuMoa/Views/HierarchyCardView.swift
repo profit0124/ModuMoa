@@ -106,19 +106,16 @@ struct HierarchyCardView: View {
                 
                 Spacer()
                 
-                Button(action: {
+                ModumoaRoundedRectangleButton("다음") {
                     self.isPresented = false
                     self.addNodeViewisPushed = true
-                }) {
-                    RoundedRectangleButtonView(title: "다음")
                 }
+                .disabled(selectedAddCase == nil)
             }
             
         }
         .navigationDestination(isPresented: $addNodeViewisPushed) {
-            if let selectedAddCase {
-                MemberAddView(from: $node, with: $selectedAddCase, isPushed: $addNodeViewisPushed)
-            }
+            MemberAddView(from: $node, with: $selectedAddCase, isPushed: $addNodeViewisPushed)
         }
         .navigationDestination(isPresented: $detailNodeViewisPushed, destination: {
             MemberDetailView(isPushed: $detailNodeViewisPushed, node: $node, fromMe: $fromMe)

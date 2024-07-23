@@ -47,13 +47,12 @@ struct InputBirthdayView: View {
                 makeSection("이름", viewModel.name)
                 
                 Spacer()
-            
-                RoundedRectangleButtonView(title: "다음")
-                    .onTapGesture {
-                        if viewModel.caseOfAddMyInfromationView == .birthday {
-                            viewModel.nextButtonTapped()
-                        }
+                
+                ModumoaRoundedRectangleButton("다음") {
+                    if viewModel.caseOfAddMyInfromationView == .birthday {
+                        viewModel.nextButtonTapped()
                     }
+                }
             }
             .padding(.horizontal, 20)
         }

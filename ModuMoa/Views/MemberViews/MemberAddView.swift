@@ -86,13 +86,10 @@ struct MemberAddView: View {
             
             Spacer()
             
-            Button(action:{
+            ModumoaRoundedRectangleButton("완료") {
                 saveNode()
-            }) {
-                RoundedRectangleButtonView(title: "완료")
             }
             .disabled(name.isEmpty || sex == nil)
-            
         }
         .padding(.horizontal, .betweenTextAndLine)
         .ignoresSafeArea(.keyboard)

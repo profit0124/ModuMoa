@@ -39,15 +39,12 @@ struct InputNameView: View {
             VStack {
                 Spacer()
                 if !viewModel.name.isEmpty {
-                    Button(action: {
+                    ModumoaRoundedRectangleButton("다음", cornerRadius: 0) {
                         isFocused = false
                         if viewModel.caseOfAddMyInfromationView == .name {
                             viewModel.nextButtonTapped()
                         }
-                    }, label: {
-                        RoundedRectangleButtonView(title: "다음", cornerRadius: 0)
-                            .frame(width: width)
-                    })
+                    }
                 }
             }
             

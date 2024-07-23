@@ -76,12 +76,11 @@ struct SelectBloodTypeView: View {
                     Spacer()
                 
                     if viewModel.aboType != nil, viewModel.rhType != nil {
-                        RoundedRectangleButtonView(title: "완료", isEnabled: true)
-                            .onTapGesture {
-                                if let node = viewModel.saveMyInformation() {
-                                    rootViewModel.setBaseNode(node)
-                                }
+                        ModumoaRoundedRectangleButton("완료") {
+                            if let node = viewModel.saveMyInformation() {
+                                rootViewModel.setBaseNode(node)
                             }
+                        }
                     }
                 }
                 .padding(.horizontal, 20)
