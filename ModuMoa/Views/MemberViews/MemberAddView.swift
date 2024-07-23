@@ -35,12 +35,12 @@ struct MemberAddView: View {
         case .leftParent:
             sex = .male
             level += 1
-            distance += 1
+            distance = node.wrappedValue.rightParent?.distance ?? distance + 1
             
         case .rightParent:
             sex = .female
             level += 1
-            distance += 1
+            distance = node.wrappedValue.leftParent?.distance ?? distance + 1
             
         case .partner:
             sex = node.member.sex.wrappedValue == .male ? .male : .female

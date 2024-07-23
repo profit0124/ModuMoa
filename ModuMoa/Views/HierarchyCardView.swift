@@ -130,9 +130,6 @@ struct HierarchyCardView: View {
                 node.children = children
                 node.partner?.children = children
             }
-//            if node.children.isEmpty, !(node.partner?.children.isEmpty ?? true) {
-//                node.children = node.partner?.children ?? []
-//            }
         }
     }
     
