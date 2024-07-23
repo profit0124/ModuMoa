@@ -40,9 +40,9 @@ struct CardView: View {
         .padding(.betweenElements)
         .background {
             ZStack {
-                RoundedRectangle(cornerRadius: 16)
+                RoundedRectangle(cornerRadius: 16, style: .continuous)
                     .fill(.white)
-                RoundedRectangle(cornerRadius: 16)
+                RoundedRectangle(cornerRadius: 16, style: .continuous)
                     .stroke(lineWidth: 4)
                     .foregroundStyle(.moduBlack)
             }

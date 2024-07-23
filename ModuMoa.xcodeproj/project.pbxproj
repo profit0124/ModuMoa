@@ -15,6 +15,9 @@
 		310E88A12C4E83B500D5CB36 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310E88A02C4E83B500D5CB36 /* RootViewModel.swift */; };
 		310E88A62C4F88E100D5CB36 /* ModumoaRoundedRectangleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310E88A52C4F88E100D5CB36 /* ModumoaRoundedRectangleButton.swift */; };
 		310E88A82C4F919D00D5CB36 /* ModumoaMemberSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310E88A72C4F919D00D5CB36 /* ModumoaMemberSectionView.swift */; };
+		310E88AA2C4FADBC00D5CB36 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310E88A92C4FADBC00D5CB36 /* SearchBarView.swift */; };
+		310E88AC2C4FB3C200D5CB36 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310E88AB2C4FB3C200D5CB36 /* SearchView.swift */; };
+		310E88AE2C4FB3DF00D5CB36 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310E88AD2C4FB3DF00D5CB36 /* SearchViewModel.swift */; };
 		311A3EF62AED21F70082D247 /* SelectGenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311A3EF52AED21F70082D247 /* SelectGenderView.swift */; };
 		311A3EF82AED2AEF0082D247 /* InputBirthdayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311A3EF72AED2AEF0082D247 /* InputBirthdayView.swift */; };
 		311A3EFA2AED2EE60082D247 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311A3EF92AED2EE60082D247 /* Date+.swift */; };
@@ -64,6 +67,9 @@
 		310E88A02C4E83B500D5CB36 /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		310E88A52C4F88E100D5CB36 /* ModumoaRoundedRectangleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModumoaRoundedRectangleButton.swift; sourceTree = "<group>"; };
 		310E88A72C4F919D00D5CB36 /* ModumoaMemberSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModumoaMemberSectionView.swift; sourceTree = "<group>"; };
+		310E88A92C4FADBC00D5CB36 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		310E88AB2C4FB3C200D5CB36 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		310E88AD2C4FB3DF00D5CB36 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		311A3EF52AED21F70082D247 /* SelectGenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGenderView.swift; sourceTree = "<group>"; };
 		311A3EF72AED2AEF0082D247 /* InputBirthdayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputBirthdayView.swift; sourceTree = "<group>"; };
 		311A3EF92AED2EE60082D247 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
@@ -134,6 +140,7 @@
 			children = (
 				310E88A52C4F88E100D5CB36 /* ModumoaRoundedRectangleButton.swift */,
 				310E88A72C4F919D00D5CB36 /* ModumoaMemberSectionView.swift */,
+				310E88A92C4FADBC00D5CB36 /* SearchBarView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -255,6 +262,7 @@
 				318457332AE94183007C2045 /* AddMyInformationViews */,
 				31B388EA2AE38E5000DFE875 /* CardView.swift */,
 				31B388EC2AE3944D00DFE875 /* HierarchyCardView.swift */,
+				310E88AB2C4FB3C200D5CB36 /* SearchView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -264,6 +272,7 @@
 			children = (
 				310E889B2C4E78E800D5CB36 /* AddMyInformationViewModel.swift */,
 				310E88A02C4E83B500D5CB36 /* RootViewModel.swift */,
+				310E88AD2C4FB3DF00D5CB36 /* SearchViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -371,11 +380,13 @@
 				31B388EF2AE3D3EB00DFE875 /* CGSize+.swift in Sources */,
 				31CD06902AE55883009D5383 /* AddMyInformationContainerView.swift in Sources */,
 				314C447A2C4790E40020FAA9 /* CustomHalfSheet.swift in Sources */,
+				310E88AC2C4FB3C200D5CB36 /* SearchView.swift in Sources */,
 				311A3EF82AED2AEF0082D247 /* InputBirthdayView.swift in Sources */,
 				314C44882C4BC0B10020FAA9 /* MemberAddView.swift in Sources */,
 				3185211C2AEFEFF3000579CE /* MemberAboTypeView.swift in Sources */,
 				31B388EB2AE38E5000DFE875 /* CardView.swift in Sources */,
 				31A78CAA2AD42EE400BE629A /* ContentView.swift in Sources */,
+				310E88AA2C4FADBC00D5CB36 /* SearchBarView.swift in Sources */,
 				311A3EFC2AEE44800082D247 /* SelectBloodTypeView.swift in Sources */,
 				3185211A2AEFD93B000579CE /* MemberRhTypeView.swift in Sources */,
 				A0F324D32ADA891700D64198 /* FamilyTree.swift in Sources */,
@@ -390,6 +401,7 @@
 				310E889F2C4E7B6600D5CB36 /* CaseOfAddMyInformationView.swift in Sources */,
 				317002BA2AD58B6100D8991A /* CGFloat+.swift in Sources */,
 				31A78CA82AD42EE400BE629A /* ModuMoaApp.swift in Sources */,
+				310E88AE2C4FB3DF00D5CB36 /* SearchViewModel.swift in Sources */,
 				311A3EFA2AED2EE60082D247 /* Date+.swift in Sources */,
 				314FD6A62AE955CA0052251C /* InputNameView.swift in Sources */,
 				31B388ED2AE3944D00DFE875 /* HierarchyCardView.swift in Sources */,

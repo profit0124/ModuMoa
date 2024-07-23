@@ -47,6 +47,17 @@ struct ContentView: View {
                             }
                         }
                     }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .overlay(alignment: .top) {
+                        VStack {
+                            SearchBarView(text: .constant(""))
+                                .disabled(true)
+                                .onTapGesture {
+                                    viewModel.isPushed = true
+                                }
+                        }
+                        .padding(.horizontal, 16)
+                    }
                 case .loadingView:
                     ProgressView()
                         .onAppear{
@@ -56,6 +67,9 @@ struct ContentView: View {
                     AddMyInformationContainerView()
                 }
             }
+            .navigationDestination(isPresented: $viewModel.isPushed, destination: {
+                SearchView(isPushed: $viewModel.isPushed)
+            })
         }
         .environment(viewModel)
         .onChange(of: viewModel.baseNode?.leftParent) { oldValue, newValue in
@@ -68,6 +82,7 @@ struct ContentView: View {
                 viewModel.setBaseNode(newValue)
             }
         }
+        
     }
     
     var drag: some Gesture {
