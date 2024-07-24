@@ -23,32 +23,40 @@ struct ContentView: View {
                 case .familyTreeView:
                     ZStack {
                         ZStack {
+                            GeometryReader {
+                                let size = $0.size
+                                let zoom = min(currentZoom + totalZoom, 0.7)
+                                Color.clear
+                                    .frame(width: size.width / zoom, height: size.height / zoom)
+                                    .contentShape(Rectangle())
+                            }
+                            
                             if let baseNode = Binding<Node>($viewModel.baseNode) {
                                 HierarchyCardView(node: baseNode)
-                                .scaleEffect(currentZoom + totalZoom)
-                                .offset(draggedOffset)
-                                .gesture(drag)
-                                .gesture(
-                                    MagnifyGesture()
-                                        .onChanged { value in
-                                            currentZoom = value.magnification - 1
-                                        }
-                                        .onEnded { value in
-                                            totalZoom += currentZoom
-                                            currentZoom = 0
-                                        }
-                                    
-                                )
-                                .accessibilityZoomAction { action in
-                                    if action.direction == .zoomIn {
-                                        totalZoom += 1
-                                    } else {
-                                        totalZoom -= 1
-                                    }
-                                }
                             }
                         }
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .scaleEffect(currentZoom + totalZoom)
+                        .offset(draggedOffset)
+                        .gesture(drag)
+                        .gesture(
+                            MagnifyGesture()
+                                .onChanged { value in
+                                    currentZoom = value.magnification - 1
+                                }
+                                .onEnded { value in
+                                    totalZoom += currentZoom
+                                    currentZoom = 0
+                                }
+                            
+                        )
+                        .accessibilityZoomAction { action in
+                            if action.direction == .zoomIn {
+                                totalZoom += 1
+                            } else {
+                                totalZoom -= 1
+                            }
+                        }
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .overlay(alignment: .top) {
