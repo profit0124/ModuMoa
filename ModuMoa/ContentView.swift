@@ -22,30 +22,33 @@ struct ContentView: View {
                 switch viewModel.rootViewCase {
                 case .familyTreeView:
                     ZStack {
-                        if let baseNode = Binding<Node>($viewModel.baseNode) {
-                            HierarchyCardView(node: baseNode)
-                            .scaleEffect(currentZoom + totalZoom)
-                            .offset(draggedOffset)
-                            .gesture(drag)
-                            .gesture(
-                                MagnifyGesture()
-                                    .onChanged { value in
-                                        currentZoom = value.magnification - 1
+                        ZStack {
+                            if let baseNode = Binding<Node>($viewModel.baseNode) {
+                                HierarchyCardView(node: baseNode)
+                                .scaleEffect(currentZoom + totalZoom)
+                                .offset(draggedOffset)
+                                .gesture(drag)
+                                .gesture(
+                                    MagnifyGesture()
+                                        .onChanged { value in
+                                            currentZoom = value.magnification - 1
+                                        }
+                                        .onEnded { value in
+                                            totalZoom += currentZoom
+                                            currentZoom = 0
+                                        }
+                                    
+                                )
+                                .accessibilityZoomAction { action in
+                                    if action.direction == .zoomIn {
+                                        totalZoom += 1
+                                    } else {
+                                        totalZoom -= 1
                                     }
-                                    .onEnded { value in
-                                        totalZoom += currentZoom
-                                        currentZoom = 0
-                                    }
-                                
-                            )
-                            .accessibilityZoomAction { action in
-                                if action.direction == .zoomIn {
-                                    totalZoom += 1
-                                } else {
-                                    totalZoom -= 1
                                 }
                             }
                         }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .overlay(alignment: .top) {
