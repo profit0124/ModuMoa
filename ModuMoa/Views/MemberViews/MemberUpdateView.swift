@@ -77,7 +77,7 @@ struct MemberUpdateView: View {
                 .disabled(!isEnabled())
             }
             
-            MemberFormView(name: $name, sex: $sex, birthDay: $birthDay, bloodType: $bloodType, rh: $rh, abo: $abo, nickName: member.nickName)
+            MemberFormView(name: $name, sex: $sex, birthDay: $birthDay, bloodType: $bloodType, rh: $rh, abo: $abo, nickName: member.nickNames.nickname)
         }
         .padding(.horizontal, 16)
         .onAppear {

@@ -29,6 +29,11 @@ struct HierarchyCardView: View {
                     .anchorPreference(key: Key.self, value: .center, transform: { anchor in
                         return [node.id:anchor]
                     })
+                    .onAppear{
+                        if node.member.nickNames.nickname.isEmpty {
+                            node.setNickname()
+                        }
+                    }
                 
                 if let partner = node.partner {
                     cardViewWithButton(partner)
@@ -36,6 +41,11 @@ struct HierarchyCardView: View {
                         .anchorPreference(key: Key.self, value: .center, transform: { anchor in
                             return [partner.id:anchor]
                         })
+                        .onAppear {
+                            if partner.member.nickNames.nickname.isEmpty {
+                                partner.setNickname()
+                            }
+                        }
                     
                 }
             }
