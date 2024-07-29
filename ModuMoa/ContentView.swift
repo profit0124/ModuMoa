@@ -30,9 +30,10 @@ struct ContentView: View {
                                     .frame(width: size.width / zoom, height: size.height / zoom)
                                     .contentShape(Rectangle())
                             }
-                            
-                            if let baseNode = Binding<Node>($viewModel.baseNode) {
+                            if let baseNode = viewModel.baseNode {
                                 HierarchyCardView(node: baseNode)
+                            } else {
+                                ProgressView()
                             }
                         }
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -85,15 +86,34 @@ struct ContentView: View {
         .environment(viewModel)
         .onChange(of: viewModel.baseNode?.leftParent) { oldValue, newValue in
             if viewModel.baseNode?.rightParent == nil, oldValue == nil, newValue != nil {
-                viewModel.setBaseNode(newValue)
+                /// BaseNode 가 바뀔때 기존 BaseNode 는 자식을 2명 이상 가지고 있었을 경우 HeirarchyCardView의 자식 View 가 index 에러 발생
+                /// 기존 baseNode 는 자식이 2 이상인데, 새로 baseNode 로 바꾸게 되면 자식이 1명이라서 문제가 발생하는 것으로 보임
+                /// 시간차이를 두고 baseNode를 바꿔주는 형식으로 disappear가 될 시간을 보장
+                Task {
+                    do {
+                        viewModel.baseNode = nil
+                        try await Task.sleep(nanoseconds: 100_000_000)
+                        viewModel.setBaseNode(newValue)
+                    } catch {
+                        print(error)
+                    }
+                }
+                
             }
         }
         .onChange(of: viewModel.baseNode?.rightParent) { oldValue, newValue in
             if viewModel.baseNode?.leftParent == nil, oldValue == nil, newValue != nil {
-                viewModel.setBaseNode(newValue)
+                Task {
+                    do {
+                        viewModel.baseNode = nil
+                        try await Task.sleep(nanoseconds: 100_000_000)
+                        viewModel.setBaseNode(newValue)
+                    } catch {
+                        print(error)
+                    }
+                }
             }
         }
-        
     }
     
     var drag: some Gesture {

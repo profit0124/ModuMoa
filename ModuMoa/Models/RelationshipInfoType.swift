@@ -1093,7 +1093,7 @@ extension RelationshipInfoType {
             case .partner:
                 self = .grandMotherM
             case .son:
-                if fromNode.baseNode!.member.birthday! <= toNode.member.birthday! {
+                if fromNode.baseNode?.member.birthday ?? Date() <= toNode.member.birthday ?? Date() {
                     self = .smallFather
                 } else {
                     self = .bigFather
@@ -1110,7 +1110,7 @@ extension RelationshipInfoType {
             case .partner:
                 self = .grandFatherM
             case .son:
-                if fromNode.baseNode!.member.birthday! <= toNode.member.birthday! {
+                if fromNode.baseNode?.member.birthday ?? Date() <= toNode.member.birthday ?? Date() {
                     self = .smallFather
                 } else {
                     self = .bigFather
