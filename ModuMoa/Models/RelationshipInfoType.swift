@@ -1829,7 +1829,7 @@ extension RelationshipInfoType {
         case .mother://
             Nicknames(title: "모", nickname: "어머니")
         case .oldBrotherM://
-            Nicknames(title: "형", nickname: "형")
+            Nicknames(title: "형제", nickname: "형")
         case .partnerOfOldBrotherM://
             Nicknames(title: "형수", nickname: "형수님")
         case .sonOfOldBrotherM://
@@ -1843,7 +1843,7 @@ extension RelationshipInfoType {
         case .childOfChildOfOldBrotherM://
             Nicknames(title: "질손자녀", nickname: "이손자/이손녀")
         case .oldBrotherF://
-            Nicknames(title: "형", nickname: "오빠")
+            Nicknames(title: "남매", nickname: "오빠")
         case .partnerOfOldBrotherF://
             Nicknames(title: "올케", nickname: "새언니")
         case .sonOfOldBrotherF://
@@ -1857,7 +1857,7 @@ extension RelationshipInfoType {
         case .childOfChildOfOldBrotherF://
             Nicknames(title: "질손자녀", nickname: "이손자/이손녀")
         case .oldSisterM://
-            Nicknames(title: "자", nickname: "누나")
+            Nicknames(title: "남매", nickname: "누나")
         case .partnerOfOldSisterM://
             Nicknames(title: "매형", nickname: "매형")
         case .sonOfOldSisterM://
@@ -1871,7 +1871,7 @@ extension RelationshipInfoType {
         case .childOfChildOfOldSisterM://
             Nicknames(title: "생질손자녀", nickname: "종손자/종손녀")
         case .oldSisterF://
-            Nicknames(title: "자", nickname: "언니")
+            Nicknames(title: "자매", nickname: "언니")
         case .partnerOfOldSisterF://
             Nicknames(title: "형부", nickname: "형부")
         case .sonOfOldSisterF://
@@ -1885,7 +1885,7 @@ extension RelationshipInfoType {
         case .childOfChildOfOldSisterF://
             Nicknames(title: "생질손자녀", nickname: "종손자/종손녀")
         case .youngerBrotherM://
-            Nicknames(title: "제", nickname: "남동생")
+            Nicknames(title: "형제", nickname: "남동생")
         case .partnerOfYoungerBrotherM://
             Nicknames(title: "제수", nickname: "제수씨")
         case .sonOfYoungerBrotherM://
@@ -1899,7 +1899,7 @@ extension RelationshipInfoType {
         case .childOfChildOfYoungerBrotherM://
             Nicknames(title: "질손자녀", nickname: "이손자/이손녀")
         case .youngerBrotherF://"
-            Nicknames(title: "제", nickname: "남동생")
+            Nicknames(title: "남매", nickname: "남동생")
         case .partnerOfYoungerBrotherF://
             Nicknames(title: "올케", nickname: "올케")
         case .sonOfYoungerBrotherF://
@@ -1913,7 +1913,7 @@ extension RelationshipInfoType {
         case .childOfChildOfYoungerBrotherF://
             Nicknames(title: "질손자녀", nickname: "이손자/이손녀")
         case .youngerSisterM://
-            Nicknames(title: "매", nickname: "여동생")
+            Nicknames(title: "남매", nickname: "여동생")
         case .partnerOfYoungerSisterM://
             Nicknames(title: "매부", nickname: "매제")
         case .sonOfYoungerSisterM://
@@ -1927,7 +1927,7 @@ extension RelationshipInfoType {
         case .childOfChildOfYoungerSisterM://
             Nicknames(title: "생질손자녀", nickname: "종손자/종손녀")
         case .youngerSisterF://
-            Nicknames(title: "매", nickname: "여동생")
+            Nicknames(title: "자매", nickname: "여동생")
         case .partnerOfYoungerSisterF://
             Nicknames(title: "제부", nickname: "제부")
         case .sonOfYoungerSisterF://
