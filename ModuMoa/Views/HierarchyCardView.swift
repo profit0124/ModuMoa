@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HierarchyCardView: View {
     
-    @Binding var node: Node
+    @State var node: Node
     @State private var isPresented: Bool = false
     @State private var selectedAddCase: CaseOfAdd?
     @State private var addNodeViewisPushed: Bool = false
@@ -29,7 +29,7 @@ struct HierarchyCardView: View {
                     .anchorPreference(key: Key.self, value: .center, transform: { anchor in
                         return [node.id:anchor]
                     })
-                    .onAppear{
+                    .task {
                         if node.member.nickNames.nickname.isEmpty {
                             node.setNickname()
                         }
@@ -41,7 +41,7 @@ struct HierarchyCardView: View {
                         .anchorPreference(key: Key.self, value: .center, transform: { anchor in
                             return [partner.id:anchor]
                         })
-                        .onAppear {
+                        .task {
                             if partner.member.nickNames.nickname.isEmpty {
                                 partner.setNickname()
                             }
@@ -51,8 +51,8 @@ struct HierarchyCardView: View {
             }
             
             HStack(alignment: .top, spacing: 80) {
-                ForEach($node.children, id: \.id) { $children in
-                    HierarchyCardView(node: $children)
+                ForEach(node.children, id: \.id) { children in
+                    HierarchyCardView(node: children)
                 }
             }
         }
@@ -130,12 +130,14 @@ struct HierarchyCardView: View {
         .navigationDestination(isPresented: $detailNodeViewisPushed, destination: {
             MemberDetailView(isPushed: $detailNodeViewisPushed, node: $node, fromMe: $fromMe)
         })
-        .onAppear {
+        .task {
             /// 자식으로부터 나의 파트너를 추가할 경우, 나의 자식과 파트너의 자식을 같게해주게 되면 다음 Loading 에서 나의 자식이 없어지는 현상 발견
-            if let partner = node.partner, node.children != partner.children {
-                let children = node.children + partner.children
+            if let partner = node.partner, node.children.count != partner.children.count {
+                let children = Array(Set(node.children + partner.children).sorted(by: { $0.member.birthday ?? Date() > $1.member.birthday ?? Date()}))
                 node.children = children
                 node.partner?.children = children
+            } else {
+                node.children = node.children.sorted(by: { $0.member.birthday ?? Date() > $1.member.birthday ?? Date()})
             }
         }
     }
