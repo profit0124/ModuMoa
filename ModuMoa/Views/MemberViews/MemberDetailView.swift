@@ -9,6 +9,8 @@ import SwiftUI
 
 struct MemberDetailView: View {
     
+    @Environment(\.nicknameMode) var nicknameMode
+    
     @Binding var isPushed: Bool
     @Binding var node: Node
     @Binding var fromMe: Bool
@@ -42,12 +44,19 @@ struct MemberDetailView: View {
 
                     Spacer()
                     
-                    Text(member.nickNames.nickname)
+                    let nickname = nicknameMode == .title ? member.nickNames.title : member.nickNames.nickname
+                    Text(nickname)
                         .font(.customFont(.subHeadline))
                         .foregroundStyle(.moduYellow)
                         .padding(.horizontal, 8)
                         .padding(.vertical, 6)
-                        .background( Capsule().fill(.moduBlack))
+                        .background{
+                            if nickname.count == 1 {
+                                Circle().fill(.moduBlack)
+                            } else {
+                                Capsule().fill(.moduBlack)
+                            }
+                        }
                 }
                 
                 VStack(alignment: .leading, spacing: .betweenContents) {

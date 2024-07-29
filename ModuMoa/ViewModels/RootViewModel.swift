@@ -19,8 +19,12 @@ final class RootViewModel {
     var rootViewCase: RootViewCase = .loadingView
     var baseNode: Node?
     var isPushed: Bool = false
+    var nicknameMode: NicknameMode = .nickname
     
     func onAppear() {
+        if let rawValue = UserDefaults.standard.string(forKey: "nicknameMode"), let nicknameMode = NicknameMode(rawValue: rawValue) {
+            self.nicknameMode = nicknameMode
+        }
         guard let stringID = UserDefaults.standard.value(forKey: "baseNode") as? String else {
             self.rootViewCase = .introView
             return }

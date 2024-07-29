@@ -9,6 +9,8 @@ import SwiftUI
 
 struct MemberUpdateView: View {
     
+    @Environment(\.nicknameMode) var nicknameMode
+    
     @Binding var node: Node
     @Binding var fromMe: Bool
     @Binding var isPresented: Bool
@@ -77,7 +79,8 @@ struct MemberUpdateView: View {
                 .disabled(!isEnabled())
             }
             
-            MemberFormView(name: $name, sex: $sex, birthDay: $birthDay, bloodType: $bloodType, rh: $rh, abo: $abo, nickName: member.nickNames.nickname)
+            let nickname = nicknameMode == .title ? member.nickNames.title : member.nickNames.nickname
+            MemberFormView(name: $name, sex: $sex, birthDay: $birthDay, bloodType: $bloodType, rh: $rh, abo: $abo, nickName: nickname)
         }
         .padding(.horizontal, 16)
         .onAppear {

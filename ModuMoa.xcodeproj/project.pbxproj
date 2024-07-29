@@ -24,6 +24,11 @@
 		311A3EF82AED2AEF0082D247 /* InputBirthdayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311A3EF72AED2AEF0082D247 /* InputBirthdayView.swift */; };
 		311A3EFA2AED2EE60082D247 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311A3EF92AED2EE60082D247 /* Date+.swift */; };
 		311A3EFC2AEE44800082D247 /* SelectBloodTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311A3EFB2AEE44800082D247 /* SelectBloodTypeView.swift */; };
+		312A800C2C57D4F30079222D /* NicknameMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312A800B2C57D4F30079222D /* NicknameMode.swift */; };
+		312A800E2C57D5B70079222D /* OptionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312A800D2C57D5B70079222D /* OptionButtonView.swift */; };
+		312A80112C57D6B50079222D /* OptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312A80102C57D6B50079222D /* OptionView.swift */; };
+		312A80132C57DD240079222D /* NicknameModeEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312A80122C57DD240079222D /* NicknameModeEnvironment.swift */; };
+		312A80152C57E8D30079222D /* EnvironmentValues+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312A80142C57E8D30079222D /* EnvironmentValues+.swift */; };
 		314C44712C44F3270020FAA9 /* MemberDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314C44702C44F3270020FAA9 /* MemberDetailView.swift */; };
 		314C44772C47653F0020FAA9 /* MemberFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314C44762C47653F0020FAA9 /* MemberFormView.swift */; };
 		314C447A2C4790E40020FAA9 /* CustomHalfSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314C44792C4790E40020FAA9 /* CustomHalfSheet.swift */; };
@@ -78,6 +83,11 @@
 		311A3EF72AED2AEF0082D247 /* InputBirthdayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputBirthdayView.swift; sourceTree = "<group>"; };
 		311A3EF92AED2EE60082D247 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		311A3EFB2AEE44800082D247 /* SelectBloodTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBloodTypeView.swift; sourceTree = "<group>"; };
+		312A800B2C57D4F30079222D /* NicknameMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameMode.swift; sourceTree = "<group>"; };
+		312A800D2C57D5B70079222D /* OptionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionButtonView.swift; sourceTree = "<group>"; };
+		312A80102C57D6B50079222D /* OptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionView.swift; sourceTree = "<group>"; };
+		312A80122C57DD240079222D /* NicknameModeEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameModeEnvironment.swift; sourceTree = "<group>"; };
+		312A80142C57E8D30079222D /* EnvironmentValues+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues+.swift"; sourceTree = "<group>"; };
 		314C44702C44F3270020FAA9 /* MemberDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberDetailView.swift; sourceTree = "<group>"; };
 		314C44762C47653F0020FAA9 /* MemberFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberFormView.swift; sourceTree = "<group>"; };
 		314C44792C4790E40020FAA9 /* CustomHalfSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHalfSheet.swift; sourceTree = "<group>"; };
@@ -136,6 +146,7 @@
 				318457372AE94315007C2045 /* Font+.swift */,
 				311A3EF92AED2EE60082D247 /* Date+.swift */,
 				310E88B12C4FCBBB00D5CB36 /* UIViewController+.swift */,
+				312A80142C57E8D30079222D /* EnvironmentValues+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -150,6 +161,15 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		312A800F2C57D6910079222D /* OptionView */ = {
+			isa = PBXGroup;
+			children = (
+				312A800D2C57D5B70079222D /* OptionButtonView.swift */,
+				312A80102C57D6B50079222D /* OptionView.swift */,
+			);
+			path = OptionView;
+			sourceTree = "<group>";
+		};
 		314C44782C47903D0020FAA9 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +179,7 @@
 				314C447B2C4793050020FAA9 /* RoundedCorner.swift */,
 				3104A06A2C4D085300DD8020 /* PreferKey.swift */,
 				3104A06C2C4D086A00DD8020 /* Line.swift */,
+				312A80122C57DD240079222D /* NicknameModeEnvironment.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -262,6 +283,7 @@
 		31B388E92AE38E4200DFE875 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				312A800F2C57D6910079222D /* OptionView */,
 				310E88A22C4F88A900D5CB36 /* Components */,
 				3185210F2AEEA300000579CE /* MemberViews */,
 				318457332AE94183007C2045 /* AddMyInformationViews */,
@@ -294,6 +316,7 @@
 				310E88992C4E23CF00D5CB36 /* DatabaseModel.swift */,
 				310E889E2C4E7B6600D5CB36 /* CaseOfAddMyInformationView.swift */,
 				310E88B52C51137900D5CB36 /* NickNames.swift */,
+				312A800B2C57D4F30079222D /* NicknameMode.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -382,13 +405,16 @@
 				314C447E2C4793800020FAA9 /* View+.swift in Sources */,
 				314C44862C4BBF8D0020FAA9 /* CaseOfAdd.swift in Sources */,
 				318521162AEFD91F000579CE /* MemberSexView.swift in Sources */,
+				312A800C2C57D4F30079222D /* NicknameMode.swift in Sources */,
 				314C44802C49235A0020FAA9 /* MemberFormSection.swift in Sources */,
 				31B388EF2AE3D3EB00DFE875 /* CGSize+.swift in Sources */,
 				31CD06902AE55883009D5383 /* AddMyInformationContainerView.swift in Sources */,
 				314C447A2C4790E40020FAA9 /* CustomHalfSheet.swift in Sources */,
+				312A800E2C57D5B70079222D /* OptionButtonView.swift in Sources */,
 				310E88AC2C4FB3C200D5CB36 /* SearchView.swift in Sources */,
 				311A3EF82AED2AEF0082D247 /* InputBirthdayView.swift in Sources */,
 				314C44882C4BC0B10020FAA9 /* MemberAddView.swift in Sources */,
+				312A80152C57E8D30079222D /* EnvironmentValues+.swift in Sources */,
 				3185211C2AEFEFF3000579CE /* MemberAboTypeView.swift in Sources */,
 				31B388EB2AE38E5000DFE875 /* CardView.swift in Sources */,
 				31A78CAA2AD42EE400BE629A /* ContentView.swift in Sources */,
@@ -405,12 +431,14 @@
 				314C44772C47653F0020FAA9 /* MemberFormView.swift in Sources */,
 				314C44712C44F3270020FAA9 /* MemberDetailView.swift in Sources */,
 				311A3EF62AED21F70082D247 /* SelectGenderView.swift in Sources */,
+				312A80112C57D6B50079222D /* OptionView.swift in Sources */,
 				310E889F2C4E7B6600D5CB36 /* CaseOfAddMyInformationView.swift in Sources */,
 				317002BA2AD58B6100D8991A /* CGFloat+.swift in Sources */,
 				310E88B22C4FCBBB00D5CB36 /* UIViewController+.swift in Sources */,
 				31A78CA82AD42EE400BE629A /* ModuMoaApp.swift in Sources */,
 				310E88AE2C4FB3DF00D5CB36 /* SearchViewModel.swift in Sources */,
 				311A3EFA2AED2EE60082D247 /* Date+.swift in Sources */,
+				312A80132C57DD240079222D /* NicknameModeEnvironment.swift in Sources */,
 				314FD6A62AE955CA0052251C /* InputNameView.swift in Sources */,
 				31B388ED2AE3944D00DFE875 /* HierarchyCardView.swift in Sources */,
 				310E889C2C4E78E800D5CB36 /* AddMyInformationViewModel.swift in Sources */,
@@ -568,7 +596,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.9.1;
+				MARKETING_VERSION = 0.9.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.x.ModuMoa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -603,7 +631,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.9.1;
+				MARKETING_VERSION = 0.9.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.x.ModuMoa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
