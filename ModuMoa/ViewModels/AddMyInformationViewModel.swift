@@ -31,7 +31,9 @@ final class AddMyInformationViewModel {
     
     func getNode() -> Node? {
         if let sex, let rhType, let aboType {
-            return Node(member: Member(name: name, bloodType: BloodType(abo: aboType, rh: rhType), sex: sex, birthday: birthDay, nickName: "나"))
+            let relationshipInfo: RelationshipInfoType = .me
+            let nickNames = relationshipInfo.getNicknames()
+            return Node(member: Member(name: name, bloodType: BloodType(abo: aboType, rh: rhType), sex: sex, birthday: birthDay, nickName: nickNames), relationshipInfo: relationshipInfo)
         } else {
             return nil
         }

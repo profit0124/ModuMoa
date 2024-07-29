@@ -17,7 +17,7 @@ struct CardView: View {
                 Text(member.name)
                     .font(.system(size: 16, weight: .semibold))
                 Spacer()
-                Text(member.nickName)
+                Text(member.nickName.nickname)
                     .foregroundStyle(.moduYellow)
                     .padding(.betweenHeadlineAndTitle2)
                     .background {

@@ -12,7 +12,6 @@ struct MemberAddView: View {
     @Binding var fromNode: Node
     @Binding var selectedAddCase: CaseOfAdd?
     
-    let nickName: String
     let level: Int
     let distance: Int
 
@@ -59,7 +58,7 @@ struct MemberAddView: View {
             break
         }
         self.sex = sex
-        self.nickName = RelationshipInfoType(level: level, distance: distance, sex: sex).nickName()
+//        self.nickName = RelationshipInfoType(level: level, distance: distance, sex: sex).nickName()
         self.level = level
         self.distance = distance
     }
@@ -82,7 +81,7 @@ struct MemberAddView: View {
                 Spacer()
             }
             
-            MemberFormView(name: $name, sex: $sex, birthDay: $birthDay, bloodType: $bloodType, rh: $rh, abo: $abo, nickName: nickName)
+            MemberFormView(name: $name, sex: $sex, birthDay: $birthDay, bloodType: $bloodType, rh: $rh, abo: $abo)
             
             Spacer()
             
@@ -97,15 +96,21 @@ struct MemberAddView: View {
     }
     
     func saveNode() {
-        if let sex {
-            let node = Node(member: .init(name: name, bloodType: bloodType, sex: sex, birthday: birthDay, nickName: nickName), level: level, distance: distance)
+        if let sex, let selectedAddCase {
+            let node = Node(member: .init(name: name, bloodType: bloodType, sex: sex, birthday: birthDay), level: level, distance: distance)
+            let relationshipInfo = RelationshipInfoType(fromNode.relationshipInfo, selectedAddCase, from: fromNode, to: node)
+            let nickNames = relationshipInfo!.getNicknames()
+            node.relationshipInfo = relationshipInfo!
+            node.member.nickName = nickNames
             switch selectedAddCase {
             case .leftParent:
                 if fromNode.rightParent != nil {
                     node.children = fromNode.rightParent?.children ?? []
                     node.partner = fromNode.rightParent
                     fromNode.rightParent?.partner = node
+                    node.baseNode = fromNode.rightParent?.baseNode
                 } else {
+                    node.baseNode = fromNode
                     node.children = [fromNode]
                 }
                 fromNode.leftParent = node
@@ -114,7 +119,9 @@ struct MemberAddView: View {
                     node.children = fromNode.leftParent?.children ?? []
                     node.partner = fromNode.leftParent
                     fromNode.leftParent?.partner = node
+                    node.baseNode = fromNode.leftParent?.baseNode
                 } else {
+                    node.baseNode = fromNode
                     node.children = [fromNode]
                 }
                 fromNode.rightParent = node
@@ -132,16 +139,13 @@ struct MemberAddView: View {
                 }
                 fromNode.children.append(node)
                 if fromNode.partner != nil {
-                    fromNode.partner?.children.append(node)
+                    fromNode.partner?.children = fromNode.children
                 }
-                
-            default:
-                break
             }
             do {
                 try DatabaseModel.shared.addNode(node)
                 // 추가 후 해당 Hierarychy card 에서 진입 시 사용했던 selectedAddCase 를 다시 nil 로 변경
-                selectedAddCase = nil
+                self.selectedAddCase = nil
                 isPushed = false
             } catch {
                 print("save error")

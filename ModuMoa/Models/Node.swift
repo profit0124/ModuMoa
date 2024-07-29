@@ -23,17 +23,21 @@ final class Node: Equatable, Identifiable {
     var partner: Node?
     var children: [Node] = []
     var member: Member
+    var relationshipInfo: RelationshipInfoType
+    var baseNode: Node?
     var relatedList: [Node?] {
         return [leftParent, rightParent, partner] + children
     }
     
-    init(leftParent: Node? = nil, rightParent: Node? = nil, children: [Node] = [], member: Member, level: Int = 0, distance: Int = 0) {
+    init(leftParent: Node? = nil, rightParent: Node? = nil, children: [Node] = [], member: Member, relationshipInfo: RelationshipInfoType = .unknown, baseNode: Node? = nil, level: Int = 0, distance: Int = 0) {
         self.leftParent = leftParent
         self.rightParent = rightParent
         self.children = children
         self.member = member
         self.level = level
         self.distance = distance
+        self.relationshipInfo = relationshipInfo
+        self.baseNode = baseNode
     }
     
     func add(child: Node) {

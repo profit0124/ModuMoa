@@ -16,7 +16,7 @@ final class SearchViewModel {
     var isPushed: Bool = false
     
     var filteredNodes: [Node] {
-        self.nodes.filter({ $0.member.name.contains(self.text) || $0.member.nickName.contains(self.text) })
+        self.nodes.filter({ $0.member.name.contains(self.text) || $0.member.nickName.nickname.contains(self.text) })
     }
     
     func onAppear() {

@@ -32,7 +32,7 @@ struct MemberFormView: View {
     
     @State private var isPresented: Bool = false
     
-    init(name: Binding<String>, sex: Binding<Sex?>, birthDay: Binding<Date?>, bloodType: Binding<BloodType>, rh: Binding<BloodType.RhType?>, abo: Binding<BloodType.AboType?>, nickName: String) {
+    init(name: Binding<String>, sex: Binding<Sex?>, birthDay: Binding<Date?>, bloodType: Binding<BloodType>, rh: Binding<BloodType.RhType?>, abo: Binding<BloodType.AboType?>, nickName: String = "") {
         self._name = name
         self._sex = sex
         self._birthDay = birthDay
@@ -52,13 +52,15 @@ struct MemberFormView: View {
                     .foregroundStyle(.moduBlack)
                 
                 Spacer()
-                
-                Text(nickName)
-                    .font(.customFont(.subHeadline))
-                    .foregroundStyle(.moduYellow)
-                    .padding(.horizontal, 8)
-                    .padding(.vertical, 6)
-                    .background( Capsule().fill(.moduBlack))
+                /// 멤버 추가시 생일 입력 전 형, 동생, 누나, 등 나와 나이차이 발생시 닉네임을 결정할 수 없음
+                if !nickName.isEmpty {
+                    Text(nickName)
+                        .font(.customFont(.subHeadline))
+                        .foregroundStyle(.moduYellow)
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 6)
+                        .background( Capsule().fill(.moduBlack))                    
+                }
             }
             
             VStack(alignment: .leading, spacing: .betweenContents) {
