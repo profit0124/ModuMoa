@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CardView: View {
     
+    @Environment(\.nicknameMode) var nicknameMode
+    
     let member: Member
     
     var body: some View {
@@ -17,13 +19,18 @@ struct CardView: View {
                 Text(member.name)
                     .font(.system(size: 16, weight: .semibold))
                 Spacer()
-                Text(member.nickNames.nickname)
+                let nickname = nicknameMode == .title ? member.nickNames.title : member.nickNames.nickname
+                Text(nickname)
                     .foregroundStyle(.moduYellow)
                     .padding(.betweenHeadlineAndTitle2)
-                    .background {
-                        Capsule()
-                            .fill(.moduBlack)
+                    .background{
+                        if nickname.count == 1 {
+                            Circle().fill(.moduBlack)
+                        } else {
+                            Capsule().fill(.moduBlack)
+                        }
                     }
+                    
             }
             .padding(.bottom, .betweenHeadlineAndTitle2)
             
