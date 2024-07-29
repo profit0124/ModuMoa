@@ -42,7 +42,7 @@ struct MemberAddView: View {
             distance = node.wrappedValue.leftParent?.distance ?? distance + 1
             
         case .partner:
-            sex = node.member.sex.wrappedValue == .male ? .male : .female
+            sex = node.member.sex.wrappedValue == .male ? .female : .male
             
         case .son:
             sex = .male
@@ -101,7 +101,7 @@ struct MemberAddView: View {
             let relationshipInfo = RelationshipInfoType(fromNode.relationshipInfo, selectedAddCase, from: fromNode, to: node)
             let nickNames = relationshipInfo!.getNicknames()
             node.relationshipInfo = relationshipInfo!
-            node.member.nickName = nickNames
+            node.member.nickNames = nickNames
             switch selectedAddCase {
             case .leftParent:
                 if fromNode.rightParent != nil {

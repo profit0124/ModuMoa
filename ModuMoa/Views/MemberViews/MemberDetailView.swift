@@ -42,7 +42,7 @@ struct MemberDetailView: View {
 
                     Spacer()
                     
-                    Text(member.nickName.nickname)
+                    Text(member.nickNames.nickname)
                         .font(.customFont(.subHeadline))
                         .foregroundStyle(.moduYellow)
                         .padding(.horizontal, 8)

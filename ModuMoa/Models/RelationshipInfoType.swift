@@ -1959,7 +1959,7 @@ extension RelationshipInfoType {
         case .childOfBrotherOfFather://
             Nicknames(title: "종형제", nickname: "사촌형제")
         case .partnerMOfChildOfBrotherOfFather://
-            Nicknames(title: "종수", nickname: "형수/새언니/매형/형부/제수/올케/매부/매제/")
+            Nicknames(title: "종수", nickname: "")
         case .childOfChildOfBrotherOfFather://
             Nicknames(title: "종질/당질", nickname: "사촌조카")
         case .childOfChildOfChildOfBrotherOfFather://
@@ -1971,7 +1971,7 @@ extension RelationshipInfoType {
         case .childOfSisterOfFather://
             Nicknames(title: "내종형제", nickname: "사촌형제")
         case .partnerMOfChildOfSisterOfFather://
-            Nicknames(title: "내종수", nickname: "형수/새언니/매형/형부/제수/올케/매부/매제/")
+            Nicknames(title: "내종수", nickname: "")
         case .childOfChildOfSisterOfFather://
             Nicknames(title: "내종질", nickname: "사촌조카")
         case .childOfChildOfChildOfSisterOfFather://
@@ -1991,7 +1991,7 @@ extension RelationshipInfoType {
         case .childOfBrotherOfMother://
             Nicknames(title: "외종형제", nickname: "외사촌")
         case .partnerMOfChildOfBrotherOfMother://
-            Nicknames(title: "외종수", nickname: "형수/새언니/매형/형부/제수/올케/매부/매제/")
+            Nicknames(title: "외종수", nickname: "")
         case .childOfChildOfBrotherOfMother://
             Nicknames(title: "외종질", nickname: "외사촌조카")
         case .childOfChildOfChildOfBrotherOfMother://
@@ -2003,7 +2003,7 @@ extension RelationshipInfoType {
         case .childOfSisterOfMother://
             Nicknames(title: "이종형제", nickname: "외사촌")
         case .partnerMOfChildOfSisterOfMother://
-            Nicknames(title: "이종수", nickname: "형수/새언니/매형/형부/제수/올케/매부/매제/")
+            Nicknames(title: "이종수", nickname: "")
         case .childOfChildOfSisterOfMother://
             Nicknames(title: "이종질", nickname: "외사촌조카")
         case .childOfChildOfChildOfSisterOfMother://

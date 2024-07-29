@@ -33,7 +33,7 @@ final class AddMyInformationViewModel {
         if let sex, let rhType, let aboType {
             let relationshipInfo: RelationshipInfoType = .me
             let nickNames = relationshipInfo.getNicknames()
-            return Node(member: Member(name: name, bloodType: BloodType(abo: aboType, rh: rhType), sex: sex, birthday: birthDay, nickName: nickNames), relationshipInfo: relationshipInfo)
+            return Node(member: Member(name: name, bloodType: BloodType(abo: aboType, rh: rhType), sex: sex, birthday: birthDay, nickNames: nickNames), relationshipInfo: relationshipInfo)
         } else {
             return nil
         }
@@ -42,6 +42,7 @@ final class AddMyInformationViewModel {
     func saveMyInformation() -> Node? {
         if let node = getNode() {
             do {
+                UserDefaults.standard.setValue(node.id.uuidString, forKey: "myNode")
                 try DatabaseModel.shared.addNode(node)
                 return node
             } catch {
