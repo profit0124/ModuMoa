@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    
     @State private var draggedOffset = CGSize.zero
     @State private var accumulatedOffset = CGSize.zero
     @State private var currentZoom = 0.0
@@ -27,7 +28,9 @@ struct ContentView: View {
                             .onTapGesture {
                                 viewModel.isPushed = true
                             }
-                        OptionView(nicknameMode: $viewModel.nicknameMode)
+                        OptionView(nicknameMode: $viewModel.nicknameMode, baseNodeMode: $viewModel.sideOfBaseNode) {
+                            viewModel.changeBaseNode($0)
+                        }
                         Spacer()
                     }
                     .padding(.horizontal, 16)
