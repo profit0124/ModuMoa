@@ -10,10 +10,13 @@ import SwiftUI
 struct OptionView: View {
     
     @Binding var nicknameMode: NicknameMode
+    @Binding var baseNodeMode: SideOfBaseNode
     
     @State private var isNicknameButtonTapped: Bool = false
     @State private var isBaseNodeButtonTapped: Bool = false
     
+    let action: (SideOfBaseNode) -> Void
+    @State private var myNode: Node?
     
     var body: some View {
         HStack(alignment: .top, spacing: .betweenElements) {
@@ -42,11 +45,20 @@ struct OptionView: View {
                 if isNicknameButtonTapped {
                     NicknameOptionView()
                 }
+                
+                if isBaseNodeButtonTapped {
+                    BaseNodeOptionView()
+                }
             }
             .frame(maxWidth: .infinity)
             .padding(.trailing, 48)
         }
-        
+        .onAppear {
+            guard let stringID = UserDefaults.standard.value(forKey: "myNode") as? String else { return }
+            let id = UUID(uuidString: stringID)!
+            guard let myNode = DatabaseModel.shared.fetchNode(id) else { return }
+            self.myNode = myNode
+        }
     }
     
     @ViewBuilder private func NicknameOptionView() -> some View {
@@ -84,8 +96,49 @@ struct OptionView: View {
         .clipShape(RoundedRectangle(cornerRadius: 8))
         .padding(.leading, 100)
     }
+    
+    @ViewBuilder private func BaseNodeOptionView() -> some View {
+        VStack(spacing: 1) {
+            ForEach(SideOfBaseNode.allCases, id: \.self) { side in
+                let isEnabled = side.possibleChangeMode(myNode)
+                Button(action: {
+                    action(side)
+                    isBaseNodeButtonTapped = false
+                }) {
+                    HStack(spacing: .betweenTextAndLine) {
+                        Text(side.rawValue)
+                        Spacer()
+                        Image(systemName: side.imageName)
+                    }
+                    .font(.customFont(.caption1))
+                    .foregroundStyle(isEnabled ? .moduBlack : .disableText)
+                    .padding(.betweenHeadlineAndTitle2)
+                    .frame(maxWidth: .infinity)
+                    .padding(.leading, 20)
+                    .background {
+                        Color.disableCapture
+                    }
+                    .overlay(alignment: .leading) {
+                        if baseNodeMode == side {
+                            Image(systemName: "checkmark")
+                                .font(.customFont(.caption1))
+                                .foregroundStyle(isEnabled ? .moduBlack : .disableText)
+                                .padding(.leading, 8)
+                        }
+                    }
+                }
+                .disabled(!isEnabled)
+                
+            }
+        }
+        .clipShape(RoundedRectangle(cornerRadius: 8))
+        .padding(.leading, 100)
+        .padding(.top, 37)
+    }
 }
 
 #Preview {
-    OptionView(nicknameMode: .constant(.nickname))
+    OptionView(nicknameMode: .constant(.nickname), baseNodeMode: .constant(.sideOfFather)) {
+        print($0)
+    }
 }

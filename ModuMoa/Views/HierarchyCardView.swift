@@ -87,7 +87,8 @@ struct HierarchyCardView: View {
                     
                     VStack(spacing: 16) {
                         ForEach(CaseOfAdd.allCases, id: \.self) { addCase in
-                            let isEnabled = addCase.canAddMember(node)
+                            let fromNode = fromMe ? node : node.partner!
+                            let isEnabled = addCase.canAddMember(fromNode)
                             Button(action: {
                                 self.selectedAddCase = addCase
                             }) {
@@ -125,7 +126,14 @@ struct HierarchyCardView: View {
             
         }
         .navigationDestination(isPresented: $addNodeViewisPushed) {
-            MemberAddView(from: $node, with: $selectedAddCase, isPushed: $addNodeViewisPushed)
+            if !fromMe {
+                if let unwrapped = Binding($node.partner) {
+                    MemberAddView(from: unwrapped, with: $selectedAddCase, isPushed: $addNodeViewisPushed)
+                }
+            } else {
+                MemberAddView(from: $node, with: $selectedAddCase, isPushed: $addNodeViewisPushed)
+            }
+            
         }
         .navigationDestination(isPresented: $detailNodeViewisPushed, destination: {
             MemberDetailView(isPushed: $detailNodeViewisPushed, node: $node, fromMe: $fromMe)
