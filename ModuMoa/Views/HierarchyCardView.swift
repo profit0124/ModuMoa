@@ -94,7 +94,8 @@ struct HierarchyCardView: View {
                             }) {
                                 VStack(spacing: 16) {
                                     HStack {
-                                        Text(addCase.rawValue)
+                                        let text = fromNode.member.nickNames.nickname
+                                        Text("\(text)의 \(addCase.rawValue)")
                                         Spacer()
                                         if selectedAddCase == addCase {
                                             Image(systemName: "checkmark")
