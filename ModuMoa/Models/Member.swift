@@ -29,6 +29,10 @@ struct Member: Identifiable, Equatable, Hashable {
         let age = ageComponent.year ?? 0
         return "만 \(age)세"
     }
+    
+    func getNickname(_ nicknameMode: NicknameMode) -> String {
+        return nicknameMode == .title ? nickNames.title : nickNames.nickname
+    }
 }
 
 enum Sex: String, CaseIterable, Equatable, Hashable, Codable {

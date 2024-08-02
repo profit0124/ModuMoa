@@ -40,57 +40,66 @@ final class Node: Equatable, Identifiable {
         self.baseNode = baseNode
     }
     
-    func add(child: Node) {
-        children.append(child)
-        switch member.sex {
-        case .male: child.leftParent = self
-        case .female: child.rightParent = self
+    func addFather(_ node: Node) {
+        if let mother = self.rightParent {
+            mother.addPartner(node)
+        } else {
+            node.baseNode = self
+            node.children = [self]
+            self.leftParent = node
         }
     }
     
-    func add(partner: Node) {
-        self.partner = partner
-        partner.partner = self
-    }
-    
-    func add(parent: Node) {
-        switch parent.member.sex {
-        case .male: self.leftParent = parent
-        case .female: self.rightParent = parent
+    func addMother(_ node: Node) {
+        if let father = self.leftParent {
+            father.addPartner(node)
+        } else {
+            node.baseNode = self
+            node.children = [self]
+            self.rightParent = node
         }
-        parent.children.append(self)
     }
     
-    func partnerLevel() -> Int {
-        return level
+    func addPartner(_ node: Node) {
+        let children = self.children
+        for child in children {
+            if node.member.sex == .male {
+                child.leftParent = node
+            } else {
+                child.rightParent = node
+            }
+        }
+        node.children = children
+        node.partner = self
+        node.baseNode = self.baseNode
+        self.partner = node
     }
     
-    func siblingLevel() -> Int {
-        return level
-    }
-    
-    func parentLevel() -> Int {
-        return level + 1
-    }
-    
-    func childLevel() -> Int {
-        return level - 1
-    }
-    
-    func partnerDistance() -> Int {
-        return distance
-    }
-    
-    func siblingDistance() -> Int {
-        return distance + 2
-    }
-    
-    func parentDistance() -> Int {
-        return distance + 1
-    }
-    
-    func childDistance() -> Int {
-        return distance + 1
+    func addChildren(_ node: Node) {
+        var isAdded: Bool = false
+        var children: [Node] = []
+        for child in self.children {
+            if child.member.birthday ?? Date() >= node.member.birthday ?? Date(), !isAdded {
+                children.append(node)
+                isAdded = true
+            }
+            children.append(child)
+        }
+        if !isAdded {
+            children.append(node)
+        }
+        self.children = children
+        if let partner = self.partner {
+            partner.children = self.children
+        }
+        
+        if self.member.sex == .male {
+            node.leftParent = self
+            node.rightParent = self.partner
+        } else {
+            node.leftParent = self.partner
+            node.rightParent = self
+        }
     }
     
     func setNickname() {

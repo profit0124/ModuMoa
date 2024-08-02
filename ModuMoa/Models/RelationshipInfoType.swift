@@ -258,13 +258,13 @@ extension RelationshipInfoType {
             case .son:
                 switch fromNode.baseNode!.member.sex {
                 case .male:
-                    if fromNode.baseNode!.member.birthday! >= toNode.member.birthday! {
+                    if fromNode.baseNode?.member.birthday ?? Date() <= toNode.member.birthday ?? Date() {
                         self = .youngerBrotherM
                     } else {
                         self = .oldBrotherM
                     }
                 case .female:
-                    if fromNode.baseNode!.member.birthday! >= toNode.member.birthday! {
+                    if fromNode.baseNode?.member.birthday ?? Date() <= toNode.member.birthday ?? Date() {
                         self = .youngerBrotherF
                     } else {
                         self = .oldBrotherF
@@ -273,13 +273,13 @@ extension RelationshipInfoType {
             case .daughter:
                 switch fromNode.baseNode!.member.sex {
                 case .male:
-                    if fromNode.baseNode!.member.birthday! >= toNode.member.birthday! {
+                    if fromNode.baseNode?.member.birthday ?? Date() <= toNode.member.birthday ?? Date() {
                         self = .youngerSisterM
                     } else {
                         self = .oldSisterM
                     }
                 case .female:
-                    if fromNode.baseNode!.member.birthday! >= toNode.member.birthday! {
+                    if fromNode.baseNode?.member.birthday ?? Date() <= toNode.member.birthday ?? Date() {
                         self = .youngerSisterF
                     } else {
                         self = .oldSisterF

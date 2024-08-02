@@ -39,6 +39,9 @@ final class RootViewModel {
         let node = DatabaseModel.shared.fetchNode(id)
         self.rootViewCase = node != nil ? .familyTreeView : .introView
         if let node {
+            setChildrenOfNode(node)
+        }
+        if let node {
             self.baseNode = node
         }
     }
@@ -49,6 +52,7 @@ final class RootViewModel {
             if rootViewCase == .introView {
                 rootViewCase = .familyTreeView
             }
+            setChildrenOfNode(node)
             DispatchQueue.main.async {
                 self.baseNode = node
             }
@@ -104,6 +108,25 @@ final class RootViewModel {
             findRootNode(node)
         } else {
             setBaseNode(node)
+        }
+    }
+    
+    func setChildrenOfNode(_ node: Node) {
+        if let partner = node.partner {
+            let children = Array(Set(node.children + partner.children).sorted(by: { $0.member.birthday ?? Date() <= $1.member.birthday ?? Date()}))
+            node.children = partner.children
+            partner.children = children
+            if !children.isEmpty {
+                for child in node.children {
+                    setChildrenOfNode(child)
+                }
+            }
+        } else {
+            if !node.children.isEmpty {
+                for child in node.children {
+                    setChildrenOfNode(child)
+                }
+            }
         }
     }
 }
