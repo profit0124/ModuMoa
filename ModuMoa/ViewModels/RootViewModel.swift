@@ -114,7 +114,7 @@ final class RootViewModel {
     func setChildrenOfNode(_ node: Node) {
         if let partner = node.partner {
             let children = Array(Set(node.children + partner.children).sorted(by: { $0.member.birthday ?? Date() <= $1.member.birthday ?? Date()}))
-            node.children = partner.children
+            node.children = children
             partner.children = children
             if !children.isEmpty {
                 for child in node.children {
