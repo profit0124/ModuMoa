@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		3104A06B2C4D085300DD8020 /* PreferKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3104A06A2C4D085300DD8020 /* PreferKey.swift */; };
 		3104A06D2C4D086A00DD8020 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3104A06C2C4D086A00DD8020 /* Line.swift */; };
-		310E889A2C4E23CF00D5CB36 /* DatabaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310E88992C4E23CF00D5CB36 /* DatabaseModel.swift */; };
+		310E889A2C4E23CF00D5CB36 /* NodeDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310E88992C4E23CF00D5CB36 /* NodeDatabase.swift */; };
 		310E889C2C4E78E800D5CB36 /* AddMyInformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310E889B2C4E78E800D5CB36 /* AddMyInformationViewModel.swift */; };
 		310E889F2C4E7B6600D5CB36 /* CaseOfAddMyInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310E889E2C4E7B6600D5CB36 /* CaseOfAddMyInformationView.swift */; };
 		310E88A12C4E83B500D5CB36 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310E88A02C4E83B500D5CB36 /* RootViewModel.swift */; };
@@ -41,6 +41,10 @@
 		314C44882C4BC0B10020FAA9 /* MemberAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314C44872C4BC0B10020FAA9 /* MemberAddView.swift */; };
 		314FD6A62AE955CA0052251C /* InputNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314FD6A52AE955CA0052251C /* InputNameView.swift */; };
 		317002BA2AD58B6100D8991A /* CGFloat+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317002B92AD58B6100D8991A /* CGFloat+.swift */; };
+		317A2E852C5B708500C44280 /* HierarchyCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317A2E842C5B708500C44280 /* HierarchyCardViewModel.swift */; };
+		317A2E872C5B85D700C44280 /* MemberAddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317A2E862C5B85D700C44280 /* MemberAddViewModel.swift */; };
+		317A2E892C5B959800C44280 /* MemberDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317A2E882C5B959800C44280 /* MemberDetailViewModel.swift */; };
+		317A2E8B2C5B97AE00C44280 /* MemberUpdateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317A2E8A2C5B97AE00C44280 /* MemberUpdateViewModel.swift */; };
 		318457362AE941B3007C2045 /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318457352AE941B3007C2045 /* IntroView.swift */; };
 		318457382AE94315007C2045 /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318457372AE94315007C2045 /* Font+.swift */; };
 		3184573B2AE946AD007C2045 /* SF-Pro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3184573A2AE946AD007C2045 /* SF-Pro.ttf */; };
@@ -59,17 +63,18 @@
 		31B388EB2AE38E5000DFE875 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B388EA2AE38E5000DFE875 /* CardView.swift */; };
 		31B388ED2AE3944D00DFE875 /* HierarchyCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B388EC2AE3944D00DFE875 /* HierarchyCardView.swift */; };
 		31B388EF2AE3D3EB00DFE875 /* CGSize+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B388EE2AE3D3EB00DFE875 /* CGSize+.swift */; };
+		31C70A9F2C5CC350001A13C5 /* UserDefatuls+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C70A9E2C5CC350001A13C5 /* UserDefatuls+.swift */; };
+		31C70AA12C5FB58C001A13C5 /* DataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C70AA02C5FB58C001A13C5 /* DataHandler.swift */; };
 		31CD06902AE55883009D5383 /* AddMyInformationContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CD068F2AE55883009D5383 /* AddMyInformationContainerView.swift */; };
 		A06C1ABF2AF4BF9A001C8B4D /* RelationshipInfoType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06C1ABE2AF4BF9A001C8B4D /* RelationshipInfoType.swift */; };
 		A0F324CF2ADA7EB500D64198 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F324CE2ADA7EB500D64198 /* Member.swift */; };
 		A0F324D12ADA826200D64198 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F324D02ADA826200D64198 /* Node.swift */; };
-		A0F324D32ADA891700D64198 /* FamilyTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F324D22ADA891700D64198 /* FamilyTree.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3104A06A2C4D085300DD8020 /* PreferKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferKey.swift; sourceTree = "<group>"; };
 		3104A06C2C4D086A00DD8020 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
-		310E88992C4E23CF00D5CB36 /* DatabaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseModel.swift; sourceTree = "<group>"; };
+		310E88992C4E23CF00D5CB36 /* NodeDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeDatabase.swift; sourceTree = "<group>"; };
 		310E889B2C4E78E800D5CB36 /* AddMyInformationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMyInformationViewModel.swift; sourceTree = "<group>"; };
 		310E889E2C4E7B6600D5CB36 /* CaseOfAddMyInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseOfAddMyInformationView.swift; sourceTree = "<group>"; };
 		310E88A02C4E83B500D5CB36 /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
@@ -101,6 +106,10 @@
 		314C44872C4BC0B10020FAA9 /* MemberAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAddView.swift; sourceTree = "<group>"; };
 		314FD6A52AE955CA0052251C /* InputNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputNameView.swift; sourceTree = "<group>"; };
 		317002B92AD58B6100D8991A /* CGFloat+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+.swift"; sourceTree = "<group>"; };
+		317A2E842C5B708500C44280 /* HierarchyCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyCardViewModel.swift; sourceTree = "<group>"; };
+		317A2E862C5B85D700C44280 /* MemberAddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAddViewModel.swift; sourceTree = "<group>"; };
+		317A2E882C5B959800C44280 /* MemberDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberDetailViewModel.swift; sourceTree = "<group>"; };
+		317A2E8A2C5B97AE00C44280 /* MemberUpdateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberUpdateViewModel.swift; sourceTree = "<group>"; };
 		318457352AE941B3007C2045 /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
 		318457372AE94315007C2045 /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
 		3184573A2AE946AD007C2045 /* SF-Pro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro.ttf"; sourceTree = "<group>"; };
@@ -121,11 +130,12 @@
 		31B388EA2AE38E5000DFE875 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		31B388EC2AE3944D00DFE875 /* HierarchyCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyCardView.swift; sourceTree = "<group>"; };
 		31B388EE2AE3D3EB00DFE875 /* CGSize+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+.swift"; sourceTree = "<group>"; };
+		31C70A9E2C5CC350001A13C5 /* UserDefatuls+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefatuls+.swift"; sourceTree = "<group>"; };
+		31C70AA02C5FB58C001A13C5 /* DataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHandler.swift; sourceTree = "<group>"; };
 		31CD068F2AE55883009D5383 /* AddMyInformationContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMyInformationContainerView.swift; sourceTree = "<group>"; };
 		A06C1ABE2AF4BF9A001C8B4D /* RelationshipInfoType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipInfoType.swift; sourceTree = "<group>"; };
 		A0F324CE2ADA7EB500D64198 /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 		A0F324D02ADA826200D64198 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
-		A0F324D22ADA891700D64198 /* FamilyTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTree.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +159,7 @@
 				311A3EF92AED2EE60082D247 /* Date+.swift */,
 				310E88B12C4FCBBB00D5CB36 /* UIViewController+.swift */,
 				312A80142C57E8D30079222D /* EnvironmentValues+.swift */,
+				31C70A9E2C5CC350001A13C5 /* UserDefatuls+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -182,6 +193,7 @@
 				3104A06A2C4D085300DD8020 /* PreferKey.swift */,
 				3104A06C2C4D086A00DD8020 /* Line.swift */,
 				312A80122C57DD240079222D /* NicknameModeEnvironment.swift */,
+				31C70AA02C5FB58C001A13C5 /* DataHandler.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -302,6 +314,10 @@
 				310E889B2C4E78E800D5CB36 /* AddMyInformationViewModel.swift */,
 				310E88A02C4E83B500D5CB36 /* RootViewModel.swift */,
 				310E88AD2C4FB3DF00D5CB36 /* SearchViewModel.swift */,
+				317A2E842C5B708500C44280 /* HierarchyCardViewModel.swift */,
+				317A2E862C5B85D700C44280 /* MemberAddViewModel.swift */,
+				317A2E882C5B959800C44280 /* MemberDetailViewModel.swift */,
+				317A2E8A2C5B97AE00C44280 /* MemberUpdateViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -311,11 +327,10 @@
 			children = (
 				A0F324CE2ADA7EB500D64198 /* Member.swift */,
 				A0F324D02ADA826200D64198 /* Node.swift */,
-				A0F324D22ADA891700D64198 /* FamilyTree.swift */,
 				A06C1ABE2AF4BF9A001C8B4D /* RelationshipInfoType.swift */,
 				314C447F2C49235A0020FAA9 /* MemberFormSection.swift */,
 				314C44852C4BBF8D0020FAA9 /* CaseOfAdd.swift */,
-				310E88992C4E23CF00D5CB36 /* DatabaseModel.swift */,
+				310E88992C4E23CF00D5CB36 /* NodeDatabase.swift */,
 				310E889E2C4E7B6600D5CB36 /* CaseOfAddMyInformationView.swift */,
 				310E88B52C51137900D5CB36 /* NickNames.swift */,
 				312A800B2C57D4F30079222D /* NicknameMode.swift */,
@@ -404,8 +419,9 @@
 			files = (
 				318457382AE94315007C2045 /* Font+.swift in Sources */,
 				310E88A12C4E83B500D5CB36 /* RootViewModel.swift in Sources */,
-				310E889A2C4E23CF00D5CB36 /* DatabaseModel.swift in Sources */,
+				310E889A2C4E23CF00D5CB36 /* NodeDatabase.swift in Sources */,
 				314C447E2C4793800020FAA9 /* View+.swift in Sources */,
+				317A2E852C5B708500C44280 /* HierarchyCardViewModel.swift in Sources */,
 				314C44862C4BBF8D0020FAA9 /* CaseOfAdd.swift in Sources */,
 				318521162AEFD91F000579CE /* MemberSexView.swift in Sources */,
 				312A800C2C57D4F30079222D /* NicknameMode.swift in Sources */,
@@ -424,7 +440,6 @@
 				310E88AA2C4FADBC00D5CB36 /* SearchBarView.swift in Sources */,
 				311A3EFC2AEE44800082D247 /* SelectBloodTypeView.swift in Sources */,
 				3185211A2AEFD93B000579CE /* MemberRhTypeView.swift in Sources */,
-				A0F324D32ADA891700D64198 /* FamilyTree.swift in Sources */,
 				314C44822C494A980020FAA9 /* MemberUpdateView.swift in Sources */,
 				A0F324CF2ADA7EB500D64198 /* Member.swift in Sources */,
 				314C447C2C4793050020FAA9 /* RoundedCorner.swift in Sources */,
@@ -438,13 +453,18 @@
 				312A80112C57D6B50079222D /* OptionView.swift in Sources */,
 				310E889F2C4E7B6600D5CB36 /* CaseOfAddMyInformationView.swift in Sources */,
 				317002BA2AD58B6100D8991A /* CGFloat+.swift in Sources */,
+				31C70AA12C5FB58C001A13C5 /* DataHandler.swift in Sources */,
 				310E88B22C4FCBBB00D5CB36 /* UIViewController+.swift in Sources */,
 				31A78CA82AD42EE400BE629A /* ModuMoaApp.swift in Sources */,
+				317A2E8B2C5B97AE00C44280 /* MemberUpdateViewModel.swift in Sources */,
 				310E88AE2C4FB3DF00D5CB36 /* SearchViewModel.swift in Sources */,
 				311A3EFA2AED2EE60082D247 /* Date+.swift in Sources */,
+				317A2E892C5B959800C44280 /* MemberDetailViewModel.swift in Sources */,
 				312A80132C57DD240079222D /* NicknameModeEnvironment.swift in Sources */,
 				314FD6A62AE955CA0052251C /* InputNameView.swift in Sources */,
+				31C70A9F2C5CC350001A13C5 /* UserDefatuls+.swift in Sources */,
 				31B388ED2AE3944D00DFE875 /* HierarchyCardView.swift in Sources */,
+				317A2E872C5B85D700C44280 /* MemberAddViewModel.swift in Sources */,
 				310E889C2C4E78E800D5CB36 /* AddMyInformationViewModel.swift in Sources */,
 				310E88A62C4F88E100D5CB36 /* ModumoaRoundedRectangleButton.swift in Sources */,
 				318457362AE941B3007C2045 /* IntroView.swift in Sources */,

@@ -12,12 +12,15 @@ struct MemberDetailView: View {
     @Environment(\.nicknameMode) var nicknameMode
     
     @Binding var isPushed: Bool
-    @Binding var node: Node
-    @Binding var fromMe: Bool
-    @State private var isPresented: Bool = false
+    @State private var vm: MemberDetailViewModel
+    
+    init(isPushed: Binding<Bool>, node: Node) {
+        self._isPushed = isPushed
+        self.vm = .init(node: node)
+    }
     
     var body: some View {
-        let member = fromMe ? node.member : node.partner!.member
+        let member = vm.node.member
         VStack(spacing: .betweenElements) {
             // MARK: Navigation Bar
             HStack {
@@ -44,7 +47,7 @@ struct MemberDetailView: View {
 
                     Spacer()
                     
-                    let nickname = nicknameMode == .title ? member.nickNames.title : member.nickNames.nickname
+                    let nickname = member.getNickname(nicknameMode)
                     Text(nickname)
                         .font(.customFont(.subHeadline))
                         .foregroundStyle(.moduYellow)
@@ -91,8 +94,8 @@ struct MemberDetailView: View {
             
             Spacer()
         }
-        .fullScreenCover(isPresented: $isPresented, content: {
-            MemberUpdateView(node: $node, fromMe: $fromMe, isPresented: $isPresented)
+        .fullScreenCover(isPresented: $vm.isPresented, content: {
+            MemberUpdateView(node: vm.node, isPresented: $vm.isPresented)
         })
         .transaction { transaction in
             transaction.disablesAnimations = true
@@ -102,7 +105,7 @@ struct MemberDetailView: View {
                 HStack {
                     Spacer()
                     Button(action: {
-                        isPresented = true
+                        vm.updateButtonTapped()
                     }) {
                         Image(systemName: "pencil")
                     }

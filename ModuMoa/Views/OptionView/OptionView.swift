@@ -53,10 +53,10 @@ struct OptionView: View {
             .frame(maxWidth: .infinity)
             .padding(.trailing, 48)
         }
-        .onAppear {
-            guard let stringID = UserDefaults.standard.value(forKey: "myNode") as? String else { return }
+        .task {
+            guard let stringID = UserDefaults.standard.myNodeID else { return }
             let id = UUID(uuidString: stringID)!
-            guard let myNode = DatabaseModel.shared.fetchNode(id) else { return }
+            guard let myNode = await NodeDatabase.shared.fetchNode(id) else { return }
             self.myNode = myNode
         }
     }
@@ -65,7 +65,7 @@ struct OptionView: View {
         VStack(spacing: 1) {
             ForEach(NicknameMode.allCases, id: \.self) { name in
                 Button(action: {
-                    UserDefaults.standard.setValue(name.rawValue, forKey: "nicknameMode")
+                    UserDefaults.standard.nicknameMode = name
                     nicknameMode = name
                     isNicknameButtonTapped = false
                 }) {

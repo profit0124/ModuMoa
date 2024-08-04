@@ -77,8 +77,8 @@ struct SearchView: View {
         }
         .navigationBarBackButtonHidden()
         .navigationDestination(isPresented: $viewModel.isPushed) {
-            if let node = Binding<Node>($viewModel.selectedNode) {
-                MemberDetailView(isPushed: $viewModel.isPushed, node: node, fromMe: .constant(true))
+            if let node = viewModel.selectedNode {
+                MemberDetailView(isPushed: $viewModel.isPushed, node: node)
             }
         }
     }
