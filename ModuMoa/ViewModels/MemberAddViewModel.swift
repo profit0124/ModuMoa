@@ -81,14 +81,15 @@ final class MemberAddViewModel {
             case .son, .daughter:
                 fromNode.addChildren(node)
             }
-            do {
-                try DatabaseModel.shared.addNode(node)
-                // 추가 후 해당 Hierarychy card 에서 진입 시 사용했던 selectedAddCase 를 다시 nil 로 변경
-                self.selectedAddCase = nil
-            } catch {
-                print("save error")
+            Task {
+                do {
+                    try await NodeDatabase.shared.addNode(node)
+                    // 추가 후 해당 Hierarychy card 에서 진입 시 사용했던 selectedAddCase 를 다시 nil 로 변경
+                    self.selectedAddCase = nil
+                } catch {
+                    print("save error")
+                }
             }
-            
         }
         
     }

@@ -53,10 +53,10 @@ struct OptionView: View {
             .frame(maxWidth: .infinity)
             .padding(.trailing, 48)
         }
-        .onAppear {
+        .task {
             guard let stringID = UserDefaults.standard.myNodeID else { return }
             let id = UUID(uuidString: stringID)!
-            guard let myNode = DatabaseModel.shared.fetchNode(id) else { return }
+            guard let myNode = await NodeDatabase.shared.fetchNode(id) else { return }
             self.myNode = myNode
         }
     }

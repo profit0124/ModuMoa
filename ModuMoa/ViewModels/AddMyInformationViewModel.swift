@@ -39,14 +39,15 @@ final class AddMyInformationViewModel {
         }
     }
     
-    func saveMyInformation() -> Node? {
+    func saveMyInformation() async -> Node? {
         if let node = getNode() {
             do {
                 UserDefaults.standard.myNodeID = node.id.uuidString
-                try DatabaseModel.shared.addNode(node)
+                try await NodeDatabase.shared.addNode(node)
                 return node
             } catch {
-                return nil
+                print("error: \(error)")
+                return node
             }
         }
         return nil

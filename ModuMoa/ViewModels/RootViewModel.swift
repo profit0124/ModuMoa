@@ -31,14 +31,16 @@ final class RootViewModel {
     }
     
     func onAppear() {
-        if let stringID = UserDefaults.standard.baseNodeID,
-           let id = UUID(uuidString: stringID),
-           let node = DatabaseModel.shared.fetchNode(id) {
-            setChildrenOfNode(node)
-            self.baseNode = node
-            self.rootViewCase = .familyTreeView
-        } else {
-            self.rootViewCase = .introView
+        Task {
+            if let stringID = UserDefaults.standard.baseNodeID,
+               let id = UUID(uuidString: stringID),
+               let node = await NodeDatabase.shared.fetchNode(id) {
+                setChildrenOfNode(node)
+                self.baseNode = node
+                self.rootViewCase = .familyTreeView
+            } else {
+                self.rootViewCase = .introView
+            }
         }
     }
     
@@ -68,7 +70,7 @@ final class RootViewModel {
                 try await Task.sleep(nanoseconds: 100_000_000)
                 guard let stringID = UserDefaults.standard.myNodeID else { return }
                 let id = UUID(uuidString: stringID)!
-                guard let myNode = DatabaseModel.shared.fetchNode(id) else { return }
+                guard let myNode = await NodeDatabase.shared.fetchNode(id) else { return }
                 switch sideOfBaseNode {
                 case .sideOfFather:
                     if let parent = myNode.leftParent {

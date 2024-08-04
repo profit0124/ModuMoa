@@ -20,10 +20,12 @@ final class SearchViewModel {
     }
     
     func onAppear() {
-        do {
-            self.nodes = try DatabaseModel.shared.fetchNodes()
-        } catch {
-            print("Error")
+        Task {
+            do {
+                self.nodes = try await NodeDatabase.shared.fetchNodes()
+            } catch {
+                print("Error")
+            }
         }
     }
 }

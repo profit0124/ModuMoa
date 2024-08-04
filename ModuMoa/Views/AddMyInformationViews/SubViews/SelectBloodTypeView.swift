@@ -73,8 +73,10 @@ struct SelectBloodTypeView: View {
                 
                     if viewModel.aboType != nil, viewModel.rhType != nil {
                         ModumoaRoundedRectangleButton("완료") {
-                            if let node = viewModel.saveMyInformation() {
-                                rootViewModel.addMyNode(node)
+                            Task {
+                                if let node = await viewModel.saveMyInformation() {
+                                    rootViewModel.addMyNode(node)
+                                }
                             }
                         }
                     }
