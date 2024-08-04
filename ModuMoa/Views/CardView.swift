@@ -50,7 +50,7 @@ struct CardView: View {
                 RoundedRectangle(cornerRadius: 16, style: .continuous)
                     .fill(.white)
                 RoundedRectangle(cornerRadius: 16, style: .continuous)
-                    .stroke(lineWidth: 4)
+                    .strokeBorder(lineWidth: 4)
                     .foregroundStyle(.moduBlack)
             }
         }
