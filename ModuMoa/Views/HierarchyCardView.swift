@@ -106,7 +106,8 @@ struct HierarchyCardView: View {
                     VStack(spacing: 16) {
                         ForEach(CaseOfAdd.allCases, id: \.self) { addCase in
 //                            let fromNode = vm.fromMe ? vm.node : vm.node.partner!
-                            let isEnabled = addCase.canAddMember(fromNode)
+                            let possible = fromNode.member.nickNames.checkPossible(addCase)
+                            let isEnabled = addCase.canAddMember(fromNode) && possible
                             Button(action: {
                                 self.vm.setSelectedAddCase(addCase)
                             }) {
@@ -119,7 +120,8 @@ struct HierarchyCardView: View {
                                             Image(systemName: "checkmark")
                                         }
                                         if !isEnabled {
-                                            Text("이미 추가 됨")
+                                            let reason = possible ? "이미 추가 됨" : "기능 추가 예정"
+                                            Text(reason)
                                         }
                                     }
                                     .font(.customFont(.body))

@@ -1669,13 +1669,13 @@ extension RelationshipInfoType {
         case .daughter://
             Nicknames(title: "딸", nickname: "딸")
         case .partnerOfSon://
-            Nicknames(title: "며느리", nickname: "며느리")
+            Nicknames(title: "며느리", nickname: "며느리", leftParent: false, rightParent: false)
         case .partnerOfDaughter://
-            Nicknames(title: "사위", nickname: "사위")
+            Nicknames(title: "사위", nickname: "사위", leftParent: false, rightParent: false)
         case .grandSon://
-            Nicknames(title: "손자", nickname: "손자")
+            Nicknames(title: "손자", nickname: "손자", leftParent: false, rightParent: false, partner: false, son: false, daughter: false)
         case .grandDaugter://
-            Nicknames(title: "손녀", nickname: "손녀")
+            Nicknames(title: "손녀", nickname: "손녀", leftParent: false, rightParent: false, partner: false, son: false, daughter: false)
         case .father://
             Nicknames(title: "부", nickname: "아버지")
         case .mother://
@@ -1683,227 +1683,227 @@ extension RelationshipInfoType {
         case .oldBrotherM://
             Nicknames(title: "형제", nickname: "형")
         case .partnerOfOldBrotherM://
-            Nicknames(title: "형수", nickname: "형수님")
+            Nicknames(title: "형수", nickname: "형수님", leftParent: false, rightParent: false)
         case .sonOfOldBrotherM://
             Nicknames(title: "질", nickname: "조카")
         case .daughterOfOldBrotherM://
             Nicknames(title: "질녀", nickname: "조카")
         case .partnerOfSonOfOldBrotherM://
-            Nicknames(title: "질부", nickname: "조카며느리")
+            Nicknames(title: "질부", nickname: "조카며느리", leftParent: false, rightParent: false)
         case .partnerOfDaughterOfOldBrotherM://
-            Nicknames(title: "질서", nickname: "조카사위")
+            Nicknames(title: "질서", nickname: "조카사위", leftParent: false, rightParent: false)
         case .childOfChildOfOldBrotherM://
-            Nicknames(title: "질손자녀", nickname: "이손자/이손녀")
+            Nicknames(title: "질손자녀", nickname: "이손자/이손녀", leftParent: false, rightParent: false, partner: false, son: false, daughter: false)
         case .oldBrotherF://
             Nicknames(title: "남매", nickname: "오빠")
         case .partnerOfOldBrotherF://
-            Nicknames(title: "올케", nickname: "새언니")
+            Nicknames(title: "올케", nickname: "새언니", leftParent: false, rightParent: false)
         case .sonOfOldBrotherF://
             Nicknames(title: "질", nickname: "조카")
         case .daughterOfOldBrotherF://
             Nicknames(title: "질녀", nickname: "질녀 조카")
         case .partnerOfSonOfOldBrotherF://
-            Nicknames(title: "질부", nickname: "조카며느리")
+            Nicknames(title: "질부", nickname: "조카며느리", leftParent: false, rightParent: false)
         case .partnerOfDaughterOfOldBrotherF://
-            Nicknames(title: "질서", nickname: "조카사위")
+            Nicknames(title: "질서", nickname: "조카사위", leftParent: false, rightParent: false)
         case .childOfChildOfOldBrotherF://
-            Nicknames(title: "질손자녀", nickname: "이손자/이손녀")
+            Nicknames(title: "질손자녀", nickname: "이손자/이손녀", leftParent: false, rightParent: false, partner: false, son: false, daughter: false)
         case .oldSisterM://
             Nicknames(title: "남매", nickname: "누나")
         case .partnerOfOldSisterM://
-            Nicknames(title: "매형", nickname: "매형")
+            Nicknames(title: "매형", nickname: "매형", leftParent: false, rightParent: false)
         case .sonOfOldSisterM://
             Nicknames(title: "생질", nickname: "조카")
         case .daughterOfOldSisterM://
             Nicknames(title: "생질녀", nickname: "조카")
         case .partnerOfSonOfOldSisterM://
-            Nicknames(title: "생질부", nickname: "조카며느리")
+            Nicknames(title: "생질부", nickname: "조카며느리", leftParent: false, rightParent: false)
         case .partnerOfDaughterOfOldSisterM://
-            Nicknames(title: "생질서", nickname: "조카사위")
+            Nicknames(title: "생질서", nickname: "조카사위", leftParent: false, rightParent: false)
         case .childOfChildOfOldSisterM://
-            Nicknames(title: "생질손자녀", nickname: "종손자/종손녀")
+            Nicknames(title: "생질손자녀", nickname: "종손자/종손녀", leftParent: false, rightParent: false, partner: false, son: false, daughter: false)
         case .oldSisterF://
             Nicknames(title: "자매", nickname: "언니")
         case .partnerOfOldSisterF://
-            Nicknames(title: "형부", nickname: "형부")
+            Nicknames(title: "형부", nickname: "형부", leftParent: false, rightParent: false)
         case .sonOfOldSisterF://
             Nicknames(title: "생질", nickname: "조카")
         case .daughterOfOldSisterF://
             Nicknames(title: "생질녀", nickname: "조카")
         case .partnerOfSonOfOldSisterF://
-            Nicknames(title: "생질부", nickname: "조카며느리")
+            Nicknames(title: "생질부", nickname: "조카며느리", leftParent: false, rightParent: false)
         case .partnerOfDaughterOfOldSisterF://
-            Nicknames(title: "생질서", nickname: "조카사위")
+            Nicknames(title: "생질서", nickname: "조카사위", leftParent: false, rightParent: false)
         case .childOfChildOfOldSisterF://
-            Nicknames(title: "생질손자녀", nickname: "종손자/종손녀")
+            Nicknames(title: "생질손자녀", nickname: "종손자/종손녀", leftParent: false, rightParent: false, partner: false, son: false, daughter: false)
         case .youngerBrotherM://
             Nicknames(title: "형제", nickname: "남동생")
         case .partnerOfYoungerBrotherM://
-            Nicknames(title: "제수", nickname: "제수씨")
+            Nicknames(title: "제수", nickname: "제수씨", leftParent: false, rightParent: false)
         case .sonOfYoungerBrotherM://
             Nicknames(title: "질", nickname: "조카")
         case .daughterOfYoungerBrotherM://
             Nicknames(title: "질녀", nickname: "조카")
         case .partnerOfSonOfYoungerBrotherM://
-            Nicknames(title: "질부", nickname: "조카며느리")
+            Nicknames(title: "질부", nickname: "조카며느리", leftParent: false, rightParent: false)
         case .partnerOfDaughterOfYoungerBrotherM://"
-            Nicknames(title: "질서", nickname: "조카사위")
+            Nicknames(title: "질서", nickname: "조카사위", leftParent: false, rightParent: false)
         case .childOfChildOfYoungerBrotherM://
-            Nicknames(title: "질손자녀", nickname: "이손자/이손녀")
+            Nicknames(title: "질손자녀", nickname: "이손자/이손녀", leftParent: false, rightParent: false, partner: false, son: false, daughter: false)
         case .youngerBrotherF://"
             Nicknames(title: "남매", nickname: "남동생")
         case .partnerOfYoungerBrotherF://
-            Nicknames(title: "올케", nickname: "올케")
+            Nicknames(title: "올케", nickname: "올케", leftParent: false, rightParent: false)
         case .sonOfYoungerBrotherF://
             Nicknames(title: "질", nickname: "조카")
         case .daughterOfYoungerBrotherF://
             Nicknames(title: "질녀", nickname: "조카")
         case .partnerOfSonOfYoungerBrotherF://
-            Nicknames(title: "질부", nickname: "조카며느리")
+            Nicknames(title: "질부", nickname: "조카며느리", leftParent: false, rightParent: false)
         case .partnerOfDaughterOfYoungerBrotherF://
-            Nicknames(title: "질서", nickname: "조카사위")
+            Nicknames(title: "질서", nickname: "조카사위", leftParent: false, rightParent: false)
         case .childOfChildOfYoungerBrotherF://
-            Nicknames(title: "질손자녀", nickname: "이손자/이손녀")
+            Nicknames(title: "질손자녀", nickname: "이손자/이손녀", leftParent: false, rightParent: false, partner: false, son: false, daughter: false)
         case .youngerSisterM://
             Nicknames(title: "남매", nickname: "여동생")
         case .partnerOfYoungerSisterM://
-            Nicknames(title: "매부", nickname: "매제")
+            Nicknames(title: "매부", nickname: "매제", leftParent: false, rightParent: false)
         case .sonOfYoungerSisterM://
             Nicknames(title: "생질", nickname: "조카")
         case .daughterOfYoungerSisterM://
             Nicknames(title: "생질녀", nickname: "조카")
         case .partnerOfSonOfYoungerSisterM://
-            Nicknames(title: "생질부", nickname: "조카며느리")
+            Nicknames(title: "생질부", nickname: "조카며느리", leftParent: false, rightParent: false)
         case .partnerOfDaughterOfYoungerSisterM://
-            Nicknames(title: "생질서", nickname: "조카사위")
+            Nicknames(title: "생질서", nickname: "조카사위", leftParent: false, rightParent: false)
         case .childOfChildOfYoungerSisterM://
-            Nicknames(title: "생질손자녀", nickname: "종손자/종손녀")
+            Nicknames(title: "생질손자녀", nickname: "종손자/종손녀", leftParent: false, rightParent: false, partner: false, son: false, daughter: false)
         case .youngerSisterF://
             Nicknames(title: "자매", nickname: "여동생")
         case .partnerOfYoungerSisterF://
-            Nicknames(title: "제부", nickname: "제부")
+            Nicknames(title: "제부", nickname: "제부", leftParent: false, rightParent: false)
         case .sonOfYoungerSisterF://
             Nicknames(title: "생질", nickname: "조카")
         case .daughterOfYoungerSisterF://
             Nicknames(title: "생질녀", nickname: "조카")
         case .partnerOfSonOfYoungerSisterF://
-            Nicknames(title: "생질부", nickname: "조카며느리")
+            Nicknames(title: "생질부", nickname: "조카며느리", leftParent: false, rightParent: false)
         case .partnerOfDaughterOfYoungerSisterF://
-            Nicknames(title: "생질서", nickname: "조카사위")
+            Nicknames(title: "생질서", nickname: "조카사위", leftParent: false, rightParent: false)
         case .childOfChildOfYoungerSisterF://
-            Nicknames(title: "생질손자녀", nickname: "종손자/종손녀")
+            Nicknames(title: "생질손자녀", nickname: "종손자/종손녀", leftParent: false, rightParent: false, partner: false, son: false, daughter: false)
         case .grandFatherM://
             Nicknames(title: "조부", nickname: "할아버지")
         case .grandMotherM://
-            Nicknames(title: "조모", nickname: "할머니")
+            Nicknames(title: "조모", nickname: "할머니", leftParent: false, rightParent: false)
         case .bigGrandFatherM://
-            Nicknames(title: "증조부", nickname: "증조할아버지")
+            Nicknames(title: "증조부", nickname: "증조할아버지", leftParent: false, rightParent: false, son: false, daughter: false)
         case .bigGrandMotherM://
-            Nicknames(title: "증조모", nickname: "증조할머니")
+            Nicknames(title: "증조모", nickname: "증조할머니", leftParent: false, rightParent: false, son: false, daughter: false)
         case .bigFather://
             Nicknames(title: "백부", nickname: "큰아버지")
         case .partnerOfBigFather://
-            Nicknames(title: "백모", nickname: "큰어머니")
+            Nicknames(title: "백모", nickname: "큰어머니", leftParent: false, rightParent: false)
         case .smallFather://
             Nicknames(title: "숙부", nickname: "작은아버지")
         case .partnerOfSmallFather://
-            Nicknames(title: "숙모", nickname: "작은어머니")
+            Nicknames(title: "숙모", nickname: "작은어머니", leftParent: false, rightParent: false)
         case .childOfBrotherOfFather://
             Nicknames(title: "종형제", nickname: "사촌형제")
         case .partnerMOfChildOfBrotherOfFather://
-            Nicknames(title: "종수", nickname: "")
+            Nicknames(title: "종수", nickname: "", leftParent: false, rightParent: false)
         case .childOfChildOfBrotherOfFather://
-            Nicknames(title: "종질/당질", nickname: "사촌조카")
+            Nicknames(title: "종질/당질", nickname: "사촌조카", leftParent: false, rightParent: false, partner: false)
         case .childOfChildOfChildOfBrotherOfFather://
-            Nicknames(title: "재종손", nickname: "재종손")
+            Nicknames(title: "재종손", nickname: "재종손", leftParent: false, rightParent: false, partner: false, son: false, daughter: false)
         case .sisterOfFather://
             Nicknames(title: "고모", nickname: "고모")
         case .partnerOfSisterOfFather://
-            Nicknames(title: "고모부", nickname: "고모부")
+            Nicknames(title: "고모부", nickname: "고모부", leftParent: false, rightParent: false)
         case .childOfSisterOfFather://
             Nicknames(title: "내종형제", nickname: "사촌형제")
         case .partnerMOfChildOfSisterOfFather://
-            Nicknames(title: "내종수", nickname: "")
+            Nicknames(title: "내종수", nickname: "", leftParent: false, rightParent: false, partner: false)
         case .childOfChildOfSisterOfFather://
-            Nicknames(title: "내종질", nickname: "사촌조카")
+            Nicknames(title: "내종질", nickname: "사촌조카", leftParent: false, rightParent: false, partner: false)
         case .childOfChildOfChildOfSisterOfFather://
-            Nicknames(title: "내재종손", nickname: "내재종손")
+            Nicknames(title: "내재종손", nickname: "내재종손", leftParent: false, rightParent: false, partner: false, son: false, daughter: false)
         case .grandFatherF://
             Nicknames(title: "외조부", nickname: "외할아버지")
         case .grandMotherF://
-            Nicknames(title: "외조모", nickname: "외할머니")
+            Nicknames(title: "외조모", nickname: "외할머니", leftParent: false, rightParent: false)
         case .bigGrandFatherF://
-            Nicknames(title: "증조부", nickname: "증조외할아버지")
+            Nicknames(title: "증조부", nickname: "증조외할아버지", leftParent: false, rightParent: false, son: false, daughter: false)
         case .bigGrandMotherF://
-            Nicknames(title: "증조모", nickname: "증조외할머니")
+            Nicknames(title: "증조모", nickname: "증조외할머니", leftParent: false, rightParent: false, son: false, daughter: false)
         case .brotherOfMother://
             Nicknames(title: "외숙", nickname: "외삼촌")
         case .partnerOfBrotherOfMother://
-            Nicknames(title: "외숙모", nickname: "외숙모")
+            Nicknames(title: "외숙모", nickname: "외숙모", leftParent: false, rightParent: false)
         case .childOfBrotherOfMother://
             Nicknames(title: "외종형제", nickname: "외사촌")
         case .partnerMOfChildOfBrotherOfMother://
-            Nicknames(title: "외종수", nickname: "")
+            Nicknames(title: "외종수", nickname: "", leftParent: false, rightParent: false)
         case .childOfChildOfBrotherOfMother://
-            Nicknames(title: "외종질", nickname: "외사촌조카")
+            Nicknames(title: "외종질", nickname: "외사촌조카", leftParent: false, rightParent: false, partner: false)
         case .childOfChildOfChildOfBrotherOfMother://
-            Nicknames(title: "외재종손", nickname: "외재종손")
+            Nicknames(title: "외재종손", nickname: "외재종손", leftParent: false, rightParent: false, partner: false, son: false, daughter: false)
         case .sisterOfMother://
             Nicknames(title: "이모", nickname: "이모")
         case .partnerOfSisterOfMother://
-            Nicknames(title: "이모부", nickname: "이모부")
+            Nicknames(title: "이모부", nickname: "이모부", leftParent: false, rightParent: false)
         case .childOfSisterOfMother://
             Nicknames(title: "이종형제", nickname: "외사촌")
         case .partnerMOfChildOfSisterOfMother://
-            Nicknames(title: "이종수", nickname: "")
+            Nicknames(title: "이종수", nickname: "", leftParent: false, rightParent: false)
         case .childOfChildOfSisterOfMother://
-            Nicknames(title: "이종질", nickname: "외사촌조카")
+            Nicknames(title: "이종질", nickname: "외사촌조카", leftParent: false, rightParent: false, partner: false)
         case .childOfChildOfChildOfSisterOfMother://
-            Nicknames(title: "이재종손", nickname: "이재종손")
+            Nicknames(title: "이재종손", nickname: "이재종손", leftParent: false, rightParent: false, partner: false, son: false, daughter: false)
         case .wife://
             Nicknames(title: "아내", nickname: "아내")
         case .husband://
             Nicknames(title: "남편", nickname: "남편")
         case .fatherOfHusband://
-            Nicknames(title: "시부모", nickname: "시아버지")
+            Nicknames(title: "시부모", nickname: "시아버지", leftParent: false, rightParent: false)
         case .motherOfHusband://
-            Nicknames(title: "시부모", nickname: "시어머니")
+            Nicknames(title: "시부모", nickname: "시어머니", leftParent: false, rightParent: false)
         case .fatherOfWife://
-            Nicknames(title: "장인", nickname: "장인어른")
+            Nicknames(title: "장인", nickname: "장인어른", leftParent: false, rightParent: false)
         case .motherOfWife://
-            Nicknames(title: "장모", nickname: "장모님")
+            Nicknames(title: "장모", nickname: "장모님", leftParent: false, rightParent: false)
         case .oldBrotherOfWife://
-            Nicknames(title: "손윗처남", nickname: "형님")
+            Nicknames(title: "손윗처남", nickname: "형님", son: false, daughter: false)
         case .youngerBrotherOfWife://
-            Nicknames(title: "처남", nickname: "처남")
+            Nicknames(title: "처남", nickname: "처남", son: false, daughter: false)
         case .oldSisterOfWife://
-            Nicknames(title: "처형", nickname: "처형")
+            Nicknames(title: "처형", nickname: "처형", son: false, daughter: false)
         case .youngerSisterOfWife://
-            Nicknames(title: "처제", nickname: "처제")
+            Nicknames(title: "처제", nickname: "처제", son: false, daughter: false)
         case .partnerOfOldBrotherOfWife://
-            Nicknames(title: "손윗처남댁", nickname: "아주머니")
+            Nicknames(title: "손윗처남댁", nickname: "아주머니", leftParent: false, rightParent: false, son: false, daughter: false)
         case .partnerOfYoungerBrotherOfWife://
-            Nicknames(title: "처남댁", nickname: "처남댁")
+            Nicknames(title: "처남댁", nickname: "처남댁", leftParent: false, rightParent: false, son: false, daughter: false)
         case .partnerOfOldSisterOfWife://
-            Nicknames(title: "손윗동서", nickname: "형님")
+            Nicknames(title: "손윗동서", nickname: "형님", leftParent: false, rightParent: false, son: false, daughter: false)
         case .partnerOfYoungerSisterOfWife://
-            Nicknames(title: "동서", nickname: "동서")
+            Nicknames(title: "동서", nickname: "동서", leftParent: false, rightParent: false, son: false, daughter: false)
         case .oldBrotherOfHusband://
-            Nicknames(title: "시아주버니", nickname: "아주버님")
+            Nicknames(title: "시아주버니", nickname: "아주버님", son: false, daughter: false)
         case .partnerOfOldBrotherOfHusband://
-            Nicknames(title: "손윗동서", nickname: "형님")
+            Nicknames(title: "손윗동서", nickname: "형님", leftParent: false, rightParent: false, son: false, daughter: false)
         case .oldSisterOfHusband://
-            Nicknames(title: "시누이", nickname: "형님")
+            Nicknames(title: "시누이", nickname: "형님", son: false, daughter: false)
         case .partnerOfOldSisterOfHusband://
-            Nicknames(title: "시자부", nickname: "아주버님")
+            Nicknames(title: "시자부", nickname: "아주버님", leftParent: false, rightParent: false, son: false, daughter: false)
         case .youngerBrotherOfHusband://
-            Nicknames(title: "시동생", nickname: "도련님")
+            Nicknames(title: "시동생", nickname: "도련님", son: false, daughter: false)
         case .partnerOfYoungerBrotherOfHusband://
-            Nicknames(title: "동서", nickname: "동서")
+            Nicknames(title: "동서", nickname: "동서", leftParent: false, rightParent: false, son: false, daughter: false)
         case .youngerSisterOfHusband://
             Nicknames(title: "시누이", nickname: "아가씨")
         case .partnerOfYoungerSisterOfHusband://
-            Nicknames(title: "시매부", nickname: "시매부")
+            Nicknames(title: "시매부", nickname: "시매부", leftParent: false, rightParent: false, son: false, daughter: false)
         default:
             Nicknames(title: "모름", nickname: "모름")
         }

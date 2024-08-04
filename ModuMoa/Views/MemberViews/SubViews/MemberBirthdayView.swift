@@ -35,6 +35,8 @@ struct MemberBirthdayView: View {
                 })
                 .datePickerStyle(.wheel)
                 .labelsHidden()
+                .environment(\.locale, Locale.init(identifier: "ko-kr"))
+                
                 Spacer()
             }
             
