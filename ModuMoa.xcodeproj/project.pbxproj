@@ -63,6 +63,7 @@
 		31B388EB2AE38E5000DFE875 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B388EA2AE38E5000DFE875 /* CardView.swift */; };
 		31B388ED2AE3944D00DFE875 /* HierarchyCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B388EC2AE3944D00DFE875 /* HierarchyCardView.swift */; };
 		31B388EF2AE3D3EB00DFE875 /* CGSize+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B388EE2AE3D3EB00DFE875 /* CGSize+.swift */; };
+		31C70A9F2C5CC350001A13C5 /* UserDefatuls+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C70A9E2C5CC350001A13C5 /* UserDefatuls+.swift */; };
 		31CD06902AE55883009D5383 /* AddMyInformationContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CD068F2AE55883009D5383 /* AddMyInformationContainerView.swift */; };
 		A06C1ABF2AF4BF9A001C8B4D /* RelationshipInfoType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06C1ABE2AF4BF9A001C8B4D /* RelationshipInfoType.swift */; };
 		A0F324CF2ADA7EB500D64198 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F324CE2ADA7EB500D64198 /* Member.swift */; };
@@ -128,6 +129,7 @@
 		31B388EA2AE38E5000DFE875 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		31B388EC2AE3944D00DFE875 /* HierarchyCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyCardView.swift; sourceTree = "<group>"; };
 		31B388EE2AE3D3EB00DFE875 /* CGSize+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+.swift"; sourceTree = "<group>"; };
+		31C70A9E2C5CC350001A13C5 /* UserDefatuls+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefatuls+.swift"; sourceTree = "<group>"; };
 		31CD068F2AE55883009D5383 /* AddMyInformationContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMyInformationContainerView.swift; sourceTree = "<group>"; };
 		A06C1ABE2AF4BF9A001C8B4D /* RelationshipInfoType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipInfoType.swift; sourceTree = "<group>"; };
 		A0F324CE2ADA7EB500D64198 /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				311A3EF92AED2EE60082D247 /* Date+.swift */,
 				310E88B12C4FCBBB00D5CB36 /* UIViewController+.swift */,
 				312A80142C57E8D30079222D /* EnvironmentValues+.swift */,
+				31C70A9E2C5CC350001A13C5 /* UserDefatuls+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -455,6 +458,7 @@
 				317A2E892C5B959800C44280 /* MemberDetailViewModel.swift in Sources */,
 				312A80132C57DD240079222D /* NicknameModeEnvironment.swift in Sources */,
 				314FD6A62AE955CA0052251C /* InputNameView.swift in Sources */,
+				31C70A9F2C5CC350001A13C5 /* UserDefatuls+.swift in Sources */,
 				31B388ED2AE3944D00DFE875 /* HierarchyCardView.swift in Sources */,
 				317A2E872C5B85D700C44280 /* MemberAddViewModel.swift in Sources */,
 				310E889C2C4E78E800D5CB36 /* AddMyInformationViewModel.swift in Sources */,

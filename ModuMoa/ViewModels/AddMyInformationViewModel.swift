@@ -42,7 +42,7 @@ final class AddMyInformationViewModel {
     func saveMyInformation() -> Node? {
         if let node = getNode() {
             do {
-                UserDefaults.standard.setValue(node.id.uuidString, forKey: "myNode")
+                UserDefaults.standard.myNodeID = node.id.uuidString
                 try DatabaseModel.shared.addNode(node)
                 return node
             } catch {

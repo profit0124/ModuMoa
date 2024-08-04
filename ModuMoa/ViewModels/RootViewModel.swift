@@ -19,39 +19,37 @@ final class RootViewModel {
     var rootViewCase: RootViewCase = .loadingView
     var baseNode: Node?
     var isPushed: Bool = false
-    var nicknameMode: NicknameMode = .nickname
-    var sideOfBaseNode: SideOfBaseNode = .sideOfFather
+    var nicknameMode: NicknameMode
+    var sideOfBaseNode: SideOfBaseNode
+    
+    init() {
+        self.rootViewCase = .loadingView
+        self.baseNode = nil
+        self.isPushed = false
+        self.nicknameMode = UserDefaults.standard.nicknameMode
+        self.sideOfBaseNode = UserDefaults.standard.sideOfBaseNode
+    }
     
     func onAppear() {
-        if let rawValue = UserDefaults.standard.string(forKey: "nicknameMode"), let nicknameMode = NicknameMode(rawValue: rawValue) {
-            self.nicknameMode = nicknameMode
-        }
-        if let rawValue = UserDefaults.standard.string(forKey: "sideOfBaseNode"), let baseNodeMode = SideOfBaseNode(rawValue: rawValue) {
-            self.sideOfBaseNode = baseNodeMode
-        }
-        guard let stringID = UserDefaults.standard.value(forKey: "baseNode") as? String else {
-            self.rootViewCase = .introView
-            return }
-        guard let id = UUID(uuidString: stringID) else {
-            self.rootViewCase = .introView
-            return
-        }
-        let node = DatabaseModel.shared.fetchNode(id)
-        self.rootViewCase = node != nil ? .familyTreeView : .introView
-        if let node {
+        if let stringID = UserDefaults.standard.baseNodeID,
+           let id = UUID(uuidString: stringID),
+           let node = DatabaseModel.shared.fetchNode(id) {
             setChildrenOfNode(node)
-        }
-        if let node {
             self.baseNode = node
+            self.rootViewCase = .familyTreeView
+        } else {
+            self.rootViewCase = .introView
         }
+    }
+    
+    func addMyNode(_ node: Node) {
+        setBaseNode(node)
+        rootViewCase = .familyTreeView
     }
     
     func setBaseNode(_ node: Node?) {
         if let node {
-            UserDefaults.standard.setValue(node.id.uuidString, forKey: "baseNode")
-            if rootViewCase == .introView {
-                rootViewCase = .familyTreeView
-            }
+            UserDefaults.standard.baseNodeID = node.id.uuidString
             setChildrenOfNode(node)
             DispatchQueue.main.async {
                 self.baseNode = node
@@ -68,27 +66,27 @@ final class RootViewModel {
         Task {
             do {
                 try await Task.sleep(nanoseconds: 100_000_000)
-                guard let stringID = UserDefaults.standard.value(forKey: "myNode") as? String else { return }
+                guard let stringID = UserDefaults.standard.myNodeID else { return }
                 let id = UUID(uuidString: stringID)!
                 guard let myNode = DatabaseModel.shared.fetchNode(id) else { return }
                 switch sideOfBaseNode {
                 case .sideOfFather:
                     if let parent = myNode.leftParent {
-                        UserDefaults.standard.setValue(sideOfBaseNode.rawValue, forKey: "sideOfBaseNode")
+                        UserDefaults.standard.sideOfBaseNode = sideOfBaseNode
                         findRootNode(parent)
                     } else {
                         self.baseNode = temp
                     }
                 case .sideOfMother:
                     if let parent = myNode.rightParent {
-                        UserDefaults.standard.setValue(sideOfBaseNode.rawValue, forKey: "sideOfBaseNode")
+                        UserDefaults.standard.sideOfBaseNode = sideOfBaseNode
                         findRootNode(parent)
                     } else {
                         self.baseNode = temp
                     }
                 case .sideOfWife:
                     if let partner = myNode.partner {
-                        UserDefaults.standard.setValue(sideOfBaseNode.rawValue, forKey: "sideOfBaseNode")
+                        UserDefaults.standard.sideOfBaseNode = sideOfBaseNode
                         findRootNode(partner)
                     } else {
                         self.baseNode = temp

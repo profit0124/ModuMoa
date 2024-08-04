@@ -104,7 +104,7 @@ final class Node: Equatable, Identifiable {
     
     func setNickname() {
         guard let partner = self.partner else { return }
-        guard let stringID = UserDefaults.standard.value(forKey: "myNode") as? String else { return }
+        guard let stringID = UserDefaults.standard.myNodeID else { return }
         let id = UUID(uuidString: stringID)!
         guard let myNode = DatabaseModel.shared.fetchNode(id) else { return }
         
