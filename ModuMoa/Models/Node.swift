@@ -9,11 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-final class Node: Equatable, Identifiable {
-    static func == (lhs: Node, rhs: Node) -> Bool {
-        lhs.id == rhs.id
-    }
-    
+final class Node: Identifiable {
     @Attribute(.unique)
     let id: UUID = UUID()
     var level: Int
@@ -150,11 +146,16 @@ final class Node: Equatable, Identifiable {
     }
 }
 
+extension Node: Equatable {
+    static func == (lhs: Node, rhs: Node) -> Bool {
+        lhs.id == rhs.id
+    }
+}
+
 
 extension Node: Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
-        hasher.combine(member)
     }
 }
 
