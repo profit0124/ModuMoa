@@ -23,6 +23,11 @@ final class HierarchyCardViewModel {
     var detailNodeViewIsPushed: Bool = false
     var fromMe: Bool = true
     var selectedNode: Node?
+    var orderedChildren: [Node] {
+        get {
+            node.children.sorted(by: { $0.member.birthday ?? Date() < $1.member.birthday ?? Date() })
+        }
+    }
     
     init(node: Node) {
         self.node = node

@@ -36,7 +36,7 @@ struct HierarchyCardView: View {
             }
             
             HStack(alignment: .top, spacing: 80) {
-                ForEach(vm.node.children, id: \.id) { children in
+                ForEach(vm.orderedChildren, id: \.id) { children in
                     HierarchyCardView(node: children)
                 }
             }
