@@ -14,7 +14,6 @@ struct HierarchyCardView: View {
     init(node: Node) {
         self._vm = .init(initialValue: .init(node: node))
     }
-//    let afterAddAction: (Node) -> Void
     
     typealias Key = PreferKey<Member.ID, Anchor<CGPoint>>
 
@@ -82,10 +81,6 @@ struct HierarchyCardView: View {
                     }
             }
         })
-        .onAppear {
-            /// 자식으로부터 나의 파트너를 추가할 경우, 나의 자식과 파트너의 자식을 같게해주게 되면 다음 Loading 에서 나의 자식이 없어지는 현상 발견
-            vm.onAppear()
-        }
     }
     
     private func middleOfPoints(_ lhs: CGPoint, _ rhs: CGPoint) -> CGPoint {

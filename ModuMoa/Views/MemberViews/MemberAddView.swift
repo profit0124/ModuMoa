@@ -49,7 +49,14 @@ struct MemberAddView: View {
     }
     
     func saveNode() {
-        vm.saveNode()
-        isPushed = false
+        Task {
+            do {
+                try await vm.saveButtonTapped()
+                isPushed = false
+            } catch {
+                fatalError("error: \(error)")
+            }
+        }
+        
     }
 }
