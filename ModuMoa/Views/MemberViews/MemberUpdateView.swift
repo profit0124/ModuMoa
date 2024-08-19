@@ -34,8 +34,7 @@ struct MemberUpdateView: View {
                 Spacer()
                 
                 Button(action: {
-                    vm.saveButtonTapped()
-                    isPresented = false
+                    update()
                 }) {
                     Text("저장")
                 }
@@ -49,8 +48,15 @@ struct MemberUpdateView: View {
         }
         .padding(.horizontal, 16)
     }
+    
+    func update() {
+        Task {
+            do {
+                try await vm.saveButtonTapped()
+                isPresented = false
+            } catch {
+                fatalError("error: \(error)")
+            }
+        }
+    }
 }
-
-//#Preview {
-//    MemberUpdateView(member)
-//}

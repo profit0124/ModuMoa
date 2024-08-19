@@ -56,6 +56,7 @@
 		318521182AEFD92C000579CE /* MemberBirthdayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318521172AEFD92C000579CE /* MemberBirthdayView.swift */; };
 		3185211A2AEFD93B000579CE /* MemberRhTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318521192AEFD93B000579CE /* MemberRhTypeView.swift */; };
 		3185211C2AEFEFF3000579CE /* MemberAboTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185211B2AEFEFF3000579CE /* MemberAboTypeView.swift */; };
+		319922162C721AB100EC292F /* ModumoaError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319922152C721AB100EC292F /* ModumoaError.swift */; };
 		31A78CA82AD42EE400BE629A /* ModuMoaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A78CA72AD42EE400BE629A /* ModuMoaApp.swift */; };
 		31A78CAA2AD42EE400BE629A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A78CA92AD42EE400BE629A /* ContentView.swift */; };
 		31A78CAC2AD42EE600BE629A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31A78CAB2AD42EE600BE629A /* Assets.xcassets */; };
@@ -122,6 +123,7 @@
 		318521172AEFD92C000579CE /* MemberBirthdayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberBirthdayView.swift; sourceTree = "<group>"; };
 		318521192AEFD93B000579CE /* MemberRhTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberRhTypeView.swift; sourceTree = "<group>"; };
 		3185211B2AEFEFF3000579CE /* MemberAboTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAboTypeView.swift; sourceTree = "<group>"; };
+		319922152C721AB100EC292F /* ModumoaError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModumoaError.swift; sourceTree = "<group>"; };
 		31A78CA42AD42EE400BE629A /* ModuMoa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ModuMoa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31A78CA72AD42EE400BE629A /* ModuMoaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuMoaApp.swift; sourceTree = "<group>"; };
 		31A78CA92AD42EE400BE629A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 				310E88B52C51137900D5CB36 /* NickNames.swift */,
 				312A800B2C57D4F30079222D /* NicknameMode.swift */,
 				312A80162C5899A50079222D /* SideOfBaseNode.swift */,
+				319922152C721AB100EC292F /* ModumoaError.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 				310E88A82C4F919D00D5CB36 /* ModumoaMemberSectionView.swift in Sources */,
 				318521142AEFD911000579CE /* MemberNameView.swift in Sources */,
 				3104A06B2C4D085300DD8020 /* PreferKey.swift in Sources */,
+				319922162C721AB100EC292F /* ModumoaError.swift in Sources */,
 				A0F324D12ADA826200D64198 /* Node.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

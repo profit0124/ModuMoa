@@ -28,25 +28,6 @@ final class HierarchyCardViewModel {
         self.node = node
     }
     
-    func onAppear() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
-            guard let self = self else { return }
-//            if let partner = self.node.partner {
-//                let children = Array(Set(node.children + partner.children).sorted(by: { $0.member.birthday ?? Date() <= $1.member.birthday ?? Date()}))
-//                node.children = partner.children
-//                node.partner?.children = children
-//            }
-            
-            if self.node.member.nickNames.nickname.isEmpty {
-                self.node.setNickname()
-            }
-            
-            if let partner = self.node.partner, partner.member.nickNames.nickname.isEmpty {
-                partner.setNickname()
-            }
-        }
-    }
-    
     func detailButtonTapped(_ node: Node) {
         self.selectedNode = node
         self.detailNodeViewIsPushed = true

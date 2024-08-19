@@ -64,13 +64,11 @@ final class MemberAddViewModel {
         }
     }
     
-    func saveNode() {
+    func saveButtonTapped() async throws {
         if let sex, let selectedAddCase {
             let node = Node(member: .init(name: name, bloodType: bloodType, sex: sex, birthday: birthDay), level: level, distance: distance)
             let relationshipInfo = RelationshipInfoType(fromNode.relationshipInfo, selectedAddCase, from: fromNode, to: node)
-            let nickNames = relationshipInfo!.getNicknames()
             node.relationshipInfo = relationshipInfo!
-            node.member.nickNames = nickNames
             switch selectedAddCase {
             case .leftParent:
                 fromNode.addFather(node)
@@ -81,16 +79,11 @@ final class MemberAddViewModel {
             case .son, .daughter:
                 fromNode.addChildren(node)
             }
-            Task {
-                do {
-                    try await NodeDatabase.shared.addNode(node)
-                    // 추가 후 해당 Hierarychy card 에서 진입 시 사용했던 selectedAddCase 를 다시 nil 로 변경
-                    self.selectedAddCase = nil
-                } catch {
-                    print("save error")
-                }
-            }
+            let nickNames = try await relationshipInfo!.getNicknames(to: node)
+            node.member.nickNames = nickNames
+            try await NodeDatabase.shared.addNode(node)
+            // 추가 후 해당 Hierarychy card 에서 진입 시 사용했던 selectedAddCase 를 다시 nil 로 변경
+            self.selectedAddCase = nil
         }
-        
     }
 }
