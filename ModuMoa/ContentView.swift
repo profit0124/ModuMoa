@@ -16,7 +16,6 @@ struct ContentView: View {
 
     @State private var viewModel = RootViewModel()
     
-    
     var body: some View {
         NavigationStack {
             ZStack {
@@ -120,6 +119,12 @@ struct ContentView: View {
                     }
                 }
             }
+        }
+        .onChange(of: viewModel.sideOfBaseNode) { _, _ in
+            draggedOffset = .zero
+            accumulatedOffset = .zero
+            currentZoom = 0
+            totalZoom = 0.7
         }
     }
     
