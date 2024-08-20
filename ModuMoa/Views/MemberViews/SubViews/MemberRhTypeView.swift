@@ -13,6 +13,7 @@ struct MemberRhTypeView: View {
     @Binding var rhType: BloodType.RhType?
     @Binding var isPresented: Bool
     let completion: () -> Void
+    @Environment(\.isNoSafeAreaDevice) var isNoSafeArea
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -54,6 +55,7 @@ struct MemberRhTypeView: View {
             }
             .disabled(rhType == nil)
         }
+        .padding(.bottom, isNoSafeArea ? 16 : 0)
     }
 }
 

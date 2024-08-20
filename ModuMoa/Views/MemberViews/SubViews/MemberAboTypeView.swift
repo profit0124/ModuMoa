@@ -13,6 +13,7 @@ struct MemberAboTypeView: View {
     @Binding var aboType: BloodType.AboType?
     @Binding var isPresented: Bool
     let completion: () -> Void
+    @Environment(\.isNoSafeAreaDevice) var isNoSafeArea
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -55,6 +56,7 @@ struct MemberAboTypeView: View {
             }
             .disabled(aboType == nil)
         }
+        .padding(.bottom, isNoSafeArea ? 16 : 0)
     }
 }
 #Preview {

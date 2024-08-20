@@ -31,6 +31,7 @@ struct MemberFormView: View {
     }
     
     @State private var isPresented: Bool = false
+    @Environment(\.isNoSafeAreaDevice) var isNoSafeArea
     
     init(name: Binding<String>, sex: Binding<Sex?>, birthDay: Binding<Date?>, bloodType: Binding<BloodType>, rh: Binding<BloodType.RhType?>, abo: Binding<BloodType.AboType?>, nickName: String = "") {
         self._name = name
@@ -198,28 +199,32 @@ struct MemberFormView: View {
                 isFocused = false
             }
         }
-        .customHalfSheet($isPresented) {
-            switch focusState {
-            case .sex:
-                MemberSexView(sex: $sex, isPresented: $isPresented) {
-                    self.focusState = nil
+        .customDynamicHeightSheet($isPresented) {
+            ZStack {
+                switch focusState {
+                case .sex:
+                    MemberSexView(sex: $sex, isPresented: $isPresented) {
+                        self.focusState = nil
+                    }
+                case .birthDay:
+                    MemberBirthdayView(birthday: $birthDay, isPresented: $isPresented) {
+                        birthDayToString = birthDay?.toString() ?? "생일을 입력해주세요."
+                        self.focusState = nil
+                    }
+                case .rh:
+                    MemberRhTypeView(rhType: $rh, isPresented: $isPresented) {
+                        self.focusState = nil
+                    }
+                case .abo:
+                    MemberAboTypeView(aboType: $abo, isPresented: $isPresented) {
+                        self.focusState = nil
+                    }
+                default:
+                    EmptyView()
                 }
-            case .birthDay:
-                MemberBirthdayView(birthday: $birthDay, isPresented: $isPresented) {
-                    birthDayToString = birthDay?.toString() ?? "생일을 입력해주세요."
-                    self.focusState = nil
-                }
-            case .rh:
-                MemberRhTypeView(rhType: $rh, isPresented: $isPresented) {
-                    self.focusState = nil
-                }
-            case .abo:
-                MemberAboTypeView(aboType: $abo, isPresented: $isPresented) {
-                    self.focusState = nil
-                }
-            default:
-                EmptyView()
             }
+            .padding(.bottom, isNoSafeArea ? 16 : 0)
+            
         }
         .onChange(of: rh) { _, newVal in
             if let newVal {
