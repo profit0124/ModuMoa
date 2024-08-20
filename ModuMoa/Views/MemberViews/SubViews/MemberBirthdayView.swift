@@ -14,6 +14,7 @@ struct MemberBirthdayView: View {
     @Binding var birthday: Date?
     @Binding var isPresented: Bool
     let completion: () -> Void
+    @Environment(\.isNoSafeAreaDevice) var isNoSafeArea
     
     init(birthday: Binding<Date?>, isPresented: Binding<Bool>, completion: @escaping () -> Void) {
         self.tempBirthDay = birthday.wrappedValue ?? Date()
@@ -48,5 +49,6 @@ struct MemberBirthdayView: View {
                 completion()
             }
         }
+        .padding(.bottom, isNoSafeArea ? 16 : 0)
     }
 }

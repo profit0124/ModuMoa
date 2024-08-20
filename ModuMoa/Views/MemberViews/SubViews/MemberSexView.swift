@@ -12,6 +12,7 @@ struct MemberSexView: View {
     @Binding var sex: Sex?
     @Binding var isPresented: Bool
     let completion: () -> Void
+    @Environment(\.isNoSafeAreaDevice) var isNoSafeArea
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -54,6 +55,7 @@ struct MemberSexView: View {
             }
             .disabled(sex == nil)
         }
+        .padding(.bottom, isNoSafeArea ? 16 : 0)
     }
 }
 

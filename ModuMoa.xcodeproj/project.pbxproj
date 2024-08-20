@@ -41,6 +41,10 @@
 		314C44882C4BC0B10020FAA9 /* MemberAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314C44872C4BC0B10020FAA9 /* MemberAddView.swift */; };
 		314FD6A62AE955CA0052251C /* InputNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314FD6A52AE955CA0052251C /* InputNameView.swift */; };
 		317002BA2AD58B6100D8991A /* CGFloat+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317002B92AD58B6100D8991A /* CGFloat+.swift */; };
+		317328492C74AED000CB19EA /* EnvironmnetValues+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317328482C74AED000CB19EA /* EnvironmnetValues+.swift */; };
+		3173284B2C74B36D00CB19EA /* ViewSizePreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3173284A2C74B36D00CB19EA /* ViewSizePreferenceKey.swift */; };
+		3173284D2C74B57A00CB19EA /* CustomDynamicHeightSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3173284C2C74B57A00CB19EA /* CustomDynamicHeightSheet.swift */; };
+		3173284F2C74B8E800CB19EA /* DynamicHeightBottomSheetContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3173284E2C74B8E800CB19EA /* DynamicHeightBottomSheetContentView.swift */; };
 		317A2E852C5B708500C44280 /* HierarchyCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317A2E842C5B708500C44280 /* HierarchyCardViewModel.swift */; };
 		317A2E872C5B85D700C44280 /* MemberAddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317A2E862C5B85D700C44280 /* MemberAddViewModel.swift */; };
 		317A2E892C5B959800C44280 /* MemberDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317A2E882C5B959800C44280 /* MemberDetailViewModel.swift */; };
@@ -107,6 +111,10 @@
 		314C44872C4BC0B10020FAA9 /* MemberAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAddView.swift; sourceTree = "<group>"; };
 		314FD6A52AE955CA0052251C /* InputNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputNameView.swift; sourceTree = "<group>"; };
 		317002B92AD58B6100D8991A /* CGFloat+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+.swift"; sourceTree = "<group>"; };
+		317328482C74AED000CB19EA /* EnvironmnetValues+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmnetValues+.swift"; sourceTree = "<group>"; };
+		3173284A2C74B36D00CB19EA /* ViewSizePreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSizePreferenceKey.swift; sourceTree = "<group>"; };
+		3173284C2C74B57A00CB19EA /* CustomDynamicHeightSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDynamicHeightSheet.swift; sourceTree = "<group>"; };
+		3173284E2C74B8E800CB19EA /* DynamicHeightBottomSheetContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightBottomSheetContentView.swift; sourceTree = "<group>"; };
 		317A2E842C5B708500C44280 /* HierarchyCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyCardViewModel.swift; sourceTree = "<group>"; };
 		317A2E862C5B85D700C44280 /* MemberAddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAddViewModel.swift; sourceTree = "<group>"; };
 		317A2E882C5B959800C44280 /* MemberDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberDetailViewModel.swift; sourceTree = "<group>"; };
@@ -162,6 +170,7 @@
 				310E88B12C4FCBBB00D5CB36 /* UIViewController+.swift */,
 				312A80142C57E8D30079222D /* EnvironmentValues+.swift */,
 				31C70A9E2C5CC350001A13C5 /* UserDefatuls+.swift */,
+				317328482C74AED000CB19EA /* EnvironmnetValues+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -193,9 +202,12 @@
 				314C44792C4790E40020FAA9 /* CustomHalfSheet.swift */,
 				314C447B2C4793050020FAA9 /* RoundedCorner.swift */,
 				3104A06A2C4D085300DD8020 /* PreferKey.swift */,
+				3173284A2C74B36D00CB19EA /* ViewSizePreferenceKey.swift */,
 				3104A06C2C4D086A00DD8020 /* Line.swift */,
 				312A80122C57DD240079222D /* NicknameModeEnvironment.swift */,
 				31C70AA02C5FB58C001A13C5 /* DataHandler.swift */,
+				3173284C2C74B57A00CB19EA /* CustomDynamicHeightSheet.swift */,
+				3173284E2C74B8E800CB19EA /* DynamicHeightBottomSheetContentView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -444,13 +456,16 @@
 				311A3EFC2AEE44800082D247 /* SelectBloodTypeView.swift in Sources */,
 				3185211A2AEFD93B000579CE /* MemberRhTypeView.swift in Sources */,
 				314C44822C494A980020FAA9 /* MemberUpdateView.swift in Sources */,
+				3173284F2C74B8E800CB19EA /* DynamicHeightBottomSheetContentView.swift in Sources */,
 				A0F324CF2ADA7EB500D64198 /* Member.swift in Sources */,
 				314C447C2C4793050020FAA9 /* RoundedCorner.swift in Sources */,
 				310E88B62C51137900D5CB36 /* NickNames.swift in Sources */,
+				3173284D2C74B57A00CB19EA /* CustomDynamicHeightSheet.swift in Sources */,
 				318521182AEFD92C000579CE /* MemberBirthdayView.swift in Sources */,
 				3104A06D2C4D086A00DD8020 /* Line.swift in Sources */,
 				312A80172C5899A50079222D /* SideOfBaseNode.swift in Sources */,
 				314C44772C47653F0020FAA9 /* MemberFormView.swift in Sources */,
+				317328492C74AED000CB19EA /* EnvironmnetValues+.swift in Sources */,
 				314C44712C44F3270020FAA9 /* MemberDetailView.swift in Sources */,
 				311A3EF62AED21F70082D247 /* SelectGenderView.swift in Sources */,
 				312A80112C57D6B50079222D /* OptionView.swift in Sources */,
@@ -464,6 +479,7 @@
 				311A3EFA2AED2EE60082D247 /* Date+.swift in Sources */,
 				317A2E892C5B959800C44280 /* MemberDetailViewModel.swift in Sources */,
 				312A80132C57DD240079222D /* NicknameModeEnvironment.swift in Sources */,
+				3173284B2C74B36D00CB19EA /* ViewSizePreferenceKey.swift in Sources */,
 				314FD6A62AE955CA0052251C /* InputNameView.swift in Sources */,
 				31C70A9F2C5CC350001A13C5 /* UserDefatuls+.swift in Sources */,
 				31B388ED2AE3944D00DFE875 /* HierarchyCardView.swift in Sources */,

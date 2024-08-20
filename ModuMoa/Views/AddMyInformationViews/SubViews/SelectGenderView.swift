@@ -10,6 +10,7 @@ import SwiftUI
 struct SelectGenderView: View {
     
     @Binding var viewModel: AddMyInformationViewModel
+    @Environment(\.isNoSafeAreaDevice) var isNoSafeArea
     
     var body: some View {
         GeometryReader { reader in
@@ -57,6 +58,7 @@ struct SelectGenderView: View {
                 .padding(.horizontal, 16)
             }
         }
+        .padding(.bottom, isNoSafeArea ? 16 : 0)
         .frame(maxWidth: .infinity)
     }
     

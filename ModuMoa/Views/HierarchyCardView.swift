@@ -10,6 +10,7 @@ import SwiftUI
 struct HierarchyCardView: View {
     
     @State private var vm: HierarchyCardViewModel
+    @Environment(\.isNoSafeAreaDevice) var isNoSafeArea
     
     init(node: Node) {
         self._vm = .init(initialValue: .init(node: node))
@@ -63,9 +64,12 @@ struct HierarchyCardView: View {
                 }
             }
         }
-        .customHalfSheet($vm.isPresented) {
+        .customDynamicHeightSheet($vm.isPresented) {
             halfSheetView()
         }
+//        .customHalfSheet($vm.isPresented) {
+//            halfSheetView()
+//        }
         .navigationDestination(isPresented: $vm.addNodeViewisPushed) {
             if let unwrappedNode = Binding($vm.selectedNode) {
                 MemberAddView(from: unwrappedNode, with: $vm.selectedAddCase, isPushed: $vm.addNodeViewisPushed)
@@ -139,6 +143,7 @@ struct HierarchyCardView: View {
                 }
                 .disabled(vm.selectedAddCase == nil)
             }
+            .padding(.bottom, isNoSafeArea ? 16 : 0)
         }
         
     }

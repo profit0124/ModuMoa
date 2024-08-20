@@ -10,6 +10,7 @@ import SwiftUI
 struct IntroView: View {
     
     @Binding var viewModel: AddMyInformationViewModel
+    @Environment(\.isNoSafeAreaDevice) var isNoSafeArea
     
     var body: some View {
         VStack(spacing: 0) {
@@ -37,5 +38,7 @@ struct IntroView: View {
             }
         }
         .padding(.horizontal, 16)
+        .padding(.bottom, isNoSafeArea ? 16 : 0)
+        
     }
 }
