@@ -11,6 +11,7 @@ struct MemberAddView: View {
     
     @State private var vm: MemberAddViewModel
     @Binding var isPushed: Bool
+    @Environment(\.isNoSafeAreaDevice) var isNoSafeArea
     
     init(from node: Binding<Node>, with selectedAddCase: Binding<CaseOfAdd?>, isPushed: Binding<Bool>) {
         self._vm = .init(initialValue: .init(fromNode: node.wrappedValue, selectedAddCase: selectedAddCase.wrappedValue))
@@ -44,6 +45,7 @@ struct MemberAddView: View {
             .disabled(vm.name.isEmpty || vm.sex == nil)
         }
         .padding(.horizontal, .betweenTextAndLine)
+        .padding(.bottom, isNoSafeArea ? 16 : 0)
         .ignoresSafeArea(.keyboard)
         .navigationBarBackButtonHidden()
     }

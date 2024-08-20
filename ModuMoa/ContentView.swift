@@ -13,6 +13,8 @@ struct ContentView: View {
     @State private var accumulatedOffset = CGSize.zero
     @State private var currentZoom = 0.0
     @State private var totalZoom = 0.7
+    @State private var isSmallScreenDevice: Bool = false
+    @State private var isNoSafeAreaDevice: Bool = false
 
     @State private var viewModel = RootViewModel()
     
@@ -78,6 +80,13 @@ struct ContentView: View {
                 case .loadingView:
                     ProgressView()
                         .onAppear{
+                            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                               let window = windowScene.windows.first {
+                                let safeAreaInsets = window.safeAreaInsets
+                                self.isNoSafeAreaDevice = safeAreaInsets.top <= 20 && safeAreaInsets.bottom <= 20
+                                self.isSmallScreenDevice = window.bounds.size.height < 844
+                            }
+                            
                             viewModel.onAppear()
                         }
                 case .introView:
@@ -88,8 +97,9 @@ struct ContentView: View {
                 SearchView(isPushed: $viewModel.isPushed)
             })
         }
-        .environment(viewModel)
-        .environment(\.nicknameMode, viewModel.nicknameMode)
+        .onAppear {
+            
+        }
         .onChange(of: viewModel.baseNode?.leftParent) { oldValue, newValue in
             if viewModel.baseNode?.rightParent == nil, oldValue == nil, newValue != nil {
                 /// BaseNode 가 바뀔때 기존 BaseNode 는 자식을 2명 이상 가지고 있었을 경우 HeirarchyCardView의 자식 View 가 index 에러 발생
@@ -126,6 +136,10 @@ struct ContentView: View {
             currentZoom = 0
             totalZoom = 0.7
         }
+        .environment(viewModel)
+        .environment(\.nicknameMode, viewModel.nicknameMode)
+        .environment(\.isSmallScreenDevice, isSmallScreenDevice)
+        .environment(\.isNoSafeAreaDevice, isNoSafeAreaDevice)
     }
     
     var drag: some Gesture {
@@ -137,4 +151,8 @@ struct ContentView: View {
             accumulatedOffset = accumulatedOffset + gesture.translation
           }
       }
+}
+
+#Preview {
+    ContentView()
 }

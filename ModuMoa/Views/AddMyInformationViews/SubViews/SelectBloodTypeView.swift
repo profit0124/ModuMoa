@@ -11,6 +11,7 @@ struct SelectBloodTypeView: View {
     @Binding var viewModel: AddMyInformationViewModel
     @State private var isPresented: Bool = false
     @Environment(RootViewModel.self) var rootViewModel
+    @Environment(\.isNoSafeAreaDevice) var isNoSafeArea
     
     var body: some View {
         GeometryReader { reader in
@@ -117,6 +118,7 @@ struct SelectBloodTypeView: View {
             .padding(.horizontal, 16)
             .presentationDetents([.medium])
         }
+        .padding(.bottom, isNoSafeArea ? 16 : 0)
     }
     
     @ViewBuilder

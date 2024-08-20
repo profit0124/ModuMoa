@@ -9,9 +9,11 @@ import SwiftUI
 
 struct InputBirthdayView: View {
     @Binding var viewModel: AddMyInformationViewModel
+    @Environment(\.isNoSafeAreaDevice) var isNoSafeArea
+    @Environment(\.isSmallScreenDevice) var isSmallScreenDevice
     
     var body: some View {
-        VStack(alignment: .leading, spacing: .betweenElements) {
+        VStack(alignment: .leading, spacing: isSmallScreenDevice ? .betweenElements / 2 : .betweenElements) {
             // MARK: Navigation Backbutton
             Image(systemName: "chevron.left")
                 .resizable()
@@ -24,9 +26,9 @@ struct InputBirthdayView: View {
                     }
                 }
             // MARK: Content
-            VStack(alignment:.leading, spacing: .betweenSelectPoint) {
-                VStack(alignment: .leading, spacing: .betweenElements) {
-                    VStack(alignment: .leading, spacing: .betweenTitleAndContent) {
+            VStack(alignment:.leading, spacing: isSmallScreenDevice ? .betweenSelectPoint / 2 : .betweenSelectPoint) {
+                VStack(alignment: .leading, spacing: isSmallScreenDevice ? .betweenElements / 2 : .betweenElements) {
+                    VStack(alignment: .leading, spacing: isSmallScreenDevice ? .betweenTitleAndContent / 2 : .betweenTitleAndContent) {
                         Text("생일을 선택해주세요")
                             .font(.customFont(.largeTitle).bold())
                         
@@ -56,6 +58,7 @@ struct InputBirthdayView: View {
             }
             .padding(.horizontal, 16)
         }
+        .padding(.bottom, isNoSafeArea ? 16 : 0)
     }
 }
 
