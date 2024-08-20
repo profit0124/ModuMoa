@@ -68,19 +68,20 @@ struct SelectBloodTypeView: View {
                         ModumoaMemberSectionView(title: "성별", value: viewModel.sex?.rawValue ?? "모름")
                         
                         ModumoaMemberSectionView(title: "이름", value: viewModel.name)
-                    }
-                    
-                    Spacer()
-                
-                    if viewModel.aboType != nil, viewModel.rhType != nil {
-                        ModumoaRoundedRectangleButton("완료") {
-                            Task {
-                                if let node = await viewModel.saveMyInformation() {
-                                    rootViewModel.addMyNode(node)
+    
+                        Spacer()
+                        
+                        if viewModel.aboType != nil, viewModel.rhType != nil {
+                            ModumoaRoundedRectangleButton("완료") {
+                                Task {
+                                    if let node = await viewModel.saveMyInformation() {
+                                        rootViewModel.addMyNode(node)
+                                    }
                                 }
                             }
                         }
                     }
+                    
                 }
                 .padding(.horizontal, 20)
             }
