@@ -39,6 +39,14 @@ struct SelectBloodTypeView: View {
                                 HStack {
                                     let text = viewModel.rhType == nil ? "Rh식" : (viewModel.rhType! == .none ? "Rh식 모름" : viewModel.rhType!.rawValue)
                                     Text(text)
+                                        .overlay(alignment: .topTrailing) {
+                                            if viewModel.rhType == nil {
+                                                Circle()
+                                                    .frame(width: 4, height: 4)
+                                                    .offset(x: 4, y: -2)
+                                                    .foregroundStyle(.red.opacity(0.8))
+                                            }
+                                        }
                                     
                                     Image(systemName: "chevron.right")
                                 }
@@ -61,6 +69,14 @@ struct SelectBloodTypeView: View {
                             }
                         }
                     }
+                    .overlay(alignment: .bottomLeading) {
+                        if viewModel.rhType == nil || viewModel.aboType == nil {
+                            Text("* Rh 식, 혈액형 두 가지 모두 선택해 주세요.")
+                                .font(.customFont(.caption2))
+                                .foregroundStyle(.grayscale1)
+                                .offset(y: 20)
+                        }
+                    }
                     
                     VStack(alignment: .leading, spacing: .betweenElements) {
                         ModumoaMemberSectionView(title: "생일", value: viewModel.birthDay.toString())
@@ -71,17 +87,15 @@ struct SelectBloodTypeView: View {
     
                         Spacer()
                         
-                        if viewModel.aboType != nil, viewModel.rhType != nil {
-                            ModumoaRoundedRectangleButton("완료") {
-                                Task {
-                                    if let node = await viewModel.saveMyInformation() {
-                                        rootViewModel.addMyNode(node)
-                                    }
+                        ModumoaRoundedRectangleButton("완료") {
+                            Task {
+                                if let node = await viewModel.saveMyInformation() {
+                                    rootViewModel.addMyNode(node)
                                 }
                             }
                         }
+                        .disabled(viewModel.aboType == nil || viewModel.rhType == nil)
                     }
-                    
                 }
                 .padding(.horizontal, 20)
             }
