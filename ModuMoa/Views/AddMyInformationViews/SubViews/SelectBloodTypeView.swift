@@ -71,7 +71,7 @@ struct SelectBloodTypeView: View {
                     }
                     .overlay(alignment: .bottomLeading) {
                         if viewModel.rhType == nil || viewModel.aboType == nil {
-                            Text("* Rh 식, 혈액형 두 가지 모두 선택 해주세요.")
+                            Text("* Rh 식, 혈액형 두 가지 모두 선택해 주세요.")
                                 .font(.customFont(.caption2))
                                 .foregroundStyle(.grayscale1)
                                 .offset(y: 20)
