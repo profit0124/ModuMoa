@@ -10,19 +10,7 @@ import Foundation
 @Observable
 final class HierarchyCardViewModel {
     var node: Node
-    var isPresented: Bool = false
-    var selectedAddCase: CaseOfAdd?
-    var addNodeViewisPushed: Bool = false {
-        didSet {
-            if !addNodeViewisPushed {
-                selectedNode = nil
-                selectedAddCase = nil
-            }
-        }
-    }
-    var detailNodeViewIsPushed: Bool = false
-    var fromMe: Bool = true
-    var selectedNode: Node?
+    
     var orderedChildren: [Node] {
         get {
             node.children.sorted(by: { $0.member.birthday ?? Date() < $1.member.birthday ?? Date() })
@@ -32,25 +20,4 @@ final class HierarchyCardViewModel {
     init(node: Node) {
         self.node = node
     }
-    
-    func detailButtonTapped(_ node: Node) {
-        self.selectedNode = node
-        self.detailNodeViewIsPushed = true
-    }
-    
-    func plusButtonTapped(_ node: Node) {
-        self.selectedNode = node
-        self.isPresented = true
-    }
-    
-    func setSelectedAddCase(_ caseOfAdd: CaseOfAdd?) {
-        self.selectedAddCase = caseOfAdd
-    }
-    
-    func addButtonTapped() {
-        self.isPresented = false
-        self.addNodeViewisPushed = true
-    }
-    
-    
 }

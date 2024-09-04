@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @State private var coordinator: ModumoaRouter = ModumoaRouter()
     @State private var draggedOffset = CGSize.zero
     @State private var accumulatedOffset = CGSize.zero
     @State private var currentZoom = 0.0
@@ -19,7 +20,7 @@ struct ContentView: View {
     @State private var viewModel = RootViewModel()
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $coordinator.path) {
             ZStack {
                 switch viewModel.rootViewCase {
                 case .familyTreeView:
@@ -27,7 +28,7 @@ struct ContentView: View {
                         SearchBarView(text: .constant(""))
                             .disabled(true)
                             .onTapGesture {
-                                viewModel.isPushed = true
+                                coordinator.push(.serach)
                             }
                         OptionView(nicknameMode: $viewModel.nicknameMode, baseNodeMode: $viewModel.sideOfBaseNode) {
                             viewModel.changeBaseNode($0)
@@ -93,13 +94,13 @@ struct ContentView: View {
                     AddMyInformationContainerView()
                 }
             }
-            .navigationDestination(isPresented: $viewModel.isPushed, destination: {
-                SearchView(isPushed: $viewModel.isPushed)
-            })
+            .navigationDestination(for: NavigationDestination.self) { value in
+                value.makeView()
+            }
         }
-        .onAppear {
-            
-        }
+        .fullScreenCover(item: Binding(get: { coordinator.fullScreenType }, set: { coordinator.fullScreenType = $0 }), content: { value in
+            value.makeView()
+        })
         .onChange(of: viewModel.baseNode?.leftParent) { oldValue, newValue in
             if viewModel.baseNode?.rightParent == nil, oldValue == nil, newValue != nil {
                 /// BaseNode 가 바뀔때 기존 BaseNode 는 자식을 2명 이상 가지고 있었을 경우 HeirarchyCardView의 자식 View 가 index 에러 발생
@@ -137,6 +138,7 @@ struct ContentView: View {
             totalZoom = 0.7
         }
         .environment(viewModel)
+        .environment(coordinator)
         .environment(\.nicknameMode, viewModel.nicknameMode)
         .environment(\.isSmallScreenDevice, isSmallScreenDevice)
         .environment(\.isNoSafeAreaDevice, isNoSafeAreaDevice)

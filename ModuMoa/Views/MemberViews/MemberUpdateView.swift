@@ -10,13 +10,12 @@ import SwiftUI
 struct MemberUpdateView: View {
     
     @Environment(\.nicknameMode) var nicknameMode
+    @Environment(ModumoaRouter.self) var coordinator
     
-    @Binding var isPresented: Bool
     @State private var vm: MemberUpdateViewModel
     
-    init(node: Node, isPresented: Binding<Bool>) {
+    init(node: Node) {
         self._vm = .init(initialValue: .init(node: node))
-        self._isPresented = isPresented
     }
     
     var body: some View {
@@ -25,7 +24,7 @@ struct MemberUpdateView: View {
             // MARK: Navigation Bar
             HStack {
                 Button(action: {
-                    isPresented = false
+                    coordinator.dismissFullScreenCover()
                 }) {
                     Text("닫기")
                 }
@@ -53,7 +52,7 @@ struct MemberUpdateView: View {
         Task {
             do {
                 try await vm.saveButtonTapped()
-                isPresented = false
+                coordinator.dismissFullScreenCover()
             } catch {
                 fatalError("error: \(error)")
             }
