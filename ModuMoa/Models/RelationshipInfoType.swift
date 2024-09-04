@@ -1151,7 +1151,7 @@ extension RelationshipInfoType {
             guard let id = UUID(uuidString: stringID) else { throw ModumoaError.uuidError }
             guard let myNode = await NodeDatabase.shared.fetchNode(id) else { throw ModumoaError.notFound }
             guard let partner = toNode.partner else { throw ModumoaError.nodeIsNil }
-            var title = "종수"
+            let title = "종수"
             var nickName = ""
             switch myNode.member.sex {
             case .female:
@@ -1180,7 +1180,7 @@ extension RelationshipInfoType {
             guard let id = UUID(uuidString: stringID) else { throw ModumoaError.uuidError }
             guard let myNode = await NodeDatabase.shared.fetchNode(id) else { throw ModumoaError.notFound }
             guard let partner = toNode.partner else { throw ModumoaError.nodeIsNil }
-            var title = "종수"
+            let title = "종수"
             var nickName = ""
             switch myNode.member.sex {
             case .female:
@@ -1215,7 +1215,7 @@ extension RelationshipInfoType {
             guard let id = UUID(uuidString: stringID) else { throw ModumoaError.uuidError }
             guard let myNode = await NodeDatabase.shared.fetchNode(id) else { throw ModumoaError.notFound }
             guard let partner = toNode.partner else { throw ModumoaError.nodeIsNil }
-            var title = "내종수"
+            let title = "내종수"
             var nickName = ""
             switch myNode.member.sex {
             case .female:
@@ -1244,7 +1244,7 @@ extension RelationshipInfoType {
             guard let id = UUID(uuidString: stringID) else { throw ModumoaError.uuidError }
             guard let myNode = await NodeDatabase.shared.fetchNode(id) else { throw ModumoaError.notFound }
             guard let partner = toNode.partner else { throw ModumoaError.nodeIsNil }
-            var title = "내종수"
+            let title = "내종수"
             var nickName = ""
             switch myNode.member.sex {
             case .female:
@@ -1286,7 +1286,7 @@ extension RelationshipInfoType {
             guard let id = UUID(uuidString: stringID) else { throw ModumoaError.uuidError }
             guard let myNode = await NodeDatabase.shared.fetchNode(id) else { throw ModumoaError.notFound }
             guard let partner = toNode.partner else { throw ModumoaError.nodeIsNil }
-            var title = "외종수"
+            let title = "외종수"
             var nickName = ""
             switch myNode.member.sex {
             case .female:
@@ -1315,7 +1315,7 @@ extension RelationshipInfoType {
             guard let id = UUID(uuidString: stringID) else { throw ModumoaError.uuidError }
             guard let myNode = await NodeDatabase.shared.fetchNode(id) else { throw ModumoaError.notFound }
             guard let partner = toNode.partner else { throw ModumoaError.nodeIsNil }
-            var title = "외종수"
+            let title = "외종수"
             var nickName = ""
             switch myNode.member.sex {
             case .female:
@@ -1349,7 +1349,7 @@ extension RelationshipInfoType {
             guard let id = UUID(uuidString: stringID) else { throw ModumoaError.uuidError }
             guard let myNode = await NodeDatabase.shared.fetchNode(id) else { throw ModumoaError.notFound }
             guard let partner = toNode.partner else { throw ModumoaError.nodeIsNil }
-            var title = "이종수"
+            let title = "이종수"
             var nickName = ""
             switch myNode.member.sex {
             case .female:
@@ -1378,7 +1378,7 @@ extension RelationshipInfoType {
             guard let id = UUID(uuidString: stringID) else { throw ModumoaError.uuidError }
             guard let myNode = await NodeDatabase.shared.fetchNode(id) else { throw ModumoaError.notFound }
             guard let partner = toNode.partner else { throw ModumoaError.nodeIsNil }
-            var title = "이종수"
+            let title = "이종수"
             var nickName = ""
             switch myNode.member.sex {
             case .female:
