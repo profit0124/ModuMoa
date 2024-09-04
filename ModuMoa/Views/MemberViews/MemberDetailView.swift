@@ -10,12 +10,11 @@ import SwiftUI
 struct MemberDetailView: View {
     
     @Environment(\.nicknameMode) var nicknameMode
+    @Environment(ModumoaRouter.self) var coordinator
     
-    @Binding var isPushed: Bool
     @State private var vm: MemberDetailViewModel
     
-    init(isPushed: Binding<Bool>, node: Node) {
-        self._isPushed = isPushed
+    init(node: Node) {
         self.vm = .init(node: node)
     }
     
@@ -25,7 +24,7 @@ struct MemberDetailView: View {
             // MARK: Navigation Bar
             HStack {
                 Button(action: {
-                    isPushed = false
+                    coordinator.pop()
                 }) {
                     HStack(spacing: 4) {
                         Image(systemName: "chevron.left")
@@ -94,9 +93,6 @@ struct MemberDetailView: View {
             
             Spacer()
         }
-        .fullScreenCover(isPresented: $vm.isPresented, content: {
-            MemberUpdateView(node: vm.node, isPresented: $vm.isPresented)
-        })
         .transaction { transaction in
             transaction.disablesAnimations = true
         }
@@ -105,7 +101,7 @@ struct MemberDetailView: View {
                 HStack {
                     Spacer()
                     Button(action: {
-                        vm.updateButtonTapped()
+                        coordinator.presentFullScreenCover(.updateNode(vm.node))
                     }) {
                         Image(systemName: "pencil")
                     }

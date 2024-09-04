@@ -10,20 +10,18 @@ import SwiftUI
 struct MemberAddView: View {
     
     @State private var vm: MemberAddViewModel
-    @Binding var isPushed: Bool
     @Environment(\.isNoSafeAreaDevice) var isNoSafeArea
+    @Environment(ModumoaRouter.self) var coordinator
     
-    init(from node: Binding<Node>, with selectedAddCase: Binding<CaseOfAdd?>, isPushed: Binding<Bool>) {
-        self._vm = .init(initialValue: .init(fromNode: node.wrappedValue, selectedAddCase: selectedAddCase.wrappedValue))
-        self._isPushed = isPushed
+    init(from node: Node, with selectedAddCase: CaseOfAdd?) {
+        self._vm = .init(initialValue: .init(fromNode: node, selectedAddCase: selectedAddCase))
     }
     
     var body: some View {
-        
         VStack(spacing: .betweenElements) {
             HStack {
                 Button(action: {
-                    isPushed = false
+                    coordinator.pop()
                 }) {
                     HStack {
                         Image(systemName: "chevron.left")
@@ -54,7 +52,7 @@ struct MemberAddView: View {
         Task {
             do {
                 try await vm.saveButtonTapped()
-                isPushed = false
+                coordinator.pop()
             } catch {
                 fatalError("error: \(error)")
             }

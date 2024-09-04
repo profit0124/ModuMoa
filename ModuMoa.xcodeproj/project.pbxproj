@@ -40,6 +40,10 @@
 		314C44862C4BBF8D0020FAA9 /* CaseOfAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314C44852C4BBF8D0020FAA9 /* CaseOfAdd.swift */; };
 		314C44882C4BC0B10020FAA9 /* MemberAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314C44872C4BC0B10020FAA9 /* MemberAddView.swift */; };
 		314FD6A62AE955CA0052251C /* InputNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314FD6A52AE955CA0052251C /* InputNameView.swift */; };
+		3157B11D2C881BEF00D8B38D /* ModumoaRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3157B11C2C881BEF00D8B38D /* ModumoaRouter.swift */; };
+		3157B11F2C8829E900D8B38D /* CardWithButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3157B11E2C8829E900D8B38D /* CardWithButtonView.swift */; };
+		3157B1222C8840F700D8B38D /* NavigationDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3157B1212C8840F700D8B38D /* NavigationDestination.swift */; };
+		3157B1242C88410100D8B38D /* FullScreenDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3157B1232C88410100D8B38D /* FullScreenDestination.swift */; };
 		317002BA2AD58B6100D8991A /* CGFloat+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317002B92AD58B6100D8991A /* CGFloat+.swift */; };
 		317328492C74AED000CB19EA /* EnvironmnetValues+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317328482C74AED000CB19EA /* EnvironmnetValues+.swift */; };
 		3173284B2C74B36D00CB19EA /* ViewSizePreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3173284A2C74B36D00CB19EA /* ViewSizePreferenceKey.swift */; };
@@ -110,6 +114,10 @@
 		314C44852C4BBF8D0020FAA9 /* CaseOfAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseOfAdd.swift; sourceTree = "<group>"; };
 		314C44872C4BC0B10020FAA9 /* MemberAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAddView.swift; sourceTree = "<group>"; };
 		314FD6A52AE955CA0052251C /* InputNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputNameView.swift; sourceTree = "<group>"; };
+		3157B11C2C881BEF00D8B38D /* ModumoaRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModumoaRouter.swift; sourceTree = "<group>"; };
+		3157B11E2C8829E900D8B38D /* CardWithButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardWithButtonView.swift; sourceTree = "<group>"; };
+		3157B1212C8840F700D8B38D /* NavigationDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationDestination.swift; sourceTree = "<group>"; };
+		3157B1232C88410100D8B38D /* FullScreenDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenDestination.swift; sourceTree = "<group>"; };
 		317002B92AD58B6100D8991A /* CGFloat+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+.swift"; sourceTree = "<group>"; };
 		317328482C74AED000CB19EA /* EnvironmnetValues+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmnetValues+.swift"; sourceTree = "<group>"; };
 		3173284A2C74B36D00CB19EA /* ViewSizePreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSizePreferenceKey.swift; sourceTree = "<group>"; };
@@ -178,6 +186,8 @@
 		310E88A22C4F88A900D5CB36 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				31B388EA2AE38E5000DFE875 /* CardView.swift */,
+				3157B11E2C8829E900D8B38D /* CardWithButtonView.swift */,
 				310E88A52C4F88E100D5CB36 /* ModumoaRoundedRectangleButton.swift */,
 				310E88A72C4F919D00D5CB36 /* ModumoaMemberSectionView.swift */,
 				310E88A92C4FADBC00D5CB36 /* SearchBarView.swift */,
@@ -210,6 +220,15 @@
 				3173284E2C74B8E800CB19EA /* DynamicHeightBottomSheetContentView.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		3157B1202C8840E300D8B38D /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				3157B1212C8840F700D8B38D /* NavigationDestination.swift */,
+				3157B1232C88410100D8B38D /* FullScreenDestination.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 		318457332AE94183007C2045 /* AddMyInformationViews */ = {
@@ -315,7 +334,6 @@
 				310E88A22C4F88A900D5CB36 /* Components */,
 				3185210F2AEEA300000579CE /* MemberViews */,
 				318457332AE94183007C2045 /* AddMyInformationViews */,
-				31B388EA2AE38E5000DFE875 /* CardView.swift */,
 				31B388EC2AE3944D00DFE875 /* HierarchyCardView.swift */,
 				310E88AB2C4FB3C200D5CB36 /* SearchView.swift */,
 			);
@@ -332,6 +350,7 @@
 				317A2E862C5B85D700C44280 /* MemberAddViewModel.swift */,
 				317A2E882C5B959800C44280 /* MemberDetailViewModel.swift */,
 				317A2E8A2C5B97AE00C44280 /* MemberUpdateViewModel.swift */,
+				3157B11C2C881BEF00D8B38D /* ModumoaRouter.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -339,6 +358,7 @@
 		A0F324CD2ADA7E7800D64198 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3157B1202C8840E300D8B38D /* Router */,
 				A0F324CE2ADA7EB500D64198 /* Member.swift */,
 				A0F324D02ADA826200D64198 /* Node.swift */,
 				A06C1ABE2AF4BF9A001C8B4D /* RelationshipInfoType.swift */,
@@ -456,6 +476,7 @@
 				311A3EFC2AEE44800082D247 /* SelectBloodTypeView.swift in Sources */,
 				3185211A2AEFD93B000579CE /* MemberRhTypeView.swift in Sources */,
 				314C44822C494A980020FAA9 /* MemberUpdateView.swift in Sources */,
+				3157B11D2C881BEF00D8B38D /* ModumoaRouter.swift in Sources */,
 				3173284F2C74B8E800CB19EA /* DynamicHeightBottomSheetContentView.swift in Sources */,
 				A0F324CF2ADA7EB500D64198 /* Member.swift in Sources */,
 				314C447C2C4793050020FAA9 /* RoundedCorner.swift in Sources */,
@@ -464,6 +485,7 @@
 				318521182AEFD92C000579CE /* MemberBirthdayView.swift in Sources */,
 				3104A06D2C4D086A00DD8020 /* Line.swift in Sources */,
 				312A80172C5899A50079222D /* SideOfBaseNode.swift in Sources */,
+				3157B1222C8840F700D8B38D /* NavigationDestination.swift in Sources */,
 				314C44772C47653F0020FAA9 /* MemberFormView.swift in Sources */,
 				317328492C74AED000CB19EA /* EnvironmnetValues+.swift in Sources */,
 				314C44712C44F3270020FAA9 /* MemberDetailView.swift in Sources */,
@@ -472,6 +494,7 @@
 				310E889F2C4E7B6600D5CB36 /* CaseOfAddMyInformationView.swift in Sources */,
 				317002BA2AD58B6100D8991A /* CGFloat+.swift in Sources */,
 				31C70AA12C5FB58C001A13C5 /* DataHandler.swift in Sources */,
+				3157B11F2C8829E900D8B38D /* CardWithButtonView.swift in Sources */,
 				310E88B22C4FCBBB00D5CB36 /* UIViewController+.swift in Sources */,
 				31A78CA82AD42EE400BE629A /* ModuMoaApp.swift in Sources */,
 				317A2E8B2C5B97AE00C44280 /* MemberUpdateViewModel.swift in Sources */,
@@ -481,6 +504,7 @@
 				312A80132C57DD240079222D /* NicknameModeEnvironment.swift in Sources */,
 				3173284B2C74B36D00CB19EA /* ViewSizePreferenceKey.swift in Sources */,
 				314FD6A62AE955CA0052251C /* InputNameView.swift in Sources */,
+				3157B1242C88410100D8B38D /* FullScreenDestination.swift in Sources */,
 				31C70A9F2C5CC350001A13C5 /* UserDefatuls+.swift in Sources */,
 				31B388ED2AE3944D00DFE875 /* HierarchyCardView.swift in Sources */,
 				317A2E872C5B85D700C44280 /* MemberAddViewModel.swift in Sources */,

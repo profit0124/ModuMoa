@@ -10,14 +10,14 @@ import SwiftUI
 struct SearchView: View {
     
     @State private var viewModel: SearchViewModel = SearchViewModel()
-    @Binding var isPushed: Bool
     @State private var isFocused: Bool = false
+    @Environment(ModumoaRouter.self) var coordinator
     
     var body: some View {
         VStack(spacing: .betweenTitleAndContent) {
             HStack {
                 Button(action: {
-                    isPushed = false
+                    coordinator.pop()
                 }) {
                     Image(systemName: "chevron.left")
                         .font(.customFont(.body))
@@ -54,8 +54,7 @@ struct SearchView: View {
                             ForEach(viewModel.filteredNodes) { node in
                                 CardView(member: node.member)
                                     .onTapGesture {
-                                        viewModel.selectedNode = node
-                                        viewModel.isPushed = true
+                                        coordinator.push(.selectNode(node))
                                     }
                             }
                         }
@@ -76,14 +75,10 @@ struct SearchView: View {
             isFocused = false
         }
         .navigationBarBackButtonHidden()
-        .navigationDestination(isPresented: $viewModel.isPushed) {
-            if let node = viewModel.selectedNode {
-                MemberDetailView(isPushed: $viewModel.isPushed, node: node)
-            }
-        }
     }
 }
 
 #Preview {
-    SearchView(isPushed: .constant(true))
+    SearchView()
+        .environment(ModumoaRouter())
 }

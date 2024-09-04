@@ -30,7 +30,6 @@ struct CardView: View {
                             Capsule().fill(.moduBlack)
                         }
                     }
-                    
             }
             .padding(.bottom, .betweenHeadlineAndTitle2)
             
@@ -54,8 +53,6 @@ struct CardView: View {
                     .foregroundStyle(.moduBlack)
             }
         }
-        
-        
     }
 }
 
